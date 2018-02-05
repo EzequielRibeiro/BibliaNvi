@@ -1,0 +1,248 @@
+<resources>
+
+    <!--  Menu items -->
+    <string name="settings">Opção</string>
+    <string name="refresh">Atualizar</string>
+
+    <!--  NetworkActivityDevocional -->
+    <string name="page_title">Devocional</string>
+    <string name="updated">Última atualização</string>
+    <string name="lost_connection">Conexão perdida</string>
+    <string name="wifi_connected">Conectado Wi-Fi .</string>
+    <string name="connection_error">Não é possível carregar conteúdo. Verifique sua conexão de rede.</string>
+    <string name="xml_error">Error parsing XML.</string>
+
+    <string name="title_activity_mensagem">Online</string>
+    <string name="compartilharWhat">WhatsApp</string>
+    <string name="app_name">Bíblia Adonai</string>
+    <string name="action_settings">Configuração</string>
+    <string name="action_devocional">Devocional</string>
+
+    <string name="title_activity_biblia_aberta">Bíblia Adonai</string>
+    <string name="title_activity_list_view">Bíblia Adonai</string>
+    <string name="capitulo">Capitulo</string>
+    <string name="livro">Livro</string>
+    <string name="nvi">Bíblia Adonai</string>
+    <string name="fechar_app">Fechar</string>
+    <string name="graph_app">Estatística</string>
+    <string name="nviText">Nova Versão Internacional</string>
+    <string name="idMob">ca-app-pub-0822808376839371/4297028089</string>
+    <string name="desenvolverdor">Bíblia Adonai 1.6.0</string>
+
+    <string name="bibliaLivEp">Livro/Epístola</string>
+
+    <string name="fontePadrao">Arial</string>
+
+    <string-array name="bibliaLivEp_arrays">
+        <item>Gênesis</item>
+        <item>Êxodo</item>
+        <item>Levítico</item>
+        <item>Números</item>
+        <item>Deuteronômio</item>
+        <item>Josué</item>
+        <item>Juízes</item>
+        <item>Rute</item>
+        <item>1º Samuel</item>
+        <item>2º Samuel</item>
+        <item>1º Reis</item>
+        <item>2º Reis</item>
+        <item>1º Crônicas</item>
+        <item>2º Crônicas</item>
+        <item>Esdras</item>
+        <item>Neemias</item>
+        <item>Ester</item>
+        <item>Jó</item>
+        <item>Salmos</item>
+        <item>Provérbios</item>
+        <item>Eclesiastes</item>
+        <item>Cânticos</item>
+        <item>Isaías</item>
+        <item>Jeremias</item>
+        <item>Lamentações</item>
+        <item>Ezequiel</item>
+        <item>Daniel</item>
+        <item>Oséias</item>
+        <item>Joel</item>
+        <item>Amós</item>
+        <item>Obadias</item>
+        <item>Jonas</item>
+        <item>Miquéias</item>
+        <item>Naum</item>
+        <item>Habacuque</item>
+        <item>Sofonias</item>
+        <item>Ageu</item>
+        <item>Zacarias</item>
+        <item>Malaquias</item>
+        <item>Mateus</item>
+        <item>Marcos</item>
+        <item>Lucas</item>
+        <item>João</item>
+        <item>Atos</item>
+        <item>Romanos</item>
+        <item>1ª Coríntios</item>
+        <item>2ª Coríntios</item>
+        <item>Gálatas</item>
+        <item>Efésios</item>
+        <item>Filipenses</item>
+        <item>Colossenses</item>
+        <item>1ª Tessalonicenses</item>
+        <item>2ª Tessalonicenses</item>
+        <item>1ª Timóteo</item>
+        <item>2ª Timóteo</item>
+        <item>Tito</item>
+        <item>Filemom</item>
+        <item>Hebreus</item>
+        <item>Tiago</item>
+        <item>1ª Pedro</item>
+        <item>2ª Pedro</item>
+        <item>1ª João</item>
+        <item>2ª João</item>
+        <item>3ª João</item>
+        <item>Judas</item>
+        <item>Apocalipse</item>
+    </string-array>
+
+
+    <string-array name="bibliaLivEp_velho">
+        <item>Gênesis</item>
+        <item>Êxodo</item>
+        <item>Levítico</item>
+        <item>Números</item>
+        <item>Deuteronômio</item>
+        <item>Josué</item>
+        <item>Juízes</item>
+        <item>Rute</item>
+        <item>1º Samuel</item>
+        <item>2º Samuel</item>
+        <item>1º Reis</item>
+        <item>2º Reis</item>
+        <item>1º Crônicas</item>
+        <item>2º Crônicas</item>
+        <item>Esdras</item>
+        <item>Neemias</item>
+        <item>Ester</item>
+        <item>Jó</item>
+        <item>Salmos</item>
+        <item>Provérbios</item>
+        <item>Eclesiastes</item>
+        <item>Cânticos</item>
+        <item>Isaías</item>
+        <item>Jeremias</item>
+        <item>Lamentações</item>
+        <item>Ezequiel</item>
+        <item>Daniel</item>
+        <item>Oséias</item>
+        <item>Joel</item>
+        <item>Amós</item>
+        <item>Obadias</item>
+        <item>Jonas</item>
+        <item>Miquéias</item>
+        <item>Naum</item>
+        <item>Habacuque</item>
+        <item>Sofonias</item>
+        <item>Ageu</item>
+        <item>Zacarias</item>
+        <item>Malaquias</item>
+
+    </string-array>
+
+    <string-array name="bibliaLivEp_novo">
+        <item>Mateus</item>
+        <item>Marcos</item>
+        <item>Lucas</item>
+        <item>João</item>
+        <item>Atos</item>
+        <item>Romanos</item>
+        <item>1ª Coríntios</item>
+        <item>2ª Coríntios</item>
+        <item>Gálatas</item>
+        <item>Efésios</item>
+        <item>Filipenses</item>
+        <item>Colossenses</item>
+        <item>1ª Tessalonicenses</item>
+        <item>2ª Tessalonicenses</item>
+        <item>1ª Timóteo</item>
+        <item>2ª Timóteo</item>
+        <item>Tito</item>
+        <item>Filemom</item>
+        <item>Hebreus</item>
+        <item>Tiago</item>
+        <item>1ª Pedro</item>
+        <item>2ª Pedro</item>
+        <item>1ª João</item>
+        <item>2ª João</item>
+        <item>3ª João</item>
+        <item>Judas</item>
+        <item>Apocalipse</item>
+    </string-array>
+
+    <!-- -
+        This is an ad unit ID for a banner test ad. Replace with your own banner ad unit id.
+        For more information, see https://support.google.com/admob/answer/3052638
+    <!- -->
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="title_activity_devocional">Devocional</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="reflexao">Versículo diário:</string>
+    <string name="botaoAtualizar">UPDATE</string>
+    <string name="_last_update_test_preferences">Last_Update_Check</string>
+    <string name="_loading">Verificando...</string>
+    <string name="_no">Atualizar Depois</string>
+    <string name="_ok">OK</string>
+    <string name="_please_wait">Aguarde um instante.</string>
+    <string name="_update_test">Verificando se há nova versão.</string>
+    <string name="_yes">Atualizar</string>
+    <string name="_you_are_not_updated_message">Uma nova versão da Bíblia Adonai está disponível no Google Play</string>
+    <string name="_you_are_not_updated_title">Nova versão disponivel. </string>
+    <string name="_you_are_updated_message">Seu aplicativo já está atualizado para a versão mais recente disponível.</string>
+    <string name="_you_are_updated_title">Atualizado.</string>
+    <string name="title_activity_tela_drawer">TelaDrawer</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="livro_carta">Ler:</string>
+    <string name="cap">Cap:</string>
+    <string name="ver">Ver:</string>
+
+    <!-- -
+        This is an ad unit ID for an interstitial test ad. Replace with your own interstitial ad unit id.
+        For more information, see https://support.google.com/admob/answer/3052638
+    <!- -->
+    <string name="interstitial_ad_unit_id">ca-app-pub-0822808376839371/3640025681</string>
+    <string name="interstitial_ad_unit_id2">ca-app-pub-0822808376839371/8697143683</string>
+    <string name="title_activity_grafico">Grafico</string>
+    <string name="title_activity_grafico_geral">GraficoGeral</string>
+    <string name="title_activity_grafico__dois">Gráfico Dois</string>
+    <string name="title_activity_activity_busca_avancada">Pesquisa avançada</string>
+    <string name="aviso">Nome do App:\n Bíblia Adonai\n\n
+                         Versão:\n1.6.0\n\n
+                 Tradução:\nNova Versão Internacional (NVI)\n\n
+                 Obrigado pelo download !\n\n
+                 Caso encontre algum bug ou tenha alguma sugestão para o aplicativo,
+                 por favor, entre em contato pelo e-mail: aplicativoparamobile@gmail.com\n\n
+                 Desenvolvido por:\n
+                 Ezequiel A. Ribeiro</string>
+    <string name="title_activity_activity_anotacao">Anotação</string>
+    <string name="title_activity_activity_nota">Nota</string>
+    <string name="title_activity_nota_adicionar">Nota Adicionar</string>
+    <string name="title_activity_dicionario">Dicionário Bíblico</string>
+    <string name="mail">aplicativoparamobile@gmail.com</string>
+    <string name="mensagem_texto_topo">E peço isto: que o vosso amor cresça mais e mais em ciência e em todo o conhecimento. Filipenses 1:9</string>
+    <string name="title_activity_activity_favorito">Versículos Favoritos</string>
+    <string name="title_activity_main_fragment">MainFragment</string>
+
+
+    <string-array name="menu_array">
+        <item>Favorito</item>
+        <item>Anotações</item>
+        <item>Dicionário</item>
+        <item>Devocional</item>
+        <item>Estatística</item>
+        <item>Configurações</item>
+        <item>Sobre</item>
+    </string-array>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Pesquisa</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+
+</resources>

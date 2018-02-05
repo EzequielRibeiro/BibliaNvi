@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="wrap_content" android:id="@+id/hiddenLayoutTopo"
+    android:theme="@style/Theme.Transparente"
+    android:background="#787676"
+    android:gravity="center">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayoutUm"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center">
+
+        <Spinner
+            android:id="@+id/spinner4"
+            style="@style/SpinnerAppTheme"
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:layout_gravity="top|left"
+            android:layout_marginLeft="5dp"
+            android:entries="@array/bibliaLivEp_arrays"
+            android:focusableInTouchMode="true"
+            android:gravity="top"
+            android:singleLine="true" />
+
+        <Spinner
+            android:id="@+id/spinner5"
+            style="@style/SpinnerAppTheme"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:layout_gravity="top|right"
+
+            android:gravity="top" />
+
+        <Spinner
+            android:id="@+id/spinner6"
+            style="@style/SpinnerAppTheme"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:layout_gravity="top|right"
+            android:gravity="top" />
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/buttonChamarLivro"
+            android:singleLine="true"
+            android:background="@mipmap/icon_next"
+            android:layout_gravity="center|right" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayoutDois"
+        android:weightSum="1"
+        android:layout_marginRight="5dp"
+        android:gravity="center">
+
+        <EditText
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextPesquisarList"
+            android:layout_below="@+id/row1"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"
+            android:singleLine="true"
+            android:gravity="left"
+            android:focusable="true"
+            style="EditTextAppTheme"
+            android:inputType="text"
+            android:maxLines="1"
+            android:maxWidth="340dp"
+            android:layout_marginLeft="10dp" />
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/buttonBuscarList"
+            android:singleLine="true"
+            android:background="@drawable/lupa2"
+            android:layout_below="@+id/row1"
+            android:layout_toRightOf="@+id/editTextPesquisarList"
+            android:layout_toEndOf="@+id/editTextPesquisarList"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp" />
+    </LinearLayout>
+</LinearLayout>
+

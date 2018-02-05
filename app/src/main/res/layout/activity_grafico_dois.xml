@@ -1,0 +1,1332 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.projeto.biblianvi.biblianvi.Grafico_Dois"
+    android:gravity="center"
+    android:background="#ffffff">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_alignParentTop="false"
+        android:background="#ffffff"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="10dp">
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="#ffffff">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mateus"
+                        android:id="@+id/textViewMat"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewMat"
+                        android:background="@android:color/darker_gray" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textViewMat2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Marcos"
+                        android:id="@+id/textViewMarc"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewMarc"
+                        android:background="#9aff65" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textViewMarc2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lucas"
+                        android:id="@+id/textViewLuc"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewLuc"
+                        android:background="#317cff" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textViewLuc2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="João"
+                        android:id="@+id/textViewJoa"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewJoa"
+                        android:background="#ff481c" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textViewJoa2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Atos"
+                        android:id="@+id/textViewAto"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewAto"
+                        android:background="#55ffd1" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textViewAto2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Romanos"
+                        android:id="@+id/textViewRom"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewRom"
+                        android:background="#ff8f2a" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textViewRom2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1ª Coríntios"
+                        android:id="@+id/textView1Co"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageView1Cor"
+                        android:background="#ffa46a" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textView1Cor2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2ª Coríntios"
+                        android:id="@+id/textView2Cor"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageView2Cor"
+                        android:background="#34ff7d" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textView2Cor2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gálatas"
+                        android:id="@+id/textViewGenGal"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewGal"
+                        android:background="#0054ff" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textViewGal2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Efésios"
+                        android:id="@+id/textViewEfe"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewEfe"
+                        android:background="#0cff44" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textViewEfe2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Filipenses"
+                        android:id="@+id/textViewFil"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewFil"
+                        android:background="#ffa42b" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textViewFil2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Colossenses"
+                        android:id="@+id/textViewCol"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewCol"
+                        android:background="#2cff04" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textViewCol2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1ª Tessalonicenses"
+                        android:id="@+id/textView1Tes"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageView1Tes"
+                        android:background="#ff894f" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textView1Tes2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2ª Tessalonicenses"
+                        android:id="@+id/textView2Tes"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageView2Tes"
+                        android:background="#6c2fff" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textView2Tes2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1ª Timóteo"
+                        android:id="@+id/textView1Tim"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageView1Tim"
+                        android:background="#ff1e18" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textView1Tim2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2ª Timóteo"
+                        android:id="@+id/textView2Tim"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageView2Tim"
+                        android:background="#7bedff" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textView2Tim2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Titos"
+                        android:id="@+id/textViewTit"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewTit"
+                        android:background="#ffb828" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textViewTit2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Filemom"
+                        android:id="@+id/textViewFile"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewFile"
+                        android:background="#4c2bff" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textViewFile2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hebreus"
+                        android:id="@+id/textViewHeb"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewHeb"
+                        android:background="#ff4a2a" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textViewHeb2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tiago"
+                        android:id="@+id/textViewTia"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewTia"
+                        android:background="#ffee1f" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textViewTia2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1ª Pedro"
+                        android:id="@+id/textView1Pe"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageView1Pe"
+                        android:background="#ffa165" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textView1Pe2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2ª Pedro"
+                        android:id="@+id/textView2Pe"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageView2Pe"
+                        android:background="#79ffab" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textView2Pe2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1ª João"
+                        android:id="@+id/textView1Jo"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageView1Jo"
+                        android:background="#ff705e" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textView1Jo2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2ª João"
+                        android:id="@+id/textView2Jo"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageView2Jo"
+                        android:background="#ff6a1a" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textView2Jo2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3ª João"
+                        android:id="@+id/textView3Jo"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageView3Jo"
+                        android:background="#3eff87" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textView3Jo2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Judas"
+                        android:id="@+id/textViewJud"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewJud"
+                        android:background="#3198ff" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textViewJud2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal"
+                android:background="#ffffff">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Apocalipse"
+                        android:id="@+id/textViewApo"
+                        android:singleLine="true"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewApo"
+                        android:background="#ff8b00" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="0%"
+                    android:id="@+id/textViewApo2"
+                    android:textColor="#040404"
+                    android:gravity="center"
+                    android:textSize="16dp" />
+
+            </TableRow>
+
+
+
+            </TableLayout>
+    </ScrollView>
+
+</RelativeLayout>

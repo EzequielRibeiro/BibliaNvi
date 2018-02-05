@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="AppThemeButton" parent="android:Theme.Holo">
+
+    <item name="android:buttonStyle">@style/ButtonAppThemeButton</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonAppThemeButton</item>
+
+  </style>
+
+</resources>

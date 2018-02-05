@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:id="@+id/idLayoutDevoBase">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:weightSum="1"
+        android:id="@+id/linearMobDevo"
+        android:gravity="center"
+        android:background="#3b5996"
+        android:layout_alignParentLeft="false">
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adViewDevocio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/idMob">
+        </com.google.android.gms.ads.AdView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/layoutXMLBrowser"
+        android:layout_alignParentLeft="false"
+        android:layout_above="@+id/linearLayoutBaseFeed"
+        android:layout_below="@+id/linearMobDevo">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/frameLayoutDevoc">
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <WebView  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/webviewxml"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+            style="@android:style/Widget.WebView"
+            android:background="#e1e0e0" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayoutBaseFeed"
+        android:background="#d8d8d8"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+      <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:gravity="center|right"
+            android:background="#3b5996"
+            android:id="@+id/linearLayout10"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView8"
+                android:text="@string/desenvolverdor"
+                android:textSize="12dp"
+                android:autoText="false"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textColor="#c33f3e41"
+                android:padding="2dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

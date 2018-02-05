@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:id="@+id/idLayoutDevoBase">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="false"
+        android:weightSum="1"
+        android:id="@+id/linearMobDevo"
+        android:background="@drawable/logo_menu"
+        android:layout_alignParentLeft="false"
+        android:gravity="bottom|center_horizontal">
+
+        <TextView
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:text="@string/mensagem_texto_topo"
+            android:id="@+id/textView6"
+            android:layout_marginBottom="10dp"
+            android:textColor="#ffffff"
+            android:textSize="16dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp" />
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adViewDevocio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/idMob">
+        </com.google.android.gms.ads.AdView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/layoutXMLBrowser"
+        android:layout_alignParentLeft="false"
+        android:layout_below="@+id/linearMobDevo"
+        android:background="#e76d6d"
+        android:layout_above="@+id/linearLayout11">
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/frameLayoutWeb"
+            android:background="#33b4e4">
+
+            <WebView  xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/webviewxml"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#e8e8e8" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:gravity="center|right"
+        android:background="#afafaf"
+        android:id="@+id/linearLayout11"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView9"
+            android:text="@string/desenvolverdor"
+            android:textSize="12dp"
+            android:autoText="false"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#c33f3e41"
+            android:padding="2dp"
+            android:layout_marginRight="5dp" />
+    </LinearLayout>
+
+</RelativeLayout>
+
