@@ -73,7 +73,7 @@
                                 android:background="@drawable/buttonshape"
                                 android:text="Bíblia\nSagrada"
                                 android:textColor="@color/white"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold" />
 
                             <Button
@@ -85,7 +85,7 @@
                                 android:background="@drawable/buttonshape"
                                 android:text="Dicionário\nBíblico"
                                 android:textColor="@color/white"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
 
@@ -101,8 +101,8 @@
 
                         <Button
                             android:id="@+id/button_qualificar"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_marginLeft="5dp"
                             android:background="@drawable/start" />
 
@@ -114,6 +114,7 @@
                             android:inputType="textMultiLine"
                             android:text="Gostou do nosso app?\n Por favor, Qualifique -o"
                             android:textColor="@color/orange"
+                            android:textSize="9sp"
                             android:textStyle="bold|italic" />
 
                     </LinearLayout>
@@ -127,7 +128,7 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="20dp"
+                            android:layout_height="15dp"
                             android:background="@drawable/barrinha"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
@@ -145,24 +146,24 @@
                                     android:layout_marginBottom="2dp"
                                     android:layout_marginRight="10dp"
                                     android:layout_marginTop="2dp"
-                                    android:width="95dp"
+                                    android:width="50dp"
                                     android:background="@drawable/buttonshape"
                                     android:text="Notícias"
                                     android:textColor="@android:color/white"
-                                    android:textSize="12sp" />
+                                    android:textSize="9sp" />
 
                                 <Button
                                     android:id="@+id/buttonCompartilharMain"
-                                    android:layout_width="25dp"
-                                    android:layout_height="25dp"
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
                                     android:layout_marginRight="10dp"
                                     android:background="@mipmap/share"
                                     android:onClick="compartilharVers" />
 
                                 <Button
                                     android:id="@+id/buttonClock"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
                                     android:layout_marginRight="10dp"
                                     android:background="@mipmap/alarm_clock" />
                             </LinearLayout>
@@ -194,7 +195,7 @@
                                         android:layout_marginLeft="5dp"
                                         android:text="@string/reflexao"
                                         android:textColor="#000000"
-                                        android:textSize="12sp"
+                                        android:textSize="6sp"
                                         android:textStyle="bold" />
 
                                     <TextView
@@ -206,7 +207,7 @@
                                         android:gravity="center_vertical"
                                         android:text="..."
                                         android:textColor="#bf0000"
-                                        android:textSize="12sp"
+                                        android:textSize="6sp"
                                         tools:text="Paz" />
                                 </LinearLayout>
 
@@ -235,7 +236,7 @@
                                             android:text="..."
                                             android:textAlignment="center"
                                             android:textColor="#000000"
-                                            android:textSize="12sp"
+                                            android:textSize="6sp"
                                             tools:text="Tenho-vos dito isto, para que em mim tenhais paz; no mundo tereis aflições, mas tende bom ânimo, eu venci o mundo. João 16:33" />
                                     </LinearLayout>
                                 </ScrollView>
@@ -257,6 +258,7 @@
                         android:orientation="vertical"
                         android:weightSum="1">
 
+                        <!--
                         <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
                             android:id="@+id/adViewMain"
                             android:layout_width="fill_parent"
@@ -266,12 +268,18 @@
                             android:minWidth="320dp"
                             ads:adSize="LARGE_BANNER"
                             ads:adUnitId="@string/idMob"></com.google.android.gms.ads.AdView>
+                            -->
+
+                        <com.amazon.device.ads.AdLayout
+                            android:id="@+id/ad_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="12dp"
                             android:background="@drawable/barrinha"
-                            android:gravity="right"
+                            android:gravity="right|center_vertical"
                             android:orientation="horizontal">
 
                             <TextView
@@ -284,7 +292,7 @@
                                 android:padding="2dp"
                                 android:text="@string/desenvolverdor"
                                 android:textColor="#c33f3e41"
-                                android:textSize="12dp"
+                                android:textSize="6sp"
                                 tools:ignore="ObsoleteLayoutParam" />
                         </LinearLayout>
 

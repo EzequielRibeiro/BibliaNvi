@@ -44,10 +44,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amazon.device.ads.AdLayout;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -76,12 +76,14 @@ public class MainActivity extends Activity {
     private boolean existeBancoDados = false;
     private Button buttonNoticias,buttonClock,button_biblia,button_dicionario,button_qualificar;
 
+
     private ProgressDialog progressDialog;
     private CheckBancoExiste checkBancoExiste;
     private Intent intent;
     private SharedPreferences sharedPrefs;
     private ListView listView;
     private InterstitialAd mInterstitialAd;
+    InterstitialAdAmazon interstitialAdAmazon;
     private boolean chamarNoticia = true;
 
     TextView textViewAssuntoVers;
@@ -105,7 +107,7 @@ public class MainActivity extends Activity {
        // requestWindowFeature(Window.FEATURE_NO_TITLE);
           requestWindowFeature(Window.FEATURE_ACTION_BAR);
 
-         setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
 
         mTitle = mDrawerTitle = getTitle();
@@ -804,11 +806,26 @@ public class MainActivity extends Activity {
 
       }
 
+
+
     protected  void onResume(){
         super.onResume();
 
       boolean b =  checarAlarmeExiste();
 
+      //Propaganda banner Amazon
+        AdLayout adLayoutAmazon = (AdLayout) findViewById(R.id.ad_view);
+        AmazonAdABanner amazonAdABanner = new AmazonAdABanner(adLayoutAmazon,getResources().getString(R.string.interstitial_ad_unit_amazon));
+        amazonAdABanner.loadAd();
+        amazonAdABanner.showAd();
+
+      //Intertistial Amazon
+        interstitialAdAmazon = new InterstitialAdAmazon(getApplicationContext());
+        interstitialAdAmazon.loadAd();
+
+
+
+      /*
         AdView mAdView = (AdView) findViewById(R.id.adViewMain);
        // mAdView.setAdSize(AdSize.LARGE_BANNER);
 
@@ -842,6 +859,7 @@ public class MainActivity extends Activity {
             });
 
 
+
             //propaganda Google
             AdRequest adRequest = new AdRequest.Builder().build();
             mAdView.loadAd(adRequest);
@@ -862,6 +880,8 @@ public class MainActivity extends Activity {
         }
 
         requestNewInterstitial();
+
+      */
 
         try {
             versiculoDoDia();
@@ -888,7 +908,7 @@ public class MainActivity extends Activity {
 
     public void onBackPressed() {
 
-
+            /*
             if ( mInterstitialAd != null)
                 if(mInterstitialAd.isLoaded()){
 
@@ -899,11 +919,19 @@ public class MainActivity extends Activity {
 
                     return;
 
+        */
 
+      // Exibe interstitialAmazon
+      interstitialAdAmazon.showAd();
+
+        super.onBackPressed();
+
+        return;
 
 
     }
 
+    /*
     private void requestNewInterstitial() {
 
 
@@ -916,6 +944,8 @@ public class MainActivity extends Activity {
             Log.e("Main Intertitial: ", Boolean.toString(mInterstitialAd.isLoaded()));
         }
     }
+
+    */
 
     protected void onPause(){
         super.onPause();

@@ -27,6 +27,12 @@
     <string name="graph_app">Estatística</string>
     <string name="nviText">Nova Versão Internacional</string>
     <string name="idMob">ca-app-pub-0822808376839371/4297028089</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-0822808376839371/3640025681</string>
+    <string name="interstitial_ad_unit_id2">ca-app-pub-0822808376839371/8697143683</string>
+    <string name="interstitial_ad_unit_amazon">8807d0541ab344deb0723bd75242b8fd</string>
+
+
     <string name="desenvolverdor">Bíblia Adonai 1.6.0</string>
 
     <string name="bibliaLivEp">Livro/Epístola</string>
@@ -180,7 +186,7 @@
         This is an ad unit ID for a banner test ad. Replace with your own banner ad unit id.
         For more information, see https://support.google.com/admob/answer/3052638
     <!- -->
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+
     <string name="title_activity_devocional">Devocional</string>
 
     <string name="hello_world">Hello world!</string>
@@ -207,8 +213,7 @@
         This is an ad unit ID for an interstitial test ad. Replace with your own interstitial ad unit id.
         For more information, see https://support.google.com/admob/answer/3052638
     <!- -->
-    <string name="interstitial_ad_unit_id">ca-app-pub-0822808376839371/3640025681</string>
-    <string name="interstitial_ad_unit_id2">ca-app-pub-0822808376839371/8697143683</string>
+
     <string name="title_activity_grafico">Grafico</string>
     <string name="title_activity_grafico_geral">GraficoGeral</string>
     <string name="title_activity_grafico__dois">Gráfico Dois</string>

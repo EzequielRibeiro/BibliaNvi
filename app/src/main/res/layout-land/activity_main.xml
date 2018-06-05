@@ -53,7 +53,7 @@
                         android:layout_height="match_parent"
                         android:layout_above="@+id/linearLayout7"
                         android:layout_alignParentTop="false"
-                        android:gravity="bottom|center"
+                        android:gravity="center"
                         android:orientation="vertical"
                         android:weightSum="1">
 
@@ -255,17 +255,22 @@
                         android:gravity="center"
                         android:orientation="vertical"
                         android:weightSum="1">
-
+                        <!--
                         <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-                            android:id="@+id/adViewMain"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentStart="true"
-                            android:minHeight="100dp"
-                            android:minWidth="320dp"
-                            ads:adSize="LARGE_BANNER"
-                            ads:adUnitId="@string/idMob"></com.google.android.gms.ads.AdView>
+                               android:id="@+id/adViewMain"
+                               android:layout_width="fill_parent"
+                               android:layout_height="wrap_content"
+                               android:layout_alignParentStart="true"
+                               android:minHeight="100dp"
+                               android:minWidth="320dp"
+                               ads:adSize="LARGE_BANNER"
+                               ads:adUnitId="@string/idMob"></com.google.android.gms.ads.AdView>
+                        -->
+
+                        <com.amazon.device.ads.AdLayout
+                            android:id="@+id/ad_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"

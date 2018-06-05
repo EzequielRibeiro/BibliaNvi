@@ -6,12 +6,12 @@ android {
         config {
             keyAlias 'key'
             keyPassword '123456'
-            storeFile file('C:/Users/Ezequiel/AndroidStudioProjects/BibliaNvi/keystorebiblia.jks')
+            storeFile file('D:\\Projeto-Android\\BibliaNvi\\keystorebiblia.jks')
             storePassword '123456'
         }
     }
-    compileSdkVersion 19
-    buildToolsVersion '25.0.3'
+    compileSdkVersion 26
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.projeto.biblianvi.biblianvi"
         minSdkVersion 14
@@ -19,6 +19,7 @@ android {
         versionCode 52
         versionName "1.6.0"
         signingConfig signingConfigs.config
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
 
@@ -43,14 +44,17 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     compile 'com.github.danielemaddaluno.androidupdatechecker:library:1.0.2'
     compile 'com.google.firebase:firebase-core:10.0.1'
     compile 'com.google.firebase:firebase-messaging:10.0.1'
     compile 'com.google.firebase:firebase-ads:10.0.1'
     compile 'com.google.firebase:firebase-crash:10.0.1'
-
-
-
+    implementation files('libs/amazon-ads-5.8.2.jar')
 }
 
 
