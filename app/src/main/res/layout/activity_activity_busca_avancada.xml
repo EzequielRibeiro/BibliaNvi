@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context="com.projeto.biblianvi.biblianvi.Activity_busca_avancada"
+    tools:context="com.projeto.biblianvi.Activity_busca_avancada"
     android:background="#e1e0e0"
     android:gravity="center">
 

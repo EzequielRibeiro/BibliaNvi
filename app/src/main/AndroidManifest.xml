@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.projeto.biblianvi.biblianvi">
+    package="com.projeto.biblianvi">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".Aplicacao"
@@ -16,6 +15,7 @@
         android:icon="@mipmap/biblia_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
+        <activity android:name=".ActivityPoliticaPrivacidade"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -37,8 +37,7 @@
             android:name=".Lista_Biblia"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme"
-            />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".NetworkActivityDevocional"
             android:label="" />
@@ -63,9 +62,7 @@
         <activity android:name=".Grafico_Dois" />
         <activity
             android:name=".GraficoGeral"
-            android:label="@string/app_name" />
-
-        <!-- This meta-data tag is required to use Google Play Services. -->
+            android:label="@string/app_name" /> <!-- This meta-data tag is required to use Google Play Services. -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -90,7 +87,6 @@
         <activity
             android:name=".ActivityBrowser"
             android:label="@string/title_activity_biblia_aberta" />
-
         <!--
         <receiver
             android:name=".ServiceReceiver"
@@ -104,7 +100,6 @@
             </intent-filter>
         </receiver>
         -->
-
         <receiver android:name=".VersiculoDiario">
             <intent-filter>
                 <action android:name="EXECUTAR_ALARME" />
@@ -124,25 +119,17 @@
 
         <activity
             android:name=".MainActivityFragment"
-            android:label="Livros - Epistolas"></activity>
-
+            android:label="Livros - Epistolas" />
         <activity
             android:name=".DetailsActivity"
-            android:label="Capitulos - Versiculos"
-            ></activity>
-
+            android:label="Capitulos - Versiculos" />
         <activity
             android:name=".MenuLateralTeste"
-            android:label="Capitulos"
-            ></activity>
+            android:label="Capitulos" />
 
-
-
-   <activity android:name="com.amazon.device.ads.AdActivity"
-       android:configChanges="keyboardHidden|orientation|screenSize"
-
-       />
-
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true" />
     </application>
 
 </manifest>

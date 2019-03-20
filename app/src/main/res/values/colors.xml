@@ -9,18 +9,18 @@
 
     <item name="common_signin_btn_light_text_pressed" type="color">#bfbfbf</item>
 
-    <color name="white" type="color">#ffffff</color>
+    <color name="white" type="color">#FFFFFF</color>
     <color name="barrasuperior" type="color">#8f8c8c</color>
     <color name="barrainferior" type="color">#a6a3a3</color>
     <color name="corpadrao" type="color">#33b4e4</color>
     <color name="barrainferiorescuro">#696969</color>
     <color name="barrasuperiorescuro">#484747</color>
-    <color name="cinzaclaro">#dcdcdc</color>
+    <color name="cinzaclaro">#DCDCDC</color>
     <color name="darkgreen">#70a703</color>
     <color name="cyan">#d6d4d4</color>
-    <color name="blue">#09b2f0</color>
+    <color name="blue">#09B2F0</color>
     <color name="orange">#e7a011</color>
-    <color name="red">#ff4444</color>
+    <color name="red">#FF4444</color>
     <color name="darkorange">#ff8800</color>
     <color name="green">#99cc00</color>
     <color name="purple">#aa66cc</color>

@@ -1,23 +1,24 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
+apply plugin: 'io.fabric'
+
 
 android {
     signingConfigs {
         config {
             keyAlias 'key'
             keyPassword '123456'
-            storeFile file('D:\\Projeto-Android\\BibliaNvi\\keystorebiblia.jks')
+            storeFile file('g:/Projeto-Android/BibliaNvi/key.jks')
             storePassword '123456'
         }
     }
-    compileSdkVersion 26
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
-        applicationId "com.projeto.biblianvi.biblianvi"
+        applicationId "com.projeto.biblianvi"
         minSdkVersion 14
-        targetSdkVersion 19
-        versionCode 52
-        versionName "1.6.0"
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.120190319"
         signingConfig signingConfigs.config
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -25,7 +26,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            shrinkResources true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
 
@@ -42,19 +44,18 @@ android {
 
 }
 
+
+
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.google.firebase:firebase-ads:17.1.3'
+    implementation 'com.google.firebase:firebase-core:16.0.7'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    compile 'com.github.danielemaddaluno.androidupdatechecker:library:1.0.2'
-    compile 'com.google.firebase:firebase-core:10.0.1'
-    compile 'com.google.firebase:firebase-messaging:10.0.1'
-    compile 'com.google.firebase:firebase-ads:10.0.1'
-    compile 'com.google.firebase:firebase-crash:10.0.1'
-    implementation files('libs/amazon-ads-5.8.2.jar')
+    implementation 'com.github.danielemaddaluno.androidupdatechecker:library:1.0.2'
 }
 
-
+apply plugin: 'com.google.gms.google-services'

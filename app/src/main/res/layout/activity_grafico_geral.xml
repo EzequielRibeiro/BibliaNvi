@@ -16,35 +16,20 @@
     >
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/linearLayoutGrafAd"
-        android:background="@drawable/logo_menu"
-        android:minHeight="50dp"
-        android:minWidth="320dp"
-        android:gravity="bottom|center_horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="A sabedoria é a coisa principal; adquire pois a sabedoria, emprega tudo o que possuis na aquisição de entendimento. Provérbios 4:7"
-            android:id="@+id/textView28"
-            android:textColor="@color/white"
-            android:layout_marginLeft="95dp"
-            android:layout_marginRight="35dp"
-            android:layout_marginBottom="10dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <com.google.android.gms.ads.AdView
             android:id="@+id/adViewGraf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/idMob"
             android:minWidth="320dp"
-            android:minHeight="50dp">
-        </com.google.android.gms.ads.AdView>
-
+            android:minHeight="50dp"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/idMob"></com.google.android.gms.ads.AdView>
 
 
     </LinearLayout>

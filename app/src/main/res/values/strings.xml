@@ -26,14 +26,11 @@
     <string name="fechar_app">Fechar</string>
     <string name="graph_app">Estatística</string>
     <string name="nviText">Nova Versão Internacional</string>
-    <string name="idMob">ca-app-pub-0822808376839371/4297028089</string>
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="interstitial_ad_unit_id">ca-app-pub-0822808376839371/3640025681</string>
-    <string name="interstitial_ad_unit_id2">ca-app-pub-0822808376839371/8697143683</string>
-    <string name="interstitial_ad_unit_amazon">8807d0541ab344deb0723bd75242b8fd</string>
+    <string name="idMob">ca-app-pub-0822808376839371/9732532286</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-0822808376839371/4651240777</string>
+    <string name="url_noticias">"http://biblianvi.byethost17.com/aviso.html"</string>
 
-
-    <string name="desenvolverdor">Bíblia Adonai 1.6.0</string>
+    <string name="desenvolverdor">Bíblia Adonai 1.120190319</string>
 
     <string name="bibliaLivEp">Livro/Epístola</string>
 
@@ -219,7 +216,7 @@
     <string name="title_activity_grafico__dois">Gráfico Dois</string>
     <string name="title_activity_activity_busca_avancada">Pesquisa avançada</string>
     <string name="aviso">Nome do App:\n Bíblia Adonai\n\n
-                         Versão:\n1.6.0\n\n
+                         Versão:\n1.120190319\n\n
                  Tradução:\nNova Versão Internacional (NVI)\n\n
                  Obrigado pelo download !\n\n
                  Caso encontre algum bug ou tenha alguma sugestão para o aplicativo,
@@ -243,6 +240,7 @@
         <item>Devocional</item>
         <item>Estatística</item>
         <item>Configurações</item>
+        <item>Política de Privacidade</item>
         <item>Sobre</item>
     </string-array>
     <string name="drawer_open">Open navigation drawer</string>
