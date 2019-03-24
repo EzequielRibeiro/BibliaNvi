@@ -39,12 +39,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewGen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Gênesis"
-                        android:id="@+id/textViewGen"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Gênesis"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -63,13 +64,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewGen2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewGen2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -90,12 +91,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewExo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Exôdo"
-                        android:id="@+id/textViewExo"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Exôdo"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -113,13 +115,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewExo2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewExo2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -139,12 +141,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewLev"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Levítico"
-                        android:id="@+id/textViewLev"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Levítico"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -162,13 +165,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewLev2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewLev2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -188,12 +191,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewNum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Números"
-                        android:id="@+id/textViewNum"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Números"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -211,13 +215,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewNum2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewNum2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -237,12 +241,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewDeu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Deuteronômio"
-                        android:id="@+id/textViewDeu"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Deuteronômio"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -260,13 +265,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewDeu2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewDeu2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -286,12 +291,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewJos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Josué"
-                        android:id="@+id/textViewJos"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Josué"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -309,13 +315,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewJos2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewJos2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -335,12 +341,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewJui"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Juízes"
-                        android:id="@+id/textViewJui"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Juízes"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -358,13 +365,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewJui2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewJui2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -384,12 +391,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewRut"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rute"
-                        android:id="@+id/textViewRut"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Rute"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -407,13 +415,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewRut2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewRut2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -433,12 +441,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textView1Sam"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1° Samuel"
-                        android:id="@+id/textView1Sam"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="1° Samuel"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -456,13 +465,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textView1Sam2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textView1Sam2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -482,12 +491,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textView2Sam"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2° Samuel"
-                        android:id="@+id/textView2Sam"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="2° Samuel"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -505,13 +515,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textView2Sam2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textView2Sam2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -531,12 +541,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textView1Reis"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1° Reis"
-                        android:id="@+id/textView1Reis"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="1° Reis"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -554,13 +565,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textView1Reis2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textView1Reis2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -580,12 +591,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textView2Reis"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2° Reis"
-                        android:id="@+id/textView2Reis"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="2° Reis"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -603,13 +615,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textView2Reis2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textView2Reis2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -629,12 +641,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textView1Cron"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1° Crônicas"
-                        android:id="@+id/textView1Cron"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="1° Crônicas"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -652,13 +665,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textView1Cron2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textView1Cron2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -678,12 +691,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textView2Cron"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2° Crônicas"
-                        android:id="@+id/textView2Cron"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="2° Crônicas"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -701,13 +715,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textView2Cron2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textView2Cron2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -727,12 +741,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewEsd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Esdras"
-                        android:id="@+id/textViewEsd"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Esdras"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -750,13 +765,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewEsd2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewEsd2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -776,12 +791,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewNee"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Neemias"
-                        android:id="@+id/textViewNee"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Neemias"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -799,13 +815,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewNee2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewNee2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -825,12 +841,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewEster"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ester"
-                        android:id="@+id/textViewEster"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Ester"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -848,13 +865,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewEster2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewEster2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -874,12 +891,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewJo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Jó"
-                        android:id="@+id/textViewJo"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Jó"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -897,13 +915,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewJo2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewJo2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -923,12 +941,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewSal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Salmos"
-                        android:id="@+id/textViewSal"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Salmos"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -946,13 +965,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewSal2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewSal2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -972,12 +991,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewPro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Provérbios"
-                        android:id="@+id/textViewPro"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Provérbios"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -995,13 +1015,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewPro2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewPro2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -1021,12 +1041,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewEcle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Eclesiastes"
-                        android:id="@+id/textViewEcle"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Eclesiastes"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1044,13 +1065,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewEcle2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewEcle2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1069,12 +1090,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewCan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cântares"
-                        android:id="@+id/textViewCan"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Cântares"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1092,13 +1114,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewCan2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewCan2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1117,12 +1139,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewIsa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Isaías"
-                        android:id="@+id/textViewIsa"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Isaías"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1140,13 +1163,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewIsa2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewIsa2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1165,12 +1188,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewJere"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Jeremias"
-                        android:id="@+id/textViewJere"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Jeremias"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1188,13 +1212,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewJer2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewJer2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1213,12 +1237,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewLam"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lamentações"
-                        android:id="@+id/textViewLam"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Lamentações"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1236,13 +1261,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewLam2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewLam2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1261,12 +1286,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewEze"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ezequiel"
-                        android:id="@+id/textViewEze"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Ezequiel"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1284,13 +1310,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewEze2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewEze2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1309,12 +1335,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewDan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Daniel"
-                        android:id="@+id/textViewDan"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Daniel"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1332,13 +1359,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewDan2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewDan2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1357,12 +1384,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewOse"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Oséias"
-                        android:id="@+id/textViewOse"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Oséias"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1380,13 +1408,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewOse2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewOse2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1405,12 +1433,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewJoe"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Joel"
-                        android:id="@+id/textViewJoe"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Joel"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1428,13 +1457,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewJoe2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="0%"
-                    android:id="@+id/textViewJoe2"
-                    android:textColor="#040404"
                     android:gravity="center"
-                    android:textSize="16dp" />
+                    android:text="0%"
+                    android:textColor="#040404"
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1453,12 +1482,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewAmo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Amós"
-                        android:id="@+id/textViewAmo"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Amós"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1476,12 +1506,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewAmo2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:gravity="center"
                     android:text="0%"
-                    android:id="@+id/textViewAmo2"
                     android:textColor="#040404"
-                    android:gravity="center" />
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1500,12 +1531,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewOba"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Obadias"
-                        android:id="@+id/textViewOba"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Obadias"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1523,12 +1555,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewOba2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:gravity="center"
                     android:text="0%"
-                    android:id="@+id/textViewOba2"
                     android:textColor="#040404"
-                    android:gravity="center" />
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1547,12 +1580,13 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewJon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Jonas"
-                        android:id="@+id/textViewJon"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Jonas"
+                        android:textColor="@color/dark"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1570,12 +1604,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewJon2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:gravity="center"
                     android:text="0%"
-                    android:id="@+id/textViewJon2"
                     android:textColor="#040404"
-                    android:gravity="center" />
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1594,12 +1629,12 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewProMiq"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Miquéias"
-                        android:id="@+id/textViewProMiq"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Miquéias"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1617,12 +1652,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewMiq2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:gravity="center"
                     android:text="0%"
-                    android:id="@+id/textViewMiq2"
                     android:textColor="#040404"
-                    android:gravity="center" />
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1641,12 +1677,12 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewNau"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Naum"
-                        android:id="@+id/textViewNau"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Naum"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1664,12 +1700,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewNau2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:gravity="center"
                     android:text="0%"
-                    android:id="@+id/textViewNau2"
                     android:textColor="#040404"
-                    android:gravity="center" />
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1688,12 +1725,12 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewHab"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Habacuque"
-                        android:id="@+id/textViewHab"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1711,12 +1748,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewHab2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:gravity="center"
                     android:text="0%"
-                    android:id="@+id/textViewHab2"
                     android:textColor="#040404"
-                    android:gravity="center" />
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1735,12 +1773,12 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewSof"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sofonias"
-                        android:id="@+id/textViewSof"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Sofonias"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1758,12 +1796,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewSof2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:gravity="center"
                     android:text="0%"
-                    android:id="@+id/textViewSof2"
                     android:textColor="#040404"
-                    android:gravity="center" />
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1782,12 +1821,12 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewAge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ageu"
-                        android:id="@+id/textViewAge"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Ageu"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1805,12 +1844,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewAge2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:gravity="center"
                     android:text="0%"
-                    android:id="@+id/textViewAge2"
                     android:textColor="#040404"
-                    android:gravity="center" />
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1829,12 +1869,12 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewZac"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Zacarias"
-                        android:id="@+id/textViewZac"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Zacarias"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1852,12 +1892,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewZac2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:gravity="center"
                     android:text="0%"
-                    android:id="@+id/textViewZac2"
                     android:textColor="#040404"
-                    android:gravity="center" />
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -1876,12 +1917,12 @@
                     android:minWidth="100dp">
 
                     <TextView
+                        android:id="@+id/textViewMal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Malaquias"
-                        android:id="@+id/textViewMal"
                         android:singleLine="true"
-                        android:textSize="16dp" />
+                        android:text="Malaquias"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1899,12 +1940,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/textViewMal2"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:text="0%"
-                    android:id="@+id/textViewMal2"
                     android:textColor="#040404"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:textSize="18sp" />
 
             </TableRow>
 

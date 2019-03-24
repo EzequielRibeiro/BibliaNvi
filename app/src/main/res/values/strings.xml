@@ -29,8 +29,9 @@
     <string name="idMob">ca-app-pub-0822808376839371/9732532286</string>
     <string name="interstitial_ad_unit_id">ca-app-pub-0822808376839371/4651240777</string>
     <string name="url_noticias">"http://biblianvi.byethost17.com/aviso.html"</string>
+    <string name="ADMOB_APP_ID">ca-app-pub-0822808376839371~5849127597</string>
 
-    <string name="desenvolverdor">Bíblia Adonai 1.120190319</string>
+    <string name="desenvolverdor">Bíblia Adonai 1.020190320</string>
 
     <string name="bibliaLivEp">Livro/Epístola</string>
 
@@ -216,7 +217,7 @@
     <string name="title_activity_grafico__dois">Gráfico Dois</string>
     <string name="title_activity_activity_busca_avancada">Pesquisa avançada</string>
     <string name="aviso">Nome do App:\n Bíblia Adonai\n\n
-                         Versão:\n1.120190319\n\n
+                         Versão:\n1.0220190322\n\n
                  Tradução:\nNova Versão Internacional (NVI)\n\n
                  Obrigado pelo download !\n\n
                  Caso encontre algum bug ou tenha alguma sugestão para o aplicativo,

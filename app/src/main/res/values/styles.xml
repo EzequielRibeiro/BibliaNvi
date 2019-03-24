@@ -9,15 +9,17 @@
 
     <style name="Theme.Apptheme"  parent="android:Theme">
 
+        <item name="android:background">@color/white</item>
+
     </style>
 
-    <style name="PreferencesTheme">
+      <style name="PreferencesTheme">
         <item name="android:windowBackground">@color/white</item>
         <item name="android:textColor">@color/dark</item>
         <item name="android:textColorSecondary">@color/dark</item>
         <item name="android:textColorPrimary">@color/dark</item>
 
-    </style>
+     </style>
 
 
     <style name="SpinnerItemStyle">
@@ -41,9 +43,10 @@
     </style>
 
 
-    <style name="SpinnerTheme" parent="android:Widget.Spinner">
+    <style name="SpinnerTheme" parent="ListViewSpinnerTheme">
         <item name="android:background">@color/common_signin_btn_light_text_pressed</item>
         <item name="android:dropDownSelector">@color/common_signin_btn_light_text_pressed</item>
+        <item name="android:textSize">18dp</item>
     </style>
 
     <!-- Changes the spinner drop down item radio button style -->

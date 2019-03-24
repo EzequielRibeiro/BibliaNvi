@@ -20,7 +20,8 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleInstance"
-            android:windowSoftInputMode="adjustNothing">
+            android:windowSoftInputMode="adjustNothing"
+            android:theme="@style/Base.V28.Theme.AppCompat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -69,13 +70,17 @@
 
         <activity
             android:name=".Activity_busca_avancada"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Apptheme"
+            />
 
         <service android:name=".ServiceNotification" />
 
         <activity
             android:name=".ActivityAnotacao"
-            android:label="@string/title_activity_activity_anotacao" />
+            android:label="@string/title_activity_activity_anotacao"
+
+            />
         <activity
             android:name=".NotaAdicionar"
             android:label="@string/title_activity_nota_adicionar"

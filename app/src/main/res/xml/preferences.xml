@@ -46,15 +46,6 @@
 
         />
 
-    <CheckBoxPreference
-        android:title="Verificar atualização"
-        android:defaultValue="true"
-        android:summary="Chegar se existe uma nova versão do app no Google Play"
-        android:key="checarNovaVersao"
-        android:textColor="@color/dark"
-
-        />
-
     <ListPreference
         android:title="Fonte do texto"
         android:summary="Altera a fonte do texto"
