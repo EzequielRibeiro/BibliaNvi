@@ -1487,7 +1487,7 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="Amós"
-                        android:textColor="@color/dark"
+                        android:textColor="#040404"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -1536,7 +1536,7 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="Obadias"
-                        android:textColor="@color/dark"
+                        android:textColor="#040404"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -1584,8 +1584,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:text="Jonas"
-                        android:textColor="@color/dark"
+                        android:textColor="#040404"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -1634,6 +1633,7 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="Miquéias"
+                        android:textColor="#040404"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -1682,6 +1682,7 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="Naum"
+                        android:textColor="#040404"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -1730,6 +1731,7 @@
                         android:layout_height="wrap_content"
                         android:text="Habacuque"
                         android:singleLine="true"
+                        android:textColor="#040404"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -1778,6 +1780,7 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="Sofonias"
+                        android:textColor="#040404"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -1826,6 +1829,7 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="Ageu"
+                        android:textColor="#040404"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -1874,6 +1878,7 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="Zacarias"
+                        android:textColor="#040404"
                         android:textSize="18sp" />
                 </LinearLayout>
 
@@ -1922,6 +1927,7 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="Malaquias"
+                        android:textColor="#040404"
                         android:textSize="18sp" />
                 </LinearLayout>
 

@@ -8,13 +8,15 @@
     android:id="@+id/relativeLayoutMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:background="@color/white"
     android:clickable="true"
     android:gravity="center_vertical|center|center_horizontal"
     tools:context=".MainActivity">
 
 
-    <android.support.v4.widget.DrawerLayout
+    <androidx.drawerlayout.widget.DrawerLayout
+
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,16 +34,13 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:foregroundGravity="center">
+            android:layout_height="wrap_content">
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:foregroundGravity="center"
-                android:visibility="visible">
+                android:layout_margin="5dp">
 
 
                 <LinearLayout
@@ -54,6 +53,7 @@
                     android:orientation="horizontal"
                     ads:layout_constraintBottom_toTopOf="@+id/linearlayoutVersiculo"
                     ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintHorizontal_bias="0.0"
                     ads:layout_constraintStart_toStartOf="parent">
 
                     <Button
@@ -98,7 +98,7 @@
                             android:layout_marginLeft="5dp"
                             android:text="@string/reflexao"
                             android:textColor="#000000"
-                            android:textSize="18sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -109,7 +109,7 @@
                             android:gravity="center_vertical"
                             android:text="..."
                             android:textColor="@color/apptheme_color"
-                            android:textSize="18sp"
+                            android:textSize="14sp"
                             tools:text="Paz" />
                     </LinearLayout>
 
@@ -117,9 +117,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="35dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:gravity="center"
-                        android:minHeight="50dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -132,12 +132,13 @@
 
                             android:gravity="center"
                             android:isScrollContainer="true"
+                            android:minHeight="150dp"
                             android:scrollbars="horizontal|vertical"
                             android:scrollHorizontally="true"
                             android:text="..."
                             android:textAlignment="center"
                             android:textColor="#000000"
-                            android:textSize="18sp"
+                            android:textSize="14sp"
                             tools:text="Tenho-vos dito isto, para que em mim tenhais paz; no mundo tereis aflições, mas tende bom ânimo, eu venci o mundo. João 16:33" />
                     </LinearLayout>
 
@@ -148,9 +149,9 @@
                     android:id="@+id/layout_escolha_livro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="88dp"
                     android:gravity="center"
                     android:orientation="horizontal"
+                    ads:layout_constraintBottom_toTopOf="@+id/adView"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintHorizontal_bias="0.0"
                     ads:layout_constraintStart_toStartOf="parent"
@@ -158,42 +159,42 @@
 
                     <Button
                         android:id="@+id/buttonNoticias"
-                        android:layout_width="85dp"
+                        android:layout_width="80dp"
                         android:layout_height="85dp"
                         android:width="95dp"
                         android:background="@drawable/icon_new"
                         android:gravity="bottom|center_horizontal"
                         android:text="Notícias"
                         android:textColor="@color/blue"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="normal|bold" />
 
                     <Button
                         android:id="@+id/button_biblia"
-                        android:layout_width="85dp"
+                        android:layout_width="80dp"
                         android:layout_height="85dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:background="@drawable/icon_biblia"
                         android:gravity="bottom|center_horizontal"
                         android:text="Bíblia"
                         android:textColor="@color/blue"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/button_dicionario"
-                        android:layout_width="85dp"
+                        android:layout_width="80dp"
                         android:layout_height="85dp"
                         android:background="@drawable/icon_dicionario"
                         android:gravity="bottom|center_horizontal"
                         android:text="Dicionário"
                         android:textColor="@color/blue"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                <com.google.android.gms.ads.AdView
                     android:id="@+id/adView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -213,6 +214,7 @@
                     android:orientation="horizontal"
                     ads:layout_constraintBottom_toTopOf="@+id/linearLayoutBarra"
                     ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintHorizontal_bias="0.0"
                     ads:layout_constraintStart_toStartOf="parent">
 
                     <Button
@@ -253,16 +255,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginBottom="10dp"
                     android:text="000000000"
                     android:textColor="#c33f3e41"
-                    android:textSize="14sp"
+                    android:textSize="10sp"
                     ads:layout_constraintBottom_toBottomOf="parent"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintStart_toStartOf="parent" />
 
 
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </FrameLayout>
 
@@ -276,7 +277,7 @@
             android:divider="@android:color/transparent"
             android:dividerHeight="0dp" />
 
-    </android.support.v4.widget.DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 
 </RelativeLayout>
