@@ -6,6 +6,7 @@
   <style name="SpinnerAppTheme" parent="android:Widget.Spinner">
       <item name="android:background">@drawable/apptheme_spinner_background_holo_light</item>
       <item name="android:dropDownSelector">@drawable/apptheme_list_selector_holo_light</item>
+      <item name="android:textColor">@drawable/appthemebutton_btn_default_holo_dark</item>
   </style>
 
   <style name="SpinnerDropDownItemAppTheme" parent="android:Widget.DropDownItem.Spinner">

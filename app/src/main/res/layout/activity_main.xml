@@ -40,7 +40,7 @@
                 android:id="@+id/layout_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp">
+                android:layout_gravity="center_horizontal">
 
 
                 <LinearLayout
@@ -58,8 +58,8 @@
 
                     <Button
                         android:id="@+id/buttonClock"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:background="@mipmap/alarm_clock" />
 
                     <Button
@@ -88,28 +88,29 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView13"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
                             android:text="@string/reflexao"
-                            android:textColor="#000000"
-                            android:textSize="14sp"
+                            android:textColor="?android:attr/colorPressedHighlight"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textViewAssuntoVers"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:gravity="center_vertical"
+                            android:background="@color/cyan"
+                            android:gravity="center"
+                            android:maxLines="1"
                             android:text="..."
                             android:textColor="@color/apptheme_color"
-                            android:textSize="14sp"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
                             tools:text="Paz" />
                     </LinearLayout>
 
@@ -117,8 +118,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -127,9 +126,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
 
+                            android:background="@android:color/black"
                             android:gravity="center"
                             android:isScrollContainer="true"
                             android:minHeight="150dp"
@@ -137,8 +135,8 @@
                             android:scrollHorizontally="true"
                             android:text="..."
                             android:textAlignment="center"
-                            android:textColor="#000000"
-                            android:textSize="14sp"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
                             tools:text="Tenho-vos dito isto, para que em mim tenhais paz; no mundo tereis aflições, mas tende bom ânimo, eu venci o mundo. João 16:33" />
                     </LinearLayout>
 
@@ -159,38 +157,51 @@
 
                     <Button
                         android:id="@+id/buttonNoticias"
-                        android:layout_width="80dp"
-                        android:layout_height="85dp"
+                        style="@style/ButtonAppThemeButtonAzul"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
                         android:width="95dp"
                         android:background="@drawable/icon_new"
                         android:gravity="bottom|center_horizontal"
                         android:text="Notícias"
                         android:textColor="@color/blue"
-                        android:textSize="12sp"
+                        android:textSize="14dp"
                         android:textStyle="normal|bold" />
 
                     <Button
                         android:id="@+id/button_biblia"
-                        android:layout_width="80dp"
-                        android:layout_height="85dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        style="@style/ButtonAppThemeButtonAzul"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
                         android:background="@drawable/icon_biblia"
                         android:gravity="bottom|center_horizontal"
                         android:text="Bíblia"
                         android:textColor="@color/blue"
-                        android:textSize="12sp"
+                        android:textSize="14dp"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/button_dicionario"
-                        android:layout_width="80dp"
-                        android:layout_height="85dp"
+                        style="@style/ButtonAppThemeButtonAzul"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
                         android:background="@drawable/icon_dicionario"
                         android:gravity="bottom|center_horizontal"
                         android:text="Dicionário"
                         android:textColor="@color/blue"
-                        android:textSize="12sp"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/button_pesquisar"
+                        style="@style/ButtonAppThemeButtonAzul"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:background="@drawable/icon_search"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="Pesquisar"
+                        android:textColor="@color/blue"
+                        android:textSize="14dp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -215,7 +226,8 @@
                     ads:layout_constraintBottom_toTopOf="@+id/linearLayoutBarra"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintHorizontal_bias="0.0"
-                    ads:layout_constraintStart_toStartOf="parent">
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/adView">
 
                     <Button
                         android:id="@+id/button_qualificar"

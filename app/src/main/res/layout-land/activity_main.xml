@@ -8,6 +8,7 @@
     android:id="@+id/relativeLayoutMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:background="@color/white"
     android:clickable="true"
     android:gravity="center_vertical|center|center_horizontal"
@@ -15,6 +16,7 @@
 
 
     <androidx.drawerlayout.widget.DrawerLayout
+
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,16 +34,13 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:foregroundGravity="center">
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:foregroundGravity="center"
-                android:visibility="visible">
+                android:layout_gravity="center_horizontal">
 
 
                 <LinearLayout
@@ -54,19 +53,20 @@
                     android:orientation="horizontal"
                     ads:layout_constraintBottom_toTopOf="@+id/linearlayoutVersiculo"
                     ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintHorizontal_bias="0.0"
                     ads:layout_constraintStart_toStartOf="parent">
 
                     <Button
                         android:id="@+id/buttonClock"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:layout_marginRight="5dp"
                         android:background="@mipmap/alarm_clock" />
 
                     <Button
                         android:id="@+id/buttonCompartilharMain"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:background="@mipmap/share"
                         android:onClick="compartilharVers" />
@@ -88,27 +88,30 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/textView13"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
                             android:text="@string/reflexao"
-                            android:textColor="#000000"
-                            android:textSize="14sp"
+                            android:textColor="?android:attr/colorPressedHighlight"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textViewAssuntoVers"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:gravity="center_vertical"
+                            android:background="@color/cyan"
+                            android:maxLines="1"
+                            android:paddingLeft="5dp"
                             android:text="..."
                             android:textColor="@color/apptheme_color"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             tools:text="Paz" />
                     </LinearLayout>
 
@@ -117,7 +120,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:minHeight="80dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -125,17 +127,17 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
 
+                            android:background="@android:color/black"
                             android:gravity="center"
                             android:isScrollContainer="true"
+                            android:minHeight="100dp"
                             android:scrollbars="horizontal|vertical"
                             android:scrollHorizontally="true"
                             android:text="..."
                             android:textAlignment="center"
-                            android:textColor="#000000"
-                            android:textSize="14sp"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp"
                             tools:text="Tenho-vos dito isto, para que em mim tenhais paz; no mundo tereis aflições, mas tende bom ânimo, eu venci o mundo. João 16:33" />
                     </LinearLayout>
 
@@ -148,7 +150,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    ads:layout_constraintBottom_toTopOf="@+id/layout_qualificar"
+                    ads:layout_constraintBottom_toTopOf="@+id/adView"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintHorizontal_bias="0.0"
                     ads:layout_constraintStart_toStartOf="parent"
@@ -156,38 +158,51 @@
 
                     <Button
                         android:id="@+id/buttonNoticias"
-                        android:layout_width="85dp"
+                        style="@style/ButtonAppThemeButtonAzul"
+                        android:layout_width="75dp"
                         android:layout_height="75dp"
                         android:width="95dp"
                         android:background="@drawable/icon_new"
                         android:gravity="bottom|center_horizontal"
                         android:text="Notícias"
                         android:textColor="@color/blue"
-                        android:textSize="14sp"
+                        android:textSize="14dp"
                         android:textStyle="normal|bold" />
 
                     <Button
                         android:id="@+id/button_biblia"
-                        android:layout_width="85dp"
+                        style="@style/ButtonAppThemeButtonAzul"
+                        android:layout_width="75dp"
                         android:layout_height="75dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginRight="25dp"
                         android:background="@drawable/icon_biblia"
                         android:gravity="bottom|center_horizontal"
                         android:text="Bíblia"
                         android:textColor="@color/blue"
-                        android:textSize="14sp"
+                        android:textSize="14dp"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/button_dicionario"
-                        android:layout_width="85dp"
+                        style="@style/ButtonAppThemeButtonAzul"
+                        android:layout_width="75dp"
                         android:layout_height="75dp"
                         android:background="@drawable/icon_dicionario"
                         android:gravity="bottom|center_horizontal"
                         android:text="Dicionário"
                         android:textColor="@color/blue"
-                        android:textSize="14sp"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/button_pesquisar"
+                        style="@style/ButtonAppThemeButtonAzul"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:background="@drawable/icon_search"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="Pesquisar"
+                        android:textColor="@color/blue"
+                        android:textSize="14dp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -195,12 +210,11 @@
                     android:id="@+id/adView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginLeft="32dp"
                     ads:adSize="BANNER"
                     ads:adUnitId="@string/idMob"
                     ads:layout_constraintBottom_toTopOf="@+id/linearLayoutBarra"
-                    ads:layout_constraintStart_toEndOf="@+id/layout_qualificar"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintStart_toEndOf="@id/layout_qualificar"
                     ads:layout_constraintTop_toBottomOf="@+id/layout_escolha_livro"></com.google.android.gms.ads.AdView>
 
                 <LinearLayout
@@ -210,15 +224,15 @@
                     android:background="@null"
                     android:gravity="left|center_vertical"
                     android:orientation="horizontal"
-                    ads:layout_constraintBottom_toTopOf="@+id/linearLayoutBarra"
-                    ads:layout_constraintRight_toLeftOf="@+id/adView"
+                    ads:layout_constraintBottom_toTopOf="@id/linearLayoutBarra"
                     ads:layout_constraintStart_toStartOf="parent"
-                    ads:layout_constraintTop_toBottomOf="@+id/layout_escolha_livro">
+                    ads:layout_constraintTop_toBottomOf="@id/layout_escolha_livro">
 
                     <Button
                         android:id="@+id/button_qualificar"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:layout_marginLeft="5dp"
                         android:background="@drawable/start" />
 
                     <TextView
@@ -229,7 +243,6 @@
                         android:inputType="textMultiLine"
                         android:text="Gostou do nosso app?\n Por favor, Qualifique -o"
                         android:textColor="@color/orange"
-                        android:textSize="14sp"
                         android:textStyle="bold|italic" />
 
                 </LinearLayout>
@@ -255,7 +268,7 @@
                     android:layout_alignParentLeft="true"
                     android:text="000000000"
                     android:textColor="#c33f3e41"
-                    android:textSize="14sp"
+                    android:textSize="10sp"
                     ads:layout_constraintBottom_toBottomOf="parent"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintStart_toStartOf="parent" />

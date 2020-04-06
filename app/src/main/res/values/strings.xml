@@ -14,12 +14,12 @@
 
     <string name="title_activity_mensagem">Online</string>
     <string name="compartilharWhat">WhatsApp</string>
-    <string name="app_name">Bíblia Adonai</string>
+    <string name="app_name">Bíblia Adonai </string>
     <string name="action_settings">Configuração</string>
     <string name="action_devocional">Devocional</string>
 
-    <string name="title_activity_biblia_aberta">Bíblia Adonai</string>
-    <string name="title_activity_list_view">Bíblia Adonai</string>
+    <string name="title_activity_biblia_aberta">Bíblia Sagrada Adonai</string>
+    <string name="title_activity_list_view">Bíblia Sagrada Adonai</string>
     <string name="capitulo">Capitulo</string>
     <string name="livro">Livro</string>
     <string name="nvi">Bíblia Adonai</string>
@@ -31,7 +31,7 @@
     <string name="url_noticias">"http://biblianvi.byethost17.com/aviso.html"</string>
     <string name="ADMOB_APP_ID">ca-app-pub-0822808376839371~5849127597</string>
 
-    <string name="desenvolverdor">Bíblia Adonai 1.020190320</string>
+    <string name="desenvolverdor">Bíblia Sagrada Adonai 1.020190320</string>
 
     <string name="bibliaLivEp">Livro/Epístola</string>
 
@@ -188,7 +188,7 @@
     <string name="title_activity_devocional">Devocional</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="reflexao">Versículo diário:</string>
+    <string name="reflexao">Versículo diário</string>
     <string name="botaoAtualizar">UPDATE</string>
     <string name="_last_update_test_preferences">Last_Update_Check</string>
     <string name="_loading">Verificando...</string>
@@ -216,8 +216,8 @@
     <string name="title_activity_grafico_geral">GraficoGeral</string>
     <string name="title_activity_grafico__dois">Gráfico Dois</string>
     <string name="title_activity_activity_busca_avancada">Pesquisa avançada</string>
-    <string name="aviso">Nome do App:\n Bíblia Adonai\n\n
-                         Versão:\n1.0420190325\n\n
+    <string name="aviso">Nome do App:\n Bíblia Sagrada Adonai\n\n
+                         Versão:\n1.07\n\n
                  Tradução:\nNova Versão Internacional (NVI)\n\n
                  Obrigado pelo download !\n\n
                  Caso encontre algum bug ou tenha alguma sugestão para o aplicativo,
