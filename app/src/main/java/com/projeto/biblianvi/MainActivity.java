@@ -1,7 +1,6 @@
 package com.projeto.biblianvi;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlarmManager;
@@ -30,7 +29,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -43,7 +41,7 @@ import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.app.ActivityCompat;
@@ -54,7 +52,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.io.IOException;
@@ -63,7 +61,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Objects;
+
 
 import static com.projeto.biblianvi.R.*;
 import static com.projeto.biblianvi.R.menu.*;
@@ -117,20 +115,6 @@ public class MainActivity extends AppCompatActivity {
                 layout.drawer_list_item, menuTitulos));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
-
-        // enable ActionBar app icon to behave as action to toggle nav drawer
-
-    //  if (getActionBar() != null)
-    //      getActionBar().setDisplayHomeAsUpEnabled(true);
-    //  if (getActionBar() != null)
-     //     getActionBar().setHomeButtonEnabled(true);
-
-
-     //   @SuppressLint("ResourceType") Toolbar toolbar = findViewById(main);
-     //   setSupportActionBar(toolbar);
-
-        // ActionBarDrawerToggle ties together the the proper interactions
-        // between the sliding drawer and the action bar app icon
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
@@ -161,59 +145,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        if (savedInstanceState == null) {
-            // selectItem(0);
-        }
-
-
         if (!checarAlarmeExiste())
             agendarAlarmeVersiculo(9, 0);
 
-        /*
-        if(!isServiceRunning())
-        startService(icon_new Intent(this, ServiceNotification.class));
-       // stopService(icon_new Intent(this, ServiceNotification.class));
-        */
-
-
-        /*
-        Bundle bundle = icon_new Bundle();
-        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, id);
-        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, name);
-        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
-         */
 
         bibliaHelp = new BibliaBancoDadosHelper(this);
 
 
         listView = (ListView) findViewById(id.listView);
-        // buttonLer = (Button) findViewById(R.id.buttonLer);
         buttonNoticias = (Button) findViewById(id.buttonNoticias);
-        //  botaoBusca     = (Button) findViewById(R.id.buttonBusca);
-        //  spinnerLiv     = (Spinner) findViewById(R.id.spinner1);
-        //  spinnerLiv.setPrompt("Livro");
-
-        //  spinnerCap     = (Spinner) findViewById(R.id.spinner2);
-        //  spinnerCap.setPrompt("Capítulo");
-        //  spinnerVers    = (Spinner) findViewById(R.id.spinner3);
-        //   spinnerVers.setPrompt("Versículo");
         buttonClock = (Button) findViewById(id.buttonClock);
 
         textViewAssuntoVers = (TextView) findViewById(id.textViewAssuntoVers);
         textViewVersDia = (TextView) findViewById(id.textViewVersDia);
         button_qualificar = (Button) findViewById(id.button_qualificar);
 
-
-        //  button_menu_lateral = (Button) findViewById(R.id.button_menu_lateral);
-
-      /*  button_menu_lateral.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                menuLateral();
-            }
-        });
-        */
 
         button_qualificar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -477,7 +423,8 @@ public class MainActivity extends AppCompatActivity {
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), AlarmManager.INTERVAL_DAY, p);
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, p);
 
         Log.e("Alarm", Long.toString(c.getTimeInMillis()));
 
@@ -706,86 +653,6 @@ public class MainActivity extends AppCompatActivity {
         return activeNetworkInfo != null;
     }
 
-    /*
-
-    private void carregarSpinnerVersiculo(String liv,String cap){
-
-        int  versiculos;
-
-
-        if (existeBancoDados) {
-
-            bibliaHelp = new BibliaBancoDadosHelper(this);
-
-
-            versiculos = bibliaHelp.getQuantidadeVersos(liv, cap) ;
-
-
-            Log.e("Versos", Integer.toString(versiculos));
-
-          List<Integer> list = new ArrayList<Integer>();
-
-            for (int ii = 1; ii <= versiculos; ii++) {
-
-                list.add(ii);
-
-
-            }
-
-            ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(this,
-                    android.R.layout.simple_spinner_item, list);
-            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinnerVers.setAdapter(dataAdapter);
-
-
-        }
-
-
-    }
-
-    private void carregarLivros(){
-
-        String[] livros = getResources().getStringArray(R.array.bibliaLivEp_arrays);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.activity_list_view,livros);
-        spinnerLiv.setAdapter(adapter);
-
-    }
-
-    private void carregarSpinnerCapitulo(String livro){
-
-
-       int capitulos;
-
-       if (existeBancoDados) {
-
-       bibliaHelp = new BibliaBancoDadosHelper(this);
-
-
-       capitulos = bibliaHelp.getQuantidadeCapitulos(livro) ;
-
-
-       Log.e("Capitulo", Integer.toString(capitulos));
-
-
-       List<Integer> list = new ArrayList<Integer>();
-
-       for (int ii = 1; ii <= capitulos; ii++) {
-
-           list.add(ii);
-
-
-       }
-
-       ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(this,
-               android.R.layout.simple_spinner_item, list);
-       dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-       spinnerCap.setAdapter(dataAdapter);
-
-
-   }
-
-
-   }   */
 
     protected void onStop() {
         super.onStop();
@@ -835,20 +702,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void onBackPressed() {
 
-            /*
-            if ( mInterstitialAd != null)
-                if(mInterstitialAd.isLoaded()){
-
-                    mInterstitialAd.show();
-
-                }
-                    super.onBackPressed();
-
-                    return;
-
-        */
-
-
         super.onBackPressed();
 
         return;
@@ -856,29 +709,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /*
-    private void requestNewInterstitial() {
-
-
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .build();
-
-        if(mInterstitialAd != null) {
-            mInterstitialAd.loadAd(adRequest);
-            Log.e("Main Intertitial: ", Boolean.toString(mInterstitialAd.isLoaded()));
-        }
-    }
-
-    */
 
     protected void onPause() {
 
         if (mAdView != null) {
             mAdView.pause();
         }
-
-
         super.onPause();
     }
 
@@ -905,32 +741,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        /*
-        switch (item.getItemId()) {
-
-            case R.id.action_settings:
-                Intent settingsActivity = icon_new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(settingsActivity);
-                 return true;
-
-            case R.id.action_devocional:
-
-                Intent in = icon_new Intent(getApplicationContext(),NetworkActivityDevocional.class);
-                startActivity(in);
-                return true;
-            case R.id.action_graph:
-            Intent estatistica = icon_new Intent(getApplicationContext(), GraficoGeral.class);
-            startActivity(estatistica);
-            return true;
-
-            case R.id.action_exit:
-                 finish();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-        */
 
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;

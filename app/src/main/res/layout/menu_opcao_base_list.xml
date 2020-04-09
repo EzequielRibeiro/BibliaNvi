@@ -58,7 +58,7 @@ android:orientation="vertical"
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -88,7 +88,6 @@ android:orientation="vertical"
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -103,7 +102,7 @@ android:orientation="vertical"
                     android:id="@+id/textView20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Desempenho"
+                    android:text="@string/estatistica"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#000000" />
             </LinearLayout>
@@ -111,7 +110,8 @@ android:orientation="vertical"
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -134,7 +134,6 @@ android:orientation="vertical"
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:orientation="vertical">
 

@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Iterator;
@@ -55,13 +56,15 @@ public class Grafico_Dois extends Activity {
             textPorceDados[i] = (TextView) findViewById(idTextPorc[i]);
         }
 
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearLayoutNovo);
+
         if(bancoExiste.checkDataBase()){
 
-
-            float total = 0f;
-            int   lidos;
-            int   versosTotal;
+            int total = 0 ;
+            int lidos = 0;
+            int versosTotal = 0;
             int i = 0;
+            int width = 0;
 
             Iterator iterator = bibliaBancoDadosHelper.getVersosLidos(2).iterator();
 
@@ -71,22 +74,21 @@ public class Grafico_Dois extends Activity {
 
                 lidos = obj.getTotalVersoslidos();
                 versosTotal = obj.getTotalDeVersos();
+                width =  linearLayout.getLayoutParams().width;
 
-                if(lidos > 0)
+
+                if(lidos > 0){
                     total = (lidos*100)/versosTotal;
-
-                imagemGrafico[i].getLayoutParams().width = (int) total;
-                textPorceDados[i].setText(String.format("%3.0f",total) + "%");
-
+                    width = (width * total) / 100;
+                    imagemGrafico[i].getLayoutParams().width = width;
+                    textPorceDados[i].setText(String.format("%d",total) + "%");
+                }
                 i++;
 
                 //  Log.d("Livro",obj.getNomeLivro());
                 //  Log.d("Lidos",Integer.toString(obj.getTotalVersoslidos()));
                 //  Log.d("Total versos",Integer.toString(obj.getTotalDeVersos()));
 
-                lidos = 0;
-                versosTotal = 0;
-                total = 0f;
 
             }
 

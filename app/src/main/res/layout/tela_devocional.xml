@@ -72,29 +72,29 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-      <LinearLayout
-            android:orientation="horizontal"
+        <LinearLayout
+            android:id="@+id/linearLayout10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="1"
-            android:gravity="center|right"
-            android:background="#3b5996"
-            android:id="@+id/linearLayout10"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true">
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/barrinha"
+            android:gravity="center|right"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
             <TextView
+                android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView8"
-                android:text="@string/desenvolverdor"
-                android:textSize="12dp"
-                android:autoText="false"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:autoText="false"
+                android:padding="2dp"
+                android:text="@string/desenvolverdor"
                 android:textColor="#c33f3e41"
-                android:padding="2dp" />
+                android:textSize="12dp" />
         </LinearLayout>
     </LinearLayout>
 

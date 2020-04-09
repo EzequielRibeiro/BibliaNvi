@@ -7,44 +7,44 @@
     android:background="#ffffff">
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
-        android:layout_alignParentTop="false"
-        android:background="#ffffff"
-        android:layout_alignParentRight="false"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="false"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="false"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="10dp">
+        android:layout_marginLeft="10dp"
+        android:background="#ffffff">
 
         <TableLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:background="#ffffff">
+            android:background="#ffffff"
+            android:gravity="center">
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewMat"
-                        android:layout_width="wrap_content"
+                        android:layout_width="160dp"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="Mateus"
@@ -53,15 +53,16 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:id="@+id/linearLayoutNovo"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewMat"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewMat"
                         android:background="@android:color/darker_gray" />
 
                 </LinearLayout>
@@ -76,20 +77,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewMarc"
@@ -102,15 +104,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewMarc"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewMarc"
                         android:background="#9aff65" />
 
                 </LinearLayout>
@@ -125,20 +127,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewLuc"
@@ -151,15 +154,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewLuc"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewLuc"
                         android:background="#317cff" />
 
                 </LinearLayout>
@@ -174,20 +177,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewJoa"
@@ -200,15 +204,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewJoa"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewJoa"
                         android:background="#ff481c" />
 
                 </LinearLayout>
@@ -223,20 +227,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewAto"
@@ -249,15 +254,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewAto"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewAto"
                         android:background="#55ffd1" />
 
                 </LinearLayout>
@@ -272,20 +277,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewRom"
@@ -298,15 +304,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewRom"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewRom"
                         android:background="#ff8f2a" />
 
                 </LinearLayout>
@@ -321,20 +327,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textView1Co"
@@ -347,15 +354,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView1Cor"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView1Cor"
                         android:background="#ffa46a" />
 
                 </LinearLayout>
@@ -370,20 +377,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textView2Cor"
@@ -396,15 +404,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView2Cor"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView2Cor"
                         android:background="#34ff7d" />
 
                 </LinearLayout>
@@ -419,20 +427,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewGenGal"
@@ -445,15 +454,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewGal"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewGal"
                         android:background="#0054ff" />
 
                 </LinearLayout>
@@ -468,20 +477,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewEfe"
@@ -494,15 +504,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewEfe"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewEfe"
                         android:background="#0cff44" />
 
                 </LinearLayout>
@@ -517,20 +527,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewFil"
@@ -543,15 +554,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewFil"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewFil"
                         android:background="#ffa42b" />
 
                 </LinearLayout>
@@ -566,20 +577,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewCol"
@@ -592,15 +604,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewCol"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewCol"
                         android:background="#2cff04" />
 
                 </LinearLayout>
@@ -615,20 +627,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textView1Tes"
@@ -641,15 +654,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView1Tes"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView1Tes"
                         android:background="#ff894f" />
 
                 </LinearLayout>
@@ -664,20 +677,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textView2Tes"
@@ -690,15 +704,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView2Tes"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView2Tes"
                         android:background="#6c2fff" />
 
                 </LinearLayout>
@@ -713,20 +727,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textView1Tim"
@@ -739,15 +754,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView1Tim"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView1Tim"
                         android:background="#ff1e18" />
 
                 </LinearLayout>
@@ -762,20 +777,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textView2Tim"
@@ -788,15 +804,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView2Tim"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView2Tim"
                         android:background="#7bedff" />
 
                 </LinearLayout>
@@ -811,20 +827,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewTit"
@@ -837,15 +854,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewTit"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewTit"
                         android:background="#ffb828" />
 
                 </LinearLayout>
@@ -860,20 +877,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewFile"
@@ -886,15 +904,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewFile"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewFile"
                         android:background="#4c2bff" />
 
                 </LinearLayout>
@@ -909,20 +927,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewHeb"
@@ -935,15 +954,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewHeb"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewHeb"
                         android:background="#ff4a2a" />
 
                 </LinearLayout>
@@ -958,20 +977,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewTia"
@@ -984,15 +1004,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewTia"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewTia"
                         android:background="#ffee1f" />
 
                 </LinearLayout>
@@ -1007,20 +1027,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textView1Pe"
@@ -1033,15 +1054,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView1Pe"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView1Pe"
                         android:background="#ffa165" />
 
                 </LinearLayout>
@@ -1056,20 +1077,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textView2Pe"
@@ -1082,15 +1104,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView2Pe"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView2Pe"
                         android:background="#79ffab" />
 
                 </LinearLayout>
@@ -1105,20 +1127,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textView1Jo"
@@ -1131,15 +1154,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView1Jo"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView1Jo"
                         android:background="#ff705e" />
 
                 </LinearLayout>
@@ -1154,20 +1177,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textView2Jo"
@@ -1180,15 +1204,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView2Jo"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView2Jo"
                         android:background="#ff6a1a" />
 
                 </LinearLayout>
@@ -1203,20 +1227,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textView3Jo"
@@ -1229,15 +1254,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView3Jo"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView3Jo"
                         android:background="#3eff87" />
 
                 </LinearLayout>
@@ -1252,20 +1277,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewJud"
@@ -1278,15 +1304,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewJud"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewJud"
                         android:background="#3198ff" />
 
                 </LinearLayout>
@@ -1301,20 +1327,21 @@
                     android:textSize="18sp" />
 
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="left|center_vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewApo"
@@ -1327,15 +1354,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewApo"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewApo"
                         android:background="#ff8b00" />
 
                 </LinearLayout>
@@ -1352,8 +1379,7 @@
             </TableRow>
 
 
-
-            </TableLayout>
+        </TableLayout>
     </ScrollView>
 
 </RelativeLayout>

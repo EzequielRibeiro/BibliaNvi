@@ -24,23 +24,23 @@
             android:background="#ffffff">
 
             <TableRow
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="left|center_vertical"
                 android:layout_gravity="center_horizontal"
-                android:background="#ffffff">
+                android:background="#ffffff"
+                android:gravity="center_horizontal|left">
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewGen"
-                        android:layout_width="wrap_content"
+                        android:layout_width="160dp"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="Gênesis"
@@ -49,16 +49,16 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:id="@+id/linearLayoutVelho"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
                     android:layout_column="1"
-                    android:layout_marginRight="30dp">
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewGen"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewGen"
                         android:background="@android:color/darker_gray" />
 
                 </LinearLayout>
@@ -101,15 +101,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewExo"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewExo"
                         android:background="#ff9e70" />
 
                 </LinearLayout>
@@ -151,15 +151,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewLev"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewLev"
                         android:background="#589eff" />
 
                 </LinearLayout>
@@ -201,15 +201,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewNum"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewNum"
                         android:background="#fcff51" />
 
                 </LinearLayout>
@@ -251,15 +251,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewDeu"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewDeu"
                         android:background="#34fcff" />
 
                 </LinearLayout>
@@ -301,15 +301,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewJos"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewJos"
                         android:background="#ff7522" />
 
                 </LinearLayout>
@@ -351,15 +351,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewJui"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewJui"
                         android:background="#ff1609" />
 
                 </LinearLayout>
@@ -401,15 +401,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewRut"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewRut"
                         android:background="@android:color/darker_gray" />
 
                 </LinearLayout>
@@ -451,15 +451,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView1Sam"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView1Sam"
                         android:background="#ffd716" />
 
                 </LinearLayout>
@@ -501,15 +501,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView2Sam"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView2Sam"
                         android:background="#3023ff" />
 
                 </LinearLayout>
@@ -551,15 +551,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView1Reis"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView1Reis"
                         android:background="#1aa9ff" />
 
                 </LinearLayout>
@@ -601,15 +601,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView2Reis"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView2Reis"
                         android:background="#3994ff" />
 
                 </LinearLayout>
@@ -651,15 +651,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView1Cron"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView1Cron"
                         android:background="#2ad7ff" />
 
                 </LinearLayout>
@@ -701,15 +701,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageView2Cron"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageView2Cron"
                         android:background="#ff8216" />
 
                 </LinearLayout>
@@ -751,15 +751,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewEsd"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewEsd"
                         android:background="@android:color/darker_gray" />
 
                 </LinearLayout>
@@ -801,15 +801,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewNee"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewNee"
                         android:background="#40ffb5" />
 
                 </LinearLayout>
@@ -851,15 +851,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewEster"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewEster"
                         android:background="#ccc2ff" />
 
                 </LinearLayout>
@@ -901,15 +901,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewJo"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewJo"
                         android:background="#ffcad8" />
 
                 </LinearLayout>
@@ -951,15 +951,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewSal"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewSal"
                         android:background="#7cffd2" />
 
                 </LinearLayout>
@@ -1001,15 +1001,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewPro"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewPro"
                         android:background="#ffdd61" />
 
                 </LinearLayout>
@@ -1051,15 +1051,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewEcle"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewEcle"
                         android:background="#58ff1c" />
 
                 </LinearLayout>
@@ -1100,15 +1100,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewCan"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewCan"
                         android:background="#9578ff" />
 
                 </LinearLayout>
@@ -1149,15 +1149,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewIsa"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewIsa"
                         android:background="#ff8e85" />
 
                 </LinearLayout>
@@ -1198,15 +1198,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewJer"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewJer"
                         android:background="#ffdd61" />
 
                 </LinearLayout>
@@ -1247,15 +1247,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewLam"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewLam"
                         android:background="#9d69ff" />
 
                 </LinearLayout>
@@ -1296,15 +1296,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewEze"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewEze"
                         android:background="#3ee0ff" />
 
                 </LinearLayout>
@@ -1345,15 +1345,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewDan"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewDan"
                         android:background="#ff6125" />
 
                 </LinearLayout>
@@ -1394,15 +1394,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewOse"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewOse"
                         android:background="#31ffdc" />
 
                 </LinearLayout>
@@ -1443,15 +1443,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewJoe"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewJoe"
                         android:background="#4389ff" />
 
                 </LinearLayout>
@@ -1492,15 +1492,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewAmo"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewAmo"
                         android:background="#1bff83" />
 
                 </LinearLayout>
@@ -1541,15 +1541,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewOba"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewOba"
                         android:background="#52ff59" />
 
                 </LinearLayout>
@@ -1572,32 +1572,33 @@
                 android:background="#ffffff">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:gravity="center_vertical"
-                    android:minWidth="100dp">
+                    android:minWidth="100dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textViewJon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:singleLine="true"
+                        android:text="Jonas"
                         android:textColor="#040404"
                         android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewJon"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewJon"
                         android:background="#2c3fff" />
 
                 </LinearLayout>
@@ -1638,15 +1639,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewMiq"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewMiq"
                         android:background="#43ffa3" />
 
                 </LinearLayout>
@@ -1687,15 +1688,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewNau"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewNau"
                         android:background="#ffdd61" />
 
                 </LinearLayout>
@@ -1736,15 +1737,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewHab"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewHab"
                         android:background="#15baff" />
 
                 </LinearLayout>
@@ -1785,15 +1786,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewSof"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewSof"
                         android:background="#ffdd61" />
 
                 </LinearLayout>
@@ -1834,15 +1835,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewAge"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewAge"
                         android:background="#32fff5" />
 
                 </LinearLayout>
@@ -1883,15 +1884,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewZac"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewZac"
                         android:background="#ff754a" />
 
                 </LinearLayout>
@@ -1932,15 +1933,15 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_height="25dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/imageViewMal"
                         android:layout_width="1dp"
                         android:layout_height="fill_parent"
-                        android:id="@+id/imageViewMal"
                         android:background="#ff182b" />
 
                 </LinearLayout>
