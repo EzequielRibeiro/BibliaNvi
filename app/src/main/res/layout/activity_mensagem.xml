@@ -71,7 +71,8 @@
             android:autoText="false"
             android:text="000000"
             android:textColor="#c33f3e41"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:visibility="gone" />
     </LinearLayout>
 
 </RelativeLayout>

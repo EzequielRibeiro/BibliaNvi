@@ -413,11 +413,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         Intent intent = new Intent("com.projeto.biblianvi.VersiculoDiario");
-        PendingIntent sender = PendingIntent.getBroadcast(this, 121312131, intent, 0);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-        if (alarmManager != null)
-            alarmManager.cancel(sender);
+        AlarmManager alarmManager =
+                (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        PendingIntent pendingIntent =
+                PendingIntent.getService(MainActivity.this, 121312131, intent,
+                        PendingIntent.FLAG_NO_CREATE);
+        if (pendingIntent != null && alarmManager != null) {
+            alarmManager.cancel(pendingIntent);
+        }
 
 
     }

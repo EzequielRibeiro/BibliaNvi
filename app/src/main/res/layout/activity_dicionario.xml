@@ -102,6 +102,7 @@
             android:autoText="false"
             android:text="00000"
             android:textColor="#c33f3e41"
-            android:textSize="12dp" />
+            android:textSize="12dp"
+            android:visibility="gone" />
     </LinearLayout>
 </RelativeLayout>

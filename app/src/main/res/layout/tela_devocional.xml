@@ -94,7 +94,8 @@
                 android:padding="2dp"
                 android:text="@string/desenvolverdor"
                 android:textColor="#c33f3e41"
-                android:textSize="12dp" />
+                android:textSize="12dp"
+                android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
 
