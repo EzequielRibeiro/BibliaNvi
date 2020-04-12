@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import java.util.Calendar;
 
@@ -22,18 +23,17 @@ public class ReceiverReiniciarAlarm extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         this.context = context;
-
-       if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED"))
         agendarAlarmeVersiculo();
+        Log.e("Broadcast","Iniciado");
 
     }
 
 
     private void agendarAlarmeVersiculo(){
 
-        Intent it = new Intent("com.projeto.biblianvi.VersiculoDiario");
+        Intent it = new Intent(context, VersiculoDiario.class);
         PendingIntent p = PendingIntent.getBroadcast(context,121312131,it,0);
-
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         SharedPreferences settings = context.getSharedPreferences("alarme", Activity.MODE_PRIVATE);
 
         String h = settings.getString("hora", "9");
@@ -45,10 +45,8 @@ public class ReceiverReiniciarAlarm extends BroadcastReceiver {
         c.set(Calendar.MINUTE, Integer.parseInt(m));
         c.set(Calendar.SECOND, 0);
 
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
-
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,c.getTimeInMillis(),AlarmManager.INTERVAL_DAY,p);
-
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, p);
 
     }
 
