@@ -719,29 +719,22 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
         return randomNum;
     }
 
-    public void versDoDiaText(TextView textViewAssuntoVers,TextView textViewVersDia, boolean salvarVersDia){
+    public void versDoDiaText(){
 
         VersDoDia v;
 
-           v =  getVersDoDia();
+            v =  getVersDoDia();
 
-            if(textViewAssuntoVers != null)
-            textViewAssuntoVers.setText(v.getAssunto());
-
-            if(textViewVersDia != null)
-            textViewVersDia.setText(v.toString());
-
-        if(salvarVersDia) {
-            SharedPreferences settings = myContext.getSharedPreferences("versDia", Activity.MODE_PRIVATE);
+            SharedPreferences settings = myContext.getSharedPreferences("versDiaPreference", Activity.MODE_PRIVATE);
             SharedPreferences.Editor editor = settings.edit();
             editor.putString("assunto", v.getAssunto());
-            editor.putString("versDia", v.toString());
-            editor.putString("livroVersDia",v.getBooksName());
+            editor.putString("versDia", v.getVersesText());
+            editor.putString("livroNome",v.getBooksName());
             editor.putString("capVersDia",v.getVersesChapter());
             editor.putString("verVersDia",v.getVersesNum());
 
             editor.commit();
-        }
+
 
 
 

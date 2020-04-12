@@ -9,6 +9,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -305,11 +306,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
-
+   /*
         if (isServiceRunning())
             Log.i("service", "is running");
         else
             Log.i("service", "not running");
+
+    */
 
     }
 
@@ -389,10 +392,19 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean checarAlarmeExiste() {
 
-        boolean alarmUp = (PendingIntent.getBroadcast(MainActivity.this, 0,
-                new Intent("EXECUTAR_ALARME"),
-                PendingIntent.FLAG_NO_CREATE) != null);
+      /*  boolean alarmUp = (PendingIntent.getBroadcast(MainActivity.this, 121312131,
+                new Intent("com.projeto.biblianvi.VersiculoDiario"),
+                PendingIntent.FLAG_NO_CREATE) != null);*/
+        Intent tempIntent = new Intent(MainActivity.this, VersiculoDiario.class);
+        tempIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        boolean alarmUp = (PendingIntent.getBroadcast(MainActivity.this, 121312131, tempIntent, PendingIntent.FLAG_NO_CREATE) != null);
 
+
+        if(alarmUp)
+            Log.e("alarme ","ativado");
+       else{
+            Log.e("alarme ","desativado");
+        }
         return alarmUp;
 
     }
@@ -400,8 +412,8 @@ public class MainActivity extends AppCompatActivity {
     private void cancelarAgendarAlarmeVersiculo() {
 
 
-        Intent intent = new Intent("EXECUTAR_ALARME");
-        PendingIntent sender = PendingIntent.getBroadcast(this, 0, intent, 0);
+        Intent intent = new Intent("com.projeto.biblianvi.VersiculoDiario");
+        PendingIntent sender = PendingIntent.getBroadcast(this, 121312131, intent, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
         if (alarmManager != null)
@@ -412,8 +424,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void agendarAlarmeVersiculo(int hora, int min) {
 
-        Intent it = new Intent("EXECUTAR_ALARME");
-        PendingIntent p = PendingIntent.getBroadcast(MainActivity.this, 0, it, 0);
+        Intent it = new Intent(this, VersiculoDiario.class);
+        PendingIntent p = PendingIntent.getBroadcast(MainActivity.this, 121312131, it, 0);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(System.currentTimeMillis());
@@ -421,12 +434,9 @@ public class MainActivity extends AppCompatActivity {
         c.set(Calendar.MINUTE, min);
 
 
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(),
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(),
                 AlarmManager.INTERVAL_DAY, p);
 
-        Log.e("Alarm", Long.toString(c.getTimeInMillis()));
 
 
     }
@@ -602,46 +612,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void versiculoDoDia() throws ParseException {
 
-
-        SharedPreferences settings = getSharedPreferences("data_preferences", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = settings.edit();
-
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date date1 = sdf.parse(settings.getString("dia", "1") +
-                "/" + settings.getString("mes", "1") +
-                "/" + settings.getString("ano", "1999"));
-
-
-        Calendar c2 = Calendar.getInstance();
-
-        Date date2 = sdf.parse(Integer.toString(c2.get(Calendar.DAY_OF_MONTH)) +
-                "/" + Integer.toString(c2.get(Calendar.MONTH)) +
-                "/" + Integer.toString(c2.get(Calendar.YEAR)));
-
-
-        if (existeBancoDados)
-            if (date1.before(date2)) {
-
-                if (bibliaHelp != null)
-                    bibliaHelp.versDoDiaText(textViewAssuntoVers, textViewVersDia, true);
-
-                editor.putString("ano", Integer.toString(c2.get(Calendar.YEAR)));
-                editor.putString("mes", Integer.toString(c2.get(Calendar.MONTH)));
-                editor.putString("dia", Integer.toString(c2.get(Calendar.DAY_OF_MONTH)));
-
-                editor.commit();
-
-            } else {
-
-                settings = getSharedPreferences("versDia", Activity.MODE_PRIVATE);
+                SharedPreferences settings;
+                settings = getSharedPreferences("versDiaPreference", Activity.MODE_PRIVATE);
                 textViewAssuntoVers.setText(settings.getString("assunto", "Paz"));
                 textViewAssuntoVers.setMinLines(2);
-                textViewVersDia.setText(settings.getString("versDia", "Tenho-vos dito isto, para que em mim tenhais paz; no mundo tereis aflições, mas tende bom ânimo, eu venci o mundo.\n" +
-                        "João 16:33"));
+                textViewVersDia.setText(settings.getString("versDia", "Tenho-vos dito isto, para que em mim tenhais paz; no mundo tereis aflições, mas tende bom ânimo, eu venci o mundo.\n")
+                        +" (" + settings.getString("livroNome","João") +" "+ settings.getString("capVersDia","16")+":"
+        + settings.getString("verVersDia","33") +")" )  ;
 
-
-            }
 
     }
 
@@ -674,8 +652,6 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onResume() {
         super.onResume();
-
-        boolean b = checarAlarmeExiste();
 
         try {
             versiculoDoDia();

@@ -29,7 +29,6 @@ public class VersiculoDiario extends BroadcastReceiver{
     private int notifyID = 0;
     private  BibliaBancoDadosHelper bibliaHelp;
     private CheckBancoExiste checkBancoExiste;
-    private boolean existeBancoDados = false;
     private  Context context;
 
 
@@ -39,10 +38,11 @@ public class VersiculoDiario extends BroadcastReceiver{
        this.context = context;
 
         try {
-            versiculoDoDia();
+            criarNotification();
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
 
     }
 
@@ -52,64 +52,34 @@ public class VersiculoDiario extends BroadcastReceiver{
         bibliaHelp = new BibliaBancoDadosHelper(context);
         checkBancoExiste = new CheckBancoExiste(context);
 
-        SharedPreferences settings = context.getSharedPreferences("data_preferences", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = settings.edit();
-
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date date1 = sdf.parse(settings.getString("dia","1")+
-                "/"+settings.getString("mes","1")+
-                "/"+settings.getString("ano","1999"));
-
-
-        Calendar c2 = Calendar.getInstance();
-
-        Date date2 = sdf.parse(Integer.toString(c2.get(Calendar.DAY_OF_MONTH))+
-                "/"+Integer.toString(c2.get(Calendar.MONTH))+
-                "/"+Integer.toString(c2.get(Calendar.YEAR)));
-
+        SharedPreferences settings ;
 
         try {
-            if (checkBancoExiste.checkDataBase() && checkBancoExiste.checarIntegridadeDoBanco())
-                existeBancoDados = true;
+            if (checkBancoExiste.checkDataBase() && checkBancoExiste.checarIntegridadeDoBanco()) {
+                bibliaHelp.versDoDiaText();
+                settings = context.getSharedPreferences("versDiaPreference", Activity.MODE_PRIVATE);
+                assunto = settings.getString("assunto", "Paz");
+                livro = settings.getString("livroNome", "João");
+                cap = settings.getString("capVersDia", "16");
+                vers = settings.getString("verVersDia", "Tenho-vos dito isto, para que em mim tenhais paz; no mundo tereis aflições, mas tende bom ânimo, eu venci o mundo.");
+
+            }else{
+                assunto = "Houve um erro na solicitação. Por favor, comunique ao desenvolvedor";
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
 
-        if(existeBancoDados)
-            if(date1.before(date2)){
-
-                bibliaHelp.versDoDiaText(null,null,true);
-
-                editor.putString("ano",Integer.toString(c2.get(Calendar.YEAR)));
-                editor.putString("mes",Integer.toString(c2.get(Calendar.MONTH)));
-                editor.putString("dia",Integer.toString(c2.get(Calendar.DAY_OF_MONTH)));
-
-                editor.commit();
-
-                settings =  context.getSharedPreferences("versDia", Activity.MODE_PRIVATE);
-                assunto = settings.getString("assunto","Paz");
-                livro =  settings.getString("livroVersDia"," ");
-                cap =    settings.getString("capVersDia"," ");
-                vers =   settings.getString("verVersDia"," ");
-
-                criarNotification();
-
-
-            }else{
-
-                Log.e("AgendarVersiculos","Data anterior");
-
-            }
     }
 
     String assunto;
     String livro;
     String cap;
     String vers;
-    private void criarNotification(){
+    private void criarNotification() throws ParseException {
 
+        versiculoDoDia();
 
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 

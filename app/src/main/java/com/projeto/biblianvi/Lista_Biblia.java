@@ -86,7 +86,7 @@ public class Lista_Biblia extends Activity {
     private View buttonCompartilhar;
     private PesquisarBanco pesquisarBanco;
     private boolean recarregarLista = false;
-    private boolean criarMenu = false, criarMenuBase = false;
+    private boolean criarMenuSuspenso = true, criarMenuBase = true;
     private Spinner spinnerLivro;
     private Spinner spinnerCap;
     private Spinner spinnerVers;
@@ -216,6 +216,18 @@ public class Lista_Biblia extends Activity {
             }
         });
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if(!criarMenuSuspenso)
+                   menuSuspenso();
+
+                if(!criarMenuBase)
+                    menuListBase();
+
+            }
+        });
 
         buttonMenuOpcao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -253,14 +265,7 @@ public class Lista_Biblia extends Activity {
 
                 menuListBase();
 
-                if (!criarMenuBase) {
 
-                    buttonSetaMenu.setBackgroundResource(R.mipmap.seta_menu_baixo);
-
-                } else {
-                    buttonSetaMenu.setBackgroundResource(R.mipmap.seta_menu_alto);
-
-                }
             }
 
         });
@@ -568,7 +573,7 @@ public class Lista_Biblia extends Activity {
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) myLayoutBusca.getLayoutParams();
 
 
-        if (!criarMenu) {
+        if (criarMenuSuspenso) {
 
             bibliaHelp = new BibliaBancoDadosHelper(this);
 
@@ -578,7 +583,7 @@ public class Lista_Biblia extends Activity {
 
             myLayoutBusca.setLayoutParams(params);
 
-            criarMenu = true;
+            criarMenuSuspenso = false;
 
             spinnerLivro = (Spinner) findViewById(R.id.spinner4);
             spinnerCap = (Spinner) findViewById(R.id.spinner5);
@@ -669,7 +674,7 @@ public class Lista_Biblia extends Activity {
                 myLayoutBusca.setLayoutParams(params);
             }
 
-            criarMenu = false;
+            criarMenuSuspenso = true;
         }
 
 
@@ -733,8 +738,7 @@ public class Lista_Biblia extends Activity {
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) myLayoutBase.getLayoutParams();
 
 
-        if (!criarMenuBase) {
-
+        if (criarMenuBase) {
 
             myLayoutBase.addView(addView);
 
@@ -796,7 +800,8 @@ public class Lista_Biblia extends Activity {
                 }
             });
 
-            criarMenuBase = true;
+            criarMenuBase = false;
+            buttonSetaMenu.setBackgroundResource(R.mipmap.seta_menu_alto);
 
         } else {
 
@@ -807,9 +812,12 @@ public class Lista_Biblia extends Activity {
             params.height = 0;
             myLayoutBase.setLayoutParams(params);
 
-            criarMenuBase = false;
+            criarMenuBase = true;
+            buttonSetaMenu.setBackgroundResource(R.mipmap.seta_menu_baixo);
 
         }
+
+
     }
 
     private void carregarSpinnerVersiculo(String liv, String cap) {

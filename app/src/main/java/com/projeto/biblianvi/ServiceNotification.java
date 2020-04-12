@@ -112,7 +112,7 @@ public class ServiceNotification extends Service {
         if(existeBancoDados)
             if(date1.before(date2)){
 
-                bibliaHelp.versDoDiaText(null,null,true);
+                bibliaHelp.versDoDiaText();
 
                 editor.putString("ano",Integer.toString(c2.get(Calendar.YEAR)));
                 editor.putString("mes",Integer.toString(c2.get(Calendar.MONTH)));
