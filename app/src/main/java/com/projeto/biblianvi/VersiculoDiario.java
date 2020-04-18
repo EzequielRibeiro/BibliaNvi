@@ -64,7 +64,7 @@ public class VersiculoDiario extends BroadcastReceiver{
                 vers = settings.getString("verVersDia", "Tenho-vos dito isto, para que em mim tenhais paz; no mundo tereis aflições, mas tende bom ânimo, eu venci o mundo.");
 
             }else{
-                assunto = "Houve um erro na solicitação. Por favor, comunique ao desenvolvedor";
+                assunto = "Procure sempre meditar na palavra de Deus.";
             }
         } catch (IOException e) {
             e.printStackTrace();

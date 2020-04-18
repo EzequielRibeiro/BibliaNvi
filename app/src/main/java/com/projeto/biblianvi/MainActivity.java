@@ -108,8 +108,6 @@ public class MainActivity extends AppCompatActivity {
         mDrawerList = (ListView) findViewById(id.left_drawer);
         textViewDeveloper = (TextView) findViewById(id.textViewDeveloper);
 
-
-
         textViewDeveloper.setText(BuildConfig.VERSION_NAME);
         // set a custom shadow that overlays the activity_fragment content when the drawer opens
         mDrawerLayout.setDrawerShadow(drawable.drawer_shadow, GravityCompat.START);
