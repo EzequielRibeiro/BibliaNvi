@@ -895,7 +895,21 @@ public class Lista_Biblia extends Activity {
                 int ii;
 
 
-                for (ii = firstVisibleRow; ii <= lastVisibleRow; ii++) {
+                Biblia bi = (Biblia) listView.getItemAtPosition(listView.getFirstVisiblePosition());
+
+                textViewCap.setText(bi.getVersesChapter());
+
+                if (bi.getBooksName().equals("Lamentações de Jeremias")) {
+
+                    textViewLivro.setText("Lamentações");
+
+                } else {
+
+                    textViewLivro.setText(bi.getBooksName());
+                }
+
+
+              /*  for (ii = firstVisibleRow; ii <= lastVisibleRow; ii++) {
 
                     Biblia bi = (Biblia) listView.getItemAtPosition(ii);
 
@@ -911,7 +925,7 @@ public class Lista_Biblia extends Activity {
                     }
 
 
-                }
+                }*/
 
             }
         });

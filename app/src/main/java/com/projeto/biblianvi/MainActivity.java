@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewVersDia;
     private TextView textViewDeveloper;
     private FirebaseAnalytics mFirebaseAnalytics;
+    private TextView text_qualificar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(id.drawer_layout);
         mDrawerList = (ListView) findViewById(id.left_drawer);
         textViewDeveloper = (TextView) findViewById(id.textViewDeveloper);
+
 
 
         textViewDeveloper.setText(BuildConfig.VERSION_NAME);
@@ -160,7 +162,15 @@ public class MainActivity extends AppCompatActivity {
         textViewAssuntoVers = (TextView) findViewById(id.textViewAssuntoVers);
         textViewVersDia = (TextView) findViewById(id.textViewVersDia);
         button_qualificar = (Button) findViewById(id.button_qualificar);
+        text_qualificar = (TextView) findViewById(R.id.text_qualificar);
 
+
+        text_qualificar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+            }
+        });
 
         button_qualificar.setOnClickListener(new View.OnClickListener() {
             @Override

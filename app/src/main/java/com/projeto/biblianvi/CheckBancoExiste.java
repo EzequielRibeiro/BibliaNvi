@@ -1,5 +1,6 @@
 package com.projeto.biblianvi;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -18,8 +19,8 @@ public class CheckBancoExiste extends SQLiteOpenHelper  {
 	//The Android's default system path of your application database.
 	private String DB_PATH;
 	private String myPatch;
-	public static final String DB_NAME = "nvi_1.db3";
-	private static final String DB_ANTERIOR = "nvi.db3";
+	public static final String DB_NAME = "nvi_2.db3";
+	private static final String DB_ANTERIOR = "nvi_1.db3";
 	private boolean dbExist = false;
 	private ProgressDialog barraDeProgresso;
 
@@ -63,6 +64,7 @@ public class CheckBancoExiste extends SQLiteOpenHelper  {
 	}
 
 
+	@SuppressLint("LongLogTag")
 	public void deletarBancoDadosAntigo(){
 
 
@@ -75,7 +77,6 @@ public class CheckBancoExiste extends SQLiteOpenHelper  {
 
        }
 
-        Log.e("Banco deletado: "+DB_ANTERIOR, Boolean.toString(delete) );
 
 	}
 
