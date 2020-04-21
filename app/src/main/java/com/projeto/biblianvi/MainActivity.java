@@ -9,7 +9,6 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,6 +21,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -54,13 +55,15 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.Collections;
 import java.util.Locale;
 
 
@@ -81,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean existeBancoDados = false;
     private Button buttonNoticias, buttonClock, button_biblia, button_dicionario, button_pesquisar, button_qualificar;
     private ProgressDialog progressDialog;
-    private CheckBancoExiste checkBancoExiste;
     private Intent intent;
     private ListView listView;
     private AdView mAdView;
@@ -91,6 +93,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewDeveloper;
     private FirebaseAnalytics mFirebaseAnalytics;
     private TextView text_qualificar;
+    static public String PACKAGENAME;
+    static private SharedPreferences sharedPrefDataBasePatch ;
+    static private SharedPreferences.Editor editor;
+    static public String DATABASENAME;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
        // requestWindowFeature(Window.FEATURE_ACTION_BAR);
         setContentView(layout.activity_main);
 
+        PACKAGENAME = getPackageName();
+        sharedPrefDataBasePatch = getSharedPreferences("DataBase",Context.MODE_PRIVATE);
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
@@ -152,7 +160,6 @@ public class MainActivity extends AppCompatActivity {
 
         bibliaHelp = new BibliaBancoDadosHelper(this);
 
-
         listView = (ListView) findViewById(id.listView);
         buttonNoticias = (Button) findViewById(id.buttonNoticias);
         buttonClock = (Button) findViewById(id.buttonClock);
@@ -187,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplication(), "Sem conexão", Toast.LENGTH_LONG).show();
             }
         });
-
+        /*
         textViewVersDia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -197,6 +204,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        */
 
         buttonClock.setBackgroundResource(mipmap.alarm_clock);
         buttonClock.setText("");
@@ -216,19 +224,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-                if (existeBancoDados) {
+                if (isDataBaseDownload()) {
                     Intent i = new Intent();
                     i.setClass(MainActivity.this, MainActivityFragment.class);
                     i.putExtra("Biblia", "biblia");
                     startActivity(i);
-                } else {
-
-                    checkBanco();
-
                 }
-
-
             }
         });
 
@@ -236,18 +237,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-                if (existeBancoDados) {
-
+                if (isDataBaseDownload()) {
                     startActivity(new Intent(MainActivity.this, DicionarioActivity.class));
-
-                } else {
-
-                    checkBanco();
-
                 }
-
-
             }
         });
 
@@ -255,33 +247,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (existeBancoDados) {
-
+                if (isDataBaseDownload()) {
                     startActivity(new Intent(MainActivity.this,Activity_busca_avancada.class));
-
-                } else {
-
-                    checkBanco();
-
                 }
-
-
             }
         });
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
-                    ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_STORAGE);
-            }
-        } else {
-            checkBanco();
-        }
-
 
         // MobileAds.initialize(this, getString(R.string.ADMOB_APP_ID));
         mAdView = findViewById(id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
+        MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Collections.singletonList("4CCDC45D57519669CA4C587B6E896BE8")).build());
         mAdView.loadAd(adRequest);
 
         mAdView.setAdListener(new AdListener() {
@@ -322,28 +297,85 @@ public class MainActivity extends AppCompatActivity {
 
     */
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
+                    ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_STORAGE);
+            }
+        } else {
+            if(!isDataBaseDownload()){
+                if(isNetworkAvailable()){
+                downloadDataBaseBible();}
+                else{
+                    Toast.makeText(getApplicationContext(),"Sem conexão",Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+         Log.e("Banco:", Boolean.toString(isDataBaseDownload()));
+
     }
 
-    private void checkBanco() {
+    private void downloadDataBaseBible(){
 
-        checkBancoExiste = new CheckBancoExiste(getBaseContext());
+        progressDialog = new ProgressDialog(MainActivity.this);
+        progressDialog.setTitle("Biblia Sagrada Adonai");
+        progressDialog.setMessage(getString(string.progressdialog_msg));
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressDialog.setProgressNumberFormat(null);
+        progressDialog.setCancelable(false);
+        progressDialog.setMax(100);
+        // progressDialog.setIndeterminate(true);
+        progressDialog.show();
+        new DownloadTask(getApplicationContext(),progressDialog,sharedPrefDataBasePatch);
 
-        try {
-            if (checkBancoExiste.checkDataBase() && checkBancoExiste.checarIntegridadeDoBanco()) {
+    }
 
-                existeBancoDados = true;
-                Log.e("Main: Banco existe", "sim");
+    static public boolean isDataBaseDownload(){
 
+        File folderStorage;
+        String folderDest = "Android/data/"+PACKAGENAME+"/databases/";
+        editor = sharedPrefDataBasePatch.edit();
 
-            } else {
+        switch (Locale.getDefault().getLanguage()){
 
-                new ChegarBanco().execute("");
+            case "pt":
+                folderDest = folderDest + DownloadTask.Utils.DATABASE_NAME_PT;
+                DATABASENAME = DownloadTask.Utils.DATABASE_NAME_PT;
+                break;
+            case "en":
+                folderDest = folderDest + DownloadTask.Utils.DATABASE_NAME_EN;
+                DATABASENAME = DownloadTask.Utils.DATABASE_NAME_EN;
+                break;
+        }
+
+        //Get File if SD card is present
+        if (new DownloadTask.CheckForSDCard().isSDCardPresent()) {
+
+            folderStorage = new File(
+                    Environment.getExternalStorageDirectory() + "/"
+                            + folderDest);
+
+            //If File is not present create directory
+            if (folderStorage.exists()) {
+                 editor.putString("dataBasePatch",folderStorage.getAbsolutePath());
+                 editor.commit();
+                 return true;
+            }else{
+                return false;}
+
+        } else {
+
+            folderStorage = new File(
+                    Environment.getDataDirectory() + "/"
+                            + folderDest);
+
+            if (folderStorage.exists()) {
+                editor.putString("dataBasePatch",folderStorage.getAbsolutePath());
+                editor.commit();
+                return true;
+            }else{
+                return false;
             }
-        } catch (Exception e) {
-
-            Log.e("error: ", e.getCause().toString());
-
-
         }
 
     }
@@ -352,7 +384,13 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode == REQUEST_STORAGE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //start audio recording or whatever you planned to do
+                if(!isDataBaseDownload()){
+                    if(isNetworkAvailable()){
+                        downloadDataBaseBible();}
+                    else{
+                        Toast.makeText(getApplicationContext(),"Sem conexão",Toast.LENGTH_LONG).show();
+                    }
+                }
             } else if (grantResults[0] == PackageManager.PERMISSION_DENIED) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
                         || ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
@@ -363,14 +401,20 @@ public class MainActivity extends AppCompatActivity {
                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE);
+                            Intent i = getBaseContext().getPackageManager().
+                                    getLaunchIntentForPackage(getBaseContext().getPackageName());
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(i);
                             finish();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
                         }
                     });
-                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE);
-                } else {
-                    finish();
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    });
                 }
             }
         }
@@ -396,7 +440,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
-
 
     private boolean checarAlarmeExiste() {
 
@@ -627,13 +670,11 @@ public class MainActivity extends AppCompatActivity {
                 settings = getSharedPreferences("versDiaPreference", Activity.MODE_PRIVATE);
                 textViewAssuntoVers.setText(settings.getString("assunto", "Paz"));
                 textViewAssuntoVers.setMinLines(2);
-                textViewVersDia.setText(settings.getString("versDia", "Tenho-vos dito isto, para que em mim tenhais paz; no mundo tereis aflições, mas tende bom ânimo, eu venci o mundo.\n")
+                textViewVersDia.setText(Html.fromHtml(settings.getString("versDia", "Tenho-vos dito isto, para que em mim tenhais paz; no mundo tereis aflições, mas tende bom ânimo, eu venci o mundo.\n")
                         +" (" + settings.getString("livroNome","João") +" "+ settings.getString("capVersDia","16")+":"
-        + settings.getString("verVersDia","33") +")" )  ;
-
+        + settings.getString("verVersDia","33") +")" ) ) ;
 
     }
-
 
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
@@ -641,7 +682,6 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null;
     }
-
 
     protected void onStop() {
         super.onStop();
@@ -660,16 +700,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     protected void onResume() {
         super.onResume();
+        editor = sharedPrefDataBasePatch.edit();
+        editor.putString("language",Locale.getDefault().getLanguage());
+        editor.commit();
 
         try {
-            versiculoDoDia();
+            if(isDataBaseDownload()) {
+                versiculoDoDia();
+            }else{
+                downloadDataBaseBible();
+            }
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
 
     }
 
@@ -688,15 +733,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBackPressed() {
-
         super.onBackPressed();
-
         return;
-
-
     }
-
-
     protected void onPause() {
 
         if (mAdView != null) {
@@ -728,7 +767,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
@@ -742,7 +780,6 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent1 = new Intent();
                 intent1.setClass(getApplication(), Activity_busca_avancada.class);
-
 
                 if (intent1.resolveActivity(getPackageManager()) != null) {
                     startActivity(intent1);
@@ -774,89 +811,53 @@ public class MainActivity extends AppCompatActivity {
         // update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
         // setTitle(menuTitulos[position]);
-        chamarActivity(position);
+        switch (position) {
+            case 0:
+                if(isDataBaseDownload()){
+                intent = new Intent(MainActivity.this, Activity_favorito.class);
+                startActivity(intent);}
+                break;
+            case 1:
+                if(isDataBaseDownload()){
+                intent = new Intent(MainActivity.this, ActivityAnotacao.class);
+                startActivity(intent);}
+                break;
+            case 2:
+                if(isDataBaseDownload()){
+                intent = new Intent(MainActivity.this, DicionarioActivity.class);
+                startActivity(intent);}
+                break;
+            case 3:
+                if (isNetworkAvailable()) {
+                    intent = new Intent(MainActivity.this, Mensagem.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplication(), "Sem conexão", Toast.LENGTH_LONG).show();
+                }
+                break;
+            case 4:
+                if(isDataBaseDownload()){
+                intent = new Intent(MainActivity.this, GraficoGeral.class);
+                startActivity(intent);}
+                break;
+            case 5:
+                intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+                break;
+            case 6:
+                intent = new Intent(MainActivity.this, ActivityPoliticaPrivacidade.class);
+                startActivity(intent);
+                break;
+            case 7:
+                mostrarAviso();
+                break;
+            default:
+                break;
+        }
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 
-    public void chamarActivity(int posicao) {
-
-
-        if (existeBancoDados == false) {
-            checkBanco();
-        } else {
-
-            switch (posicao) {
-
-
-                case 0:
-
-                    intent = new Intent(MainActivity.this, Activity_favorito.class);
-                    startActivity(intent);
-
-                    break;
-
-                case 1:
-
-                    intent = new Intent(MainActivity.this, ActivityAnotacao.class);
-                    startActivity(intent);
-
-                    break;
-                case 2:
-
-                    intent = new Intent(MainActivity.this, DicionarioActivity.class);
-                    startActivity(intent);
-                    break;
-
-                case 3:
-
-                    if (isNetworkAvailable()) {
-                        intent = new Intent(MainActivity.this, Mensagem.class);
-                        startActivity(intent);
-                    } else {
-
-                        Toast.makeText(getApplication(), "Sem conexão", Toast.LENGTH_LONG).show();
-
-                    }
-                    break;
-
-                case 4:
-
-                    intent = new Intent(MainActivity.this, GraficoGeral.class);
-                    startActivity(intent);
-                    break;
-
-
-                case 5:
-
-                    intent = new Intent(MainActivity.this, SettingsActivity.class);
-                    startActivity(intent);
-                    break;
-
-                case 6:
-
-                    intent = new Intent(MainActivity.this, ActivityPoliticaPrivacidade.class);
-                    startActivity(intent);
-
-                    break;
-
-                case 7:
-
-                    mostrarAviso();
-
-                    break;
-
-                default:
-
-                    break;
-
-            }
-
-        }
-    }
-
-
     private void mostrarAviso() {
-
 
         TextView title = new TextView(this);
         title.setText("Informação");
@@ -891,7 +892,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         // create alert dialog
         AlertDialog alertDialog = alertDialogBuilder.create();
 
@@ -899,169 +899,16 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    private class ChegarBanco extends AsyncTask<String, Integer, String> {
-        @Override
-        protected String doInBackground(String... params) {
-
-
-            try {
-                checkBancoExiste.createDataBase();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-
-            try {
-                existeBancoDados = checkBancoExiste.checkDataBase() && checkBancoExiste.checarIntegridadeDoBanco() ? true : false;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-            try {
-                if ((progressDialog != null) && progressDialog.isShowing()) {
-                    progressDialog.dismiss();
-                }
-            } catch (final IllegalArgumentException e) {
-                // Handle or log or ignore
-            } catch (final Exception e) {
-                // Handle or log or ignore
-            } finally {
-                progressDialog = null;
-            }
-
-
-            if (existeBancoDados) {
-
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        //carregarSpinnerCapitulo("Gênesis");
-                        //carregarSpinnerVersiculo("Gênesis", "1");
-
-                    }
-                });
-
-            }
-
-
-            // alertaReiniciarApp();
-        }
-
-
-        @Override
-        protected void onPreExecute() {
-
-            progressDialog = new ProgressDialog(MainActivity.this);
-            progressDialog.setTitle("Biblia Sagrada Atual");
-            progressDialog.setMessage("Não interrompa esse processo. Um arquivo necessário para" +
-                    " o aplicativo funcionar offline está sendo descompactado. Aguarde o processo até completar 100%.");
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-            progressDialog.setProgressNumberFormat(null);
-            progressDialog.setCancelable(false);
-            // progressDialog.setMax(100);
-            // progressDialog.setIndeterminate(true);
-            progressDialog.show();
-
-            checkBancoExiste.setBarraDeProgresso(progressDialog);
-        }
-
-
-        protected void onProgressUpdate(Integer... values) {
-
-
-        }
-    }
-
-    private class ListenerMenu implements View.OnClickListener {
-
-        private Intent intent;
-
-        @Override
-        public void onClick(View v) {
-
-            if (existeBancoDados == false) {
-                checkBanco();
-            } else {
-
-                switch (v.getId()) {
-
-
-                    case id.layout_favorito:
-
-                        intent = new Intent(MainActivity.this, Activity_favorito.class);
-                        startActivity(intent);
-
-                        break;
-
-                    case id.layout_anotacao:
-
-                        intent = new Intent(MainActivity.this, ActivityAnotacao.class);
-                        startActivity(intent);
-
-                        break;
-                    case id.layout_dicionario:
-
-                        intent = new Intent(MainActivity.this, DicionarioActivity.class);
-                        startActivity(intent);
-                        break;
-
-                    case id.layout_online:
-
-                        intent = new Intent(MainActivity.this, Mensagem.class);
-                        startActivity(intent);
-                        break;
-
-                    case id.layout_estatistica:
-
-                        intent = new Intent(MainActivity.this, GraficoGeral.class);
-                        startActivity(intent);
-                        break;
-
-                    case id.layout_informacao:
-
-                        mostrarAviso();
-
-                        break;
-
-                    case id.layout_configuracao:
-
-                        intent = new Intent(MainActivity.this, SettingsActivity.class);
-                        startActivity(intent);
-                        break;
-
-                    default:
-
-                        break;
-
-
-                }
-
-            }
-        }
-    }
-
-    private class AlterarAlarm implements View.OnClickListener {
-
+   private class AlterarAlarm implements View.OnClickListener {
 
         TextView textViewhora, textViewMin;
         int hora, min;
 
         public AlterarAlarm(TextView horaView, TextView minView) {
-
             textViewhora = horaView;
             textViewMin = minView;
-
             hora = Integer.parseInt(horaView.getText().toString());
             min = Integer.parseInt(minView.getText().toString());
-
         }
 
         @Override
@@ -1143,7 +990,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     public static class PlanetFragment extends Fragment {
         public static final String ARG_PLANET_NUMBER = "planet_number";
 
@@ -1166,7 +1012,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     public void onDestroy() {
         if (mAdView != null) {
@@ -1174,6 +1019,5 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onDestroy();
     }
-
 
 }

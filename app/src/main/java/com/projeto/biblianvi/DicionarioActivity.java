@@ -46,12 +46,6 @@ public class DicionarioActivity extends Activity {
 
         textViewDeveloper.setText(BuildConfig.VERSION_NAME);
 
-        CheckBancoExiste checkBancoExiste = new CheckBancoExiste(getApplicationContext());
-
-        if(!checkBancoExiste.checkDataBase()){
-              finish();
-        }
-
         list = new BibliaBancoDadosHelper(this).getDicionarioPalavra();
 
         arrayAdapter = new AdapterDicionar(DicionarioActivity.this,list);
@@ -197,8 +191,6 @@ public class DicionarioActivity extends Activity {
         });
 
     }
-
-
 
     private class LetraEscolha implements View.OnClickListener{
 

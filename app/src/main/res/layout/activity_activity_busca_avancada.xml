@@ -153,7 +153,6 @@
             android:layout_height="wrap_content"
 
             android:layout_marginBottom="16dp"
-            android:entries="@array/bibliaLivEp_arrays"
             android:gravity="left"
             android:theme="@style/SpinnerItemStyle"
             app:layout_constraintBottom_toTopOf="@+id/textView"

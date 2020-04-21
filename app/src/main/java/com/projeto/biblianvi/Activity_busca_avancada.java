@@ -9,11 +9,14 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.List;
 
 
 public class Activity_busca_avancada extends Activity {
@@ -73,6 +76,17 @@ public class Activity_busca_avancada extends Activity {
 
 
 
+        BibliaBancoDadosHelper bibliaHelp = new BibliaBancoDadosHelper(getApplicationContext());
+        List<Biblia> bookNameList = bibliaHelp.getAllBooksName();
+        String[] livro = new String[bookNameList.size()];
+
+        for(int i = 0 ;i <= bookNameList.size()-1; i++){
+            livro[i] = bookNameList.get(i).getBooksName();
+        }
+        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,livro);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+        spinnerLivros.setAdapter(aa);
 
         spinnerLivros.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

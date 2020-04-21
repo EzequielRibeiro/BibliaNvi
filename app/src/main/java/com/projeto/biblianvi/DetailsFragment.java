@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+import java.util.List;
+
 
 public class DetailsFragment extends Fragment {
 	
@@ -97,10 +99,14 @@ public class DetailsFragment extends Fragment {
 		text1.setText(Shakespeare.DIALOGUE[ mIndex ] );
 		*/
 
-		String livro[] = getResources().getStringArray(R.array.bibliaLivEp_arrays);
-
         BibliaBancoDadosHelper bibliaHelp = new BibliaBancoDadosHelper(getActivity().getApplicationContext());
+        List<Biblia> bookNameList = bibliaHelp.getAllBooksName();
+		//String livro[] = getResources().getStringArray(R.array.bibliaLivEp_arrays);
+        String[] livro = new String[bookNameList.size()];
 
+        for(int i = 0 ;i <= bookNameList.size()-1; i++){
+            livro[i] = bookNameList.get(i).getBooksName();
+        }
 
         int capitulos = bibliaHelp.getQuantidadeCapitulos(livro[mIndex]) ;
 

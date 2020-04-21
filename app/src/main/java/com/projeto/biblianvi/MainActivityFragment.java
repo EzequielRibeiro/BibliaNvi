@@ -22,8 +22,6 @@ public class MainActivityFragment extends Activity {
 		FragmentManager.enableDebugLogging(true);
         setContentView(R.layout.activity_fragment);
 
-       // FirebaseCrash.report(new Exception("Oppss!!!"));
-
     }
 
 
@@ -81,8 +79,6 @@ public class MainActivityFragment extends Activity {
      */
     public void showDetails(int index, boolean click) {
     	Log.v(TAG, "in MainActivity showDetails(" + index + ")");
-
-        String livro[] = getResources().getStringArray(R.array.bibliaLivEp_arrays);
 
         if (isMultiPane()) {
             // Check what fragment is shown, replace if needed.

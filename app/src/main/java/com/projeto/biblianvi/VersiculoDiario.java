@@ -28,16 +28,14 @@ public class VersiculoDiario extends BroadcastReceiver{
 
     private int notifyID = 0;
     private  BibliaBancoDadosHelper bibliaHelp;
-    private CheckBancoExiste checkBancoExiste;
     private  Context context;
-
-
     @Override
     public void onReceive(Context context, Intent intent) {
 
        this.context = context;
 
         try {
+            if(MainActivity.isDataBaseDownload())
             criarNotification();
         } catch (ParseException e) {
             e.printStackTrace();
@@ -48,28 +46,16 @@ public class VersiculoDiario extends BroadcastReceiver{
 
     private void versiculoDoDia() throws ParseException {
 
-
         bibliaHelp = new BibliaBancoDadosHelper(context);
-        checkBancoExiste = new CheckBancoExiste(context);
 
         SharedPreferences settings ;
 
-        try {
-            if (checkBancoExiste.checkDataBase() && checkBancoExiste.checarIntegridadeDoBanco()) {
-                bibliaHelp.versDoDiaText();
-                settings = context.getSharedPreferences("versDiaPreference", Activity.MODE_PRIVATE);
-                assunto = settings.getString("assunto", "Paz");
-                livro = settings.getString("livroNome", "João");
-                cap = settings.getString("capVersDia", "16");
-                vers = settings.getString("verVersDia", "Tenho-vos dito isto, para que em mim tenhais paz; no mundo tereis aflições, mas tende bom ânimo, eu venci o mundo.");
-
-            }else{
-                assunto = "Procure sempre meditar na palavra de Deus.";
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+            bibliaHelp.versDoDiaText();
+            settings = context.getSharedPreferences("versDiaPreference", Activity.MODE_PRIVATE);
+            assunto = settings.getString("assunto", "...");
+            livro = settings.getString("livroNome", "...");
+            cap = settings.getString("capVersDia", "...");
+            vers = settings.getString("verVersDia", "...");
 
     }
 
@@ -78,9 +64,7 @@ public class VersiculoDiario extends BroadcastReceiver{
     String cap;
     String vers;
     private void criarNotification() throws ParseException {
-
         versiculoDoDia();
-
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         NotificationCompat.Builder mBuilder =
@@ -108,8 +92,6 @@ public class VersiculoDiario extends BroadcastReceiver{
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         mNotificationManager.notify(notifyID, mBuilder.build());
-
-
 
     }
 }

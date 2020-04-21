@@ -47,7 +47,6 @@ public class Grafico_Dois extends Activity {
         imagemGrafico = new ImageView[idImageCarta.length];
         textPorceDados = new TextView[idTextPorc.length];
 
-        CheckBancoExiste bancoExiste = new CheckBancoExiste(getApplicationContext());
         BibliaBancoDadosHelper bibliaBancoDadosHelper = new BibliaBancoDadosHelper(getApplicationContext());
 
         for(int i = 0; i<idImageCarta.length;i++){
@@ -57,8 +56,6 @@ public class Grafico_Dois extends Activity {
         }
 
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearLayoutNovo);
-
-        if(bancoExiste.checkDataBase()){
 
             int total = 0 ;
             int lidos = 0;
@@ -84,19 +81,12 @@ public class Grafico_Dois extends Activity {
                     textPorceDados[i].setText(String.format("%d",total) + "%");
                 }
                 i++;
-
                 //  Log.d("Livro",obj.getNomeLivro());
                 //  Log.d("Lidos",Integer.toString(obj.getTotalVersoslidos()));
                 //  Log.d("Total versos",Integer.toString(obj.getTotalDeVersos()));
-
-
             }
-
         }
 
-
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

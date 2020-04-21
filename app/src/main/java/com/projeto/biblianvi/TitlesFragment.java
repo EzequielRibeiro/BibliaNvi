@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 
+import java.util.List;
+
 
 public class TitlesFragment extends ListFragment {
     private MainActivityFragment myActivity = null;
@@ -91,12 +93,17 @@ public class TitlesFragment extends ListFragment {
     	}
         super.onActivityCreated(icicle);
 
-        // Populate list with our static array of titles.
+        BibliaBancoDadosHelper bibliaHelp = new BibliaBancoDadosHelper(getActivity().getApplicationContext());
+        List<Biblia> bookNameList = bibliaHelp.getAllBooksName();
+        String[] livro = new String[bookNameList.size()];
 
-        String livros[] = getResources().getStringArray(R.array.bibliaLivEp_arrays);
+        for(int i = 0 ;i <= bookNameList.size()-1; i++){
+            livro[i] = bookNameList.get(i).getBooksName();
+        }
+
         setListAdapter(new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,
-               livros));
+               livro));
 
         ListView lv = getListView();
         lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);

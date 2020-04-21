@@ -6,11 +6,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,22 +20,17 @@ import java.util.Random;
 
 public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
-    // Database Version
     private static final int DATABASE_VERSION = 1;
-    // Database Name
-
     private Cursor cursor;
-
     private SQLiteDatabase myDataBase;
-
     private String DB_PATH;
-
     private Context myContext;
 
     public BibliaBancoDadosHelper(Context context) {
-        super(context, CheckBancoExiste.DB_NAME, null, DATABASE_VERSION);
+        super(context, MainActivity.DATABASENAME, null, DATABASE_VERSION);
 
-        DB_PATH = "data/data/"+context.getPackageName()+"/databases/";
+        SharedPreferences sharedPreferences = context.getSharedPreferences("DataBase",Context.MODE_PRIVATE);
+        DB_PATH = sharedPreferences.getString("dataBasePatch"," ");
         myContext = context;
     }
 
@@ -76,19 +73,25 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
         db.close();
     }
    */
-
     private void openDataBase() {
 
-        String myPath = DB_PATH + CheckBancoExiste.DB_NAME;
-
         try {
-            myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
+            myDataBase = SQLiteDatabase.openDatabase(DB_PATH, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
             //  SQLiteDatabase db = this.getWritableDatabase();
             //  myDataBase = this.getReadableDatabase();
             Log.e("Banco aberto", Boolean.toString(myDataBase.isOpen()));
             Log.e("Banco patch", myDataBase.getPath().toString());
 
-        }catch (NonFatalError e){}
+            StringBuilder sb = new StringBuilder();
+            DatabaseUtils.dumpCursor(myDataBase.rawQuery("PRAGMA integrity_check", null), sb);
+            Log.e("DATABASEIntegrity: ", sb.toString());
+
+        }catch (NonFatalError e){
+
+            File file = new File(DB_PATH);
+            file.delete();
+
+        }
 
     }
 
@@ -133,7 +136,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
         List<Biblia> books = new LinkedList<Biblia>();
 
         // 1. build the query
-        String query = "select testament.name,books.name,verses.chapter,verses.verse,verses.text,verses.lido,verses.id " +
+        String query = "select testament.name,books.name,verses.chapter,verses.verse,verses.text,verses.lido,verses.rowid " +
                 "from testament,verses,books where testament.id = " +
                 "verses.testament and books.id = verses.book and books.name like '" + book + "%';";
 
@@ -169,82 +172,49 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
     }
 
     // Get All Books
-    public List<Biblia> getAllBooks() {
+    public List<Biblia> getAllBooksName() {
 
         List<Biblia> books = new LinkedList<Biblia>();
 
         // 1. build the query
-        String query = "select testament.name,books.name,verses.chapter,verses.verse,verses.text,verses.lido,verses.id " +
-                "from testament,verses,books where testament.id = " +
-                "verses.testament and books.id = verses.book;";
+        String query = "select books.name from books;";
 
-        // 2. get reference to writable DB
-        //SQLiteDatabase db = this.getWritableDatabase();
         openDataBase();
-
         cursor = myDataBase.rawQuery(query, null);
 
-        // 3. go over each row, build book and add it to list
         Biblia biblia;
-
         if (cursor.moveToFirst()) {
             do {
                 biblia = new Biblia();
-                biblia.setTestamentName(cursor.getString(0));
-                biblia.setBooksName(cursor.getString(1));
-                biblia.setVersesChapter(cursor.getString(2));
-                biblia.setVerseNum(cursor.getString(3));
-                biblia.setText(cursor.getString(4));
-                biblia.setLido(cursor.getInt(5));
-                biblia.setIdVerse(cursor.getString(6));
-                // Add book to books
+                biblia.setBooksName(cursor.getString(0));
                 books.add(biblia);
             } while (cursor.moveToNext());
         }
-
-
         close();
-        // return books
-        return books;
+          return books;
     }
 
     public void limparVersLidos(){
 
-
         int row;
         String query = "UPDATE "+TABELA_VERSES+" set lido = 0 where lido = 1";
-        // openDataBase();
-
-        String patch = DB_PATH + CheckBancoExiste.DB_NAME ;
-        SQLiteDatabase db = SQLiteDatabase.openDatabase(patch, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
-        // SQLiteDatabase db = this.getWritableDatabase();
-
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(DB_PATH, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
         ContentValues vl = new ContentValues();
         vl.put("lido", "0");
 
-
         try {
-
             db.beginTransaction();
-
             db.execSQL(query);
-
           //  row = db.update("verses", vl, "id = ?", icon_new String[]{});
-
             db.setTransactionSuccessful();
 
-
         } catch (Exception e) {
-
             throw  new Error("Update");
 
         } finally {
             db.endTransaction();
             db.close();
         }
-
-
-
     }
 
     public int getQuantidadeVersos(String livroEpistola, String capitulo) {
@@ -287,25 +257,20 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
     public int setLidoVerso(Biblia bi){
 
         int row;
-        String query = "UPDATE "+TABELA_VERSES+" set lido = 1 where verses.[id] = "+bi.getIdVerse()+";";
-        // openDataBase();
-
-        String patch = DB_PATH + CheckBancoExiste.DB_NAME ;
-        SQLiteDatabase db = SQLiteDatabase.openDatabase(patch, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
+        String query = "UPDATE "+TABELA_VERSES+" set lido = 1 where verses.[rowid] = "+bi.getIdVerse()+";";
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(DB_PATH, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
         // SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues vl = new ContentValues();
         vl.put("lido", "1");
 
-
         try {
 
             db.beginTransaction();
 
-            row = db.update("verses", vl, "id = ?", new String[]{String.valueOf(bi.getIdVerse())});
+            row = db.update("verses", vl, "rowid = ?", new String[]{String.valueOf(bi.getIdVerse())});
 
             db.setTransactionSuccessful();
-
 
         } catch (Exception e) {
 
@@ -345,8 +310,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
         String query = "delete from compartilhar";
 
-        String patch = DB_PATH + CheckBancoExiste.DB_NAME ;
-        SQLiteDatabase db = SQLiteDatabase.openDatabase(patch, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(DB_PATH, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
 
         try {
 
@@ -371,35 +335,20 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
     public void setVersCompartilhar(Biblia bi){
 
-
         String versiculo = bi.getVersesText() + " ("+bi.getBooksName()+ " "+bi.getVersesChapter()+":"+bi.getVersesNum()+") ";
-
         String query = "insert into compartilhar (msg) values ('"+versiculo+"')";
-
-        String patch = DB_PATH + CheckBancoExiste.DB_NAME ;
-        SQLiteDatabase db = SQLiteDatabase.openDatabase(patch, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
-
-
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(DB_PATH, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
 
             try {
-
                 db.beginTransaction();
-
                 db.execSQL(query);
-
                 db.setTransactionSuccessful();
-
-
             } catch (Exception e) {
-
                 throw new Error("Insert versiculo");
-
             } finally {
                 db.endTransaction();
                 db.close();
             }
-
-
     }
 
     public StringBuffer getVersCompartilhar() {
@@ -491,7 +440,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
         List<Biblia> books = new LinkedList<Biblia>();
 
-        String query = "select testament.name,books.name,verses.chapter,verses.verse,verses.text,verses.lido,verses.id " +
+        String query = "select testament.name,books.name,verses.chapter,verses.verse,verses.text,verses.lido,verses.rowid " +
                 "from testament,verses,books where testament.id = " +
                 "verses.testament and books.id = verses.book and verses.text like '%" + termo + "%';";
 
@@ -580,7 +529,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
         List<Biblia> books = new LinkedList<Biblia>();
 
-        String query = "select testament.name,books.name,verses.chapter,verses.verse,verses.text,verses.lido,verses.id " +
+        String query = "select testament.name,books.name,verses.chapter,verses.verse,verses.text,verses.lido,verses.rowid " +
                 "from testament,verses,books where testament.id = verses.testament "+
                 "and books.id = verses.book and verses.text like '%"+termo+"%' "+
                 "and books.[name] = '"+livro+"'";
@@ -810,30 +759,18 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
     public void salvarNota(String titulo,String texto,String data){
 
         String query = "insert into nota (id,titulo,texto,data_) values (null,'"+titulo+"','"+texto+"','"+data+"')";
-
-        String patch = DB_PATH + CheckBancoExiste.DB_NAME ;
-        SQLiteDatabase db = SQLiteDatabase.openDatabase(patch, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
-
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(DB_PATH, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
         try {
-
             db.beginTransaction();
-
             db.execSQL(query);
-
             db.setTransactionSuccessful();
 
-            Log.e("nota",texto);
-
         } catch (Exception e) {
-
             throw  new Error("Insert nota");
-
         } finally {
             db.endTransaction();
             db.close();
         }
-
-
     }
 
     public ArrayList<Anotacao> getNota() {
@@ -845,12 +782,8 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
                 "nota.[data_] FROM nota";
 
         openDataBase();
-
-
             cursor = myDataBase.rawQuery(query, null);
-
             Anotacao anotacao;
-
             if (cursor.moveToFirst()) {
                 do {
                     anotacao = new Anotacao();
@@ -858,89 +791,57 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
                     anotacao.setTitulo(cursor.getString(1));
                     anotacao.setTexto(cursor.getString(2));
                     anotacao.setData(cursor.getString(3));
-
                     notas.add(anotacao);
                 } while (cursor.moveToNext());
             }
-
-
         close();
-
         return notas;
     }
 
     public void deleteFavorito(String id){
 
         String query = "delete from favorito where idVerso = "+id;
-
-        String patch = DB_PATH + CheckBancoExiste.DB_NAME ;
-        SQLiteDatabase db = SQLiteDatabase.openDatabase(patch, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
+        SQLiteDatabase db = SQLiteDatabase.openDatabase(DB_PATH, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
 
         try {
-
             db.beginTransaction();
-
             db.execSQL(query);
-
             db.setTransactionSuccessful();
-
-
         } catch (Exception e) {
-
             throw  new Error("Delete compartilhar");
-
         } finally {
             db.endTransaction();
             db.close();
         }
-
-
     }
 
     public void setFavorito(String i){
 
 
         String q = "insert into favorito (idVerso) values ('"+i+"')";
-
         String k = "select count(*) from favorito where idVerso ="+i;
-
         openDataBase();
-
         cursor = myDataBase.rawQuery(k,null);
-
         int c = 0;
 
         if(cursor.moveToFirst())
            c = cursor.getInt(0);
 
         close();
-
        if(c == 0) {
 
-           String patch = DB_PATH + CheckBancoExiste.DB_NAME ;
-           SQLiteDatabase db = SQLiteDatabase.openDatabase(patch, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
-
+           SQLiteDatabase db = SQLiteDatabase.openDatabase(DB_PATH, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
            try {
-
                db.beginTransaction();
-
                db.execSQL(q);
-
                db.setTransactionSuccessful();
-
-
            } catch (Exception e) {
-
                throw new Error("Insert favorito ID");
-
            } finally {
                db.endTransaction();
                db.close();
            }
-
        }
-
-
     }
 
     public List<Biblia> getFavorito() {

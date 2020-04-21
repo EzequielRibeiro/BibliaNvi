@@ -61,8 +61,8 @@
         android:summary="Escolha o tamanho do texto"
         android:key="fontePref"
         android:defaultValue="18"
-        android:entries="@array/listFonte"
-        android:entryValues="@array/listFonteValues"
+        android:entries="@array/listFonteSize"
+        android:entryValues="@array/listFonteSize"
         android:textColor="@color/dark"
         />
     <CheckBoxPreference

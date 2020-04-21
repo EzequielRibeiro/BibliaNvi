@@ -181,8 +181,9 @@ public class Lista_Biblia extends Activity {
             buscarTestamento = newString[5];
 
             if (buscar) {
-
-                try {
+              LinearLayout lin = findViewById(R.id.linearLayoutLivCap);
+              lin.setVisibility(View.GONE);
+            try {
                     Class.forName("android.os.AsyncTask");
                     pesquisarBanco = new PesquisarBanco(getParent());
                     pesquisarBanco.execute("");
@@ -592,7 +593,19 @@ public class Lista_Biblia extends Activity {
             buttonBuscaList = (Button) findViewById(R.id.buttonBuscarList);
             editTextPesquisarList = (EditText) findViewById(R.id.editTextPesquisarList);
 
-            editTextPesquisarList.setHint("Digite uma palavra ou frase");
+            editTextPesquisarList.setHint("Digite uma palavra");
+
+            BibliaBancoDadosHelper bibliaHelp = new BibliaBancoDadosHelper(getApplicationContext());
+            List<Biblia> bookNameList = bibliaHelp.getAllBooksName();
+            String[] livro = new String[bookNameList.size()];
+
+            for(int i = 0 ;i <= bookNameList.size()-1; i++){
+                livro[i] = bookNameList.get(i).getBooksName();
+            }
+            ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,livro);
+            aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            //Setting the ArrayAdapter data on the Spinner
+            spinnerLivro.setAdapter(aa);
 
             spinnerLivro.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
@@ -716,6 +729,7 @@ public class Lista_Biblia extends Activity {
         if (modoNoturno) {
 
             seekBarBrilho.setMax(100);
+            seekBarBrilho.setProgress(45);
             seekBarBrilho.setVisibility(View.VISIBLE);
             seekBarBrilho.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.MATCH_PARENT));
@@ -991,7 +1005,7 @@ public class Lista_Biblia extends Activity {
 
             SharedPreferences settings = getSharedPreferences("seekbar", Activity.MODE_PRIVATE);
 
-            alterarBrilhoTela(settings.getInt(seekValor, 1));
+            alterarBrilhoTela(settings.getInt(seekValor, 45));
 
 
         } else {
