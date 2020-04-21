@@ -37,7 +37,6 @@
 
     <string name="fontePadrao">Arial</string>
 
-    <!--
     <string-array name="bibliaLivEp_arrays">
         <item>Gênesis</item>
         <item>Êxodo</item>
@@ -151,7 +150,6 @@
 
     </string-array>
 
-
     <string-array name="bibliaLivEp_novo">
         <item>Mateus</item>
         <item>Marcos</item>
@@ -181,7 +179,6 @@
         <item>Judas</item>
         <item>Apocalipse</item>
     </string-array>
-     -->
 
     <!-- -
         This is an ad unit ID for a banner test ad. Replace with your own banner ad unit id.
@@ -219,11 +216,8 @@
     <string name="title_activity_grafico_geral">GraficoGeral</string>
     <string name="title_activity_grafico__dois">Gráfico Dois</string>
     <string name="title_activity_activity_busca_avancada">Pesquisa avançada</string>
-    <string name="progressdialog_msg">Preparando aplicativo para ser usado pela primeira vez.</string>
-
-
     <string name="aviso">Nome do App:\n Bíblia Sagrada Adonai\n\n
-                         Versão:\n1.11\n\n
+                         Versão:\n1.09\n\n
                  Tradução:\nNova Versão Internacional (NVI)\n\n
                  Obrigado pelo download !\n\n
                  Caso encontre algum bug ou tenha alguma sugestão para o aplicativo,
