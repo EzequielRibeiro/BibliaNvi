@@ -3,8 +3,12 @@ package com.projeto.biblianvi;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -17,11 +21,28 @@ public class UnZip {
     private String packageName;
     private String  TAG = "UnZip";
     private SharedPreferences.Editor editor;
+    private ProgressBar progressBar;
+    private ProgressDialog progressDialog;
+    private String zipFilePath;
+
+    public UnZip(String zipFilePath, String packageName, SharedPreferences sharedPref, ProgressBar progressBar) {
+        editor = sharedPref.edit();
+        this.zipFilePath = zipFilePath;
+        this.packageName = packageName;
+        this.progressBar = progressBar;
+        runUnZip();
+
+    }
 
     public UnZip(String zipFilePath, String packageName, SharedPreferences sharedPref, ProgressDialog progressDialog) {
-
         editor = sharedPref.edit();
+        this.zipFilePath = zipFilePath;
         this.packageName = packageName;
+        this.progressDialog = progressDialog;
+        runUnZip();
+    }
+
+    private void runUnZip() {
 
         File dir = new File(getFileDestDirectory());
         // create output directory if it doesn't exist
@@ -45,13 +66,29 @@ public class UnZip {
                 while ((len = zis.read(buffer)) > 0) {
                     fos.write(buffer, 0, len);
                     lenCurrent += len;
-                    progressDialog.setProgress((lenCurrent * 100) /(int) totalSize);
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        progressBar.setProgress((lenCurrent * 100) / (int) totalSize, true);
+                        if (progressBar.getProgress() == progressBar.getMax()) {
+                            progressBar.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressBar.setVisibility(View.GONE);
+                                }
+                            });
+
+                        }
+                    } else {
+                        progressDialog.setProgress((lenCurrent * 100) / (int) totalSize);
+                        if (progressDialog.getProgress() == progressDialog.getMax())
+                            progressDialog.dismiss();
+                    }
+
                 }
                 fos.close();
                 //close this ZipEntry
                 zis.closeEntry();
                 ze = zis.getNextEntry();
-                progressDialog.dismiss();
                 editor.putString("dataBasePatch", newFile.getAbsolutePath());
                 editor.commit();
             }

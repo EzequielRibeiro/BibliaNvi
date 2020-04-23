@@ -35,8 +35,8 @@ public class ActivityAnotacao extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anotacao);
 
-        listView = (ListView) findViewById(R.id.listNota);
-        layoutNotaAdcionar = (LinearLayout) findViewById(R.id.layoutNotaAdcionar);
+        listView = findViewById(R.id.listNota);
+        layoutNotaAdcionar = findViewById(R.id.layoutNotaAdcionar);
 
 
        layoutNotaAdcionar.setOnClickListener(new View.OnClickListener()
@@ -45,14 +45,14 @@ public class ActivityAnotacao extends Activity {
         @Override
         public void onClick (View v){
 
-        item = (FrameLayout) findViewById(R.id.frameNota);
+            item = findViewById(R.id.frameNota);
         child = getLayoutInflater().inflate(R.layout.nota_adicionar, null);
         item.addView(child);
 
-        buttonNotaSalvar = (Button) findViewById(R.id.buttonNotaSalvar);
-        buttonNotaCancel = (Button) findViewById(R.id.buttonNotaCancel);
-        editTextTittuloNota = (EditText) findViewById(R.id.editTextTittuloNota);
-        editTextNotaTexto = (EditText) findViewById(R.id.editTextNotaTexto);
+            buttonNotaSalvar = findViewById(R.id.buttonNotaSalvar);
+            buttonNotaCancel = findViewById(R.id.buttonNotaCancel);
+            editTextTittuloNota = findViewById(R.id.editTextTittuloNota);
+            editTextNotaTexto = findViewById(R.id.editTextNotaTexto);
 
         frameComponentes();
 

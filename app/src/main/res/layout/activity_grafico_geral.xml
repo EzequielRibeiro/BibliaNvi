@@ -41,7 +41,9 @@
         android:layout_above="@+id/linearLayout"
         android:layout_below="@+id/linearLayoutGrafAd"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true">
+        android:layout_alignParentLeft="true"
+
+        >
 
         <LinearLayout
             android:id="@+id/linearlayoutTab"
@@ -89,7 +91,7 @@
                 android:layout_toStartOf="@+id/textViewTotalLido"
                 android:layout_toLeftOf="@+id/textViewTotalLido"
                 android:padding="2dp"
-                android:text="Total lido: "
+                android:text="@string/total_lido"
                 android:textColor="#000000" />
 
             <TextView

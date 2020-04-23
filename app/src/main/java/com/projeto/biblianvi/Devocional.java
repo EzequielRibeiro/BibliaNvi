@@ -35,18 +35,21 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import java.util.Locale;
 
-public class Mensagem extends Activity {
+
+public class Devocional extends Activity {
 
 
     private WebView myWebView;
-    final static String SITE = "http://biblianvi.byethost17.com";
+    static String SITE = "http://biblianvi.byethost17.com";
     private String siteNome = "biblianvi";
     private String googleDriveHost = "drive.google.com";
     private Context esteContext;
     private WebView mWebviewPop;
     private FrameLayout mContainer;
     private TextView textViewDeveloperM;
+    private String language;
 
 
     @Override
@@ -57,12 +60,15 @@ public class Mensagem extends Activity {
         getWindow().requestFeature(Window.FEATURE_PROGRESS);
         setContentView(R.layout.activity_mensagem);
 
+        language = Locale.getDefault().getLanguage();
+
+
         // Makes Progress bar Visible
         getWindow().setFeatureInt(Window.FEATURE_PROGRESS, Window.PROGRESS_VISIBILITY_ON);
 
-        mContainer = (FrameLayout) findViewById(R.id.frameLayoutWeb);
-        myWebView = (WebView) findViewById(R.id.webviewxml);
-        textViewDeveloperM = (TextView) findViewById(R.id.textViewDeveloper);
+        mContainer = findViewById(R.id.frameLayoutWeb);
+        myWebView = findViewById(R.id.webviewxml);
+        textViewDeveloperM = findViewById(R.id.textViewDeveloper);
 
         textViewDeveloperM.setText(BuildConfig.VERSION_NAME);
 
@@ -72,6 +78,9 @@ public class Mensagem extends Activity {
         CookieManager cookieManager = CookieManager.getInstance();
         cookieManager.setAcceptCookie(true);
 
+        if (!language.equals("pt")) {
+            SITE = "https://www.biblestudytools.com/sermons/";
+        }
 
         myWebView.setBackgroundColor(Color.TRANSPARENT);
         myWebView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
@@ -155,11 +164,11 @@ public class Mensagem extends Activity {
     private void propaganda() {
 
 
-        LinearLayout myLayoutBase = (LinearLayout) findViewById(R.id.linearMobDevo);
+        LinearLayout myLayoutBase = findViewById(R.id.linearMobDevo);
 
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) myLayoutBase.getLayoutParams();
 
-        AdView mAdView = (AdView) findViewById(R.id.adViewDevocio);
+        AdView mAdView = findViewById(R.id.adViewDevocio);
 
         if (isNetworkAvailable() && (mAdView != null)) {
 
@@ -217,7 +226,7 @@ public class Mensagem extends Activity {
 
 
 // We need to get the instance of the LayoutInflater
-            LayoutInflater inflater = (LayoutInflater) Mensagem.this
+            LayoutInflater inflater = (LayoutInflater) Devocional.this
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             layoutPop = inflater.inflate(R.layout.screen_popup,
                     (ViewGroup) findViewById(R.id.popup_element), false);
@@ -226,7 +235,7 @@ public class Mensagem extends Activity {
             pwindo.showAtLocation(layoutPop, Gravity.CENTER, 0, 0);
 
 
-            Button btnClosePopup = (Button) layoutPop.findViewById(R.id.btn_close_popup);
+            Button btnClosePopup = layoutPop.findViewById(R.id.btn_close_popup);
             btnClosePopup.setOnClickListener(cancel_button_click_listener);
 
         } catch (Exception e) {

@@ -26,7 +26,7 @@
         android:paddingRight="20dp"
         android:paddingBottom="20dp"
         android:singleLine="true"
-        android:text="Pesquisa Avançada"
+        android:text="@string/busca_avancada_title"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
@@ -56,7 +56,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:onClick="onRadioButtonClicked"
-                android:text="Velho Testamento"
+                android:text="@string/velho_testamento"
                 android:textColor="#040404"
                 android:textSize="18sp" />
 
@@ -65,7 +65,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:onClick="onRadioButtonClicked"
-                android:text="Novo Testamento"
+                android:text="@string/novo_testamento"
                 android:textColor="#040404"
                 android:textSize="18sp" />
 
@@ -74,7 +74,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:onClick="onRadioButtonClicked"
-                android:text="Toda Bíblia"
+                android:text="@string/toda_b_blia"
                 android:textColor="#040404"
                 android:textSize="18sp" />
         </RadioGroup>
@@ -84,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Pesquisar por:"
+            android:text="@string/pesquisar_por"
             android:textColor="@color/dark"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/editTextAvanc"
@@ -108,7 +108,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/buttonshape"
-            android:text="PESQUISAR"
+            android:text="@string/pesquisar"
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/textViewDeveloperBusca"
             app:layout_constraintEnd_toEndOf="parent"
@@ -139,7 +139,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:text="Pesquisar somente em:"
+            android:text="@string/pesquisar_somente_em"
             android:textColor="#000000"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/spinnerBuscaAvanc"

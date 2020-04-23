@@ -80,7 +80,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
             //  SQLiteDatabase db = this.getWritableDatabase();
             //  myDataBase = this.getReadableDatabase();
             Log.e("Banco aberto", Boolean.toString(myDataBase.isOpen()));
-            Log.e("Banco patch", myDataBase.getPath().toString());
+            Log.e("Banco patch", myDataBase.getPath());
 
             StringBuilder sb = new StringBuilder();
             DatabaseUtils.dumpCursor(myDataBase.rawQuery("PRAGMA integrity_check", null), sb);
@@ -93,6 +93,42 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
         }
 
+    }
+
+    public List<Biblia> getVersosRead(int id) {
+
+        List<Biblia> versosLidos = new LinkedList<Biblia>();
+
+        // 1. build the query
+        String query = "select books.[id], books.[name] ,count(verses.[text]), sum (verses.[lido]) from  verses " +
+                "inner join books on verses.[book] = books.id where verses.[testament] = " + id + " " +
+                "group by books.[name] " +
+                "ORDER BY books.[id]";
+
+        // 2. get reference to writable DB
+        //SQLiteDatabase db = this.getWritableDatabase();
+
+        openDataBase();
+
+        cursor = myDataBase.rawQuery(query, null);
+
+        // 3. go over each row, build book and add it to list
+        Biblia b;
+
+        if (cursor.moveToFirst()) {
+            do {
+                b = new Biblia();
+                b.setId(cursor.getInt(0));
+                b.setBooksName(cursor.getString(1));
+                b.setTotalDeVersiculos(cursor.getInt(2));
+                b.setTotalDeVersosLidos(cursor.getInt(3));
+                versosLidos.add(b);
+            } while (cursor.moveToNext());
+        }
+
+        close();
+        // return books
+        return versosLidos;
     }
 
     public List<GraficoDadosBanco> getVersosLidos(int id) {
@@ -172,12 +208,12 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
     }
 
     // Get All Books
-    public List<Biblia> getAllBooksName() {
+    public List<Biblia> getBooksByVersion(String v) {
 
         List<Biblia> books = new LinkedList<Biblia>();
 
         // 1. build the query
-        String query = "select books.name from books;";
+        String query = "select books.name,books.testament from books where books.testament =" + v + ";";
 
         openDataBase();
         cursor = myDataBase.rawQuery(query, null);
@@ -187,6 +223,32 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
             do {
                 biblia = new Biblia();
                 biblia.setBooksName(cursor.getString(0));
+                biblia.setTestamentName(cursor.getString(1));
+                books.add(biblia);
+            } while (cursor.moveToNext());
+        }
+        close();
+        return books;
+    }
+
+
+    // Get All Books
+    public List<Biblia> getAllBooksName() {
+
+        List<Biblia> books = new LinkedList<Biblia>();
+
+        // 1. build the query
+        String query = "select books.name,books.testament from books;";
+
+        openDataBase();
+        cursor = myDataBase.rawQuery(query, null);
+
+        Biblia biblia;
+        if (cursor.moveToFirst()) {
+            do {
+                biblia = new Biblia();
+                biblia.setBooksName(cursor.getString(0));
+                biblia.setTestamentName(cursor.getString(1));
                 books.add(biblia);
             } while (cursor.moveToNext());
         }
@@ -483,7 +545,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
         List<Biblia> books = new LinkedList<Biblia>();
 
-        String query = "select testament.name,books.name,verses.chapter,verses.verse,verses.text,verses.lido,verses.id " +
+        String query = "select testament.name,books.name,verses.chapter,verses.verse,verses.text,verses.lido,verses.rowid " +
                 "from testament,verses,books where testament.id = verses.testament "+
                 "and books.id = verses.book and verses.text like '%"+termo+"%' "+
                 "and [testament].[id] = "+testamento;
@@ -608,7 +670,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
             i = cursor.getInt(0);
 
-            Log.e("Lidos",livro +"   "+ Integer.toString(i));
+            Log.e("Lidos", livro + "   " + i);
 
             return i;
         }

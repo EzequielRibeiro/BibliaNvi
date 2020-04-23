@@ -217,7 +217,7 @@
     <string name="title_activity_grafico__dois">Gráfico Dois</string>
     <string name="title_activity_activity_busca_avancada">Pesquisa avançada</string>
     <string name="aviso">Nome do App:\n Bíblia Sagrada Adonai\n\n
-                         Versão:\n1.09\n\n
+                         Versão:\nXXXX\n\n
                  Tradução:\nNova Versão Internacional (NVI)\n\n
                  Obrigado pelo download !\n\n
                  Caso encontre algum bug ou tenha alguma sugestão para o aplicativo,
@@ -249,5 +249,35 @@
     <string name="action_websearch">Pesquisa</string>
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
     <string name="estatistica">Estatística</string>
+    <string name="msg_permission">O aplicativo precisa dessa permissão para criar o banco de dados.</string>
+    <string name="title_permission">Permissão importante requerida</string>
+    <string name="not_internet_avaliable">Sem conexão</string>
+    <string name="confirmar_alarme_aviso">Aviso de versículo diário programado para:</string>
+    <string name="finished_install">Finalizando instalação</string>
+    <string name="busca_avancada_title">Pesquisa Avançada</string>
+    <string name="velho_testamento">Velho Testamento</string>
+    <string name="novo_testamento">Novo Testamento</string>
+    <string name="toda_b_blia">Toda Bíblia</string>
+    <string name="pesquisar_por">Pesquisar por:</string>
+    <string name="pesquisar">PESQUISAR</string>
+    <string name="pesquisar_somente_em">Pesquisar somente em:</string>
+    <string name="criar_nota">Criar nota</string>
+    <string name="pesquisar_dicionario">Pesquisar:</string>
+    <string name="favorito">Favorito</string>
+    <string name="devocional">Devocional</string>
+    <string name="configura_o">Configuração</string>
+    <string name="t_tulo">Título</string>
+    <string name="anota_o">Anotação</string>
+    <string name="cancelar">CANCELAR</string>
+    <string name="salvar">SALVAR</string>
+    <string name="minuto">Minuto</string>
+    <string name="hora">Hora</string>
+    <string name="hora_redefinida">\"Horário redefinido: \"</string>
+    <string name="cancel">Cancelar</string>
+    <string name="versiculo_text">Tenho-vos dito isto, para que em mim tenhais paz; no mundo tereis aflições, mas tende bom ânimo, eu venci o mundo.\n</string>
+    <string name="capitulo_number">16</string>
+    <string name="versiculo_number">33</string>
+    <string name="redefinir">Redefinir</string>
+    <string name="total_lido">Total lido:</string>
 
 </resources>

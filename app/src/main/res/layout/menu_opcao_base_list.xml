@@ -50,7 +50,7 @@ android:orientation="vertical"
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pesquisar"
+                    android:text="@string/pesquisar"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#000000" />
             </LinearLayout>
@@ -73,7 +73,7 @@ android:orientation="vertical"
                     android:id="@+id/textView37"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Favorito"
+                    android:text="@string/favorito"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#000000" />
             </LinearLayout>
@@ -126,7 +126,7 @@ android:orientation="vertical"
                     android:id="@+id/textView21"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Online"
+                    android:text="@string/devocional"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#000000" />
             </LinearLayout>
@@ -148,7 +148,7 @@ android:orientation="vertical"
                     android:id="@+id/textView22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Configuração"
+                    android:text="@string/configura_o"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#000000" />
             </LinearLayout>

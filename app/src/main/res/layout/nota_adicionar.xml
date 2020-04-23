@@ -23,7 +23,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Título"
+                android:text="@string/t_tulo"
                 android:id="@+id/textView10"
                 android:textSize="22dp"
                 android:textStyle="bold" />
@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Anotação"
+                android:text="@string/anota_o"
                 android:id="@+id/textView12"
                 android:textSize="22dp"
                 android:textStyle="bold" />
@@ -73,7 +73,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:background="@drawable/buttonshape"
-            android:text="SALVAR"
+            android:text="@string/salvar"
             android:textSize="16sp" />
 
         <Button
@@ -85,7 +85,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginLeft="10dp"
             android:background="@drawable/buttonshape"
-            android:text="CANCELAR"
+            android:text="@string/cancelar"
             android:textSize="16sp" />
     </LinearLayout>
 

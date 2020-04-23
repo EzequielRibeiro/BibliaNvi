@@ -42,11 +42,11 @@ public class NotaAdaptador extends ArrayAdapter<Anotacao> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_nota, parent, false);
         }
         // Lookup view for data population
-        TextView textViewAssunto = (TextView) convertView.findViewById(R.id.textViewAssunto );
-        TextView textViewData = (TextView) convertView.findViewById(R.id. textViewData);
-        TextView textViewTexto = (TextView)   convertView.findViewById(R.id.textViewTexto);
-        TextView textViewAnoId = (TextView) convertView.findViewById(R.id.textViewAnoId) ;
-        Button buttonExcluiNota = (Button) convertView.findViewById(R.id.buttonExcluiNota);
+        TextView textViewAssunto = convertView.findViewById(R.id.textViewAssunto);
+        TextView textViewData = convertView.findViewById(R.id.textViewData);
+        TextView textViewTexto = convertView.findViewById(R.id.textViewTexto);
+        TextView textViewAnoId = convertView.findViewById(R.id.textViewAnoId);
+        Button buttonExcluiNota = convertView.findViewById(R.id.buttonExcluiNota);
         buttonExcluiNota.setTag(position);
 
         // Populate the data into the template view using the data object
@@ -76,7 +76,7 @@ public class NotaAdaptador extends ArrayAdapter<Anotacao> {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        Anotacao nota = (Anotacao) getItem(position);
+                        Anotacao nota = getItem(position);
 
                         Toast.makeText(context, "Removido", Toast.LENGTH_SHORT).show();
                         ActivityAnotacao.LISTA.remove(position);
@@ -115,9 +115,9 @@ public class NotaAdaptador extends ArrayAdapter<Anotacao> {
 
         public ItemSuporte(View v) {
 
-            titulo = (TextView) v.findViewById(R.id.textViewAssunto);
-            texto = (TextView) v.findViewById(R.id.textViewTexto);
-            data = (TextView) v.findViewById(R.id.textViewData);
+            titulo = v.findViewById(R.id.textViewAssunto);
+            texto = v.findViewById(R.id.textViewTexto);
+            data = v.findViewById(R.id.textViewData);
 
 
         }

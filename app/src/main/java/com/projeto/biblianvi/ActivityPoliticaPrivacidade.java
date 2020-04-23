@@ -12,7 +12,7 @@ public class ActivityPoliticaPrivacidade extends Activity {
         setContentView(R.layout.activity_politica_privacidade);
 
 
-        WebView webView = (WebView) findViewById(R.id.webViewPoliticaPrivacidade);
+        WebView webView = findViewById(R.id.webViewPoliticaPrivacidade);
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setBuiltInZoomControls(true);

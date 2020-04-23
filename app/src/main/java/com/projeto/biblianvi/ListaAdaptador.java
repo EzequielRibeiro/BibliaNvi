@@ -243,8 +243,8 @@ public class ListaAdaptador extends BaseAdapter {
 
         public ItemSuporteBiblia(View v) {
 
-            textoAberto =      (TextView) v.findViewById(R.id.textoAberto);
-            buttonAbrirLivro = (Button)  v.findViewById(R.id.buttonAbrirLivro);
+            textoAberto = v.findViewById(R.id.textoAberto);
+            buttonAbrirLivro = v.findViewById(R.id.buttonAbrirLivro);
 
 
             if(!fonte.contains("Arial")) {

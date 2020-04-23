@@ -36,13 +36,13 @@ public class Activity_busca_avancada extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity_busca_avancada);
 
-        botaoPesquisar = (Button) findViewById(R.id.buttonPesquisaAvanc);
-        editText = (EditText) findViewById(R.id.editTextAvanc);
-        spinnerLivros = (Spinner) findViewById(R.id.spinnerBuscaAvanc);
-        radioVelho = (RadioButton) findViewById(R.id.radio_velho);
-        radioNovo = (RadioButton) findViewById(R.id.radio_novo);
-        radioBib  = (RadioButton) findViewById(R.id.radio_Biblia);
-        textViewDeveloper = (TextView) findViewById(R.id.textViewDeveloperBusca);
+        botaoPesquisar = findViewById(R.id.buttonPesquisaAvanc);
+        editText = findViewById(R.id.editTextAvanc);
+        spinnerLivros = findViewById(R.id.spinnerBuscaAvanc);
+        radioVelho = findViewById(R.id.radio_velho);
+        radioNovo = findViewById(R.id.radio_novo);
+        radioBib = findViewById(R.id.radio_Biblia);
+        textViewDeveloper = findViewById(R.id.textViewDeveloperBusca);
 
         textViewDeveloper.setText(BuildConfig.VERSION_NAME);
 

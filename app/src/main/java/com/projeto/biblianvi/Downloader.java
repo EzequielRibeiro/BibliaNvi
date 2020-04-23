@@ -41,11 +41,8 @@ public class Downloader {
     }
 
     private boolean isSDCardPresent() {
-        if (Environment.getExternalStorageState().equals(
-                Environment.MEDIA_MOUNTED)) {
-            return true;
-        }
-        return false;
+        return Environment.getExternalStorageState().equals(
+                Environment.MEDIA_MOUNTED);
     }
 
     private void requestDownload(){
@@ -102,7 +99,7 @@ public class Downloader {
                 .setOnProgressListener(new OnProgressListener() {
                     @Override
                     public void onProgress(Progress progress) {
-                        Log.e(TAG, "Bytes: " + Long.toString((progress.currentBytes*100) / progress.totalBytes) + "%");
+                        Log.e(TAG, "Bytes: " + (progress.currentBytes * 100) / progress.totalBytes + "%");
                     }
                 })
                 .start(new OnDownloadListener() {

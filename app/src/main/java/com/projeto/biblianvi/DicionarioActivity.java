@@ -40,9 +40,9 @@ public class DicionarioActivity extends Activity {
         setContentView(R.layout.activity_dicionario);
 
 
-        listView = (ListView) findViewById(R.id.listViewDicionario);
-        frameLayout = (FrameLayout) findViewById(R.id.frameDicionario);
-        textViewDeveloper = (TextView) findViewById(R.id.textViewDeveloperDicio);
+        listView = findViewById(R.id.listViewDicionario);
+        frameLayout = findViewById(R.id.frameDicionario);
+        textViewDeveloper = findViewById(R.id.textViewDeveloperDicio);
 
         textViewDeveloper.setText(BuildConfig.VERSION_NAME);
 
@@ -59,7 +59,7 @@ public class DicionarioActivity extends Activity {
             auto.add(iterator.next().getPalavra());
         }
 
-        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        autoCompleteTextView = findViewById(R.id.autoCompleteTextView);
         autoCompleteTextView.setAdapter(auto);
         autoCompleteTextView.setTextColor(getResources().getColor(android.R.color.black));
         autoCompleteTextView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -119,7 +119,7 @@ public class DicionarioActivity extends Activity {
             }
         });
 
-        LinearLayout layoutAlfaDiciona = (LinearLayout) findViewById(R.id.layoutAlfaDiciona);
+        LinearLayout layoutAlfaDiciona = findViewById(R.id.layoutAlfaDiciona);
         TextView text;
 
 
@@ -142,7 +142,7 @@ public class DicionarioActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-                TextView textViewPalavra = (TextView) view.findViewById(R.id.textViewDicio );
+                TextView textViewPalavra = view.findViewById(R.id.textViewDicio);
                 Log.e("Dicionario",Integer.toString( (Integer) textViewPalavra.getTag()));
 
                 BibliaBancoDadosHelper.Dicionario  dic =

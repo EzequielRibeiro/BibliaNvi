@@ -31,7 +31,7 @@ public class Activity_favorito extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorito);
 
-        listaFavorito = (ListView) findViewById(R.id.listViewFavorito);
+        listaFavorito = findViewById(R.id.listViewFavorito);
 
         bancoDadosHelper = new BibliaBancoDadosHelper(this);
 
@@ -119,8 +119,8 @@ public class Activity_favorito extends Activity {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_custom_list_favorito, parent, false);
             }
             // Lookup view for data population
-            TextView textViewLivro = (TextView) convertView.findViewById(R.id.textViewFavorLivro);
-            TextView textViewVerCap = (TextView) convertView.findViewById(R.id.textViewFavorText);
+            TextView textViewLivro = convertView.findViewById(R.id.textViewFavorLivro);
+            TextView textViewVerCap = convertView.findViewById(R.id.textViewFavorText);
 
             textViewLivro.setText(objBiblia.getBooksName()+" "+objBiblia.getVersesChapter()+':'+objBiblia.getVersesNum());
             textViewVerCap.setText(objBiblia.getVersesText());

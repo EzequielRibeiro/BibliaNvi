@@ -14,8 +14,6 @@ import java.util.ArrayList;
  */
 public class AdapterDicionar extends ArrayAdapter<BibliaBancoDadosHelper.Dicionario> {
 
-
-
     private Context context;
 
 
@@ -34,7 +32,7 @@ public class AdapterDicionar extends ArrayAdapter<BibliaBancoDadosHelper.Diciona
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_dicionario, parent, false);
         }
         // Lookup view for data population
-        TextView textViewPalavra = (TextView) convertView.findViewById(R.id.textViewDicio );
+        TextView textViewPalavra = convertView.findViewById(R.id.textViewDicio);
         textViewPalavra.setText(dic.getPalavra());
         textViewPalavra.setTag(dic.getId());
 

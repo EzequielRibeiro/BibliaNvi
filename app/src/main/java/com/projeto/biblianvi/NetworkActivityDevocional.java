@@ -93,7 +93,7 @@ public class NetworkActivityDevocional extends Activity {
         // Makes Progress bar Visible
         getWindow().setFeatureInt(Window.FEATURE_PROGRESS, Window.PROGRESS_VISIBILITY_ON);
 
-        myWebView = (WebView) findViewById(R.id.webviewxml);
+        myWebView = findViewById(R.id.webviewxml);
 
         esteContext =this.getApplicationContext();
 
@@ -253,7 +253,7 @@ public class NetworkActivityDevocional extends Activity {
      //setContentView(R.layout.tela_devocional);
 
         // The specified network connection is not available. Displays error message.
-        WebView myWebView = (WebView) findViewById(R.id.webviewxml);
+        WebView myWebView = findViewById(R.id.webviewxml);
         myWebView.setBackgroundColor(Color.TRANSPARENT);
         myWebView.loadData(getResources().getString(R.string.connection_error),
                 "text/html; charset=UTF-8", null);
@@ -297,11 +297,11 @@ public class NetworkActivityDevocional extends Activity {
     private void propaganda() {
 
 
-        LinearLayout myLayoutBase = (LinearLayout) findViewById(R.id.linearMobDevo);
+        LinearLayout myLayoutBase = findViewById(R.id.linearMobDevo);
 
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) myLayoutBase.getLayoutParams();
 
-        AdView mAdView = (AdView) findViewById(R.id.adViewDevocio);
+        AdView mAdView = findViewById(R.id.adViewDevocio);
 
         if(isNetworkAvailable() && (mAdView != null)){
 
@@ -386,7 +386,7 @@ public class NetworkActivityDevocional extends Activity {
             CookieManager cookieManager = CookieManager.getInstance();
             cookieManager.setAcceptCookie(true);
             //Get outer container
-            frameLayoutDevoc = (FrameLayout) findViewById(R.id.frameLayoutDevoc);
+            frameLayoutDevoc = findViewById(R.id.frameLayoutDevoc);
 
             myWebView.setBackgroundColor(Color.TRANSPARENT);
             myWebView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);

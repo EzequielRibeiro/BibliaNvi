@@ -24,7 +24,37 @@ public class Biblia {
                    versesText = "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, " +
                            "para que todo aquele que nele crê não pereça, mas tenha a vida eterna";
 
-    int lido;
+    private int lido;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
+    private int totalDeVersosLidos;
+    private int totalDeVersiculos;
+
+    public int getTotalDeVersosLidos() {
+        return totalDeVersosLidos;
+    }
+
+    public void setTotalDeVersosLidos(int totalDeVersosLidos) {
+        this.totalDeVersosLidos = totalDeVersosLidos;
+    }
+
+    public int getTotalDeVersiculos() {
+        return totalDeVersiculos;
+    }
+
+    public void setTotalDeVersiculos(int totalDeVersiculos) {
+        this.totalDeVersiculos = totalDeVersiculos;
+    }
+
+
     private String idVerse;
 
     public Biblia(){
@@ -74,6 +104,10 @@ public class Biblia {
 
         return  lido;
 
+    }
+
+    public String getTestamentName() {
+        return testamentName;
     }
 
     public String getIdVerse(){

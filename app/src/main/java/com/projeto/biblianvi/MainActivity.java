@@ -18,7 +18,6 @@ import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -34,9 +33,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,7 +61,6 @@ import com.google.android.gms.ads.RequestConfiguration;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Collections;
@@ -81,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
     private CharSequence mTitle;
     private String[] menuTitulos;
     private BibliaBancoDadosHelper bibliaHelp;
-    private boolean existeBancoDados = false;
-    private Button buttonNoticias, buttonClock, button_biblia, button_dicionario, button_pesquisar, button_qualificar;
+    private Button button_noticias, buttonClock, button_biblia, button_dicionario, button_pesquisar, button_qualificar;
     private ProgressDialog progressDialog;
     private Intent intent;
     private ListView listView;
@@ -98,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
     static private SharedPreferences.Editor editor;
     static public String DATABASENAME;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,15 +107,13 @@ public class MainActivity extends AppCompatActivity {
 
         PACKAGENAME = getPackageName();
         sharedPrefDataBasePatch = getSharedPreferences("DataBase",Context.MODE_PRIVATE);
-
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         mTitle = mDrawerTitle = getTitle();
         menuTitulos = getResources().getStringArray(array.menu_array);
-        mDrawerLayout = (DrawerLayout) findViewById(id.drawer_layout);
-        mDrawerList = (ListView) findViewById(id.left_drawer);
-        textViewDeveloper = (TextView) findViewById(id.textViewDeveloper);
-
+        mDrawerLayout = findViewById(id.drawer_layout);
+        mDrawerList = findViewById(id.left_drawer);
+        textViewDeveloper = findViewById(id.textViewDeveloper);
         textViewDeveloper.setText(BuildConfig.VERSION_NAME);
         // set a custom shadow that overlays the activity_fragment content when the drawer opens
         mDrawerLayout.setDrawerShadow(drawable.drawer_shadow, GravityCompat.START);
@@ -132,42 +130,22 @@ public class MainActivity extends AppCompatActivity {
                string.drawer_close  /* "close drawer" description for accessibility */
         ) {
            public void onDrawerClosed(View view) {
-             //  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-             //      Objects.requireNonNull(getActionBar()).setTitle(mTitle);
-             //  } else {
-            //        getActionBar().setTitle(mTitle);
-
-            //  }
-             //   invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
-
             public void onDrawerOpened(View drawerView) {
-              //  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-             //       Objects.requireNonNull(getActionBar()).setTitle(mDrawerTitle);
-             //   } else {
-            //        getActionBar().setTitle(mDrawerTitle);
-             //   }
-             //   invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
           mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-
-
-        if (!checarAlarmeExiste())
-            agendarAlarmeVersiculo(9, 0);
-
-
         bibliaHelp = new BibliaBancoDadosHelper(this);
 
-        listView = (ListView) findViewById(id.listView);
-        buttonNoticias = (Button) findViewById(id.buttonNoticias);
-        buttonClock = (Button) findViewById(id.buttonClock);
+        listView = findViewById(id.listView);
+        button_noticias = findViewById(id.buttonNoticias);
+        buttonClock = findViewById(id.buttonClock);
 
-        textViewAssuntoVers = (TextView) findViewById(id.textViewAssuntoVers);
-        textViewVersDia = (TextView) findViewById(id.textViewVersDia);
-        button_qualificar = (Button) findViewById(id.button_qualificar);
-        text_qualificar = (TextView) findViewById(R.id.text_qualificar);
+        textViewAssuntoVers = findViewById(id.textViewAssuntoVers);
+        textViewVersDia = findViewById(id.textViewVersDia);
+        button_qualificar = findViewById(id.button_qualificar);
+        text_qualificar = findViewById(id.text_qualificar);
 
 
         text_qualificar.setOnClickListener(new View.OnClickListener() {
@@ -184,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        buttonNoticias.setOnClickListener(new View.OnClickListener() {
+        button_noticias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -216,9 +194,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button_biblia = (Button) findViewById(id.button_biblia);
-        button_dicionario = (Button) findViewById(id.button_dicionario);
-        button_pesquisar = (Button) findViewById(id.button_pesquisar);
+        button_biblia = findViewById(id.button_biblia);
+        button_dicionario = findViewById(id.button_dicionario);
+        button_pesquisar = findViewById(id.button_pesquisar);
 
         button_biblia.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -232,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
 
         button_dicionario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -317,16 +296,32 @@ public class MainActivity extends AppCompatActivity {
 
     private void downloadDataBaseBible(){
 
-        progressDialog = new ProgressDialog(MainActivity.this);
-        progressDialog.setTitle("Biblia Sagrada Adonai");
-        progressDialog.setMessage(getString(string.progressdialog_msg));
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        progressDialog.setProgressNumberFormat(null);
-        progressDialog.setCancelable(false);
-        progressDialog.setMax(100);
-        // progressDialog.setIndeterminate(true);
-        progressDialog.show();
-        new DownloadTask(getApplicationContext(),progressDialog,sharedPrefDataBasePatch);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            FrameLayout layout = findViewById(id.frame_layout_man);
+            ProgressBar progressBar = new ProgressBar(MainActivity.this, null, android.R.attr.progressBarStyleHorizontal);
+
+            progressBar.setIndeterminate(false);
+            progressBar.setMax(100);
+            progressBar.setVisibility(View.VISIBLE);
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            layout.addView(progressBar, params);
+            new DownloadTask(getApplicationContext(), progressBar, sharedPrefDataBasePatch);
+        } else {
+            progressDialog = new ProgressDialog(MainActivity.this, style.ProgressBarStyle);
+            progressDialog.setTitle(string.app_name);
+            progressDialog.setMessage(getString(string.finished_install));
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            progressDialog.setProgressNumberFormat(null);
+            progressDialog.setCancelable(false);
+            progressDialog.setMax(100);
+            progressDialog.show();
+            new DownloadTask(getApplicationContext(), progressDialog, sharedPrefDataBasePatch);
+
+
+        }
+
+
+
 
     }
 
@@ -342,7 +337,11 @@ public class MainActivity extends AppCompatActivity {
                 folderDest = folderDest + DownloadTask.Utils.DATABASE_NAME_PT;
                 DATABASENAME = DownloadTask.Utils.DATABASE_NAME_PT;
                 break;
-            case "en":
+            case "es":
+                folderDest = folderDest + DownloadTask.Utils.DATABASE_NAME_ES;
+                DATABASENAME = DownloadTask.Utils.DATABASE_NAME_ES;
+                break;
+            default:
                 folderDest = folderDest + DownloadTask.Utils.DATABASE_NAME_EN;
                 DATABASENAME = DownloadTask.Utils.DATABASE_NAME_EN;
                 break;
@@ -388,7 +387,7 @@ public class MainActivity extends AppCompatActivity {
                     if(isNetworkAvailable()){
                         downloadDataBaseBible();}
                     else{
-                        Toast.makeText(getApplicationContext(),"Sem conexão",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), string.not_internet_avaliable, Toast.LENGTH_LONG).show();
                     }
                 }
             } else if (grantResults[0] == PackageManager.PERMISSION_DENIED) {
@@ -396,8 +395,8 @@ public class MainActivity extends AppCompatActivity {
                         || ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                     //Show an explanation to the user *asynchronously*
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setMessage("O aplicativo precisa dessa permissão para criar o banco de dados.")
-                            .setTitle("Permissão importante requerida");
+                    builder.setMessage(string.msg_permission)
+                            .setTitle(string.title_permission);
                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE);
@@ -476,7 +475,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void agendarAlarmeVersiculo(int hora, int min) {
+    int hora = 22;
+    int min = 30;
+
+    private void agendarAlarmeVersiculo() {
+
+        SharedPreferences settings = getSharedPreferences("alarme", Activity.MODE_PRIVATE);
+
+        if (!settings.contains("hora") || !settings.contains("minuto")) {
+            editor = getSharedPreferences("alarme", Activity.MODE_PRIVATE).edit();
+            editor.putInt("hora", hora);
+            editor.putInt("minuto", min);
+            editor.commit();
+        }
+
+        try {
+            hora = settings.getInt("hora", hora);
+            min = settings.getInt("minuto", min);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
 
         Intent it = new Intent(this, VersiculoDiario.class);
         PendingIntent p = PendingIntent.getBroadcast(MainActivity.this, 121312131, it, 0);
@@ -487,11 +505,8 @@ public class MainActivity extends AppCompatActivity {
         c.set(Calendar.HOUR_OF_DAY, hora);
         c.set(Calendar.MINUTE, min);
 
-
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(),
                 AlarmManager.INTERVAL_DAY, p);
-
-
 
     }
 
@@ -501,14 +516,13 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences("alarme", Activity.MODE_PRIVATE);
         final SharedPreferences.Editor editor = settings.edit();
 
-        String h = settings.getString("hora", "09");
-        String m = settings.getString("minuto", "00");
+        int h = settings.getInt("hora", hora);
+        int m = settings.getInt("minuto", min);
 
         AlterarAlarm alterarAlarm;
 
-
         TextView title = new TextView(this);
-        title.setText("Aviso de versículo diário programado para:");
+        title.setText(string.confirmar_alarme_aviso);
         title.setTextColor(getResources().getColor(color.white));
         title.setPadding(5, 5, 5, 5);
         title.setGravity(View.TEXT_ALIGNMENT_CENTER);
@@ -518,7 +532,7 @@ public class MainActivity extends AppCompatActivity {
         final TextView horaText = new TextView(this);
         horaText.setTextColor(getResources().getColor(color.blue));
         // horaText.setBackgroundColor(getResources().getColor(R.color.white));
-        horaText.setText(h);
+        horaText.setText(Integer.toString(h));
         horaText.setTextSize(22);
 
         //altura comprimento
@@ -530,7 +544,7 @@ public class MainActivity extends AppCompatActivity {
         final TextView minText = new TextView(this);
         minText.setTextColor(getResources().getColor(color.blue));
         // horaText.setBackgroundColor(getResources().getColor(R.color.white));
-        minText.setText(m);
+        minText.setText(Integer.toString(m));
         minText.setTextSize(22);
 
         alterarAlarm = new AlterarAlarm(horaText, minText);
@@ -572,7 +586,7 @@ public class MainActivity extends AppCompatActivity {
         params.setMargins(0, 0, 15, 0);
 
         TextView txtHora = new TextView(this);
-        txtHora.setText("Hora");
+        txtHora.setText(string.hora);
         txtHora.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
         txtHora.setTextColor(getResources().getColor(color.white));
@@ -592,7 +606,7 @@ public class MainActivity extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT));
 
         TextView txtMin = new TextView(this);
-        txtMin.setText("Minuto");
+        txtMin.setText(string.minuto);
         txtMin.setTextColor(getResources().getColor(color.white));
         txtMin.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -600,7 +614,6 @@ public class MainActivity extends AppCompatActivity {
         minLayout.addView(minMaisButton);
         minLayout.addView(layoutTextMin);
         minLayout.addView(minMenosButton);
-
 
         LinearLayout content = new LinearLayout(this);
         content.setOrientation(LinearLayout.HORIZONTAL);
@@ -621,25 +634,19 @@ public class MainActivity extends AppCompatActivity {
 
 
         // set dialog message
-        alertDialogBuilder.setPositiveButton("Redefinir", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setPositiveButton(string.redefinir, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
-                editor.putString("hora", horaText.getText().toString());
-                editor.putString("minuto", minText.getText().toString());
+                editor.putInt("hora", Integer.parseInt(horaText.getText().toString()));
+                editor.putInt("minuto", Integer.parseInt(minText.getText().toString()));
                 editor.commit();
 
-                int h = Integer.parseInt(horaText.getText().toString());
-                int m = Integer.parseInt(minText.getText().toString());
-
                 if (checarAlarmeExiste()) {
-
                     cancelarAgendarAlarmeVersiculo();
-
                 }
+                agendarAlarmeVersiculo();
 
-                agendarAlarmeVersiculo(h, m);
-
-                Toast.makeText(MainActivity.this, "Horário redefinido: "
+                Toast.makeText(MainActivity.this, getString(string.hora_redefinida)
                                 + horaText.getText().toString() + ":"
                                 + minText.getText().toString() + "h"
                         , Toast.LENGTH_LONG).show();
@@ -647,7 +654,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        alertDialogBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setNegativeButton(string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -670,9 +677,9 @@ public class MainActivity extends AppCompatActivity {
                 settings = getSharedPreferences("versDiaPreference", Activity.MODE_PRIVATE);
                 textViewAssuntoVers.setText(settings.getString("assunto", "Paz"));
                 textViewAssuntoVers.setMinLines(2);
-                textViewVersDia.setText(Html.fromHtml(settings.getString("versDia", "Tenho-vos dito isto, para que em mim tenhais paz; no mundo tereis aflições, mas tende bom ânimo, eu venci o mundo.\n")
-                        +" (" + settings.getString("livroNome","João") +" "+ settings.getString("capVersDia","16")+":"
-        + settings.getString("verVersDia","33") +")" ) ) ;
+        textViewVersDia.setText(Html.fromHtml(settings.getString("versDia", getString(string.versiculo_text))
+                + " (" + settings.getString("livroNome", getString(string.capitulo_number)) + " " +
+                settings.getString("verVersDia", getString(string.versiculo_number)) + ")"));
 
     }
 
@@ -685,26 +692,37 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onStop() {
         super.onStop();
-
     }
 
     protected void onStart() {
         super.onStart();
-
-
     }
 
     protected void onPostResume() {
         super.onPostResume();
-
-
     }
 
     protected void onResume() {
         super.onResume();
+
+        if (!Locale.getDefault().getLanguage().equals("pt")) {
+            if (button_dicionario != null)
+                button_dicionario.setVisibility(View.GONE);
+            if (button_noticias != null)
+                button_noticias.setVisibility(View.GONE);
+
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) button_biblia.getLayoutParams();
+            params.setMargins(0, 0, 50, 0); //substitute parameters for left, top, right, bottom
+            button_biblia.setLayoutParams(params);
+
+        }
         editor = sharedPrefDataBasePatch.edit();
         editor.putString("language",Locale.getDefault().getLanguage());
         editor.commit();
+
+        if (!checarAlarmeExiste())
+            if (isDataBaseDownload())
+                agendarAlarmeVersiculo();
 
         try {
             if(isDataBaseDownload()) {
@@ -829,7 +847,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 3:
                 if (isNetworkAvailable()) {
-                    intent = new Intent(MainActivity.this, Mensagem.class);
+                    intent = new Intent(MainActivity.this, Devocional.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplication(), "Sem conexão", Toast.LENGTH_LONG).show();
@@ -868,7 +886,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView msg = new TextView(this);
         msg.setTextColor(getResources().getColor(color.white));
-        msg.setText(string.aviso);
+        msg.setText(getString(string.aviso).replace("XXXX", BuildConfig.VERSION_NAME));
         msg.setPadding(10, 10, 10, 10);
         msg.setGravity(View.TEXT_ALIGNMENT_CENTER);
         msg.setTextSize(18);
@@ -962,7 +980,7 @@ public class MainActivity extends AppCompatActivity {
         private void setHora(int h) {
 
             if (h < 10)
-                textViewhora.setText("0" + Integer.toString(h));
+                textViewhora.setText("0" + h);
             else
                 textViewhora.setText(Integer.toString(h));
 
@@ -972,7 +990,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             if (m < 10)
-                textViewMin.setText("0" + Integer.toString(m));
+                textViewMin.setText("0" + m);
             else
                 textViewMin.setText(Integer.toString(m));
 

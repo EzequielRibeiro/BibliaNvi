@@ -32,7 +32,7 @@ public class GraficoGeral extends TabActivity {
         setContentView(R.layout.activity_grafico_geral);
 
 
-        textViewTotalLido  = (TextView) findViewById(R.id.textViewTotalLido);
+        textViewTotalLido = findViewById(R.id.textViewTotalLido);
 
         Resources ressources = getResources();
         TabHost tabHost = getTabHost();
@@ -69,7 +69,7 @@ public class GraficoGeral extends TabActivity {
     protected  void onResume(){
         super.onResume();
 
-        LinearLayout myLayoutBase = (LinearLayout) findViewById(R.id.linearLayoutGrafAd);
+        LinearLayout myLayoutBase = findViewById(R.id.linearLayoutGrafAd);
 
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) myLayoutBase.getLayoutParams();
 
@@ -78,7 +78,7 @@ public class GraficoGeral extends TabActivity {
             params.height = LinearLayout.LayoutParams.WRAP_CONTENT;
 
             //propaganda Google
-            AdView mAdView = (AdView) findViewById(R.id.adViewGraf);
+            AdView mAdView = findViewById(R.id.adViewGraf);
             if(mAdView != null){
                 AdRequest adRequest = new AdRequest.Builder().build();
                 mAdView.loadAd(adRequest);}

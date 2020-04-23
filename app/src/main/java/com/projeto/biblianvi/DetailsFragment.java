@@ -113,7 +113,7 @@ public class DetailsFragment extends Fragment {
         Biblia biblia = new Biblia();
         biblia.setBooksName(livro[mIndex]);
 
-        gridview = (GridView)  v.findViewById(R.id.gridview);
+        gridview = v.findViewById(R.id.gridview);
 		gridview.setAdapter(new CapituloGridView(getActivity(),capitulos,biblia));
 
 		/*

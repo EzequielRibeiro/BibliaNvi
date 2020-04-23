@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pesquisar: "
+            android:text="@string/pesquisar_dicionario"
             android:id="@+id/textView14"
             android:textSize="18dp"
             android:layout_marginLeft="5dp" />

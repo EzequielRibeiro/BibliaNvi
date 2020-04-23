@@ -2,6 +2,7 @@ package com.projeto.biblianvi;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Environment;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -9,6 +10,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
@@ -29,20 +31,38 @@ public class DownloadTask {
     private String downloadUrl = "https://github.com/EzequielRibeiro/link/raw/master/XXX",
             downloadFileName;
     private String packageName;
-    private String language;
-
+    private SharedPreferences sharedPref;
+    private ProgressBar progressBar;
+    private ProgressDialog progressDialog;
 
     public DownloadTask(Context context, ProgressDialog progressDialog, SharedPreferences sharedPref) {
         packageName = context.getPackageName();
-        this.language = sharedPref.getString("language","en");
+        this.sharedPref = sharedPref;
+        this.progressDialog = progressDialog;
+        runTask(sharedPref.getString("language", "en"));
+    }
 
-        switch (language)
-        {
+
+    public DownloadTask(Context context, ProgressBar progressBar, SharedPreferences sharedPref) {
+        packageName = context.getPackageName();
+        this.sharedPref = sharedPref;
+        this.progressBar = progressBar;
+        runTask(sharedPref.getString("language", "en"));
+
+    }
+
+    private void runTask(String language) {
+
+        switch (language) {
             case "pt":
                 downloadUrl = downloadUrl.replace("XXX", Utils.NVI_PT_BR_ZIP);
                 downloadFileName = Utils.NVI_PT_BR_ZIP;
                 break;
-            case "en":
+            case "es":
+                downloadUrl = downloadUrl.replace("XXX", Utils.SSE_ES_ZIP);
+                downloadFileName = Utils.SSE_ES_ZIP;
+                break;
+            default:
                 downloadUrl = downloadUrl.replace("XXX", Utils.NVI_EN_ZIP);
                 downloadFileName = Utils.NVI_EN_ZIP;
                 break;
@@ -52,8 +72,13 @@ public class DownloadTask {
         Log.e(TAG, downloadFileName);
         Log.e(TAG, downloadUrl);
 
-        //Start Downloading Task
-        new DownloadingTask(progressDialog,sharedPref).execute(packageName);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            new DownloadingTask(progressBar, sharedPref).execute(packageName);
+        } else {
+            new DownloadingTask(progressDialog, sharedPref).execute(packageName);
+        }
+
+
     }
 
     private class DownloadingTask extends AsyncTask<String, Context, Void> {
@@ -62,7 +87,14 @@ public class DownloadTask {
         File outputFile = null;
         String packageName;
         ProgressDialog progressDialog;
-         SharedPreferences sharedPref;
+        ProgressBar progressBar;
+        SharedPreferences sharedPref;
+
+        public DownloadingTask(ProgressBar progressBar, SharedPreferences sharedPref) {
+            this.sharedPref = sharedPref;
+            this.progressBar = progressBar;
+
+        }
 
         public DownloadingTask(ProgressDialog progressDialog ,SharedPreferences sharedPref){
 
@@ -77,8 +109,6 @@ public class DownloadTask {
 
         @Override
         protected void onPostExecute(Void result) {
-
-            progressDialog.dismiss();
 
             try {
                 if (outputFile != null) {
@@ -189,7 +219,7 @@ public class DownloadTask {
 
                    throw new IOException("Failed to download file: " + response);
                 }else{
-                    Log.e(TAG, "input:" + Long.toString(response.body().contentLength()));
+                    Log.e(TAG, "input:" + response.body().contentLength());
                     Log.e(TAG, "response msg: " + response.message());
 
                 }
@@ -198,7 +228,7 @@ public class DownloadTask {
 
                 outputStream = new FileOutputStream(outputFile);
                 int totalCount = (int) response.body().contentLength();
-                Log.e(TAG,"totalCount: "+ Integer.toString(totalCount));
+                Log.e(TAG, "totalCount: " + totalCount);
                 byte[] buffer = new byte[2 * 1024];
                 int len;
                 int readLen = 0;
@@ -206,12 +236,16 @@ public class DownloadTask {
                     outputStream.write(buffer, 0, len);
                     readLen += len;
                         try {
-                           progressDialog.setProgress((readLen * 100) / totalCount);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                progressBar.setProgress((readLen * 100) / totalCount, true);
+                            } else {
+                                progressDialog.setProgress((readLen * 100) / totalCount);
+                            }
                         }catch (ArithmeticException a){
                             Log.e(TAG,a.getMessage());
                         }
                 }
-                progressDialog.setProgress(0);
+
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -233,7 +267,11 @@ public class DownloadTask {
 
             if (outputFile != null) {
                 Log.e(TAG, "Unzip Started: " + outputFile.getAbsolutePath());
-                new UnZip(outputFile.getAbsolutePath(),packageName,sharedPref,progressDialog);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    new UnZip(outputFile.getAbsolutePath(), packageName, sharedPref, progressBar);
+                } else {
+                    new UnZip(outputFile.getAbsolutePath(), packageName, sharedPref, progressDialog);
+                }
 
             }
 
@@ -250,6 +288,8 @@ public class DownloadTask {
         public static final String DATABASE_NAME_PT = "nvi_pt_br.db3";
         public static final String NVI_EN_ZIP = "nvi_en.zip";
         public static final String DATABASE_NAME_EN = "nvi_en.db3";
+        public static final String SSE_ES_ZIP = "sse_es.zip";
+        public static final String DATABASE_NAME_ES = "sse_es.db3";
         public static final String DOWNLOAD_FOLDER_NAME = "Download";
 
 
@@ -258,11 +298,8 @@ public class DownloadTask {
     public static class CheckForSDCard {
         //Check If SD Card is present or not method
         public boolean isSDCardPresent() {
-            if (Environment.getExternalStorageState().equals(
-                    Environment.MEDIA_MOUNTED)) {
-                return true;
-            }
-            return false;
+            return Environment.getExternalStorageState().equals(
+                    Environment.MEDIA_MOUNTED);
         }
     }
 

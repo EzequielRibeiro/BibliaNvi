@@ -18,7 +18,7 @@ public class ActivityBrowser extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browser);
 
-        myWebView = (WebView) findViewById(R.id.webViewBrowser);
+        myWebView = findViewById(R.id.webViewBrowser);
 
         webView();
 

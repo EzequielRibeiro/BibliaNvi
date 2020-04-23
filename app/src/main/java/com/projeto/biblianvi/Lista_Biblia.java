@@ -144,21 +144,21 @@ public class Lista_Biblia extends Activity {
 
         bibliaHelp = new BibliaBancoDadosHelper(getApplicationContext());
 
-        textViewComp = (TextView) findViewById(R.id.textViewComp);
-        textViewCap = (TextView) findViewById(R.id.textViewCapit);
-        textViewLivro = (TextView) findViewById(R.id.textViewLivro);
-        buttonMenuOpcao = (Button) findViewById(R.id.buttonMenuOpcao);
-        listView = (ListView) findViewById(R.id.listView);
-        buttonCompartilhar = (Button) findViewById(R.id.buttonMenuShare);
+        textViewComp = findViewById(R.id.textViewComp);
+        textViewCap = findViewById(R.id.textViewCapit);
+        textViewLivro = findViewById(R.id.textViewLivro);
+        buttonMenuOpcao = findViewById(R.id.buttonMenuOpcao);
+        listView = findViewById(R.id.listView);
+        buttonCompartilhar = findViewById(R.id.buttonMenuShare);
 
-        buttonSetaMenu = (Button) findViewById(R.id.buttonSetaMenu);
-        linearLayoutLivCap = (LinearLayout) findViewById(R.id.linearLayoutLivCap2);
-        linearLayoutShareLike = (LinearLayout) findViewById(R.id.linearLayoutShareLike);
-        buttonRetroceder = (Button) findViewById(R.id.buttonRetroceder);
-        buttonAvancar = (Button) findViewById(R.id.buttonAvancar);
-        buttonFullScreen = (Button) findViewById(R.id.buttonFullScreen);
-        buttonNota = (Button) findViewById(R.id.buttonNota);
-        buttonSound = (Button) findViewById(R.id.buttonSound);
+        buttonSetaMenu = findViewById(R.id.buttonSetaMenu);
+        linearLayoutLivCap = findViewById(R.id.linearLayoutLivCap2);
+        linearLayoutShareLike = findViewById(R.id.linearLayoutShareLike);
+        buttonRetroceder = findViewById(R.id.buttonRetroceder);
+        buttonAvancar = findViewById(R.id.buttonAvancar);
+        buttonFullScreen = findViewById(R.id.buttonFullScreen);
+        buttonNota = findViewById(R.id.buttonNota);
+        buttonSound = findViewById(R.id.buttonSound);
 
         AvancarCap av = new AvancarCap();
         buttonAvancar.setOnClickListener(av);
@@ -409,8 +409,8 @@ public class Lista_Biblia extends Activity {
 
         mTitle = mDrawerTitle = getTitle();
         menuTitulos = getResources().getStringArray(R.array.menu_array);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_list);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer_list);
+        mDrawerLayout = findViewById(R.id.drawer_layout_list);
+        mDrawerList = findViewById(R.id.left_drawer_list);
 
         // set a custom shadow that overlays the activity_fragment content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
@@ -503,9 +503,9 @@ public class Lista_Biblia extends Activity {
         pw.setOutsideTouchable(true);
         pw.setTouchable(true);
 
-        Button favo = (Button) layout.findViewById(R.id.buttonPopFavorito);
-        Button com = (Button) layout.findViewById(R.id.buttonPopCompartilhar);
-        Button clo = (Button) layout.findViewById(R.id.buttonPopClose);
+        Button favo = layout.findViewById(R.id.buttonPopFavorito);
+        Button com = layout.findViewById(R.id.buttonPopCompartilhar);
+        Button clo = layout.findViewById(R.id.buttonPopClose);
 
 
         final Biblia bi = (Biblia) listView.getAdapter().getItem(i);
@@ -569,7 +569,7 @@ public class Lista_Biblia extends Activity {
 
         final View addView = layoutInflater.inflate(R.layout.menu_opcao_topo_list, null);
 
-        LinearLayout myLayoutBusca = (LinearLayout) findViewById(R.id.linearLayoutBusca);
+        LinearLayout myLayoutBusca = findViewById(R.id.linearLayoutBusca);
 
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) myLayoutBusca.getLayoutParams();
 
@@ -586,12 +586,12 @@ public class Lista_Biblia extends Activity {
 
             criarMenuSuspenso = false;
 
-            spinnerLivro = (Spinner) findViewById(R.id.spinner4);
-            spinnerCap = (Spinner) findViewById(R.id.spinner5);
-            spinnerVers = (Spinner) findViewById(R.id.spinner6);
-            buttonChamarLivro = (Button) findViewById(R.id.buttonChamarLivro);
-            buttonBuscaList = (Button) findViewById(R.id.buttonBuscarList);
-            editTextPesquisarList = (EditText) findViewById(R.id.editTextPesquisarList);
+            spinnerLivro = findViewById(R.id.spinner4);
+            spinnerCap = findViewById(R.id.spinner5);
+            spinnerVers = findViewById(R.id.spinner6);
+            buttonChamarLivro = findViewById(R.id.buttonChamarLivro);
+            buttonBuscaList = findViewById(R.id.buttonBuscarList);
+            editTextPesquisarList = findViewById(R.id.editTextPesquisarList);
 
             editTextPesquisarList.setHint("Digite uma palavra");
 
@@ -721,7 +721,7 @@ public class Lista_Biblia extends Activity {
 
     private void inicializarSeekbar() {
 
-        SeekBar seekBarBrilho = (SeekBar) findViewById(R.id.seekBarBrilho);
+        SeekBar seekBarBrilho = findViewById(R.id.seekBarBrilho);
 
         SharedPreferences settings = getSharedPreferences("seekbar", Activity.MODE_PRIVATE);
 
@@ -747,7 +747,7 @@ public class Lista_Biblia extends Activity {
 
         final View addView = layoutInflaterBase.inflate(R.layout.menu_opcao_base_list, null);
 
-        LinearLayout myLayoutBase = (LinearLayout) findViewById(R.id.linearLayoutListBase);
+        LinearLayout myLayoutBase = findViewById(R.id.linearLayoutListBase);
 
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) myLayoutBase.getLayoutParams();
 
@@ -760,11 +760,11 @@ public class Lista_Biblia extends Activity {
 
             myLayoutBase.setLayoutParams(params);
 
-            ImageView lupa = (ImageView) findViewById(R.id.imageViewLupaMain);
-            ImageView conf = (ImageView) findViewById(R.id.imageViewConfMain);
-            ImageView feed = (ImageView) findViewById(R.id.imageViewFeeMain);
-            ImageView graf = (ImageView) findViewById(R.id.imageViewGrafMain);
-            ImageView fav =  (ImageView) findViewById(R.id.imageViewFavorito);
+            ImageView lupa = findViewById(R.id.imageViewLupaMain);
+            ImageView conf = findViewById(R.id.imageViewConfMain);
+            ImageView feed = findViewById(R.id.imageViewFeeMain);
+            ImageView graf = findViewById(R.id.imageViewGrafMain);
+            ImageView fav = findViewById(R.id.imageViewFavorito);
 
             inicializarSeekbar();
 
@@ -791,7 +791,7 @@ public class Lista_Biblia extends Activity {
             feed.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent in = new Intent(getApplicationContext(), Mensagem.class);
+                    Intent in = new Intent(getApplicationContext(), Devocional.class);
                     startActivity(in);
                 }
             });
@@ -986,10 +986,10 @@ public class Lista_Biblia extends Activity {
 
         modoNoturno = sharedPrefs.getBoolean("noturnoPref", false);
 
-        LinearLayout linearLayoutShareLike = (LinearLayout) findViewById(R.id.linearLayoutShareLike);
-        LinearLayout linearLayoutLivCap = (LinearLayout) findViewById(R.id.linearLayoutLivCap);
-        TextView textLivro = (TextView) findViewById(R.id.textViewLivro);
-        TextView textCap = (TextView) findViewById(R.id.textViewCapit);
+        LinearLayout linearLayoutShareLike = findViewById(R.id.linearLayoutShareLike);
+        LinearLayout linearLayoutLivCap = findViewById(R.id.linearLayoutLivCap);
+        TextView textLivro = findViewById(R.id.textViewLivro);
+        TextView textCap = findViewById(R.id.textViewCapit);
 
 
         if (modoNoturno) {
@@ -1377,7 +1377,7 @@ public class Lista_Biblia extends Activity {
             case 3:
 
                 if(isNetworkAvailable()) {
-                    intent = new Intent(getApplication(), Mensagem.class);
+                    intent = new Intent(getApplication(), Devocional.class);
                     startActivity(intent);
                 }else{
 
