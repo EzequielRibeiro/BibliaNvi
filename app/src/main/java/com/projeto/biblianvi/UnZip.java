@@ -96,6 +96,12 @@ public class UnZip {
             zis.closeEntry();
             zis.close();
             fis.close();
+            File fileZip = new File(zipFilePath);
+            if (fileZip.exists()) {
+                fileZip.delete();
+            }
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }

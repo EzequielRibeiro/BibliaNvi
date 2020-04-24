@@ -38,17 +38,16 @@
     -->
 
     <CheckBoxPreference
-        android:title="Marcar versículos"
-        android:defaultValue="false"
-        android:summary="Os versículos lidos serão exibidos com outra cor de fundo."
+        android:defaultValue="true"
         android:key="mostrarVersiculosLidos"
+        android:summary="@string/marcar_versiculos"
         android:textColor="@color/dark"
 
-        />
+        android:title="@string/marcar_versiculo_title" />
 
     <ListPreference
-        android:title="Fonte do texto"
-        android:summary="Altera a fonte do texto"
+        android:title="@string/fonte_texto_title"
+        android:summary="@string/fonte_text"
         android:key="fonteEstilo"
         android:defaultValue= "@string/fontePadrao"
         android:entries="@array/listFonteEstilo"
@@ -57,8 +56,8 @@
         />
 
     <ListPreference
-        android:title="Tamanho da fonte"
-        android:summary="Escolha o tamanho do texto"
+        android:title="@string/fonte_size_title"
+        android:summary="@string/fonte_text_sumary"
         android:key="fontePref"
         android:defaultValue="18"
         android:entries="@array/listFonteSize"
@@ -66,25 +65,24 @@
         android:textColor="@color/dark"
         />
     <CheckBoxPreference
-        android:title="Modo noturno"
-        android:defaultValue="false"
-        android:summary="Exibirá o fundo de tela escuro"
+        android:defaultValue="true"
         android:key="noturnoPref"
+        android:summary="@string/modo_noturno_summary"
         android:textColor="@color/dark"
-        />
+        android:title="@string/modo_noturno_title" />
 
     <CheckBoxPreference
-        android:title="Tela ativa"
+        android:title="@string/tela_ativa_title"
         android:defaultValue="false"
-        android:summary="Não escurecer a tela quando estiver lendo"
+        android:summary="@string/tela_ativa_summary"
         android:key="telaPref"
         android:textColor="@color/dark"
         />
 
 
     <Preference
-        android:dialogTitle="Zerar estatística"
-        android:title="Reiniciar estatística"
+        android:dialogTitle="@string/limpar_estatistica_title"
+        android:title="@string/limpar_estatistica_summary"
         android:key="buttonLimparLidos"
         android:summary="Versículos marcados como lídos serão desmarcados"
         android:textColor="@color/dark"

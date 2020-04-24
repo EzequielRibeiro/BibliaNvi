@@ -1,5 +1,6 @@
 package com.projeto.biblianvi;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -11,6 +12,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.media.AudioManager;
@@ -43,6 +45,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -51,6 +54,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -98,50 +103,38 @@ public class Lista_Biblia extends Activity {
     private Button buttonFullScreen;
     private EditText editTextPesquisarList;
     private Intent intent;
-    private SharedPreferences sharedPrefs;
     private boolean modoNoturno;
     private LinearLayout linearLayoutLivCap;
     private LinearLayout linearLayoutShareLike;
     private TextView textViewComp;
     private Button buttonNota;
     private Button buttonSound;
-    private SharedPreferences spSound;
-    private SharedPreferences.Editor editorSound;
+    private SharedPreferences sharedPrefs;
     private AudioManager amanager;
     private boolean keepScreenOn = false;
-    private String seekValor = "seekValor";
+    final static private String SEEK_VALOR = "seekValor";
     private PopupWindow  pw;
     private FirebaseAnalytics  mFirebaseAnalytics;
+    private int REQUEST_STORAGE;
+    private ProgressBar progressBar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         requestWindowFeature(Window.FEATURE_ACTION_BAR);
-
-        SharedPreferences sp = getSharedPreferences("fullscreen", Activity.MODE_PRIVATE);
-
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-
-        /*
-        settingsTela = getSharedPreferences("telaBrilho", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = settingsTela.edit();
-
-        editor.putInt(telaBrilhoAtual,getScreenBrightness());
-        editor.commit();
-
-        */
+        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
 
-        if (sp.getBoolean("fullscreen", false)) {
+        if (getSharedPreferences("fullscreen", Activity.MODE_PRIVATE).getBoolean("fullscreen", false)) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         }
 
-        setContentView(R.layout.activity_list_view);
 
+        setContentView(R.layout.activity_list_view);
         bibliaHelp = new BibliaBancoDadosHelper(getApplicationContext());
 
         textViewComp = findViewById(R.id.textViewComp);
@@ -159,11 +152,13 @@ public class Lista_Biblia extends Activity {
         buttonFullScreen = findViewById(R.id.buttonFullScreen);
         buttonNota = findViewById(R.id.buttonNota);
         buttonSound = findViewById(R.id.buttonSound);
-
+        progressBar = findViewById(R.id.progressBarBibliaActivity);
+        progressBar.setProgress(0);
+        progressBar.setIndeterminate(false);
+        progressBar.setMax(100);
         AvancarCap av = new AvancarCap();
         buttonAvancar.setOnClickListener(av);
         buttonRetroceder.setOnClickListener(av);
-
 
         newString = new String[6];
 
@@ -181,9 +176,9 @@ public class Lista_Biblia extends Activity {
             buscarTestamento = newString[5];
 
             if (buscar) {
-              LinearLayout lin = findViewById(R.id.linearLayoutLivCap);
-              lin.setVisibility(View.GONE);
-            try {
+                LinearLayout lin = findViewById(R.id.linearLayoutLivCap);
+                lin.setVisibility(View.GONE);
+                try {
                     Class.forName("android.os.AsyncTask");
                     pesquisarBanco = new PesquisarBanco(getParent());
                     pesquisarBanco.execute("");
@@ -221,11 +216,21 @@ public class Lista_Biblia extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                final Biblia b = (Biblia) parent.getItemAtPosition(position);
+
                 if(!criarMenuSuspenso)
-                   menuSuspenso();
+                    menuSuspenso();
 
                 if(!criarMenuBase)
                     menuListBase();
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        setProgressBar(b.getIdBook());
+                    }
+                }).start();
+
 
             }
         });
@@ -254,23 +259,19 @@ public class Lista_Biblia extends Activity {
 
                 } else {
 
-                    Toast.makeText(getBaseContext(), "Nenhum versículo foi selecionado !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), R.string.versiculo_selecionado_share, Toast.LENGTH_LONG).show();
 
                 }
-           }
+            }
         });
 
         buttonSetaMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 menuListBase();
-
-
             }
 
         });
-
 
         buttonFullScreen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -329,83 +330,32 @@ public class Lista_Biblia extends Activity {
 
         boolean visivel = true;
         linearLayoutLivCap.setOnClickListener(new LayoutTopo(visivel));
-
-
-        spSound = getSharedPreferences("sound", Activity.MODE_PRIVATE);
-        editorSound = spSound.edit();
         amanager = (AudioManager) getSystemService(AUDIO_SERVICE);
 
         buttonSound.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
-                boolean on = spSound.getBoolean("sound", false);
+                requestPermission();
+                boolean on = getSharedPreferences("sound", Activity.MODE_PRIVATE).getBoolean("sound", false);
 
                 if (!on) {
 
-                    // Log.i("onToggleIsChecked", "ToggleClick Is On");
-                    //turn ringer silent
-                    // amanager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
-                    // Log.i("RINGER_MODE_SILENT", "Set to true");
-
-                    //turn off sound, disable notifications
-                    // amanager.setStreamMute(AudioManager.STREAM_SYSTEM, true);
-                    // Log.i("STREAM_SYSTEM", "Set to true");
-                    //notifications
                     amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, true);
-                    Log.i("STREAM_NOTIFICATION", "Set to true");
-                    //alarm
-                    // amanager.setStreamMute(AudioManager.STREAM_ALARM, true);
-                    // Log.i("STREAM_ALARM", "Set to true");
-                    //ringer
-                    // amanager.setStreamMute(AudioManager.STREAM_RING, true);
-                    // Log.i("STREAM_RING", "Set to true");
-                    //media
-                    // amanager.setStreamMute(AudioManager.STREAM_MUSIC, true);
-                    // Log.i("STREAM_MUSIC", "Set to true");
-
-                    editorSound.putBoolean("sound", true);
-
+                    getSharedPreferences("sound", Activity.MODE_PRIVATE).edit().putBoolean("sound", true).commit();
                     buttonSound.setBackgroundResource(R.mipmap.sound_off);
-
                     Toast.makeText(Lista_Biblia.this, "Som de notificações desativado", Toast.LENGTH_LONG).show();
 
                 } else {
 
-                    //turn ringer silent
-                    //  amanager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-                    //  Log.i(".RINGER_MODE_NORMAL", "Set to true");
-
-                    // turn on sound, enable notifications
-                    //  amanager.setStreamMute(AudioManager.STREAM_SYSTEM, false);
-                    //  Log.i("STREAM_SYSTEM", "Set to False");
-                    //notifications
                     amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, false);
-                    Log.i("STREAM_NOTIFICATION", "Set to False");
-                    //alarm
-                    //  amanager.setStreamMute(AudioManager.STREAM_ALARM, false);
-                    //  Log.i("STREAM_ALARM", "Set to False");
-                    //ringer
-                    //  amanager.setStreamMute(AudioManager.STREAM_RING, false);
-                    //  Log.i("STREAM_RING", "Set to False");
-                    //media
-                    //  amanager.setStreamMute(AudioManager.STREAM_MUSIC, false);
-                    //  Log.i("STREAM_MUSIC", "Set to False");
-
-                    editorSound.putBoolean("sound", false);
-
+                    getSharedPreferences("sound", Activity.MODE_PRIVATE).edit().putBoolean("sound", false).commit();
                     buttonSound.setBackgroundResource(R.mipmap.sound_on);
-
                     Toast.makeText(Lista_Biblia.this, "Som de notificações ativado", Toast.LENGTH_LONG).show();
 
                 }
-
-                editorSound.commit();
             }
         });
-
-
-
 
         mTitle = mDrawerTitle = getTitle();
         menuTitulos = getResources().getStringArray(R.array.menu_array);
@@ -418,9 +368,6 @@ public class Lista_Biblia extends Activity {
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, menuTitulos));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-
-        // enable ActionBar app icon to behave as action to toggle nav drawer
-
 
         if(getActionBar() != null)
             getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -456,7 +403,7 @@ public class Lista_Biblia extends Activity {
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
-      //  mDrawerLayout.setDrawerListener(mDrawerToggle);
+        //  mDrawerLayout.setDrawerListener(mDrawerToggle);
 
 
         // Create the InterstitialAd and set the adUnitId.
@@ -486,8 +433,28 @@ public class Lista_Biblia extends Activity {
         });
 
 
+        modoNoturno();
 
 
+    }
+
+    private void setProgressBar(int idBook) {
+        BibliaBancoDadosHelper db = new BibliaBancoDadosHelper(getApplicationContext());
+        Biblia b = db.getSumVersosReadByBooks(idBook);
+        int totalVersiculos = b.getTotalDeVersiculos();
+        int totalDeLidos = b.getTotalDeVersosLidos();
+        int value = (totalDeLidos * 100) / totalVersiculos;
+
+        progressBar.setProgress(value);
+
+    }
+
+    private void requestPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(Lista_Biblia.this, Manifest.permission.ACCESS_NOTIFICATION_POLICY) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(Lista_Biblia.this, new String[]{Manifest.permission.ACCESS_NOTIFICATION_POLICY}, REQUEST_STORAGE);
+            }
+        }
     }
 
     private void callPopup(int i) {
@@ -680,9 +647,8 @@ public class Lista_Biblia extends Activity {
             View myView = findViewById(R.id.hiddenLayoutTopo);
 
             if (myView != null) {
-                ViewGroup parentTopo = (ViewGroup) myView.getParent();
-                parentTopo.removeView(myView);
-
+                // ViewGroup parentTopo = (ViewGroup) myView.getParent();
+                //   parentTopo.removeView(myView);
                 params.height = 0;
                 myLayoutBusca.setLayoutParams(params);
             }
@@ -721,21 +687,25 @@ public class Lista_Biblia extends Activity {
 
     private void inicializarSeekbar() {
 
-        SeekBar seekBarBrilho = findViewById(R.id.seekBarBrilho);
-
-        SharedPreferences settings = getSharedPreferences("seekbar", Activity.MODE_PRIVATE);
-
-
         if (modoNoturno) {
 
+            SeekBar seekBarBrilho = findViewById(R.id.seekBarBrilho);
+            SharedPreferences settings = getSharedPreferences("seekbar", Activity.MODE_PRIVATE);
+
             seekBarBrilho.setMax(100);
-            seekBarBrilho.setProgress(45);
             seekBarBrilho.setVisibility(View.VISIBLE);
             seekBarBrilho.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.MATCH_PARENT));
-            seekBarBrilho.setProgress(settings.getInt(seekValor, 1));
             seekBarBrilho.setKeyProgressIncrement(10);
             seekBarBrilho.setOnSeekBarChangeListener(new OnSeekBar());
+
+
+            int brightnessSaved = settings.getInt(SEEK_VALOR, BRIGHTNESS_FULL);
+            int total = (brightnessSaved * 100) / BRIGHTNESS_FULL;
+
+            seekBarBrilho.setProgress(total);
+
+
         }
 
     }
@@ -791,8 +761,7 @@ public class Lista_Biblia extends Activity {
             feed.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent in = new Intent(getApplicationContext(), Devocional.class);
-                    startActivity(in);
+                    MainActivity.openNoticias(getApplicationContext());
                 }
             });
 
@@ -984,7 +953,7 @@ public class Lista_Biblia extends Activity {
 
     private void modoNoturno() {
 
-        modoNoturno = sharedPrefs.getBoolean("noturnoPref", false);
+        modoNoturno = sharedPrefs.getBoolean("noturnoPref", true);
 
         LinearLayout linearLayoutShareLike = findViewById(R.id.linearLayoutShareLike);
         LinearLayout linearLayoutLivCap = findViewById(R.id.linearLayoutLivCap);
@@ -1005,7 +974,7 @@ public class Lista_Biblia extends Activity {
 
             SharedPreferences settings = getSharedPreferences("seekbar", Activity.MODE_PRIVATE);
 
-            alterarBrilhoTela(settings.getInt(seekValor, 45));
+            alterarBrilhoTela(settings.getInt(SEEK_VALOR, getScreenBrightness(getApplicationContext())));
 
 
         } else {
@@ -1019,9 +988,11 @@ public class Lista_Biblia extends Activity {
             textLivro.setTextColor(Color.rgb(0, 0, 0));
             textCap.setTextColor(Color.rgb(0, 0, 0));
 
-            alterarBrilhoTela(getScreenBrightness());
+            alterarBrilhoTela(getScreenBrightness(getApplicationContext()));
 
         }
+        if (listaAdaptador != null)
+            listaAdaptador.notifyDataSetChanged();
 
     }
 
@@ -1033,7 +1004,6 @@ public class Lista_Biblia extends Activity {
 
 
     }
-
 
     private void showInterstitial() {
         // Show the ad if it's ready. Otherwise toast and restart the game.
@@ -1053,8 +1023,6 @@ public class Lista_Biblia extends Activity {
         }
 
     }
-
-
 
     private void compartilharRedeSocial(StringBuffer stringBuffer) {
 
@@ -1118,43 +1086,38 @@ public class Lista_Biblia extends Activity {
 
             super.onBackPressed();
             amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, false);
-            editorSound.putBoolean("sound", false);
+        getSharedPreferences("sound", Activity.MODE_PRIVATE).edit().putBoolean("sound", false).commit();
 
             return;
 
     }
 
     public void onPause(){
-
-
         super.onPause();
-
-
     }
 
     public void onStop() {
         super.onStop();
-
         amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, false);
-        editorSound.putBoolean("sound", false);
+        getSharedPreferences("sound", Activity.MODE_PRIVATE).edit().putBoolean("sound", false).commit();
         buttonSound.setBackgroundResource(R.mipmap.sound_on);
-
         showInterstitial();
-
     }
 
     protected void onResume() {
         super.onResume();
 
+        Biblia b = (Biblia) listView.getItemAtPosition(0);
+        setProgressBar(b.getIdBook());
+
         textViewComp.setText(Integer.toString(new BibliaBancoDadosHelper(Lista_Biblia.this).getQuantCompartilhar()));
-        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
         modoNoturno();
 
         //SharedPreferences sp = getSharedPreferences("telaPref", Activity.MODE_PRIVATE);
 
         keepScreenOn = sharedPrefs.getBoolean("telaPref", false);
 
-        Log.e("tela: ", Boolean.toString(keepScreenOn));
         if (keepScreenOn)
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         else
@@ -1162,39 +1125,29 @@ public class Lista_Biblia extends Activity {
 
 
         requestNewInterstitial();
-
-
         SharedPreferences sp = getSharedPreferences("altPref", Activity.MODE_PRIVATE);
 
-        Log.e("tela1",Boolean.toString(sp.getBoolean("alteracao", false)));
-
         if(sp.getBoolean("alteracao", false)) {
-
 
             SharedPreferences.Editor editor = sp.edit();
             editor.putBoolean("alteracao", false);
             editor.commit();
-
 
             Intent in = getIntent();
             finish();
             startActivity(in);
 
         }
-
-
-
     }
 
     protected void onDestroy() {
         super.onDestroy();
 
         amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, false);
-        editorSound.putBoolean("sound", false);
-
+        getSharedPreferences("sound", Activity.MODE_PRIVATE).edit().putBoolean("sound", false).commit();
+        alterarBrilhoTela(getSharedPreferences("brilhoAtual", Activity.MODE_PRIVATE).getInt("brilhoAtualValor", 255));
 
         if (bibliaHelp != null) {
-
             bibliaHelp.close();
         }
 
@@ -1369,15 +1322,13 @@ public class Lista_Biblia extends Activity {
 
                 break;
             case 2:
-
-                intent = new Intent(getApplication(),DicionarioActivity.class);
-                startActivity(intent);
+                MainActivity.opcaoDicionario(getApplicationContext());
                 break;
 
             case 3:
 
                 if(isNetworkAvailable()) {
-                    intent = new Intent(getApplication(), Devocional.class);
+                    intent = new Intent(getApplication(), Sermoes.class);
                     startActivity(intent);
                 }else{
 
@@ -1482,13 +1433,14 @@ public class Lista_Biblia extends Activity {
     }
 
     // Get the screen current brightness
-    private int getScreenBrightness() {
+    static public int getScreenBrightness(Context context) {
 
         float brightnessValue = Settings.System.getInt(
-                getApplicationContext().getContentResolver(),
+                context.getApplicationContext().getContentResolver(),
                 Settings.System.SCREEN_BRIGHTNESS,
                 0
         );
+
         return (int) brightnessValue;
     }
 
@@ -1496,22 +1448,6 @@ public class Lista_Biblia extends Activity {
 
         float v = 0.0f;
 
-        /*
-        android.provider.Settings.System.putInt(
-                getApplicationContext().getContentResolver(),
-                android.provider.Settings.System.SCREEN_BRIGHTNESS, i);
-
-
-        android.provider.Settings.System.putInt(getApplicationContext().getContentResolver(),
-                android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE,
-                android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
-
-        android.provider.Settings.System.putInt(
-                getApplicationContext().getContentResolver(),
-                android.provider.Settings.System.SCREEN_BRIGHTNESS,
-                i);
-
-    */
         WindowManager.LayoutParams layout = getWindow().getAttributes();
 
         if (i <= 100) {
@@ -1703,6 +1639,7 @@ public class Lista_Biblia extends Activity {
 
     }
 
+    final static int BRIGHTNESS_FULL = 255;
     private class OnSeekBar implements SeekBar.OnSeekBarChangeListener {
 
 
@@ -1711,11 +1648,8 @@ public class Lista_Biblia extends Activity {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-            if (progress >= 1) {
-                valor = progress;
-                alterarBrilhoTela(progress);
-
-            }
+            valor = (progress * BRIGHTNESS_FULL) / 100;
+            alterarBrilhoTela(valor);
 
         }
 
@@ -1731,17 +1665,10 @@ public class Lista_Biblia extends Activity {
             SharedPreferences settings = getSharedPreferences("seekbar", Activity.MODE_PRIVATE);
             SharedPreferences.Editor editor = settings.edit();
 
-            editor.putInt(seekValor, valor);
+            editor.putInt(SEEK_VALOR, valor);
             editor.commit();
 
         }
-
-
-
-
-
-
-
 
     }
 
@@ -1798,5 +1725,5 @@ public class Lista_Biblia extends Activity {
         }
 
 
-    }
+}
 

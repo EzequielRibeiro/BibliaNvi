@@ -2,17 +2,12 @@ package com.projeto.biblianvi;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class Grafico_Dois extends Activity {
@@ -33,7 +28,7 @@ public class Grafico_Dois extends Activity {
         BibliaBancoDadosHelper bibliaBancoDadosHelper = new BibliaBancoDadosHelper(getApplicationContext());
 
         ListView myListView = (ListView) findViewById(R.id.list_grafico_dois);
-        List<Biblia> allBooks = bibliaBancoDadosHelper.getVersosRead(2);
+        List<Biblia> allBooks = bibliaBancoDadosHelper.getSumAllVersosReadByTestament(2);
         ListGraficoAdapter listGraficoAdapter = new ListGraficoAdapter(getApplicationContext(), allBooks);
         myListView.setAdapter(listGraficoAdapter);
 

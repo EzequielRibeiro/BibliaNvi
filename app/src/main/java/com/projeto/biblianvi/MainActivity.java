@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.text.Html;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
        // requestWindowFeature(Window.FEATURE_ACTION_BAR);
         setContentView(layout.activity_main);
-
+        getSharedPreferences("brilhoAtual", Activity.MODE_PRIVATE).edit().putInt("brilhoAtualValor", Lista_Biblia.getScreenBrightness(getApplicationContext())).commit();
         PACKAGENAME = getPackageName();
         sharedPrefDataBasePatch = getSharedPreferences("DataBase",Context.MODE_PRIVATE);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -114,7 +115,8 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = findViewById(id.drawer_layout);
         mDrawerList = findViewById(id.left_drawer);
         textViewDeveloper = findViewById(id.textViewDeveloper);
-        textViewDeveloper.setText(BuildConfig.VERSION_NAME);
+        textViewDeveloper.setTextColor(getResources().getColor(color.dark));
+        textViewDeveloper.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         // set a custom shadow that overlays the activity_fragment content when the drawer opens
         mDrawerLayout.setDrawerShadow(drawable.drawer_shadow, GravityCompat.START);
         // set up the drawer's list view with items and click listener
@@ -166,10 +168,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (isNetworkAvailable())
-                    startActivity(new Intent(getBaseContext(), ActivityBrowser.class));
-                else
-                    Toast.makeText(getApplication(), "Sem conexão", Toast.LENGTH_LONG).show();
+                openNoticias(getApplicationContext());
             }
         });
         /*
@@ -202,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (isDataBaseDownload()) {
+                if (isDataBaseDownload(getApplicationContext())) {
                     Intent i = new Intent();
                     i.setClass(MainActivity.this, MainActivityFragment.class);
                     i.putExtra("Biblia", "biblia");
@@ -216,9 +215,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (isDataBaseDownload()) {
-                    startActivity(new Intent(MainActivity.this, DicionarioActivity.class));
-                }
+                opcaoDicionario(getApplicationContext());
+
             }
         });
 
@@ -226,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (isDataBaseDownload()) {
+                if (isDataBaseDownload(getApplicationContext())) {
                     startActivity(new Intent(MainActivity.this,Activity_busca_avancada.class));
                 }
             }
@@ -234,17 +232,20 @@ public class MainActivity extends AppCompatActivity {
 
         // MobileAds.initialize(this, getString(R.string.ADMOB_APP_ID));
         mAdView = findViewById(id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Collections.singletonList("4CCDC45D57519669CA4C587B6E896BE8")).build());
-        mAdView.loadAd(adRequest);
+        final AdRequest adRequest = new AdRequest.Builder().build();
+
+        mAdView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Collections.singletonList("4CCDC45D57519669CA4C587B6E896BE8")).build());
+                mAdView.loadAd(adRequest);
+            }
+        }, 500);
 
         mAdView.setAdListener(new AdListener() {
 
-
             @Override
             public void onAdLoaded() {
-                if (mAdView.getVisibility() == View.GONE)
-                    mAdView.setVisibility(View.VISIBLE);
 
             }
 
@@ -254,11 +255,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if (errorCode == AdRequest.ERROR_CODE_NO_FILL) {
                     Log.i("admob", String.valueOf(errorCode));
-
-                    mAdView.setVisibility(View.GONE);
-
                     Bundle bundle = new Bundle();
-                    bundle.putString("ERROR", String.valueOf(errorCode));
+                    bundle.putString("ERRORCODE", String.valueOf(errorCode));
                     bundle.putString("COUNTRY", getResources().getConfiguration().locale.getDisplayCountry());
                     mFirebaseAnalytics.logEvent("ADMOB", bundle);
                 }
@@ -268,29 +266,61 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
-   /*
-        if (isServiceRunning())
-            Log.i("service", "is running");
-        else
-            Log.i("service", "not running");
 
-    */
+        if (isDataBaseDownload(getApplicationContext())) {
+            textViewDeveloper.setText(getString(string.total_lido) + " " +
+                    String.format("%.2f", GraficoGeral.quantVersosLidos(getApplicationContext())) + "%");
+        } else {
+            textViewDeveloper.setText("");
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
-                    ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_STORAGE);
+                    ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_NOTIFICATION_POLICY}, REQUEST_STORAGE);
             }
         } else {
-            if(!isDataBaseDownload()){
-                if(isNetworkAvailable()){
+            if (!isDataBaseDownload(getApplicationContext())) {
+                if (isNetworkAvailable(this)) {
                 downloadDataBaseBible();}
                 else{
-                    Toast.makeText(getApplicationContext(),"Sem conexão",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), string.sem_conexao, Toast.LENGTH_LONG).show();
                 }
             }
         }
-         Log.e("Banco:", Boolean.toString(isDataBaseDownload()));
+        Log.e("Banco:", Boolean.toString(isDataBaseDownload(getApplicationContext())));
+
+    }
+
+    static public void openNoticias(Context applicationContext) {
+
+        Intent intent = new Intent(applicationContext, ActivityBrowser.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        if (isNetworkAvailable(applicationContext)) {
+
+            switch (Locale.getDefault().getLanguage()) {
+
+                case "pt":
+                    intent.putExtra("url", applicationContext.getString(string.url_noticias));
+                    applicationContext.startActivity(intent);
+                    break;
+                case "es":
+                    intent.putExtra("url", "https://www.bibliatodo.com/NoticiasCristianas");
+                    applicationContext.startActivity(intent);
+                    break;
+                default:
+                    intent.putExtra("url", "https://www.christianitytoday.com/ct/topics/a/assemblies-of-god");
+                    applicationContext.startActivity(intent);
+                    break;
+
+            }
+
+
+        } else
+            Toast.makeText(applicationContext, string.sem_conexao, Toast.LENGTH_LONG).show();
+
 
     }
 
@@ -325,11 +355,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    static public boolean isDataBaseDownload(){
+    static public boolean isDataBaseDownload(Context context) {
 
         File folderStorage;
         String folderDest = "Android/data/"+PACKAGENAME+"/databases/";
-        editor = sharedPrefDataBasePatch.edit();
+        editor = context.getSharedPreferences("DataBase", Context.MODE_PRIVATE).edit();
 
         switch (Locale.getDefault().getLanguage()){
 
@@ -383,8 +413,8 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode == REQUEST_STORAGE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                if(!isDataBaseDownload()){
-                    if(isNetworkAvailable()){
+                if (!isDataBaseDownload(getApplicationContext())) {
+                    if (isNetworkAvailable(this)) {
                         downloadDataBaseBible();}
                     else{
                         Toast.makeText(getApplicationContext(), string.not_internet_avaliable, Toast.LENGTH_LONG).show();
@@ -392,14 +422,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             } else if (grantResults[0] == PackageManager.PERMISSION_DENIED) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
-                        || ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                        || ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                ) {
                     //Show an explanation to the user *asynchronously*
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setMessage(string.msg_permission)
                             .setTitle(string.title_permission);
                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE);
+                            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                    Manifest.permission.ACCESS_NOTIFICATION_POLICY}, REQUEST_STORAGE);
                             Intent i = getBaseContext().getPackageManager().
                                     getLaunchIntentForPackage(getBaseContext().getPackageName());
                             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -683,9 +715,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private boolean isNetworkAvailable() {
+    private static boolean isNetworkAvailable(Context context) {
         ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null;
     }
@@ -705,27 +737,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        if (!Locale.getDefault().getLanguage().equals("pt")) {
-            if (button_dicionario != null)
-                button_dicionario.setVisibility(View.GONE);
-            if (button_noticias != null)
-                button_noticias.setVisibility(View.GONE);
-
-            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) button_biblia.getLayoutParams();
-            params.setMargins(0, 0, 50, 0); //substitute parameters for left, top, right, bottom
-            button_biblia.setLayoutParams(params);
-
-        }
         editor = sharedPrefDataBasePatch.edit();
         editor.putString("language",Locale.getDefault().getLanguage());
         editor.commit();
 
         if (!checarAlarmeExiste())
-            if (isDataBaseDownload())
+            if (isDataBaseDownload(getApplicationContext()))
                 agendarAlarmeVersiculo();
 
         try {
-            if(isDataBaseDownload()) {
+            if (isDataBaseDownload(getApplicationContext())) {
                 versiculoDoDia();
             }else{
                 downloadDataBaseBible();
@@ -831,30 +852,28 @@ public class MainActivity extends AppCompatActivity {
         // setTitle(menuTitulos[position]);
         switch (position) {
             case 0:
-                if(isDataBaseDownload()){
+                if (isDataBaseDownload(getApplicationContext())) {
                 intent = new Intent(MainActivity.this, Activity_favorito.class);
                 startActivity(intent);}
                 break;
             case 1:
-                if(isDataBaseDownload()){
+                if (isDataBaseDownload(getApplicationContext())) {
                 intent = new Intent(MainActivity.this, ActivityAnotacao.class);
                 startActivity(intent);}
                 break;
             case 2:
-                if(isDataBaseDownload()){
-                intent = new Intent(MainActivity.this, DicionarioActivity.class);
-                startActivity(intent);}
+                opcaoDicionario(getApplicationContext());
                 break;
             case 3:
-                if (isNetworkAvailable()) {
-                    intent = new Intent(MainActivity.this, Devocional.class);
+                if (isNetworkAvailable(this)) {
+                    intent = new Intent(MainActivity.this, Sermoes.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplication(), "Sem conexão", Toast.LENGTH_LONG).show();
                 }
                 break;
             case 4:
-                if(isDataBaseDownload()){
+                if (isDataBaseDownload(getApplicationContext())) {
                 intent = new Intent(MainActivity.this, GraficoGeral.class);
                 startActivity(intent);}
                 break;
@@ -873,6 +892,31 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         mDrawerLayout.closeDrawer(mDrawerList);
+    }
+
+    static public void opcaoDicionario(Context context) {
+
+        Intent intent = new Intent(context, ActivityBrowser.class);
+
+        switch (Locale.getDefault().getLanguage()) {
+
+            case "pt":
+                if (isDataBaseDownload(context)) {
+                    context.startActivity(new Intent(context, DicionarioActivity.class)
+                            .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                }
+                break;
+            case "es":
+                intent.putExtra("url", "https://www.bibliatodo.com/Diccionario-biblico");
+                context.startActivity(intent);
+                break;
+            default:
+                intent.putExtra("url", "https://www.kingjamesbibleonline.org/Free-Bible-Dictionary.php");
+                context.startActivity(intent);
+                break;
+        }
+
+
     }
 
     private void mostrarAviso() {

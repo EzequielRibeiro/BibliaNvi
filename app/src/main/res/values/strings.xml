@@ -5,7 +5,7 @@
     <string name="refresh">Atualizar</string>
 
     <!--  NetworkActivityDevocional -->
-    <string name="page_title">Devocional</string>
+    <string name="page_title">Sermões</string>
     <string name="updated">Última atualização</string>
     <string name="lost_connection">Conexão perdida</string>
     <string name="wifi_connected">Conectado Wi-Fi .</string>
@@ -16,7 +16,7 @@
     <string name="compartilharWhat">WhatsApp</string>
     <string name="app_name">Bíblia Adonai </string>
     <string name="action_settings">Configuração</string>
-    <string name="action_devocional">Devocional</string>
+    <string name="action_devocional">Sermões</string>
 
     <string name="title_activity_biblia_aberta">Bíblia Sagrada Adonai</string>
     <string name="title_activity_list_view">Bíblia Sagrada Adonai</string>
@@ -30,163 +30,10 @@
     <string name="interstitial_ad_unit_id">ca-app-pub-0822808376839371/4651240777</string>
     <string name="url_noticias">"http://biblianvi.byethost17.com/aviso.html"</string>
     <string name="ADMOB_APP_ID">ca-app-pub-0822808376839371~5849127597</string>
-
-    <string name="desenvolverdor">Bíblia Sagrada Adonai 1.020190320</string>
-
-    <string name="bibliaLivEp">Livro/Epístola</string>
-
+    <string name="desenvolvedor">Ezequiel A. Ribeiro</string>
+    <string name="bibliaLivEp">Bíblia</string>
     <string name="fontePadrao">Arial</string>
-
-    <string-array name="bibliaLivEp_arrays">
-        <item>Gênesis</item>
-        <item>Êxodo</item>
-        <item>Levítico</item>
-        <item>Números</item>
-        <item>Deuteronômio</item>
-        <item>Josué</item>
-        <item>Juízes</item>
-        <item>Rute</item>
-        <item>1º Samuel</item>
-        <item>2º Samuel</item>
-        <item>1º Reis</item>
-        <item>2º Reis</item>
-        <item>1º Crônicas</item>
-        <item>2º Crônicas</item>
-        <item>Esdras</item>
-        <item>Neemias</item>
-        <item>Ester</item>
-        <item>Jó</item>
-        <item>Salmos</item>
-        <item>Provérbios</item>
-        <item>Eclesiastes</item>
-        <item>Cânticos</item>
-        <item>Isaías</item>
-        <item>Jeremias</item>
-        <item>Lamentações</item>
-        <item>Ezequiel</item>
-        <item>Daniel</item>
-        <item>Oséias</item>
-        <item>Joel</item>
-        <item>Amós</item>
-        <item>Obadias</item>
-        <item>Jonas</item>
-        <item>Miquéias</item>
-        <item>Naum</item>
-        <item>Habacuque</item>
-        <item>Sofonias</item>
-        <item>Ageu</item>
-        <item>Zacarias</item>
-        <item>Malaquias</item>
-        <item>Mateus</item>
-        <item>Marcos</item>
-        <item>Lucas</item>
-        <item>João</item>
-        <item>Atos</item>
-        <item>Romanos</item>
-        <item>1ª Coríntios</item>
-        <item>2ª Coríntios</item>
-        <item>Gálatas</item>
-        <item>Efésios</item>
-        <item>Filipenses</item>
-        <item>Colossenses</item>
-        <item>1ª Tessalonicenses</item>
-        <item>2ª Tessalonicenses</item>
-        <item>1ª Timóteo</item>
-        <item>2ª Timóteo</item>
-        <item>Tito</item>
-        <item>Filemom</item>
-        <item>Hebreus</item>
-        <item>Tiago</item>
-        <item>1ª Pedro</item>
-        <item>2ª Pedro</item>
-        <item>1ª João</item>
-        <item>2ª João</item>
-        <item>3ª João</item>
-        <item>Judas</item>
-        <item>Apocalipse</item>
-    </string-array>
-
-
-    <string-array name="bibliaLivEp_velho">
-        <item>Gênesis</item>
-        <item>Êxodo</item>
-        <item>Levítico</item>
-        <item>Números</item>
-        <item>Deuteronômio</item>
-        <item>Josué</item>
-        <item>Juízes</item>
-        <item>Rute</item>
-        <item>1º Samuel</item>
-        <item>2º Samuel</item>
-        <item>1º Reis</item>
-        <item>2º Reis</item>
-        <item>1º Crônicas</item>
-        <item>2º Crônicas</item>
-        <item>Esdras</item>
-        <item>Neemias</item>
-        <item>Ester</item>
-        <item>Jó</item>
-        <item>Salmos</item>
-        <item>Provérbios</item>
-        <item>Eclesiastes</item>
-        <item>Cânticos</item>
-        <item>Isaías</item>
-        <item>Jeremias</item>
-        <item>Lamentações</item>
-        <item>Ezequiel</item>
-        <item>Daniel</item>
-        <item>Oséias</item>
-        <item>Joel</item>
-        <item>Amós</item>
-        <item>Obadias</item>
-        <item>Jonas</item>
-        <item>Miquéias</item>
-        <item>Naum</item>
-        <item>Habacuque</item>
-        <item>Sofonias</item>
-        <item>Ageu</item>
-        <item>Zacarias</item>
-        <item>Malaquias</item>
-
-    </string-array>
-
-    <string-array name="bibliaLivEp_novo">
-        <item>Mateus</item>
-        <item>Marcos</item>
-        <item>Lucas</item>
-        <item>João</item>
-        <item>Atos</item>
-        <item>Romanos</item>
-        <item>1ª Coríntios</item>
-        <item>2ª Coríntios</item>
-        <item>Gálatas</item>
-        <item>Efésios</item>
-        <item>Filipenses</item>
-        <item>Colossenses</item>
-        <item>1ª Tessalonicenses</item>
-        <item>2ª Tessalonicenses</item>
-        <item>1ª Timóteo</item>
-        <item>2ª Timóteo</item>
-        <item>Tito</item>
-        <item>Filemom</item>
-        <item>Hebreus</item>
-        <item>Tiago</item>
-        <item>1ª Pedro</item>
-        <item>2ª Pedro</item>
-        <item>1ª João</item>
-        <item>2ª João</item>
-        <item>3ª João</item>
-        <item>Judas</item>
-        <item>Apocalipse</item>
-    </string-array>
-
-    <!-- -
-        This is an ad unit ID for a banner test ad. Replace with your own banner ad unit id.
-        For more information, see https://support.google.com/admob/answer/3052638
-    <!- -->
-
     <string name="title_activity_devocional">Devocional</string>
-
     <string name="hello_world">Hello world!</string>
     <string name="reflexao">Versículo diário</string>
     <string name="botaoAtualizar">UPDATE</string>
@@ -238,7 +85,7 @@
         <item>Favorito</item>
         <item>Anotações</item>
         <item>Dicionário</item>
-        <item>Devocional</item>
+        <item>Sermões</item>
         <item>Estatística</item>
         <item>Configurações</item>
         <item>Política de Privacidade</item>
@@ -259,7 +106,7 @@
     <string name="novo_testamento">Novo Testamento</string>
     <string name="toda_b_blia">Toda Bíblia</string>
     <string name="pesquisar_por">Pesquisar por:</string>
-    <string name="pesquisar">PESQUISAR</string>
+    <string name="pesquisar">Pesquisar</string>
     <string name="pesquisar_somente_em">Pesquisar somente em:</string>
     <string name="criar_nota">Criar nota</string>
     <string name="pesquisar_dicionario">Pesquisar:</string>
@@ -278,6 +125,26 @@
     <string name="capitulo_number">16</string>
     <string name="versiculo_number">33</string>
     <string name="redefinir">Redefinir</string>
-    <string name="total_lido">Total lido:</string>
+    <string name="total_lido">Total lido: </string>
+    <string name="marcar_versiculos">Os versículos lidos serão exibidos com outra cor de fundo.</string>
+    <string name="fonte_texto_title">Fonte do texto</string>
+    <string name="marcar_versiculo_title">Marcar versículos</string>
+    <string name="fonte_text">Altera a fonte do texto</string>
+    <string name="fonte_size_title">Tamanho da fonte</string>
+    <string name="fonte_text_sumary">Escolha o tamanho do texto</string>
+    <string name="modo_noturno_title">Modo noturno</string>
+    <string name="modo_noturno_summary">Exibirá o fundo de tela escuro</string>
+    <string name="tela_ativa_title">Tela ativa</string>
+    <string name="tela_ativa_summary">Não escurecer a tela quando estiver lendo</string>
+    <string name="limpar_estatistica_title">Zerar estatística</string>
+    <string name="limpar_estatistica_summary">Reiniciar estatística</string>
+    <string name="versiculo_selecionado_share">Nenhum versículo foi selecionado !</string>
+    <string name="gostou_do_nosso_app">Gostou do nosso app?\n Por favor, Qualifique -o</string>
+    <string name="sem_conexao">Sem conexão</string>
+    <string name="download_fail">Não está sendo possível fazer o download da Bíblia. Verifique sua conexão.</string>
+    <string name="noticias">Notícias</string>
+    <string name="biblia">Bíblia</string>
+    <string name="dicionario">Dicionário</string>
+
 
 </resources>

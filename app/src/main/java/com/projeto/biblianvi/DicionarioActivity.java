@@ -39,7 +39,6 @@ public class DicionarioActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dicionario);
 
-
         listView = findViewById(R.id.listViewDicionario);
         frameLayout = findViewById(R.id.frameDicionario);
         textViewDeveloper = findViewById(R.id.textViewDeveloperDicio);

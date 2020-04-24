@@ -70,7 +70,6 @@ public class GraficoGeral extends TabActivity {
         super.onResume();
 
         LinearLayout myLayoutBase = findViewById(R.id.linearLayoutGrafAd);
-
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) myLayoutBase.getLayoutParams();
 
         if(isNetworkAvailable()){
@@ -87,21 +86,20 @@ public class GraficoGeral extends TabActivity {
 
         }else{
 
-            myLayoutBase.setBackgroundResource(R.drawable.banner_logo);
            //  params.height = 0;
 
         }
 
-        textViewTotalLido.setText(String.format("%.2f", quantVersosLidos()) + "%");
+        textViewTotalLido.setText(String.format("%.2f", quantVersosLidos(getApplicationContext())) + "%");
 
     }
 
 
-    private float quantVersosLidos(){
+    public static float quantVersosLidos(Context context) {
 
         int i;
 
-        BibliaBancoDadosHelper bi = new BibliaBancoDadosHelper(getApplicationContext());
+        BibliaBancoDadosHelper bi = new BibliaBancoDadosHelper(context);
 
         i = bi.getQuantVersosLidosTotal();
 

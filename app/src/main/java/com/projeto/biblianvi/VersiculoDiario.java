@@ -35,7 +35,7 @@ public class VersiculoDiario extends BroadcastReceiver{
        this.context = context;
 
         try {
-            if(MainActivity.isDataBaseDownload())
+            if (MainActivity.isDataBaseDownload(context))
                 criarNotification();
         } catch (ParseException e) {
             e.printStackTrace();

@@ -95,7 +95,25 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
     }
 
-    public List<Biblia> getVersosRead(int id) {
+    public Biblia getSumVersosReadByBooks(int id) {
+
+        Biblia b = new Biblia();
+        String query = "select books.[id], books.[name] ,count(verses.[text]), sum (verses.[lido]) from  verses " +
+                "inner join books on verses.[book] = books.id where books.[id] = " + Integer.toString(id) + ";";
+
+        openDataBase();
+        cursor = myDataBase.rawQuery(query, null);
+        cursor.moveToFirst();
+
+        b.setId(cursor.getInt(0));
+        b.setBooksName(cursor.getString(1));
+        b.setTotalDeVersiculos(cursor.getInt(2));
+        b.setTotalDeVersosLidos(cursor.getInt(3));
+
+        return b;
+    }
+
+    public List<Biblia> getSumAllVersosReadByTestament(int id) {
 
         List<Biblia> versosLidos = new LinkedList<Biblia>();
 
@@ -172,7 +190,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
         List<Biblia> books = new LinkedList<Biblia>();
 
         // 1. build the query
-        String query = "select testament.name,books.name,verses.chapter,verses.verse,verses.text,verses.lido,verses.rowid " +
+        String query = "select books.id,testament.name,books.name,verses.chapter,verses.verse,verses.text,verses.lido,verses.rowid " +
                 "from testament,verses,books where testament.id = " +
                 "verses.testament and books.id = verses.book and books.name like '" + book + "%';";
 
@@ -189,13 +207,14 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 biblia = new Biblia();
-                biblia.setTestamentName(cursor.getString(0));
-                biblia.setBooksName(cursor.getString(1));
-                biblia.setVersesChapter(cursor.getString(2));
-                biblia.setVerseNum(cursor.getString(3));
-                biblia.setText(cursor.getString(4));
-                biblia.setLido(cursor.getInt(5));
-                biblia.setIdVerse(cursor.getString(6));
+                biblia.setIdBook(cursor.getInt(0));
+                biblia.setTestamentName(cursor.getString(1));
+                biblia.setBooksName(cursor.getString(2));
+                biblia.setVersesChapter(cursor.getString(3));
+                biblia.setVerseNum(cursor.getString(4));
+                biblia.setText(cursor.getString(5));
+                biblia.setLido(cursor.getInt(6));
+                biblia.setIdVerse(cursor.getString(7));
 
                 // Add book to books
                 books.add(biblia);

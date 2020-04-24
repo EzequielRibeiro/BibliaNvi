@@ -164,7 +164,7 @@
                         android:width="95dp"
                         android:background="@drawable/icon_new"
                         android:gravity="bottom|center_horizontal"
-                        android:text="Notícias"
+                        android:text="@string/noticias"
                         android:textColor="@color/blue"
                         android:textSize="14dp"
                         android:textStyle="normal|bold" />
@@ -176,7 +176,7 @@
                         android:layout_height="75dp"
                         android:background="@drawable/icon_biblia"
                         android:gravity="bottom|center_horizontal"
-                        android:text="Bíblia"
+                        android:text="@string/biblia"
                         android:textColor="@color/blue"
                         android:textSize="14dp"
                         android:textStyle="bold" />
@@ -188,7 +188,7 @@
                         android:layout_height="75dp"
                         android:background="@drawable/icon_dicionario"
                         android:gravity="bottom|center_horizontal"
-                        android:text="Dicionário"
+                        android:text="@string/dicionario"
                         android:textColor="@color/blue"
                         android:textSize="14dp"
                         android:textStyle="bold" />
@@ -200,7 +200,7 @@
                         android:layout_height="75dp"
                         android:background="@drawable/icon_search"
                         android:gravity="bottom|center_horizontal"
-                        android:text="Pesquisar"
+                        android:text="@string/pesquisar"
                         android:textColor="@color/blue"
                         android:textSize="14dp"
                         android:textStyle="bold" />
@@ -243,7 +243,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
                         android:inputType="textMultiLine"
-                        android:text="Gostou do nosso app?\n Por favor, Qualifique -o"
+                        android:text="@string/gostou_do_nosso_app"
                         android:textColor="@color/orange"
                         android:textStyle="bold|italic" />
 

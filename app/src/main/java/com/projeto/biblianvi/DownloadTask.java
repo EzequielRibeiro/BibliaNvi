@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -216,7 +217,9 @@ public class DownloadTask {
                         }
                     };
                     thread.start();
-
+                    if (progressBar != null) progressBar.setVisibility(View.GONE);
+                    if (progressDialog != null) progressDialog.dismiss();
+                    Toast.makeText(context, R.string.download_fail, Toast.LENGTH_LONG).show();
                    throw new IOException("Failed to download file: " + response);
                 }else{
                     Log.e(TAG, "input:" + response.body().contentLength());

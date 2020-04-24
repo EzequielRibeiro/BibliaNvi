@@ -89,11 +89,11 @@ public class NetworkActivityDevocional extends Activity {
         super.onCreate(savedInstanceState);
 
         getWindow().requestFeature(Window.FEATURE_PROGRESS);
-        setContentView(R.layout.tela_devocional);
+        setContentView(R.layout.tela_browser);
         // Makes Progress bar Visible
         getWindow().setFeatureInt(Window.FEATURE_PROGRESS, Window.PROGRESS_VISIBILITY_ON);
 
-        myWebView = findViewById(R.id.webviewxml);
+        myWebView = findViewById(R.id.webViewBrowser);
 
         esteContext =this.getApplicationContext();
 
@@ -250,10 +250,10 @@ public class NetworkActivityDevocional extends Activity {
 
     // Displays an error if the app is unable to load content.
     private void showErrorPage() {
-     //setContentView(R.layout.tela_devocional);
+        //setContentView(R.layout.tela_browser);
 
         // The specified network connection is not available. Displays error message.
-        WebView myWebView = findViewById(R.id.webviewxml);
+        WebView myWebView = findViewById(R.id.webViewBrowser);
         myWebView.setBackgroundColor(Color.TRANSPARENT);
         myWebView.loadData(getResources().getString(R.string.connection_error),
                 "text/html; charset=UTF-8", null);
@@ -301,7 +301,7 @@ public class NetworkActivityDevocional extends Activity {
 
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) myLayoutBase.getLayoutParams();
 
-        AdView mAdView = findViewById(R.id.adViewDevocio);
+        AdView mAdView = findViewById(R.id.adViewBrowser);
 
         if(isNetworkAvailable() && (mAdView != null)){
 
@@ -380,13 +380,12 @@ public class NetworkActivityDevocional extends Activity {
 
         @Override
         protected void onPostExecute(String result) {
-           // setContentView(R.layout.tela_devocional);
+            // setContentView(R.layout.tela_browser);
             // Displays the HTML string in the UI via a WebView
 
             CookieManager cookieManager = CookieManager.getInstance();
             cookieManager.setAcceptCookie(true);
             //Get outer container
-            frameLayoutDevoc = findViewById(R.id.frameLayoutDevoc);
 
             myWebView.setBackgroundColor(Color.TRANSPARENT);
             myWebView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
@@ -509,7 +508,7 @@ public class NetworkActivityDevocional extends Activity {
      * This BroadcastReceiver intercepts the android.net.ConnectivityManager.CONNECTIVITY_ACTION,
      * which indicates a connection change. It checks whether the type is TYPE_WIFI.
      * If it is, it checks whether Wi-Fi is connected and sets the wifiConnected flag in the
-     * tela_devocional activity accordingly.
+     * tela_browser activity accordingly.
      *
      */
     public class NetworkReceiver extends BroadcastReceiver {

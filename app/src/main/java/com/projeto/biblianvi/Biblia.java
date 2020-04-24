@@ -16,6 +16,18 @@ public class Biblia {
     private  SharedPreferences prefs = null;
     private Context context = null;
     private String termoBusca;
+    private int id;
+    private int idBook;
+    private int totalDeVersosLidos;
+    private int totalDeVersiculos;
+
+    public int getIdBook() {
+        return idBook;
+    }
+
+    public void setIdBook(int idBook) {
+        this.idBook = idBook;
+    }
 
     private String testamentName,
                    booksName = "João",
@@ -34,9 +46,6 @@ public class Biblia {
         this.id = id;
     }
 
-    private int id;
-    private int totalDeVersosLidos;
-    private int totalDeVersiculos;
 
     public int getTotalDeVersosLidos() {
         return totalDeVersosLidos;

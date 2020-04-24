@@ -33,7 +33,7 @@
             android:id="@+id/textViewGrafBar"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
-            android:background="#DE000000" />
+            android:background="@color/darkgreen" />
     </LinearLayout>
 
     <TextView
