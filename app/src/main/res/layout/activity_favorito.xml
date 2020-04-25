@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:gravity="left|center_vertical"
-            android:text="Versículos  favoritos"
+            android:text="@string/versiculos_favoritos_title"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/white"
             android:textStyle="bold"

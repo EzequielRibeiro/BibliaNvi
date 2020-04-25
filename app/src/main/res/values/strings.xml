@@ -145,6 +145,7 @@
     <string name="noticias">Notícias</string>
     <string name="biblia">Bíblia</string>
     <string name="dicionario">Dicionário</string>
+    <string name="versiculos_favoritos_title">Versículos favoritos</string>
 
 
 </resources>

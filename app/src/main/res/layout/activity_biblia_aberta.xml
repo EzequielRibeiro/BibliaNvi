@@ -18,16 +18,17 @@
             android:layout_gravity="right">
 
             <TextView
+                android:id="@+id/textoAberto"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textoAberto"
-                android:textColor="#010001"
-                android:textColorHighlight="#d0121313"
-                android:includeFontPadding="false"
-                android:text="nullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnull"
                 android:layout_gravity="center"
                 android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp" />
+                android:layout_marginRight="2dp"
+                android:background="@color/white"
+                android:includeFontPadding="false"
+                android:text="nullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnull"
+                android:textColor="@color/black"
+                android:textColorHighlight="#d0121313" />
 
             <Button
                 android:layout_width="25dp"

@@ -60,8 +60,12 @@ public class DownloadTask {
                 downloadFileName = Utils.NVI_PT_BR_ZIP;
                 break;
             case "es":
-                downloadUrl = downloadUrl.replace("XXX", Utils.SSE_ES_ZIP);
-                downloadFileName = Utils.SSE_ES_ZIP;
+                downloadUrl = downloadUrl.replace("XXX", Utils.NVI_ES_ZIP);
+                downloadFileName = Utils.NVI_ES_ZIP;
+                break;
+            case "ru":
+                downloadUrl = downloadUrl.replace("XXX", Utils.NRT_RU_ZIP);
+                downloadFileName = Utils.NRT_RU_ZIP;
                 break;
             default:
                 downloadUrl = downloadUrl.replace("XXX", Utils.NVI_EN_ZIP);
@@ -283,16 +287,24 @@ public class DownloadTask {
         }
     }
 
-
+    //sse_es.zip  sse_es.db3
     public static class Utils {
 
-        public static final String downloadZipUrlNviPt = "1q3MB9Hr5pqOGEoG_a6kV-XW6lgvKBfqf";
+
         public static final String NVI_PT_BR_ZIP = "nvi_pt_br.zip";
         public static final String DATABASE_NAME_PT = "nvi_pt_br.db3";
+
         public static final String NVI_EN_ZIP = "nvi_en.zip";
         public static final String DATABASE_NAME_EN = "nvi_en.db3";
-        public static final String SSE_ES_ZIP = "sse_es.zip";
-        public static final String DATABASE_NAME_ES = "sse_es.db3";
+
+        public static final String NVI_ES_ZIP = "nvi_es.zip";
+        public static final String DATABASE_NAME_ES = "nvi_es.db3";
+
+        public static final String NRT_RU_ZIP = "nrt_ru.zip";
+        public static final String DATABASE_NAME_RU = "nrt_ru.db3";
+
+
+
         public static final String DOWNLOAD_FOLDER_NAME = "Download";
 
 

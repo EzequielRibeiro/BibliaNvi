@@ -7,8 +7,8 @@ public class Anotacao {
 
 
     private  int id = 0;
-    private String titulo = "Ajuda";
-    private String texto = "Você poderá atribuir para cada nota um título";
+    private String titulo = " ";
+    private String texto = " ";
     private String data = " ";
 
     public String getId() {

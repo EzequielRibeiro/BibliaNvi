@@ -68,6 +68,7 @@ import java.util.Collections;
 import java.util.Locale;
 
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static com.projeto.biblianvi.R.*;
 import static com.projeto.biblianvi.R.menu.*;
 
@@ -296,7 +297,7 @@ public class MainActivity extends AppCompatActivity {
     static public void openNoticias(Context applicationContext) {
 
         Intent intent = new Intent(applicationContext, ActivityBrowser.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
 
         if (isNetworkAvailable(applicationContext)) {
 
@@ -371,6 +372,10 @@ public class MainActivity extends AppCompatActivity {
                 folderDest = folderDest + DownloadTask.Utils.DATABASE_NAME_ES;
                 DATABASENAME = DownloadTask.Utils.DATABASE_NAME_ES;
                 break;
+            case "ru":
+                folderDest = folderDest + DownloadTask.Utils.DATABASE_NAME_RU;
+                DATABASENAME = DownloadTask.Utils.DATABASE_NAME_RU;
+                break;
             default:
                 folderDest = folderDest + DownloadTask.Utils.DATABASE_NAME_EN;
                 DATABASENAME = DownloadTask.Utils.DATABASE_NAME_EN;
@@ -435,7 +440,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent i = getBaseContext().getPackageManager().
                                     getLaunchIntentForPackage(getBaseContext().getPackageName());
                             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            i.addFlags(FLAG_ACTIVITY_NEW_TASK);
                             startActivity(i);
                             finish();
                         }
@@ -903,15 +908,17 @@ public class MainActivity extends AppCompatActivity {
             case "pt":
                 if (isDataBaseDownload(context)) {
                     context.startActivity(new Intent(context, DicionarioActivity.class)
-                            .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                            .setFlags(FLAG_ACTIVITY_NEW_TASK));
                 }
                 break;
             case "es":
                 intent.putExtra("url", "https://www.bibliatodo.com/Diccionario-biblico");
+                intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
                 break;
             default:
                 intent.putExtra("url", "https://www.kingjamesbibleonline.org/Free-Bible-Dictionary.php");
+                intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
                 break;
         }

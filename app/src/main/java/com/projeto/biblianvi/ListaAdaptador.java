@@ -39,7 +39,7 @@ public class ListaAdaptador extends BaseAdapter {
     private ItemSuporteBiblia itemSuporteBiblia;
     private boolean mostrarVersiculosLidos;
     private SharedPreferences sharedPrefs;
-    private boolean modoNoturno;
+    private boolean modoNoturno = false;
     private boolean pesquiar = false;
     private String fonte = "Arial";
 
@@ -52,6 +52,9 @@ public class ListaAdaptador extends BaseAdapter {
         pesquiar = b;
 
         sharedPrefs = PreferenceManager.getDefaultSharedPreferences(cont);
+
+        mostrarVersiculosLidos = sharedPrefs.getBoolean("mostrarVersiculosLidos", true);
+        modoNoturno = sharedPrefs.getBoolean("noturnoPref", true);
 
         SharedPreferences sp = context.getSharedPreferences("versiculo", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
@@ -68,11 +71,6 @@ public class ListaAdaptador extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
-
-        mostrarVersiculosLidos = sharedPrefs.getBoolean("mostrarVersiculosLidos", true);
-        modoNoturno = sharedPrefs.getBoolean("noturnoPref", false);
-
-
         if(convertView == null) {
             convertView = mInflater.inflate(R.layout.activity_biblia_aberta, null);
             itemSuporteBiblia = new ItemSuporteBiblia(convertView);
@@ -83,7 +81,6 @@ public class ListaAdaptador extends BaseAdapter {
             itemSuporteBiblia = (ItemSuporteBiblia) convertView.getTag();
 
         }
-
 
         currentListData = getItem(position);
 
@@ -97,10 +94,6 @@ public class ListaAdaptador extends BaseAdapter {
 
             if((currentListData.getLido() == 1) && mostrarVersiculosLidos)
                 itemSuporteBiblia.textoAberto.setBackgroundColor(context.getResources().getColor(R.color.cinzaclaro));
-            else {
-                itemSuporteBiblia.textoAberto.setBackgroundColor(context.getResources().getColor(R.color.white));
-                itemSuporteBiblia.textoAberto.setTextColor(Color.rgb(0,0,0));
-            }
 
         }
 
@@ -173,16 +166,15 @@ public class ListaAdaptador extends BaseAdapter {
 
     }
 
+
     private void modoNoturno(ItemSuporteBiblia text, Biblia currentListData){
 
-        text.textoAberto.setTextColor(Color.rgb(192, 192, 192));
-
+        text.textoAberto.setTextColor(Color.WHITE);
         if((currentListData.getLido() == 1) && mostrarVersiculosLidos)
             text.textoAberto.setBackgroundColor(context.getResources().getColor(R.color.dark));
         else {
-            text.textoAberto.setBackgroundColor(Color.DKGRAY);
+            text.textoAberto.setBackgroundColor(context.getResources().getColor(R.color.black));
         }
-
 
     }
 

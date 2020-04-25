@@ -52,6 +52,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -200,7 +201,6 @@ public class Lista_Biblia extends Activity {
             Toast.makeText(getBaseContext(),
                     "Um erro ocorreu. Por favor comunique o BUG desenvolverdor", Toast.LENGTH_LONG).show();
         }
-
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -685,6 +685,7 @@ public class Lista_Biblia extends Activity {
 
     }
 
+
     private void inicializarSeekbar() {
 
         if (modoNoturno) {
@@ -753,6 +754,7 @@ public class Lista_Biblia extends Activity {
                 public void onClick(View view) {
 
                     menuListBase();
+                    finish();
                     Intent settingsActivity = new Intent(getApplicationContext(), SettingsActivity.class);
                     startActivity(settingsActivity);
                 }
@@ -991,6 +993,7 @@ public class Lista_Biblia extends Activity {
             alterarBrilhoTela(getScreenBrightness(getApplicationContext()));
 
         }
+
         if (listaAdaptador != null)
             listaAdaptador.notifyDataSetChanged();
 
@@ -1648,8 +1651,10 @@ public class Lista_Biblia extends Activity {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-            valor = (progress * BRIGHTNESS_FULL) / 100;
-            alterarBrilhoTela(valor);
+            if (progress >= 5 && progress <= 95) {
+                valor = (progress * BRIGHTNESS_FULL) / 100;
+                alterarBrilhoTela(valor);
+            }
 
         }
 
