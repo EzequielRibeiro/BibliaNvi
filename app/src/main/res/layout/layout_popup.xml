@@ -67,7 +67,7 @@
                 android:layout_marginRight="30dp"
                 android:background="@drawable/buttonshape"
                 android:gravity="center"
-                android:text="Salvar nos favorito"
+                android:text="@string/salvar_nos_favorito"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -99,7 +99,7 @@
                 android:layout_marginRight="30dp"
                 android:background="@drawable/buttonshape"
                 android:gravity="center"
-                android:text="Salvar para compartilhar"
+                android:text="@string/salvar_para_compartilhar"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />

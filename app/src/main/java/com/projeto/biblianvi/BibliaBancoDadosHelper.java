@@ -700,6 +700,26 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
     }
 
+
+    public String getBibleVersion() {
+
+
+        String query = "select value from info where name = 'description';";
+
+        openDataBase();
+        cursor = myDataBase.rawQuery(query, null);
+
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            return cursor.getString(0);
+
+        } else {
+            return " ";
+        }
+
+    }
+
     public int getVersoLidoLivro(String livro){
 
 
@@ -720,7 +740,6 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
         {
             return 0;
         }
-
 
     }
 
@@ -931,7 +950,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
         String query = "select favorito.idVerso,books.name,verses.chapter,verses.verse,verses.text " +
                 "from testament,verses,books,favorito where testament.id = verses.testament and books.id = verses.book " +
-                "and [favorito].[idVerso] = verses.[id]";
+                "and [favorito].[idVerso] = verses.[rowid]";
 
         openDataBase();
 

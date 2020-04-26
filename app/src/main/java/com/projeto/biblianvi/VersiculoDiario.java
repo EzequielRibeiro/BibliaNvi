@@ -73,7 +73,7 @@ public class VersiculoDiario extends BroadcastReceiver{
                         .setSound(alarmSound)
                         .setSmallIcon(R.mipmap.biblia_icon_notification)
                         .setContentTitle(context.getResources().getString(R.string.app_name))
-                        .setContentText("Versículo do dia: "+assunto+" ("+livro+" "+cap+":"+vers+")");
+                        .setContentText(context.getString(R.string.versiculo_do_dia) + assunto + " (" + livro + " " + cap + ":" + vers + ")");
 
         Intent resultIntent = new Intent(context, MainActivity.class);
 

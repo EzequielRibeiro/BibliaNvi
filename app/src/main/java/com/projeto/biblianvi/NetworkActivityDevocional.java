@@ -279,17 +279,9 @@ public class NetworkActivityDevocional extends Activity {
     // Handles the user's menu selection.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        case R.id.settings:
-                Intent settingsActivity = new Intent(getBaseContext(), SettingsActivity.class);
-                startActivity(settingsActivity);
-                return true;
-     //   case R.id.refresh:
-       //         loadPage();
-         //       return true;
-        default:
-                return super.onOptionsItemSelected(item);
-        }
+
+        return super.onOptionsItemSelected(item);
+
     }
 
 

@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -48,9 +49,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
+import androidx.core.widget.TextViewCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.gms.ads.AdListener;
@@ -142,13 +146,28 @@ public class MainActivity extends AppCompatActivity {
         bibliaHelp = new BibliaBancoDadosHelper(this);
 
         listView = findViewById(id.listView);
-        button_noticias = findViewById(id.buttonNoticias);
+
         buttonClock = findViewById(id.buttonClock);
 
         textViewAssuntoVers = findViewById(id.textViewAssuntoVers);
         textViewVersDia = findViewById(id.textViewVersDia);
+
         button_qualificar = findViewById(id.button_qualificar);
+        button_noticias = findViewById(id.buttonNoticias);
+        button_biblia = findViewById(id.button_biblia);
+        button_dicionario = findViewById(id.button_dicionario);
+        button_pesquisar = findViewById(id.button_pesquisar);
         text_qualificar = findViewById(id.text_qualificar);
+
+        button_qualificar.setText(getString(string.gostou_do_nosso_app));
+        button_noticias.setText(getString(string.noticias));
+        button_noticias.setTextSize(10);
+        button_biblia.setText(getString(string.biblia));
+        button_biblia.setTextSize(10);
+        button_dicionario.setText(getString(string.dicionario));
+        button_dicionario.setTextSize(10);
+        button_pesquisar.setText(getString(string.pesquisar));
+        button_pesquisar.setTextSize(10);
 
 
         text_qualificar.setOnClickListener(new View.OnClickListener() {
@@ -194,9 +213,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button_biblia = findViewById(id.button_biblia);
-        button_dicionario = findViewById(id.button_dicionario);
-        button_pesquisar = findViewById(id.button_pesquisar);
+
 
         button_biblia.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -241,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
                 MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Collections.singletonList("4CCDC45D57519669CA4C587B6E896BE8")).build());
                 mAdView.loadAd(adRequest);
             }
-        }, 500);
+        }, 50000);
 
         mAdView.setAdListener(new AdListener() {
 
@@ -254,13 +271,25 @@ public class MainActivity extends AppCompatActivity {
             public void onAdFailedToLoad(int errorCode) {
                 // Code to be executed when an ad request fails.
 
-                if (errorCode == AdRequest.ERROR_CODE_NO_FILL) {
+                mAdView.setVisibility(View.GONE);
+
+                int orientation = getResources().getConfiguration().orientation;
+                if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+                    ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(id.layout_container);
+                    ConstraintSet constraintSet = new ConstraintSet();
+                    constraintSet.clone(constraintLayout);
+                    constraintSet.connect(id.layout_escolha_livro, ConstraintSet.BOTTOM, id.layout_qualificar, ConstraintSet.TOP, 0);
+                    constraintSet.applyTo(constraintLayout);
+
+                }
+
+
+                // AdRequest.ERROR_CODE_NO_FILL)
                     Log.i("admob", String.valueOf(errorCode));
                     Bundle bundle = new Bundle();
                     bundle.putString("ERRORCODE", String.valueOf(errorCode));
                     bundle.putString("COUNTRY", getResources().getConfiguration().locale.getDisplayCountry());
                     mFirebaseAnalytics.logEvent("ADMOB", bundle);
-                }
 
 
             }
@@ -375,6 +404,10 @@ public class MainActivity extends AppCompatActivity {
             case "ru":
                 folderDest = folderDest + DownloadTask.Utils.DATABASE_NAME_RU;
                 DATABASENAME = DownloadTask.Utils.DATABASE_NAME_RU;
+                break;
+            case "zh":
+                folderDest = folderDest + DownloadTask.Utils.DATABASE_NAME_ZH;
+                DATABASENAME = DownloadTask.Utils.DATABASE_NAME_ZH;
                 break;
             default:
                 folderDest = folderDest + DownloadTask.Utils.DATABASE_NAME_EN;
@@ -745,6 +778,7 @@ public class MainActivity extends AppCompatActivity {
         editor = sharedPrefDataBasePatch.edit();
         editor.putString("language",Locale.getDefault().getLanguage());
         editor.commit();
+        Log.e("Language: ", Locale.getDefault().getLanguage());
 
         if (!checarAlarmeExiste())
             if (isDataBaseDownload(getApplicationContext()))
@@ -935,9 +969,14 @@ public class MainActivity extends AppCompatActivity {
         // title.setTextColor(getResources().getColor(R.color.greenBG));
         title.setTextSize(18);
 
+        BibliaBancoDadosHelper db = new BibliaBancoDadosHelper(getApplicationContext());
+
+        String t;
         TextView msg = new TextView(this);
         msg.setTextColor(getResources().getColor(color.white));
-        msg.setText(getString(string.aviso).replace("XXXX", BuildConfig.VERSION_NAME));
+        t = getString(string.aviso).replace("@app_version@", BuildConfig.VERSION_NAME);
+        t = t.replace("@bible_version@", db.getBibleVersion());
+        msg.setText(t);
         msg.setPadding(10, 10, 10, 10);
         msg.setGravity(View.TEXT_ALIGNMENT_CENTER);
         msg.setTextSize(18);
@@ -954,7 +993,7 @@ public class MainActivity extends AppCompatActivity {
         alertDialogBuilder.setCustomTitle(title);
 
         // set dialog message
-        alertDialogBuilder.setPositiveButton("Fechar", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setPositiveButton(string.fechar_about, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
 

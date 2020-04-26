@@ -13,9 +13,8 @@
     <string name="xml_error">Error parsing XML.</string>
 
     <string name="title_activity_mensagem">Online</string>
-    <string name="compartilharWhat">WhatsApp</string>
+    <string name="compartilharWhat" translatable="false">WhatsApp</string>
     <string name="app_name">Bíblia Adonai </string>
-    <string name="action_settings">Configuração</string>
     <string name="action_devocional">Sermões</string>
 
     <string name="title_activity_biblia_aberta">Bíblia Sagrada Adonai</string>
@@ -26,21 +25,21 @@
     <string name="fechar_app">Fechar</string>
     <string name="graph_app">Estatística</string>
     <string name="nviText">Nova Versão Internacional</string>
-    <string name="idMob">ca-app-pub-0822808376839371/9732532286</string>
-    <string name="interstitial_ad_unit_id">ca-app-pub-0822808376839371/4651240777</string>
-    <string name="url_noticias">"http://biblianvi.byethost17.com/aviso.html"</string>
-    <string name="ADMOB_APP_ID">ca-app-pub-0822808376839371~5849127597</string>
-    <string name="desenvolvedor">Ezequiel A. Ribeiro</string>
+    <string name="idMob" translatable="false">ca-app-pub-0822808376839371/9732532286</string>
+    <string name="interstitial_ad_unit_id" translatable="false">ca-app-pub-0822808376839371/4651240777</string>
+    <string name="url_noticias" translatable="false">"http://biblianvi.byethost17.com/aviso.html"</string>
+    <string name="ADMOB_APP_ID" translatable="false">ca-app-pub-0822808376839371~5849127597</string>
+    <string name="desenvolvedor" translatable="false">Ezequiel A. Ribeiro</string>
     <string name="bibliaLivEp">Bíblia</string>
-    <string name="fontePadrao">Arial</string>
-    <string name="title_activity_devocional">Devocional</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="fontePadrao" translatable="false">Arial</string>
+    <string name="title_activity_devocional">Sermões</string>
+    <string name="hello_world" translatable="false">Hello world!</string>
     <string name="reflexao">Versículo diário</string>
-    <string name="botaoAtualizar">UPDATE</string>
-    <string name="_last_update_test_preferences">Last_Update_Check</string>
+    <string name="botaoAtualizar" translatable="false">UPDATE</string>
+    <string name="_last_update_test_preferences" translatable="false">Last_Update_Check</string>
     <string name="_loading">Verificando...</string>
     <string name="_no">Atualizar Depois</string>
-    <string name="_ok">OK</string>
+    <string name="_ok" translatable="false">OK</string>
     <string name="_please_wait">Aguarde um instante.</string>
     <string name="_update_test">Verificando se há nova versão.</string>
     <string name="_yes">Atualizar</string>
@@ -48,37 +47,30 @@
     <string name="_you_are_not_updated_title">Nova versão disponivel. </string>
     <string name="_you_are_updated_message">Seu aplicativo já está atualizado para a versão mais recente disponível.</string>
     <string name="_you_are_updated_title">Atualizado.</string>
-    <string name="title_activity_tela_drawer">TelaDrawer</string>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_tela_drawer" translatable="false">TelaDrawer</string>
+    <string name="title_activity_main2" translatable="false">Main2Activity</string>
     <string name="livro_carta">Ler:</string>
-    <string name="cap">Cap:</string>
-    <string name="ver">Ver:</string>
+    <string name="cap" translatable="false">Cap:</string>
+    <string name="ver" translatable="false">Ver:</string>
 
     <!-- -
         This is an ad unit ID for an interstitial test ad. Replace with your own interstitial ad unit id.
         For more information, see https://support.google.com/admob/answer/3052638
     <!- -->
 
-    <string name="title_activity_grafico">Grafico</string>
+    <string name="title_activity_grafico">Gráfico</string>
     <string name="title_activity_grafico_geral">GraficoGeral</string>
     <string name="title_activity_grafico__dois">Gráfico Dois</string>
     <string name="title_activity_activity_busca_avancada">Pesquisa avançada</string>
-    <string name="aviso">Nome do App:\n Bíblia Sagrada Adonai\n\n
-                         Versão:\nXXXX\n\n
-                 Tradução:\nNova Versão Internacional (NVI)\n\n
-                 Obrigado pelo download !\n\n
-                 Caso encontre algum bug ou tenha alguma sugestão para o aplicativo,
-                 por favor, entre em contato pelo e-mail: aplicativoparamobile@gmail.com\n\n
-                 Desenvolvido por:\n
-                 Ezequiel A. Ribeiro</string>
+    <string name="aviso">Nome do App: Bíblia Sagrada Adonai\n\nVersão: \n@app_version@\n\nTradução: @bible_version@\n\nObrigado pelo download !\n\nCaso encontre algum bug ou tenha alguma sugestão para o aplicativo, por favor, entre em contato pelo e-mail: aplicativoparamobile@gmail.com                    Desenvolvido por:                   Ezequiel A. Ribeiro</string>
     <string name="title_activity_activity_anotacao">Anotação</string>
     <string name="title_activity_activity_nota">Nota</string>
-    <string name="title_activity_nota_adicionar">Nota Adicionar</string>
+    <string name="title_activity_nota_adicionar">"Adicionar Nota "</string>
     <string name="title_activity_dicionario">Dicionário Bíblico</string>
-    <string name="mail">aplicativoparamobile@gmail.com</string>
+    <string name="mail" translatable="false">aplicativoparamobile@gmail.com</string>
     <string name="mensagem_texto_topo">E peço isto: que o vosso amor cresça mais e mais em ciência e em todo o conhecimento. Filipenses 1:9</string>
     <string name="title_activity_activity_favorito">Versículos Favoritos</string>
-    <string name="title_activity_main_fragment">MainFragment</string>
+    <string name="title_activity_main_fragment" translatable="false">MainFragment</string>
 
 
     <string-array name="menu_array">
@@ -91,16 +83,16 @@
         <item>Política de Privacidade</item>
         <item>Sobre</item>
     </string-array>
-    <string name="drawer_open">Open navigation drawer</string>
-    <string name="drawer_close">Close navigation drawer</string>
+    <string name="drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="drawer_close" translatable="false">Close navigation drawer</string>
     <string name="action_websearch">Pesquisa</string>
-    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+    <string name="app_not_available" translatable="false">Sorry, there\'s no web browser available</string>
     <string name="estatistica">Estatística</string>
     <string name="msg_permission">O aplicativo precisa dessa permissão para criar o banco de dados.</string>
-    <string name="title_permission">Permissão importante requerida</string>
+    <string name="title_permission">Permissão importante necessária</string>
     <string name="not_internet_avaliable">Sem conexão</string>
-    <string name="confirmar_alarme_aviso">Aviso de versículo diário programado para:</string>
-    <string name="finished_install">Finalizando instalação</string>
+    <string name="confirmar_alarme_aviso">Versículo diário programado para:</string>
+    <string name="finished_install">Estamos fazendo o download da Bíblia em seu idioma. Aguarde um instante. Se demorar por favor verifique sua conexão.</string>
     <string name="busca_avancada_title">Pesquisa Avançada</string>
     <string name="velho_testamento">Velho Testamento</string>
     <string name="novo_testamento">Novo Testamento</string>
@@ -108,36 +100,36 @@
     <string name="pesquisar_por">Pesquisar por:</string>
     <string name="pesquisar">Pesquisar</string>
     <string name="pesquisar_somente_em">Pesquisar somente em:</string>
-    <string name="criar_nota">Criar nota</string>
+    <string name="criar_nota">Criar uma nota</string>
     <string name="pesquisar_dicionario">Pesquisar:</string>
     <string name="favorito">Favorito</string>
-    <string name="devocional">Devocional</string>
+    <string name="devocional">Sermões</string>
     <string name="configura_o">Configuração</string>
     <string name="t_tulo">Título</string>
     <string name="anota_o">Anotação</string>
-    <string name="cancelar">CANCELAR</string>
-    <string name="salvar">SALVAR</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="salvar">Salvar</string>
     <string name="minuto">Minuto</string>
     <string name="hora">Hora</string>
-    <string name="hora_redefinida">\"Horário redefinido: \"</string>
+    <string name="hora_redefinida">"Novo agendamento: "</string>
     <string name="cancel">Cancelar</string>
     <string name="versiculo_text">Tenho-vos dito isto, para que em mim tenhais paz; no mundo tereis aflições, mas tende bom ânimo, eu venci o mundo.\n</string>
-    <string name="capitulo_number">16</string>
-    <string name="versiculo_number">33</string>
+    <string name="capitulo_number" translatable="false">16</string>
+    <string name="versiculo_number" translatable="false">33</string>
     <string name="redefinir">Redefinir</string>
-    <string name="total_lido">Total lido: </string>
-    <string name="marcar_versiculos">Os versículos lidos serão exibidos com outra cor de fundo.</string>
+    <string name="total_lido">"Versículos lidos:  "</string>
+    <string name="marcar_versiculos">Exibir os versículos lidos em outra cor.</string>
     <string name="fonte_texto_title">Fonte do texto</string>
     <string name="marcar_versiculo_title">Marcar versículos</string>
     <string name="fonte_text">Altera a fonte do texto</string>
     <string name="fonte_size_title">Tamanho da fonte</string>
     <string name="fonte_text_sumary">Escolha o tamanho do texto</string>
-    <string name="modo_noturno_title">Modo noturno</string>
+    <string name="modo_noturno_title">Modo Escuro</string>
     <string name="modo_noturno_summary">Exibirá o fundo de tela escuro</string>
     <string name="tela_ativa_title">Tela ativa</string>
-    <string name="tela_ativa_summary">Não escurecer a tela quando estiver lendo</string>
-    <string name="limpar_estatistica_title">Zerar estatística</string>
-    <string name="limpar_estatistica_summary">Reiniciar estatística</string>
+    <string name="tela_ativa_summary">Manter a tela ligada durante a leitura</string>
+    <string name="limpar_estatistica_title">Limpar estatística</string>
+    <string name="limpar_estatistica_summary">Essa opção apagará o seu progresso de leitura</string>
     <string name="versiculo_selecionado_share">Nenhum versículo foi selecionado !</string>
     <string name="gostou_do_nosso_app">Gostou do nosso app?\n Por favor, Qualifique -o</string>
     <string name="sem_conexao">Sem conexão</string>
@@ -146,6 +138,21 @@
     <string name="biblia">Bíblia</string>
     <string name="dicionario">Dicionário</string>
     <string name="versiculos_favoritos_title">Versículos favoritos</string>
+    <string name="fechar_about">Fechar</string>
+    <string name="action_settings">Configuração</string>
+    <string name="compartilhar">Compartilhar</string>
+    <string name="prosseguir">Prosseguir</string>
+    <string name="escrever_mensagem_compartilhar">Adicionar uma mensagem ao versículo</string>
+    <string name="versiculos_selecionados">"Versículo selecionado: "</string>
+    <string name="digite_palavra">Digite uma palavra</string>
+    <string name="foram_encontrados">" foram encontrados"</string>
+    <string name="nada_encontrado">Nada encontrado</string>
+    <string name="pesquisando">Pesquisando ...</string>
+    <string name="aguarde_pesquisando">Aguarde um momento ...</string>
+    <string name="pesquisa_cancelada">Pesquisa cancelada</string>
+    <string name="salvar_nos_favorito">Salvar como favorito</string>
+    <string name="salvar_para_compartilhar">Salvar para compartilhar</string>
+    <string name="versiculo_do_dia">\"Versículo do dia: \"</string>
 
 
 </resources>

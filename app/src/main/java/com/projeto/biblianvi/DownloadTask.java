@@ -67,6 +67,10 @@ public class DownloadTask {
                 downloadUrl = downloadUrl.replace("XXX", Utils.NRT_RU_ZIP);
                 downloadFileName = Utils.NRT_RU_ZIP;
                 break;
+            case "zh":
+                downloadUrl = downloadUrl.replace("XXX", Utils.RCUV_ZH_ZIP);
+                downloadFileName = Utils.RCUV_ZH_ZIP;
+                break;
             default:
                 downloadUrl = downloadUrl.replace("XXX", Utils.NVI_EN_ZIP);
                 downloadFileName = Utils.NVI_EN_ZIP;
@@ -303,7 +307,8 @@ public class DownloadTask {
         public static final String NRT_RU_ZIP = "nrt_ru.zip";
         public static final String DATABASE_NAME_RU = "nrt_ru.db3";
 
-
+        public static final String RCUV_ZH_ZIP = "rcuv_zh.zip";
+        public static final String DATABASE_NAME_ZH = "rcuv_zh.db3";
 
         public static final String DOWNLOAD_FOLDER_NAME = "Download";
 

@@ -110,7 +110,7 @@
                             android:maxLines="1"
                             android:paddingLeft="5dp"
                             android:text="..."
-                            android:textColor="@color/apptheme_color"
+
                             android:textSize="16sp"
                             android:textStyle="bold"
                             tools:text="Paz" />
@@ -159,7 +159,7 @@
 
                     <Button
                         android:id="@+id/buttonNoticias"
-                        style="@style/ButtonAppThemeButtonAzul"
+
                         android:layout_width="75dp"
                         android:layout_height="75dp"
                         android:width="95dp"
@@ -167,43 +167,43 @@
                         android:gravity="bottom|center_horizontal"
                         android:text="Notícias"
                         android:textColor="@color/blue"
-                        android:textSize="14dp"
+                        android:textSize="10sp"
                         android:textStyle="normal|bold" />
 
                     <Button
                         android:id="@+id/button_biblia"
-                        style="@style/ButtonAppThemeButtonAzul"
+
                         android:layout_width="75dp"
                         android:layout_height="75dp"
                         android:background="@drawable/icon_biblia"
                         android:gravity="bottom|center_horizontal"
                         android:text="Bíblia"
                         android:textColor="@color/blue"
-                        android:textSize="14dp"
+                        android:textSize="10sp"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/button_dicionario"
-                        style="@style/ButtonAppThemeButtonAzul"
+
                         android:layout_width="75dp"
                         android:layout_height="75dp"
                         android:background="@drawable/icon_dicionario"
                         android:gravity="bottom|center_horizontal"
                         android:text="Dicionário"
                         android:textColor="@color/blue"
-                        android:textSize="14dp"
+                        android:textSize="10sp"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/button_pesquisar"
-                        style="@style/ButtonAppThemeButtonAzul"
+
                         android:layout_width="75dp"
                         android:layout_height="75dp"
                         android:background="@drawable/icon_search"
                         android:gravity="bottom|center_horizontal"
                         android:text="Pesquisar"
                         android:textColor="@color/blue"
-                        android:textSize="14dp"
+                        android:textSize="10sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 

@@ -510,7 +510,7 @@ public class Lista_Biblia extends Activity {
          public void onClick(View v) {
 
 
-             Toast.makeText(getBaseContext(), "Versículo selecionado: " + bi.getBooksName() + " " + bi.getVersesChapter() + ":" + bi.getVersesNum(), Toast.LENGTH_LONG).show();
+             Toast.makeText(getBaseContext(), getString(R.string.versiculos_selecionados) + bi.getBooksName() + " " + bi.getVersesChapter() + ":" + bi.getVersesNum(), Toast.LENGTH_LONG).show();
 
              new BibliaBancoDadosHelper(getApplicationContext()).setVersCompartilhar(bi);
 
@@ -540,12 +540,11 @@ public class Lista_Biblia extends Activity {
 
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) myLayoutBusca.getLayoutParams();
 
+        myLayoutBusca.addView(addView);
 
         if (criarMenuSuspenso) {
 
             bibliaHelp = new BibliaBancoDadosHelper(this);
-
-            myLayoutBusca.addView(addView);
 
             params.height = LinearLayout.MarginLayoutParams.WRAP_CONTENT;
 
@@ -560,7 +559,7 @@ public class Lista_Biblia extends Activity {
             buttonBuscaList = findViewById(R.id.buttonBuscarList);
             editTextPesquisarList = findViewById(R.id.editTextPesquisarList);
 
-            editTextPesquisarList.setHint("Digite uma palavra");
+            editTextPesquisarList.setHint(R.string.digite_palavra);
 
             BibliaBancoDadosHelper bibliaHelp = new BibliaBancoDadosHelper(getApplicationContext());
             List<Biblia> bookNameList = bibliaHelp.getAllBooksName();
@@ -585,7 +584,6 @@ public class Lista_Biblia extends Activity {
 
                 }
             });
-
             spinnerCap.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -597,9 +595,6 @@ public class Lista_Biblia extends Activity {
 
                 }
             });
-
-
-
             editTextPesquisarList.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
 
@@ -644,13 +639,8 @@ public class Lista_Biblia extends Activity {
 
         } else {
 
-            View myView = findViewById(R.id.hiddenLayoutTopo);
-
-            if (myView != null) {
-                // ViewGroup parentTopo = (ViewGroup) myView.getParent();
-                //   parentTopo.removeView(myView);
-                params.height = 0;
-                myLayoutBusca.setLayoutParams(params);
+            if (addView != null) {
+                myLayoutBusca.removeAllViews();
             }
 
             criarMenuSuspenso = true;
@@ -680,7 +670,7 @@ public class Lista_Biblia extends Activity {
                 if (editTextPesquisarList.getText().length() >= 2)
                     startActivity(intent);
                 else
-                    editTextPesquisarList.setHint("Digite uma palavra");
+                    editTextPesquisarList.setHint(getString(R.string.digite_palavra));
 
 
     }
@@ -1049,7 +1039,7 @@ public class Lista_Biblia extends Activity {
         TextView textM = new TextView(getBaseContext());
         textM.setSelected(false);
         textM.setTextColor(Color.BLACK);
-        textM.setText("Deixe aqui sua mensagem ou prossiga.");
+        textM.setText(R.string.escrever_mensagem_compartilhar);
         textM.setTextSize(16);
 
         layout.addView(textVers);
@@ -1057,16 +1047,16 @@ public class Lista_Biblia extends Activity {
         layout.addView(input);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(Lista_Biblia.this);
-        builder.setTitle("Compartilhar ");
+        builder.setTitle(R.string.compartilhar);
 
 
         scrollView.addView(layout);
         scrollView.setBackgroundColor(getResources().getColor(R.color.white));
         builder.setView(scrollView);
 
-        builder.setPositiveButton("Prosseguir", new CompartilharVerso(stringBuffer, input));
+        builder.setPositiveButton(R.string.prosseguir, new CompartilharVerso(stringBuffer, input));
 
-        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getText(R.string.cancelar), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -1110,8 +1100,12 @@ public class Lista_Biblia extends Activity {
     protected void onResume() {
         super.onResume();
 
-        Biblia b = (Biblia) listView.getItemAtPosition(0);
-        setProgressBar(b.getIdBook());
+        try {
+            Biblia b = (Biblia) listView.getItemAtPosition(0);
+            setProgressBar(b.getIdBook());
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
 
         textViewComp.setText(Integer.toString(new BibliaBancoDadosHelper(Lista_Biblia.this).getQuantCompartilhar()));
 
@@ -1335,7 +1329,7 @@ public class Lista_Biblia extends Activity {
                     startActivity(intent);
                 }else{
 
-                    Toast.makeText(getApplication(),"Sem conexão",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplication(), getText(R.string.sem_conexao), Toast.LENGTH_LONG).show();
 
                 }
                 break;
@@ -1354,13 +1348,13 @@ public class Lista_Biblia extends Activity {
                 break;
 
             case 6:
-
-                mostrarAviso();
-
+                intent = new Intent(Lista_Biblia.this, ActivityPoliticaPrivacidade.class);
+                startActivity(intent);
                 break;
-
+            case 7:
+                mostrarAviso();
+                break;
             default:
-
                 break;
 
 
@@ -1412,7 +1406,7 @@ public class Lista_Biblia extends Activity {
         alertDialogBuilder.setCustomTitle(title);
 
         // set dialog message
-        alertDialogBuilder.setPositiveButton("Fechar", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setPositiveButton(getText(R.string.fechar_about), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
 
@@ -1583,11 +1577,11 @@ public class Lista_Biblia extends Activity {
 
                 onListPosicao(listView);
 
-                Toast.makeText(getBaseContext(), i + " foram encontrados", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), i + getString(R.string.foram_encontrados), Toast.LENGTH_LONG).show();
 
             } else {
 
-                Toast.makeText(getBaseContext(), "Nada encontrado", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), R.string.nada_encontrado, Toast.LENGTH_LONG).show();
                 finish();
             }
 
@@ -1607,8 +1601,8 @@ public class Lista_Biblia extends Activity {
         protected void onPreExecute() {
 
             progressDialog = new ProgressDialog(Lista_Biblia.this);
-            progressDialog.setTitle("Pesquisando");
-            progressDialog.setMessage("Aguarde um momento ...");
+            progressDialog.setTitle(getString(R.string.pesquisando));
+            progressDialog.setMessage(getString(R.string.aguarde_pesquisando));
             progressDialog.setCancelable(true);
             // progressDialog.setMax(100);
             // progressDialog.setIndeterminate(true);
@@ -1617,7 +1611,7 @@ public class Lista_Biblia extends Activity {
                 @Override
                 public void onCancel(DialogInterface dialogInterface) {
 
-                    Toast.makeText(Lista_Biblia.this, "Pesquisa cancelada", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Lista_Biblia.this, R.string.pesquisa_cancelada, Toast.LENGTH_LONG).show();
                     finish();
                     cancel(true);
 

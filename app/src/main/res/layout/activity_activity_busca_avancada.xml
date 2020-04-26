@@ -160,13 +160,12 @@
 
                 <Spinner
                     android:id="@+id/spinnerBuscaAvanc"
-                    style="@style/SpinnerAppTheme"
+                    style="@android:style/Widget.DeviceDefault.Light.Spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
                     android:layout_marginBottom="16dp"
                     android:gravity="left"
-                    android:theme="@style/SpinnerItemStyle"
                     app:layout_constraintBottom_toTopOf="@+id/textView"
                     app:layout_constraintStart_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
