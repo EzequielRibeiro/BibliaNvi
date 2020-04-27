@@ -10,7 +10,6 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.TextView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -189,13 +188,16 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
         List<Biblia> books = new LinkedList<Biblia>();
 
-        // 1. build the query
-        String query = "select books.id,testament.name,books.name,verses.chapter,verses.verse,verses.text,verses.lido,verses.rowid " +
+       /*
+               String query = "select books.id,testament.name,books.name,verses.chapter,verses.verse,verses.text,verses.lido,verses.rowid " +
                 "from testament,verses,books where testament.id = " +
                 "verses.testament and books.id = verses.book and books.name like '" + book + "%';";
+       */
 
-        // 2. get reference to writable DB
-        //SQLiteDatabase db = this.getWritableDatabase();
+        String query = "select books.id,testament.name,books.name,verses.chapter,verses.verse,verses.text,verses.lido,verses.rowid, stories.title " +
+                "from testament,verses,books left join stories ON stories.book = books.id and stories.chapter = verses.chapter and " +
+                "stories.verse = verses.verse where testament.id = verses.testament " +
+                "and books.id = verses.book and books.name like '" + book + "';";
 
         openDataBase();
 
@@ -210,11 +212,14 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
                 biblia.setIdBook(cursor.getInt(0));
                 biblia.setTestamentName(cursor.getString(1));
                 biblia.setBooksName(cursor.getString(2));
-                biblia.setVersesChapter(cursor.getString(3));
+                biblia.setChapter(cursor.getString(3));
                 biblia.setVerseNum(cursor.getString(4));
                 biblia.setText(cursor.getString(5));
                 biblia.setLido(cursor.getInt(6));
                 biblia.setIdVerse(cursor.getString(7));
+                biblia.setTitleCapitulo(cursor.getString(8));
+                if (cursor.getString(8) != null)
+                    Log.e("title", cursor.getString(8));
 
                 // Add book to books
                 books.add(biblia);
@@ -416,7 +421,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
     public void setVersCompartilhar(Biblia bi){
 
-        String versiculo = bi.getVersesText() + " ("+bi.getBooksName()+ " "+bi.getVersesChapter()+":"+bi.getVersesNum()+") ";
+        String versiculo = bi.getVersesText() + " (" + bi.getBooksName() + " " + bi.getChapter() + ":" + bi.getVersesNum() + ") ";
         String query = "insert into compartilhar (msg) values ('"+versiculo+"')";
         SQLiteDatabase db = SQLiteDatabase.openDatabase(DB_PATH, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
 
@@ -541,7 +546,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
                     biblia = new Biblia();
                     biblia.setTestamentName(cursor.getString(0));
                     biblia.setBooksName(cursor.getString(1));
-                    biblia.setVersesChapter(cursor.getString(2));
+                    biblia.setChapter(cursor.getString(2));
                     biblia.setVerseNum(cursor.getString(3));
                     biblia.setText(cursor.getString(4));
                     biblia.setLido(cursor.getInt(5));
@@ -586,7 +591,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
                         biblia = new Biblia();
                         biblia.setTestamentName(cursor.getString(0));
                         biblia.setBooksName(cursor.getString(1));
-                        biblia.setVersesChapter(cursor.getString(2));
+                        biblia.setChapter(cursor.getString(2));
                         biblia.setVerseNum(cursor.getString(3));
                         biblia.setText(cursor.getString(4));
                         biblia.setLido(cursor.getInt(5));
@@ -632,7 +637,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
                       biblia = new Biblia();
                       biblia.setTestamentName(cursor.getString(0));
                       biblia.setBooksName(cursor.getString(1));
-                      biblia.setVersesChapter(cursor.getString(2));
+                      biblia.setChapter(cursor.getString(2));
                       biblia.setVerseNum(cursor.getString(3));
                       biblia.setText(cursor.getString(4));
                       biblia.setLido(cursor.getInt(5));
@@ -779,7 +784,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
             editor.putString("assunto", v.getAssunto());
             editor.putString("versDia", v.getVersesText());
             editor.putString("livroNome",v.getBooksName());
-            editor.putString("capVersDia",v.getVersesChapter());
+        editor.putString("capVersDia", v.getChapter());
             editor.putString("verVersDia",v.getVersesNum());
 
             editor.commit();
@@ -810,7 +815,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             v.setBooksName(cursor.getString(0));
-            v.setVersesChapter(Integer.toString(cursor.getInt(1)));
+            v.setChapter(Integer.toString(cursor.getInt(1)));
             v.setVerseNum(Integer.toString(cursor.getInt(2)));
             v.setText(cursor.getString(3));
             v.setAssunto(cursor.getString(4));
@@ -965,7 +970,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
                         biblia = new Biblia();
                         biblia.setIdVerse(cursor.getString(0));
                         biblia.setBooksName(cursor.getString(1));
-                        biblia.setVersesChapter(cursor.getString(2));
+                    biblia.setChapter(cursor.getString(2));
                         biblia.setVerseNum(cursor.getString(3));
                         biblia.setText(cursor.getString(4));
 
@@ -1123,7 +1128,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
         @Override
         public String toString() {
-            return getVersesText()+ " ("+ getBooksName()+" " + getVersesChapter()+":"+ getVersesNum()+")" ;
+            return getVersesText() + " (" + getBooksName() + " " + getChapter() + ":" + getVersesNum() + ")";
         }
     }
 

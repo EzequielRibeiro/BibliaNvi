@@ -20,6 +20,15 @@ public class Biblia {
     private int idBook;
     private int totalDeVersosLidos;
     private int totalDeVersiculos;
+    private String titleCapitulo;
+
+    public String getTitleCapitulo() {
+        return titleCapitulo;
+    }
+
+    public void setTitleCapitulo(String titleCapitulo) {
+        this.titleCapitulo = titleCapitulo;
+    }
 
     public int getIdBook() {
         return idBook;
@@ -82,7 +91,7 @@ public class Biblia {
 
     }
 
-    public void setVersesChapter(String c){
+    public void setChapter(String c) {
 
         versesChapter = c;
     }
@@ -133,7 +142,7 @@ public class Biblia {
     }
 
 
-    public String getVersesChapter(){
+    public String getChapter() {
         if(versesChapter != null)
           return versesChapter;
         else
@@ -152,7 +161,12 @@ public class Biblia {
 
     @Override
     public String toString() {
-        return "<b>"+versesNum+"</b>"+" "+ versesText;
+
+        if (getTitleCapitulo() != null)
+            return "<p style=\"text-align: center\"><font color='red'>" + getTitleCapitulo() + "</font></p>" +
+                    "<b>" + versesNum + "</b>" + versesText;
+        else
+            return "<b>" + versesNum + "</b>" + " " + versesText;
     }
 
     public String getVersesText(){

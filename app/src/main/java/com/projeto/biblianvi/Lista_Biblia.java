@@ -52,7 +52,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -303,7 +302,7 @@ public class Lista_Biblia extends Activity {
                 bi = (Biblia) listView.getItemAtPosition(listView.getFirstVisiblePosition());
 
                 intent.putExtra("livro", bi.getBooksName());
-                intent.putExtra("capitulo", bi.getVersesChapter());
+                intent.putExtra("capitulo", bi.getChapter());
                 intent.putExtra("versiculo", bi.getVersesNum());
                 intent.putExtra("termoBusca", "nada");
 
@@ -500,7 +499,7 @@ public class Lista_Biblia extends Activity {
 
              pw.dismiss();
 
-             Toast.makeText(getBaseContext(), "Favorito: " + bi.getBooksName() + " " + bi.getVersesChapter() + ":" + bi.getVersesNum(), Toast.LENGTH_LONG).show();
+             Toast.makeText(getBaseContext(), "Favorito: " + bi.getBooksName() + " " + bi.getChapter() + ":" + bi.getVersesNum(), Toast.LENGTH_LONG).show();
 
          }
        });
@@ -510,7 +509,7 @@ public class Lista_Biblia extends Activity {
          public void onClick(View v) {
 
 
-             Toast.makeText(getBaseContext(), getString(R.string.versiculos_selecionados) + bi.getBooksName() + " " + bi.getVersesChapter() + ":" + bi.getVersesNum(), Toast.LENGTH_LONG).show();
+             Toast.makeText(getBaseContext(), getString(R.string.versiculos_selecionados) + bi.getBooksName() + " " + bi.getChapter() + ":" + bi.getVersesNum(), Toast.LENGTH_LONG).show();
 
              new BibliaBancoDadosHelper(getApplicationContext()).setVersCompartilhar(bi);
 
@@ -872,7 +871,7 @@ public class Lista_Biblia extends Activity {
 
                 Biblia bi = (Biblia) listView.getItemAtPosition(listView.getFirstVisiblePosition());
 
-                textViewCap.setText(bi.getVersesChapter());
+                textViewCap.setText(bi.getChapter());
 
                 if (bi.getBooksName().equals("Lamentações de Jeremias")) {
 
@@ -1162,9 +1161,9 @@ public class Lista_Biblia extends Activity {
 
                 Biblia bi = (Biblia) listView.getItemAtPosition(i);
 
-                if (bi.getVersesChapter().equals(newString[1]) && bi.getVersesNum().equals(newString[2])) {
+                if (bi.getChapter().equals(newString[1]) && bi.getVersesNum().equals(newString[2])) {
 
-                    textViewCap.setText(bi.getVersesChapter());
+                    textViewCap.setText(bi.getChapter());
                     textViewLivro.setText(bi.getBooksName());
                     listView.setSelection(i);
                 }
@@ -1688,8 +1687,8 @@ public class Lista_Biblia extends Activity {
                 //ùltimo item da lista
                 Biblia bi2 = (Biblia) listView.getItemAtPosition(total - 1);
 
-                capAtual = Integer.parseInt(bi1.getVersesChapter());
-                capUltimo = Integer.parseInt(bi2.getVersesChapter());
+                capAtual = Integer.parseInt(bi1.getChapter());
+                capUltimo = Integer.parseInt(bi2.getChapter());
 
                 Biblia bi3;
 
@@ -1700,7 +1699,7 @@ public class Lista_Biblia extends Activity {
 
                         bi3 = (Biblia) listView.getItemAtPosition(k);
 
-                        if ((bi3.getVersesChapter().equals(Integer.toString(capAtual))) && bi3.getVersesNum().equals("1"))
+                        if ((bi3.getChapter().equals(Integer.toString(capAtual))) && bi3.getVersesNum().equals("1"))
                             listView.setSelection(k);
                     }
 
@@ -1713,7 +1712,7 @@ public class Lista_Biblia extends Activity {
 
                         bi3 = (Biblia) listView.getItemAtPosition(k);
 
-                        if ((bi3.getVersesChapter().equals(Integer.toString(capAtual))) && bi3.getVersesNum().equals("1"))
+                        if ((bi3.getChapter().equals(Integer.toString(capAtual))) && bi3.getVersesNum().equals("1"))
                             listView.setSelection(k);
 
                     }

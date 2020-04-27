@@ -77,11 +77,11 @@ public class CapituloGridView extends BaseAdapter {
 
                 Button b = (Button) v;
 
-                biblia.setVersesChapter(b.getText().toString());
+                biblia.setChapter(b.getText().toString());
 
                 BibliaBancoDadosHelper bibliaHelp = new BibliaBancoDadosHelper(mContext);
 
-                int versiculos = bibliaHelp.getQuantidadeVersos(biblia.getBooksName(),biblia.getVersesChapter());
+                int versiculos = bibliaHelp.getQuantidadeVersos(biblia.getBooksName(), biblia.getChapter());
 
                 GridView gridViewVersiculos = (GridView) viewGroupParent;
                 gridViewVersiculos.setAdapter(new VersiculoGridView(mContext,versiculos,biblia));

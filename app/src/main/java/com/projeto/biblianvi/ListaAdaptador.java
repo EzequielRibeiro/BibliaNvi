@@ -18,6 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -31,11 +33,10 @@ public class ListaAdaptador extends BaseAdapter {
     private Context context;
     private LayoutInflater mInflater;
     private List<Biblia> itensList;
-    private Biblia currentListData;
+    private Biblia biblia;
     private BibliaBancoDadosHelper bancoHelper;
     private Intent intent;
     private final int LIDO = 1;
-
     private ItemSuporteBiblia itemSuporteBiblia;
     private boolean mostrarVersiculosLidos;
     private SharedPreferences sharedPrefs;
@@ -71,6 +72,7 @@ public class ListaAdaptador extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
+
         if(convertView == null) {
             convertView = mInflater.inflate(R.layout.activity_biblia_aberta, null);
             itemSuporteBiblia = new ItemSuporteBiblia(convertView);
@@ -82,17 +84,17 @@ public class ListaAdaptador extends BaseAdapter {
 
         }
 
-        currentListData = getItem(position);
+        biblia = getItem(position);
 
         //altera o tamanho da fonte
         tamanhoFonte(itemSuporteBiblia);
 
         //Altera a cor de fundo e do texto. Altera tamanho da fonte
         if(modoNoturno) {
-            modoNoturno(itemSuporteBiblia,currentListData);
+            modoNoturno(itemSuporteBiblia, biblia);
         }else{
 
-            if((currentListData.getLido() == 1) && mostrarVersiculosLidos)
+            if ((biblia.getLido() == 1) && mostrarVersiculosLidos)
                 itemSuporteBiblia.textoAberto.setBackgroundColor(context.getResources().getColor(R.color.cinzaclaro));
 
         }
@@ -102,7 +104,7 @@ public class ListaAdaptador extends BaseAdapter {
 
             itemSuporteBiblia.buttonAbrirLivro.setVisibility(View.VISIBLE);
             itemSuporteBiblia.buttonAbrirLivro.setEnabled(true);
-            itemSuporteBiblia.textoAberto.setText(Html.fromHtml(currentListData.toPesquisarString()));
+            itemSuporteBiblia.textoAberto.setText(Html.fromHtml(biblia.toPesquisarString()));
 
             itemSuporteBiblia.buttonAbrirLivro.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -117,7 +119,7 @@ public class ListaAdaptador extends BaseAdapter {
 
         }else{
 
-            itemSuporteBiblia.textoAberto.setText(Html.fromHtml(currentListData.toString()));
+            itemSuporteBiblia.textoAberto.setText(Html.fromHtml(biblia.toString()));
 
         }
 
@@ -160,7 +162,6 @@ public class ListaAdaptador extends BaseAdapter {
     private void tamanhoFonte(ItemSuporteBiblia text){
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-
         String t = sharedPrefs.getString("fontePref", "18");
         text.textoAberto.setTextSize(Integer.parseInt(t));
 
@@ -170,10 +171,13 @@ public class ListaAdaptador extends BaseAdapter {
     private void modoNoturno(ItemSuporteBiblia text, Biblia currentListData){
 
         text.textoAberto.setTextColor(Color.WHITE);
+
+
         if((currentListData.getLido() == 1) && mostrarVersiculosLidos)
             text.textoAberto.setBackgroundColor(context.getResources().getColor(R.color.dark));
         else {
             text.textoAberto.setBackgroundColor(context.getResources().getColor(R.color.black));
+
         }
 
     }
@@ -199,7 +203,7 @@ public class ListaAdaptador extends BaseAdapter {
 
         intent = new Intent(context, Lista_Biblia.class);
         intent.putExtra("livro", bi.getBooksName());
-        intent.putExtra("capitulo", bi.getVersesChapter());
+        intent.putExtra("capitulo", bi.getChapter());
         intent.putExtra("versiculo", bi.getVersesNum());
         intent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK );
@@ -230,8 +234,10 @@ public class ListaAdaptador extends BaseAdapter {
 
     private class ItemSuporteBiblia {
 
+
         TextView textoAberto;
         Button   buttonAbrirLivro;
+
 
         public ItemSuporteBiblia(View v) {
 
@@ -242,6 +248,7 @@ public class ListaAdaptador extends BaseAdapter {
             if(!fonte.contains("Arial")) {
                 Typeface font = Typeface.createFromAsset(context.getAssets(), "Font/"+fonte);
                 textoAberto.setTypeface(font);
+
             }
 
         }

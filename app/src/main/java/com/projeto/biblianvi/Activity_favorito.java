@@ -122,7 +122,7 @@ public class Activity_favorito extends Activity {
             TextView textViewLivro = convertView.findViewById(R.id.textViewFavorLivro);
             TextView textViewVerCap = convertView.findViewById(R.id.textViewFavorText);
 
-            textViewLivro.setText(objBiblia.getBooksName()+" "+objBiblia.getVersesChapter()+':'+objBiblia.getVersesNum());
+            textViewLivro.setText(objBiblia.getBooksName() + " " + objBiblia.getChapter() + ':' + objBiblia.getVersesNum());
             textViewVerCap.setText(objBiblia.getVersesText());
 
 

@@ -87,7 +87,7 @@ public class VersiculoGridView extends BaseAdapter {
                 Intent intent = new Intent(mContext, Lista_Biblia.class);
 
                 intent.putExtra("livro", biblia.getBooksName());
-                intent.putExtra("capitulo",biblia.getVersesChapter());
+                intent.putExtra("capitulo", biblia.getChapter());
                 intent.putExtra("versiculo", biblia.getVersesNum());
                 intent.putExtra("termoBusca", "nada");
 
@@ -97,7 +97,7 @@ public class VersiculoGridView extends BaseAdapter {
 
                 mContext.startActivity(intent);
 
-                Log.e("Biblia",biblia.getBooksName() +" "+biblia.getVersesChapter()+" "+ biblia.getVersesNum());
+                Log.e("Biblia", biblia.getBooksName() + " " + biblia.getChapter() + " " + biblia.getVersesNum());
             }
         });
 

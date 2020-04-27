@@ -152,7 +152,7 @@ public class Activity_busca_avancada extends Activity {
 
 
                 } else {
-                    editText.setHint("Digite uma palavra");
+                editText.setHint(getString(R.string.digite_palavra));
                 }
     }
 
