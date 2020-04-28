@@ -340,6 +340,60 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void runDownloadFromDownloadTask() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            ProgressBar progressBar = new ProgressBar(MainActivity.this, null, android.R.attr.progressBarStyleHorizontal);
+            progressBar.setIndeterminate(false);
+            progressBar.setMax(100);
+            progressBar.setVisibility(View.VISIBLE);
+            progressBar.setLayoutParams(params);
+
+            TextView textView = new TextView(getApplicationContext());
+            textView.setTextColor(Color.WHITE);
+            textView.setMaxWidth(100);
+
+            String smg = getString(string.app_name);
+            smg = smg.concat("\n\n" + getString(R.string.finished_install));
+            textView.setText(smg);
+
+            LinearLayout linearLayout = new LinearLayout(getApplicationContext());
+            linearLayout.setOrientation(LinearLayout.VERTICAL);
+            linearLayout.setGravity(Gravity.CENTER);
+            linearLayout.setBackgroundColor(Color.BLACK);
+            params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+
+            linearLayout.setLayoutParams(params);
+            linearLayout.addView(textView);
+            linearLayout.addView(progressBar);
+            FrameLayout frameLayout = findViewById(R.id.frame_layout_man);
+            frameLayout.addView(linearLayout);
+            if (isNetworkAvailable(this)) {
+                new DownloadTask(getApplicationContext(), progressBar, frameLayout, linearLayout, sharedPrefDataBasePatch);
+            } else {
+                Toast.makeText(getApplicationContext(), string.sem_conexao, Toast.LENGTH_LONG).show();
+            }
+
+        } else {
+            progressDialog = new ProgressDialog(MainActivity.this, style.ProgressBarStyle);
+            progressDialog.setTitle(string.app_name);
+            progressDialog.setMessage(getString(string.finished_install));
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            progressDialog.setProgressNumberFormat(null);
+            progressDialog.setCancelable(false);
+            progressDialog.setMax(100);
+            progressDialog.show();
+            if (isNetworkAvailable(this)) {
+                new DownloadTask(getApplicationContext(), progressDialog, sharedPrefDataBasePatch);
+            } else {
+                Toast.makeText(getApplicationContext(), string.sem_conexao, Toast.LENGTH_LONG).show();
+            }
+
+        }
+    }
+
     private void downloadDataBaseBible(){
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -347,56 +401,11 @@ public class MainActivity extends AppCompatActivity {
                     ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_NOTIFICATION_POLICY}, REQUEST_STORAGE);
             } else {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
-                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    ProgressBar progressBar = new ProgressBar(MainActivity.this, null, android.R.attr.progressBarStyleHorizontal);
-                    progressBar.setIndeterminate(false);
-                    progressBar.setMax(100);
-                    progressBar.setVisibility(View.VISIBLE);
-                    progressBar.setLayoutParams(params);
-
-                    TextView textView = new TextView(getApplicationContext());
-                    textView.setTextColor(Color.WHITE);
-                    textView.setMaxWidth(100);
-
-                    String smg = getString(string.app_name);
-                    smg = smg.concat("\n\n" + getString(R.string.finished_install));
-                    textView.setText(smg);
-
-                    LinearLayout linearLayout = new LinearLayout(getApplicationContext());
-                    linearLayout.setOrientation(LinearLayout.VERTICAL);
-                    linearLayout.setGravity(Gravity.CENTER);
-                    linearLayout.setBackgroundColor(Color.BLACK);
-                    params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-
-                    linearLayout.setLayoutParams(params);
-                    linearLayout.addView(textView);
-                    linearLayout.addView(progressBar);
-                    FrameLayout frameLayout = findViewById(R.id.frame_layout_man);
-                    frameLayout.addView(linearLayout);
-
-                    new DownloadTask(getApplicationContext(), progressBar, frameLayout, linearLayout, sharedPrefDataBasePatch);
-                } else {
-                    progressDialog = new ProgressDialog(MainActivity.this, style.ProgressBarStyle);
-                    progressDialog.setTitle(string.app_name);
-                    progressDialog.setMessage(getString(string.finished_install));
-                    progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                    progressDialog.setProgressNumberFormat(null);
-                    progressDialog.setCancelable(false);
-                    progressDialog.setMax(100);
-                    progressDialog.show();
-                    new DownloadTask(getApplicationContext(), progressDialog, sharedPrefDataBasePatch);
-
-                }
+                runDownloadFromDownloadTask();
             }
         } else {
 
-            if (isNetworkAvailable(this)) {
-                downloadDataBaseBible();
-            } else {
-                Toast.makeText(getApplicationContext(), string.sem_conexao, Toast.LENGTH_LONG).show();
-            }
+            runDownloadFromDownloadTask();
         }
 
 
@@ -470,7 +479,8 @@ public class MainActivity extends AppCompatActivity {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 if (!isDataBaseDownload(getApplicationContext())) {
                     if (isNetworkAvailable(this)) {
-                        downloadDataBaseBible();}
+                        runDownloadFromDownloadTask();
+                    }
                     else{
                         Toast.makeText(getApplicationContext(), string.not_internet_avaliable, Toast.LENGTH_LONG).show();
                     }
