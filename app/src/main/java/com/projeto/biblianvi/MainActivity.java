@@ -23,6 +23,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.Html;
+import android.text.Layout;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -45,6 +46,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -105,12 +107,12 @@ public class MainActivity extends AppCompatActivity {
     static public String DATABASENAME;
 
 
-
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       // requestWindowFeature(Window.FEATURE_ACTION_BAR);
+        // requestWindowFeature(Window.FEATURE_ACTION_BAR);
         setContentView(layout.activity_main);
         getSharedPreferences("brilhoAtual", Activity.MODE_PRIVATE).edit().putInt("brilhoAtualValor", Lista_Biblia.getScreenBrightness(getApplicationContext())).commit();
         PACKAGENAME = getPackageName();
@@ -136,14 +138,15 @@ public class MainActivity extends AppCompatActivity {
                 mDrawerLayout,         /* DrawerLayout object */
                 null,  /* nav drawer image to replace 'Up' caret */
                 string.drawer_open,  /* "open drawer" description for accessibility */
-               string.drawer_close  /* "close drawer" description for accessibility */
+                string.drawer_close  /* "close drawer" description for accessibility */
         ) {
-           public void onDrawerClosed(View view) {
+            public void onDrawerClosed(View view) {
             }
+
             public void onDrawerOpened(View drawerView) {
             }
         };
-          mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         bibliaHelp = new BibliaBancoDadosHelper(this);
 
@@ -161,13 +164,22 @@ public class MainActivity extends AppCompatActivity {
         button_pesquisar = findViewById(id.button_pesquisar);
         text_qualificar = findViewById(id.text_qualificar);
         text_qualificar.setText(getString(string.gostou_do_nosso_app));
+
         button_noticias.setText(getString(string.noticias));
+        button_noticias.setMaxLines(1);
+        button_noticias.setBackground(getDrawable(drawable.button_new_custom));
         TextViewCompat.setAutoSizeTextTypeWithDefaults(button_noticias, TextView.AUTO_SIZE_TEXT_TYPE_NONE);
         button_biblia.setText(getString(string.biblia));
+        button_biblia.setMaxLines(1);
+        button_biblia.setBackground(getDrawable(drawable.button_biblia_custom));
         TextViewCompat.setAutoSizeTextTypeWithDefaults(button_biblia, TextView.AUTO_SIZE_TEXT_TYPE_NONE);
         button_dicionario.setText(getString(string.dicionario));
+        button_dicionario.setMaxLines(1);
+        button_dicionario.setBackground(getDrawable(drawable.button_dicionario_custom));
         TextViewCompat.setAutoSizeTextTypeWithDefaults(button_dicionario, TextView.AUTO_SIZE_TEXT_TYPE_NONE);
         button_pesquisar.setText(getString(string.pesquisar));
+        button_pesquisar.setMaxLines(1);
+        button_pesquisar.setBackground(getDrawable(drawable.button_search_custom));
         TextViewCompat.setAutoSizeTextTypeWithDefaults(button_pesquisar, TextView.AUTO_SIZE_TEXT_TYPE_NONE);
 
         text_qualificar.setOnClickListener(new View.OnClickListener() {
@@ -214,7 +226,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         button_biblia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -255,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
         mAdView.postDelayed(new Runnable() {
             @Override
             public void run() {
-                MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Collections.singletonList("4CCDC45D57519669CA4C587B6E896BE8")).build());
+                // MobileAds.setRequestConfiguration(new RequestConfiguration.Builder().setTestDeviceIds(Collections.singletonList("4CCDC45D57519669CA4C587B6E896BE8")).build());
                 mAdView.loadAd(adRequest);
             }
         }, 50000);
@@ -285,11 +296,11 @@ public class MainActivity extends AppCompatActivity {
 
 
                 // AdRequest.ERROR_CODE_NO_FILL)
-                    Log.i("admob", String.valueOf(errorCode));
-                    Bundle bundle = new Bundle();
-                    bundle.putString("ERRORCODE", String.valueOf(errorCode));
-                    bundle.putString("COUNTRY", getResources().getConfiguration().locale.getDisplayCountry());
-                    mFirebaseAnalytics.logEvent("ADMOB", bundle);
+                Log.i("admob", String.valueOf(errorCode));
+                Bundle bundle = new Bundle();
+                bundle.putString("ERRORCODE", String.valueOf(errorCode));
+                bundle.putString("COUNTRY", getResources().getConfiguration().locale.getDisplayCountry());
+                mFirebaseAnalytics.logEvent("ADMOB", bundle);
 
 
             }
@@ -348,16 +359,22 @@ public class MainActivity extends AppCompatActivity {
             ProgressBar progressBar = new ProgressBar(MainActivity.this, null, android.R.attr.progressBarStyleHorizontal);
             progressBar.setIndeterminate(false);
             progressBar.setMax(100);
+            progressBar.setScaleY(5);
             progressBar.setVisibility(View.VISIBLE);
             progressBar.setLayoutParams(params);
 
+            params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
             TextView textView = new TextView(getApplicationContext());
             textView.setTextColor(Color.WHITE);
-            textView.setMaxWidth(100);
+            textView.setTextSize(16);
+            textView.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+            params.setMargins(20, 0, 20, 20);
+            textView.setLayoutParams(params);
 
-            String smg = getString(string.app_name);
-            smg = smg.concat("\n\n" + getString(R.string.finished_install));
-            textView.setText(smg);
+            String smg = "<font color='red'>" + getString(string.app_name) + "</font>";
+            smg = smg.concat("<br>" + getString(R.string.finished_install));
+            textView.setText(Html.fromHtml(smg, Html.FROM_HTML_MODE_LEGACY));
 
             LinearLayout linearLayout = new LinearLayout(getApplicationContext());
             linearLayout.setOrientation(LinearLayout.VERTICAL);
@@ -399,7 +416,35 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
                     ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_NOTIFICATION_POLICY}, REQUEST_STORAGE);
+
+                //Show an explanation to the user *asynchronously*
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(string.msg_permission)
+                        .setTitle(string.title_permission);
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+               /*
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.ACCESS_NOTIFICATION_POLICY}, REQUEST_STORAGE);
+                            Intent i = getBaseContext().getPackageManager().
+                                    getLaunchIntentForPackage(getBaseContext().getPackageName());
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            i.addFlags(FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(i);
+                            finish();*/
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_NOTIFICATION_POLICY}, REQUEST_STORAGE);
+
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+
+                builder.show();
+
             } else {
                 runDownloadFromDownloadTask();
             }
@@ -488,29 +533,9 @@ public class MainActivity extends AppCompatActivity {
             } else if (grantResults[0] == PackageManager.PERMISSION_DENIED) {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
                         || ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        || ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.ACCESS_NOTIFICATION_POLICY)
                 ) {
-                    //Show an explanation to the user *asynchronously*
-                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setMessage(string.msg_permission)
-                            .setTitle(string.title_permission);
-                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                                    Manifest.permission.ACCESS_NOTIFICATION_POLICY}, REQUEST_STORAGE);
-                            Intent i = getBaseContext().getPackageManager().
-                                    getLaunchIntentForPackage(getBaseContext().getPackageName());
-                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            i.addFlags(FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(i);
-                            finish();
-                        }
-                    });
-                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
-                    });
+                    downloadDataBaseBible();
                 }
             }
         }
@@ -774,7 +799,7 @@ public class MainActivity extends AppCompatActivity {
                 settings = getSharedPreferences("versDiaPreference", Activity.MODE_PRIVATE);
         textViewAssuntoVers.setText(settings.getString("assunto", getString(string.peace)));
                 textViewAssuntoVers.setMinLines(2);
-        textViewAssuntoVers.setTextColor(Color.BLUE);
+        textViewAssuntoVers.setTextColor(Color.BLACK);
         textViewVersDia.setText(Html.fromHtml(settings.getString("versDia", getString(string.versiculo_text))
                 + " (" + settings.getString("livroNome", getString(string.capitulo_number)) + ":" +
                 settings.getString("verVersDia", getString(string.versiculo_number)) + ")"));

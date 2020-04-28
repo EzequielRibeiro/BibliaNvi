@@ -69,24 +69,24 @@
             android:id="@+id/buttonNotaSalvar"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
             android:background="@drawable/buttonshape"
             android:text="@string/salvar"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/buttonNotaCancel"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_alignBottom="@+id/buttonNotaSalvar"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
             android:background="@drawable/buttonshape"
             android:text="@string/cancelar"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -40,7 +40,7 @@ public class Grafico_Um extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_grafico_um, menu);
+        // getMenuInflater().inflate(R.menu.menu_grafico_um, menu);
         return true;
     }
 
