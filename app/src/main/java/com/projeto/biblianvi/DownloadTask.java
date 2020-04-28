@@ -11,6 +11,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -35,6 +37,8 @@ public class DownloadTask {
     private SharedPreferences sharedPref;
     private ProgressBar progressBar;
     private ProgressDialog progressDialog;
+    private FrameLayout frameLayout;
+    private LinearLayout linearLayout;
 
     public DownloadTask(Context context, ProgressDialog progressDialog, SharedPreferences sharedPref) {
         packageName = context.getPackageName();
@@ -44,10 +48,13 @@ public class DownloadTask {
     }
 
 
-    public DownloadTask(Context context, ProgressBar progressBar, SharedPreferences sharedPref) {
+    public DownloadTask(Context context, ProgressBar progressBar,
+                        FrameLayout frameLayout, LinearLayout linearLayout, SharedPreferences sharedPref) {
         packageName = context.getPackageName();
         this.sharedPref = sharedPref;
         this.progressBar = progressBar;
+        this.frameLayout = frameLayout;
+        this.linearLayout = linearLayout;
         runTask(sharedPref.getString("language", "en"));
 
     }
@@ -227,6 +234,9 @@ public class DownloadTask {
                     thread.start();
                     if (progressBar != null) progressBar.setVisibility(View.GONE);
                     if (progressDialog != null) progressDialog.dismiss();
+                    if (frameLayout != null && linearLayout != null)
+                        frameLayout.removeView(linearLayout);
+
                     Toast.makeText(context, R.string.download_fail, Toast.LENGTH_LONG).show();
                    throw new IOException("Failed to download file: " + response);
                 }else{
@@ -279,7 +289,7 @@ public class DownloadTask {
             if (outputFile != null) {
                 Log.e(TAG, "Unzip Started: " + outputFile.getAbsolutePath());
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    new UnZip(outputFile.getAbsolutePath(), packageName, sharedPref, progressBar);
+                    new UnZip(outputFile.getAbsolutePath(), packageName, sharedPref, progressBar, frameLayout, linearLayout);
                 } else {
                     new UnZip(outputFile.getAbsolutePath(), packageName, sharedPref, progressDialog);
                 }

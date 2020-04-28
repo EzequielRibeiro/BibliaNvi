@@ -18,6 +18,7 @@
 
             <TextView
                 android:id="@+id/textoAberto"
+                style="@android:style/Widget.DeviceDefault.TextView"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -27,7 +28,8 @@
                 android:includeFontPadding="false"
                 android:text="nullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnull"
                 android:textColor="@color/black"
-                android:textColorHighlight="#d0121313" />
+                android:textColorHighlight="#d0121313"
+                android:textStyle="normal" />
 
             <Button
                 android:id="@+id/buttonAbrirLivro"

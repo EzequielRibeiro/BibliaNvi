@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     private CharSequence mTitle;
     private String[] menuTitulos;
     private BibliaBancoDadosHelper bibliaHelp;
-    private Button button_noticias, buttonClock, button_biblia, button_dicionario, button_pesquisar, button_qualificar;
+    private Button button_noticias, buttonClock, button_biblia, button_dicionario, button_pesquisar;
     private ProgressDialog progressDialog;
     private Intent intent;
     private ListView listView;
@@ -98,10 +98,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewDeveloper;
     private FirebaseAnalytics mFirebaseAnalytics;
     private TextView text_qualificar;
+    private LinearLayout layout_qualificar;
     static public String PACKAGENAME;
     static private SharedPreferences sharedPrefDataBasePatch ;
     static private SharedPreferences.Editor editor;
     static public String DATABASENAME;
+
 
 
     @Override
@@ -152,23 +154,21 @@ public class MainActivity extends AppCompatActivity {
         textViewAssuntoVers = findViewById(id.textViewAssuntoVers);
         textViewVersDia = findViewById(id.textViewVersDia);
 
-        button_qualificar = findViewById(id.button_qualificar);
+        layout_qualificar = findViewById(R.id.layout_qualificar);
         button_noticias = findViewById(id.buttonNoticias);
         button_biblia = findViewById(id.button_biblia);
         button_dicionario = findViewById(id.button_dicionario);
         button_pesquisar = findViewById(id.button_pesquisar);
         text_qualificar = findViewById(id.text_qualificar);
-
-        button_qualificar.setText(getString(string.gostou_do_nosso_app));
+        text_qualificar.setText(getString(string.gostou_do_nosso_app));
         button_noticias.setText(getString(string.noticias));
-        button_noticias.setTextSize(10);
+        TextViewCompat.setAutoSizeTextTypeWithDefaults(button_noticias, TextView.AUTO_SIZE_TEXT_TYPE_NONE);
         button_biblia.setText(getString(string.biblia));
-        button_biblia.setTextSize(10);
+        TextViewCompat.setAutoSizeTextTypeWithDefaults(button_biblia, TextView.AUTO_SIZE_TEXT_TYPE_NONE);
         button_dicionario.setText(getString(string.dicionario));
-        button_dicionario.setTextSize(10);
+        TextViewCompat.setAutoSizeTextTypeWithDefaults(button_dicionario, TextView.AUTO_SIZE_TEXT_TYPE_NONE);
         button_pesquisar.setText(getString(string.pesquisar));
-        button_pesquisar.setTextSize(10);
-
+        TextViewCompat.setAutoSizeTextTypeWithDefaults(button_pesquisar, TextView.AUTO_SIZE_TEXT_TYPE_NONE);
 
         text_qualificar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button_qualificar.setOnClickListener(new View.OnClickListener() {
+        layout_qualificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
@@ -304,21 +304,7 @@ public class MainActivity extends AppCompatActivity {
             textViewDeveloper.setText("");
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
-                    ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-            ) {
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_NOTIFICATION_POLICY}, REQUEST_STORAGE);
-            }
-        } else {
-            if (!isDataBaseDownload(getApplicationContext())) {
-                if (isNetworkAvailable(this)) {
-                downloadDataBaseBible();}
-                else{
-                    Toast.makeText(getApplicationContext(), string.sem_conexao, Toast.LENGTH_LONG).show();
-                }
-            }
-        }
+
         Log.e("Banco:", Boolean.toString(isDataBaseDownload(getApplicationContext())));
 
     }
@@ -356,31 +342,62 @@ public class MainActivity extends AppCompatActivity {
 
     private void downloadDataBaseBible(){
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            FrameLayout layout = findViewById(id.frame_layout_man);
-            ProgressBar progressBar = new ProgressBar(MainActivity.this, null, android.R.attr.progressBarStyleHorizontal);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
+                    ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_NOTIFICATION_POLICY}, REQUEST_STORAGE);
+            } else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-            progressBar.setIndeterminate(false);
-            progressBar.setMax(100);
-            progressBar.setVisibility(View.VISIBLE);
-            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            layout.addView(progressBar, params);
-            new DownloadTask(getApplicationContext(), progressBar, sharedPrefDataBasePatch);
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    ProgressBar progressBar = new ProgressBar(MainActivity.this, null, android.R.attr.progressBarStyleHorizontal);
+                    progressBar.setIndeterminate(false);
+                    progressBar.setMax(100);
+                    progressBar.setVisibility(View.VISIBLE);
+                    progressBar.setLayoutParams(params);
+
+                    TextView textView = new TextView(getApplicationContext());
+                    textView.setTextColor(Color.WHITE);
+                    textView.setMaxWidth(100);
+
+                    String smg = getString(string.app_name);
+                    smg = smg.concat("\n\n" + getString(R.string.finished_install));
+                    textView.setText(smg);
+
+                    LinearLayout linearLayout = new LinearLayout(getApplicationContext());
+                    linearLayout.setOrientation(LinearLayout.VERTICAL);
+                    linearLayout.setGravity(Gravity.CENTER);
+                    linearLayout.setBackgroundColor(Color.BLACK);
+                    params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+
+                    linearLayout.setLayoutParams(params);
+                    linearLayout.addView(textView);
+                    linearLayout.addView(progressBar);
+                    FrameLayout frameLayout = findViewById(R.id.frame_layout_man);
+                    frameLayout.addView(linearLayout);
+
+                    new DownloadTask(getApplicationContext(), progressBar, frameLayout, linearLayout, sharedPrefDataBasePatch);
+                } else {
+                    progressDialog = new ProgressDialog(MainActivity.this, style.ProgressBarStyle);
+                    progressDialog.setTitle(string.app_name);
+                    progressDialog.setMessage(getString(string.finished_install));
+                    progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                    progressDialog.setProgressNumberFormat(null);
+                    progressDialog.setCancelable(false);
+                    progressDialog.setMax(100);
+                    progressDialog.show();
+                    new DownloadTask(getApplicationContext(), progressDialog, sharedPrefDataBasePatch);
+
+                }
+            }
         } else {
-            progressDialog = new ProgressDialog(MainActivity.this, style.ProgressBarStyle);
-            progressDialog.setTitle(string.app_name);
-            progressDialog.setMessage(getString(string.finished_install));
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-            progressDialog.setProgressNumberFormat(null);
-            progressDialog.setCancelable(false);
-            progressDialog.setMax(100);
-            progressDialog.show();
-            new DownloadTask(getApplicationContext(), progressDialog, sharedPrefDataBasePatch);
 
-
+            if (isNetworkAvailable(this)) {
+                downloadDataBaseBible();
+            } else {
+                Toast.makeText(getApplicationContext(), string.sem_conexao, Toast.LENGTH_LONG).show();
+            }
         }
-
-
 
 
     }
@@ -745,10 +762,11 @@ public class MainActivity extends AppCompatActivity {
 
                 SharedPreferences settings;
                 settings = getSharedPreferences("versDiaPreference", Activity.MODE_PRIVATE);
-                textViewAssuntoVers.setText(settings.getString("assunto", "Paz"));
+        textViewAssuntoVers.setText(settings.getString("assunto", getString(string.peace)));
                 textViewAssuntoVers.setMinLines(2);
+        textViewAssuntoVers.setTextColor(Color.BLUE);
         textViewVersDia.setText(Html.fromHtml(settings.getString("versDia", getString(string.versiculo_text))
-                + " (" + settings.getString("livroNome", getString(string.capitulo_number)) + " " +
+                + " (" + settings.getString("livroNome", getString(string.capitulo_number)) + ":" +
                 settings.getString("verVersDia", getString(string.versiculo_number)) + ")"));
 
     }
@@ -778,7 +796,7 @@ public class MainActivity extends AppCompatActivity {
         editor = sharedPrefDataBasePatch.edit();
         editor.putString("language",Locale.getDefault().getLanguage());
         editor.commit();
-        Log.e("Language: ", Locale.getDefault().getLanguage());
+
 
         if (!checarAlarmeExiste())
             if (isDataBaseDownload(getApplicationContext()))

@@ -112,8 +112,7 @@
                             android:text="..."
 
                             android:textSize="16sp"
-                            android:textStyle="bold"
-                            tools:text="Paz" />
+                            android:textStyle="bold" />
                     </LinearLayout>
 
 
@@ -138,8 +137,7 @@
                             android:text="..."
                             android:textAlignment="center"
                             android:textColor="@android:color/white"
-                            android:textSize="16sp"
-                            tools:text="Tenho-vos dito isto, para que em mim tenhais paz; no mundo tereis aflições, mas tende bom ânimo, eu venci o mundo. João 16:33" />
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                 </LinearLayout>

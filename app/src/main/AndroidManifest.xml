@@ -35,7 +35,7 @@
         </activity>
         <activity
             android:name=".Activity_favorito"
-            android:label="Favoritos" />
+            android:label="@string/favorito" />
         <activity
             android:name=".BibliaAberta"
             android:label="@string/app_name" />
@@ -46,10 +46,10 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".NetworkActivityDevocional"
-            android:label="" />
+            android:label="@string/devocional" />
         <activity
             android:name=".SettingsActivity"
-            android:label="Configuração">
+            android:label="@string/configura_o">
             <intent-filter>
                 <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
 
@@ -76,7 +76,7 @@
 
         <activity
             android:name=".Activity_busca_avancada"
-            android:label="@string/app_name"
+            android:label="@string/busca_avancada_title"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustResize"
             />
@@ -128,7 +128,7 @@
 
         <activity
             android:name=".MainActivityFragment"
-            android:label="Livros - Epistolas" />
+            android:label="@string/livro_evangelho_epistola" />
         <activity
             android:name=".DetailsActivity"
             android:label="Capitulos - Versiculos" />

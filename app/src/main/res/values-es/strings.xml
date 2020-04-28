@@ -147,7 +147,27 @@
     <string name="pesquisa_cancelada">Búsqueda cancelada</string>
     <string name="salvar_nos_favorito">Guardar como favorita</string>
     <string name="salvar_para_compartilhar">Guardar para compartir</string>
-    <string name="versiculo_do_dia">\"Versículo do dia: \"</string>
+    <string name="versiculo_do_dia">Verso del día:</string>
 
+    <string-array name="menu_array">
+        <item> Favorito </item>
+        <item> Anotaciones </item>
+        <item> Diccionario </item>
+        <item> Sermones </item>
+        <item> Estadísticas </item>
+        <item> Configuración </item>
+        <item> Política de privacidad </item>
+        <item> Acerca de </item>
+    </string-array>
+    <string name="hora_redefinida">Nuevo horario</string>
+    <string name="minuto">Minuto</string>
+    <string name="salvar" translatable="false">Guardar</string>
+    <string name="t_tulo">"Titulo "</string>
+    <string name="livro_evangelho_epistola">Libros - Evangelio - Epístolas</string>
+    <string name="hora">Hora</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="biblia">Biblia</string>
+    <string name="peace">Paz</string>
 
 </resources>

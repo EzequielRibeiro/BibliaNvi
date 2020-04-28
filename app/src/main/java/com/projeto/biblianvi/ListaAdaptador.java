@@ -11,6 +11,7 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.text.Html;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -242,6 +243,10 @@ public class ListaAdaptador extends BaseAdapter {
         public ItemSuporteBiblia(View v) {
 
             textoAberto = v.findViewById(R.id.textoAberto);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                textoAberto.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+
             buttonAbrirLivro = v.findViewById(R.id.buttonAbrirLivro);
 
 

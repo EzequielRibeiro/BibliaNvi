@@ -7,6 +7,8 @@ import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import java.io.File;
@@ -24,12 +26,17 @@ public class UnZip {
     private ProgressBar progressBar;
     private ProgressDialog progressDialog;
     private String zipFilePath;
+    private FrameLayout frameLayout;
+    private LinearLayout linearLayout;
 
-    public UnZip(String zipFilePath, String packageName, SharedPreferences sharedPref, ProgressBar progressBar) {
+    public UnZip(String zipFilePath, String packageName, SharedPreferences sharedPref, ProgressBar progressBar, FrameLayout frameLayout,
+                 LinearLayout linearLayout) {
         editor = sharedPref.edit();
         this.zipFilePath = zipFilePath;
         this.packageName = packageName;
         this.progressBar = progressBar;
+        this.frameLayout = frameLayout;
+        this.linearLayout = linearLayout;
         runUnZip();
 
     }
@@ -74,6 +81,7 @@ public class UnZip {
                                 @Override
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);
+                                    frameLayout.removeView(linearLayout);
                                 }
                             });
 

@@ -163,8 +163,8 @@ public class Biblia {
     public String toString() {
 
         if (getTitleCapitulo() != null)
-            return "<p style=\"text-align: center\"><font color='red'>" + getTitleCapitulo() + "</font></p>" +
-                    "<b>" + versesNum + "</b>" + versesText;
+            return "<font color='red'>" + getTitleCapitulo() + "</font><br>" +
+                    "<b>" + versesNum + "</b>" + " " + versesText;
         else
             return "<b>" + versesNum + "</b>" + " " + versesText;
     }

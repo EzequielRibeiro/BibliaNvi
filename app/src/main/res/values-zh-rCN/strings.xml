@@ -71,7 +71,7 @@
         
     <string name="title_activity_activity_busca_avancada">"高级搜索"</string>
         
-    <string name="aviso">应用程序名称：圣经\n\n版本：zn@app_version@\n\n 翻译：@bible_version@\n\n 感谢您的下载！\n\n如果您发现任何错误或对该应用程序有任何建议, 请通过电子邮件与我们联系：aplicativoparamobile@gmail.com\n\n开发者：Ezequiel A. Ribeiro "</string>
+    <string name="aviso">"应用程序名称：\\n圣经  \\n版本：\\n@app_version@  \\n 翻译：@bible_version@ \\n\\n  感谢您的下载！\\n\\n  如果您发现任何错误或对该应用程序有任何建议, 请通过电子邮件与我们联系：aplicativoparamobile@gmail.com  开发者：Ezequiel A. Ribeiro "</string>
         
     <string name="title_activity_activity_anotacao">注释</string>
         
@@ -209,6 +209,20 @@
     <string name="salvar_nos_favorito">另存为收藏夹</string>
         
     <string name="salvar_para_compartilhar">保存以共享</string>
-    <string name="versiculo_do_dia">\"Versículo do dia: \"</string>
+    <string name="versiculo_do_dia">当天的诗歌：</string>
+    <string name="livro_evangelho_epistola">书籍 - 福音书 - 书信</string>
+
+    <string-array name="menu_array">
+        <item>最喜欢的</item>
+        <item>注释</item>
+        <item>字典</item>
+        <item>讲道</item>
+        <item>统计</item>
+        <item>设置</item>
+        <item>隐私政策</item>
+        <item>关于</item>
+    </string-array>
+    <string name="compartilharWhat" translatable="false">" WhatsApp "</string>
+    <string name="peace">和平</string>
 
 </resources>

@@ -62,6 +62,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.firebase.BuildConfig;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import java.util.ArrayList;
 import java.util.List;
@@ -379,8 +380,7 @@ public class Lista_Biblia extends Activity {
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
-                toolbar,  /* nav drawer image to replace 'Up' caret */
-                R.string.drawer_open,  /* "open drawer" description for accessibility */
+                R.string.drawer_open,  /* nav drawer image to replace 'Up' caret */
                 R.string.drawer_close  /* "close drawer" description for accessibility */
         ) {
             public void onDrawerClosed(View view) {
@@ -686,7 +686,7 @@ public class Lista_Biblia extends Activity {
             seekBarBrilho.setVisibility(View.VISIBLE);
             seekBarBrilho.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.MATCH_PARENT));
-            seekBarBrilho.setKeyProgressIncrement(10);
+            seekBarBrilho.setKeyProgressIncrement(25);
             seekBarBrilho.setOnSeekBarChangeListener(new OnSeekBar());
 
 
@@ -1388,11 +1388,13 @@ public class Lista_Biblia extends Activity {
 
         TextView msg = new TextView(this);
         msg.setTextColor(getResources().getColor(R.color.white));
-        msg.setText(R.string.aviso);
+        String t = getString(R.string.aviso);
+        t = t.replace("@app_version@", BuildConfig.VERSION_NAME).replace("@bible_version@",
+                new BibliaBancoDadosHelper(getApplicationContext()).getBibleVersion());
+        msg.setText(t);
         msg.setPadding(10, 10, 10, 10);
         msg.setGravity(View.TEXT_ALIGNMENT_CENTER);
         msg.setTextSize(18);
-
 
         ScrollView scrollView = new ScrollView(getApplicationContext());
         scrollView.setBackgroundColor(getResources().getColor(R.color.dark));
