@@ -6,34 +6,34 @@
     android:id="@+id/hiddenLayoutBase"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="#787676"
+    android:background="@color/white"
     android:gravity="center">
 
-        <SeekBar
-            android:id="@+id/seekBarBrilho"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+    <SeekBar
+        android:id="@+id/seekBarBrilho"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
 
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="@string/noticias"
+        android:text="@string/devocional"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/buttonViewFeeMain"
-        app:layout_constraintStart_toStartOf="@+id/buttonViewFeeMain"
-        app:layout_constraintTop_toBottomOf="@+id/buttonViewFeeMain" />
+        app:layout_constraintEnd_toEndOf="@+id/buttonViewSermon"
+        app:layout_constraintStart_toStartOf="@+id/buttonViewSermon"
+        app:layout_constraintTop_toBottomOf="@+id/buttonViewSermon" />
 
     <TextView
         android:id="@+id/textView7"
@@ -103,11 +103,11 @@
         app:layout_constraintTop_toBottomOf="@+id/seekBarBrilho" />
 
     <Button
-        android:id="@+id/buttonViewFeeMain"
+        android:id="@+id/buttonViewSermon"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/globe"
+        android:background="@drawable/sermon"
         android:gravity="bottom|center"
         android:textColor="@color/black"
         android:textSize="12sp"
@@ -126,7 +126,7 @@
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
-        app:layout_constraintEnd_toStartOf="@+id/buttonViewFeeMain"
+        app:layout_constraintEnd_toStartOf="@+id/buttonViewSermon"
         app:layout_constraintStart_toEndOf="@+id/buttonViewFavorito"
         app:layout_constraintTop_toBottomOf="@+id/seekBarBrilho" />
 

@@ -715,7 +715,7 @@ public class Lista_Biblia extends Activity {
 
             Button buttonNoticia = findViewById(R.id.buttonViewGrafMain);
             buttonNoticia.setOnClickListener(new ButtonAction());
-            Button buttonViewFeeMain = findViewById(R.id.buttonViewFeeMain);
+            Button buttonViewFeeMain = findViewById(R.id.buttonViewSermon);
             buttonViewFeeMain.setOnClickListener(new ButtonAction());
             Button buttonViewConfMain = findViewById(R.id.buttonViewConfMain);
             buttonViewConfMain.setOnClickListener(new ButtonAction());
@@ -1695,8 +1695,9 @@ public class Lista_Biblia extends Activity {
                     intent = new Intent(getApplicationContext(), SettingsActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.buttonViewFeeMain:
-                    MainActivity.openNoticias(getApplicationContext());
+                case R.id.buttonViewSermon:
+                    intent = new Intent(getApplication(), Sermoes.class);
+                    startActivity(intent);
                     break;
                 case R.id.buttonViewGrafMain:
                     intent = new Intent(getApplicationContext(), GraficoGeral.class);
