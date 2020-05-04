@@ -169,5 +169,7 @@
     <string name="cancel">Cancelar</string>
     <string name="biblia">Biblia</string>
     <string name="peace">Paz</string>
+    <string name="book_name">Juan</string>
+    <string name="sermon">Sermão</string>
 
 </resources>

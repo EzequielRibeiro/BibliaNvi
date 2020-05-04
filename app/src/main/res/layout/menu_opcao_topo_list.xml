@@ -8,8 +8,6 @@
     android:background="#787676"
     android:gravity="center"
     android:theme="@style/Theme.Transparente">
-
-
     <LinearLayout
         android:id="@+id/linearLayoutTopSpinner"
         android:layout_width="wrap_content"
@@ -56,7 +54,6 @@
             android:background="@mipmap/icon_next"
             android:singleLine="true" />
     </LinearLayout>
-
     <LinearLayout
         android:id="@+id/linearLayoutTopBuscar"
         android:layout_width="wrap_content"
@@ -94,7 +91,6 @@
             android:singleLine="true"
             android:layout_marginRight="8dp" />
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

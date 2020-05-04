@@ -223,4 +223,6 @@
     </string-array>
     <string name="compartilharWhat" translatable="false">" WhatsApp "</string>
     <string name="peace">мир</string>
+    <string name="book_name">Джон</string>
+    <string name="sermon">Sermão</string>
 </resources>

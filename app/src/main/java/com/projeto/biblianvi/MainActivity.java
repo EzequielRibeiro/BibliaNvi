@@ -63,14 +63,11 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.RequestConfiguration;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.io.File;
 import java.text.ParseException;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Locale;
 
 
@@ -89,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     private CharSequence mTitle;
     private String[] menuTitulos;
     private BibliaBancoDadosHelper bibliaHelp;
-    private Button button_noticias, buttonClock, button_biblia, button_dicionario, button_pesquisar;
+    private Button button_sermon, buttonClock, button_biblia, button_dicionario, button_pesquisar;
     private ProgressDialog progressDialog;
     private Intent intent;
     private ListView listView;
@@ -158,17 +155,17 @@ public class MainActivity extends AppCompatActivity {
         textViewVersDia = findViewById(id.textViewVersDia);
 
         layout_qualificar = findViewById(R.id.layout_qualificar);
-        button_noticias = findViewById(id.buttonNoticias);
+        button_sermon = findViewById(id.buttonSermon);
         button_biblia = findViewById(id.button_biblia);
         button_dicionario = findViewById(id.button_dicionario);
         button_pesquisar = findViewById(id.button_pesquisar);
         text_qualificar = findViewById(id.text_qualificar);
         text_qualificar.setText(getString(string.gostou_do_nosso_app));
 
-        button_noticias.setText(getString(string.noticias));
-        button_noticias.setMaxLines(1);
-        button_noticias.setBackground(getDrawable(drawable.button_new_custom));
-        TextViewCompat.setAutoSizeTextTypeWithDefaults(button_noticias, TextView.AUTO_SIZE_TEXT_TYPE_NONE);
+        button_sermon.setText(getString(string.devocional));
+        button_sermon.setMaxLines(1);
+        button_sermon.setBackground(getDrawable(drawable.button_sermon_custom));
+        TextViewCompat.setAutoSizeTextTypeWithDefaults(button_sermon, TextView.AUTO_SIZE_TEXT_TYPE_NONE);
         button_biblia.setText(getString(string.biblia));
         button_biblia.setMaxLines(1);
         button_biblia.setBackground(getDrawable(drawable.button_biblia_custom));
@@ -196,11 +193,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button_noticias.setOnClickListener(new View.OnClickListener() {
+        button_sermon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                openNoticias(getApplicationContext());
+                if (isNetworkAvailable(getApplicationContext())) {
+                    intent = new Intent(MainActivity.this, Sermoes.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplication(), "Sem conexão", Toast.LENGTH_LONG).show();
+                }
             }
         });
         /*
@@ -801,8 +803,9 @@ public class MainActivity extends AppCompatActivity {
                 textViewAssuntoVers.setMinLines(2);
         textViewAssuntoVers.setTextColor(Color.BLACK);
         textViewVersDia.setText(Html.fromHtml(settings.getString("versDia", getString(string.versiculo_text))
-                + " (" + settings.getString("livroNome", getString(string.capitulo_number)) + ":" +
-                settings.getString("verVersDia", getString(string.versiculo_number)) + ")"));
+                + " (" + settings.getString("livroNome", getString(string.book_name)) + " " +
+                settings.getString("capVersDia", getString(string.capitulo_number)) + ":"
+                + settings.getString("verVersDia", getString(string.versiculo_number)) + ")"));
 
     }
 
@@ -830,6 +833,11 @@ public class MainActivity extends AppCompatActivity {
 
         editor = sharedPrefDataBasePatch.edit();
         editor.putString("language",Locale.getDefault().getLanguage());
+        editor.commit();
+
+        SharedPreferences settings = getSharedPreferences("seekbar", Activity.MODE_PRIVATE);
+        editor = settings.edit();
+        editor.putInt("brilhoAtual", Lista_Biblia.getScreenBrightness(getApplicationContext()));
         editor.commit();
 
 

@@ -72,14 +72,14 @@
 
                     <Button
                         android:id="@+id/buttonClock"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:background="@mipmap/alarm_clock" />
 
                     <Button
                         android:id="@+id/buttonCompartilharMain"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:background="@mipmap/share"
@@ -108,7 +108,7 @@
                         android:gravity="center"
                         android:text="@string/reflexao"
                         android:textColor="?android:attr/colorPressedHighlight"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -122,7 +122,7 @@
 
                         android:text="..."
                         android:textColor="@color/blue"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -134,12 +134,13 @@
                         android:background="@android:color/black"
                         android:gravity="center"
                         android:isScrollContainer="true"
+                        android:minLines="3"
                         android:scrollbars="horizontal|vertical"
                         android:scrollHorizontally="true"
                         android:text="..."
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -161,7 +162,7 @@
                         android:id="@+id/buttonSermon"
 
                         android:layout_width="100dp"
-                        android:layout_height="80dp"
+                        android:layout_height="100dp"
                         android:width="95dp"
                         android:background="@drawable/icon_sermon"
                         android:gravity="bottom|center_horizontal"
@@ -174,7 +175,7 @@
                         android:id="@+id/button_biblia"
 
                         android:layout_width="100dp"
-                        android:layout_height="80dp"
+                        android:layout_height="100dp"
                         android:background="@drawable/icon_biblia"
                         android:gravity="bottom|center_horizontal"
                         android:text="Bíblia"
@@ -186,7 +187,7 @@
                         android:id="@+id/button_dicionario"
 
                         android:layout_width="100dp"
-                        android:layout_height="80dp"
+                        android:layout_height="100dp"
                         android:background="@drawable/icon_dicionario"
                         android:gravity="bottom|center_horizontal"
                         android:text="Dicionário"
@@ -198,7 +199,7 @@
                         android:id="@+id/button_pesquisar"
 
                         android:layout_width="100dp"
-                        android:layout_height="80dp"
+                        android:layout_height="100dp"
                         android:background="@drawable/icon_search"
                         android:gravity="bottom|center_horizontal"
                         android:text="Pesquisar"

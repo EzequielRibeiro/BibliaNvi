@@ -72,14 +72,14 @@
 
                     <Button
                         android:id="@+id/buttonClock"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:background="@mipmap/alarm_clock" />
 
                     <Button
                         android:id="@+id/buttonCompartilharMain"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:background="@mipmap/share"
@@ -104,11 +104,11 @@
                         android:id="@+id/textView13"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
+                        android:background="@android:color/white"
                         android:gravity="center"
                         android:text="@string/reflexao"
                         android:textColor="?android:attr/colorPressedHighlight"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -122,7 +122,7 @@
 
                         android:text="..."
                         android:textColor="@color/blue"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -134,12 +134,13 @@
                         android:background="@android:color/black"
                         android:gravity="center"
                         android:isScrollContainer="true"
+                        android:minLines="3"
                         android:scrollbars="horizontal|vertical"
                         android:scrollHorizontally="true"
                         android:text="..."
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
-                        android:textSize="18sp" />
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -167,7 +168,7 @@
                         android:gravity="bottom|center_horizontal"
                         android:text="@string/devocional"
                         android:textColor="@color/blue"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="normal|bold" />
 
                     <Button
@@ -179,7 +180,7 @@
                         android:gravity="bottom|center_horizontal"
                         android:text="Bíblia"
                         android:textColor="@color/blue"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <Button
@@ -191,7 +192,7 @@
                         android:gravity="bottom|center_horizontal"
                         android:text="Dicionário"
                         android:textColor="@color/blue"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <Button
@@ -203,7 +204,7 @@
                         android:gravity="bottom|center_horizontal"
                         android:text="Pesquisar"
                         android:textColor="@color/blue"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -274,7 +275,7 @@
                     android:gravity="center"
                     android:text="000000000"
                     android:textColor="#c33f3e41"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     ads:layout_constraintBottom_toBottomOf="parent"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintStart_toStartOf="parent"

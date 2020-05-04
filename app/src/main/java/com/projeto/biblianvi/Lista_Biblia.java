@@ -41,11 +41,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -113,7 +113,7 @@ public class Lista_Biblia extends Activity {
     private SharedPreferences sharedPrefs;
     private AudioManager amanager;
     private boolean keepScreenOn = false;
-    final static private String SEEK_VALOR = "seekValor";
+    final static private String SEEK_VALOR_KEY = "seekValor";
     private PopupWindow  pw;
     private FirebaseAnalytics  mFirebaseAnalytics;
     private int REQUEST_STORAGE;
@@ -537,7 +537,7 @@ public class Lista_Biblia extends Activity {
 
         LinearLayout myLayoutBusca = findViewById(R.id.linearLayoutBusca);
 
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) myLayoutBusca.getLayoutParams();
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) myLayoutBusca.getLayoutParams();
 
         myLayoutBusca.addView(addView);
 
@@ -681,20 +681,11 @@ public class Lista_Biblia extends Activity {
 
             SeekBar seekBarBrilho = findViewById(R.id.seekBarBrilho);
             SharedPreferences settings = getSharedPreferences("seekbar", Activity.MODE_PRIVATE);
-
-            seekBarBrilho.setMax(100);
+            seekBarBrilho.setMax(BRIGHTNESS_FULL);
             seekBarBrilho.setVisibility(View.VISIBLE);
-            seekBarBrilho.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT));
-            seekBarBrilho.setKeyProgressIncrement(25);
+            // seekBarBrilho.setKeyProgressIncrement(25);
             seekBarBrilho.setOnSeekBarChangeListener(new OnSeekBar());
-
-
-            int brightnessSaved = settings.getInt(SEEK_VALOR, BRIGHTNESS_FULL);
-            int total = (brightnessSaved * 100) / BRIGHTNESS_FULL;
-
-            seekBarBrilho.setProgress(total);
-
+            seekBarBrilho.setProgress(settings.getInt(SEEK_VALOR_KEY, BRIGHTNESS_FULL / 2));
 
         }
 
@@ -702,89 +693,45 @@ public class Lista_Biblia extends Activity {
 
     private void menuListBase() {
 
-        LayoutInflater layoutInflaterBase =
+        LayoutInflater layoutInflater =
                 (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        final View addView = layoutInflaterBase.inflate(R.layout.menu_opcao_base_list, null);
+        final View addView = layoutInflater.inflate(R.layout.menu_opcao_base_list, null);
 
-        LinearLayout myLayoutBase = findViewById(R.id.linearLayoutListBase);
+        LinearLayout myLayoutBusca = findViewById(R.id.linearLayoutListBase);
 
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) myLayoutBase.getLayoutParams();
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) myLayoutBusca.getLayoutParams();
+
+        myLayoutBusca.addView(addView);
+
 
 
         if (criarMenuBase) {
 
-            myLayoutBase.addView(addView);
-
             params.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-
-            myLayoutBase.setLayoutParams(params);
-
-            ImageView lupa = findViewById(R.id.imageViewLupaMain);
-            ImageView conf = findViewById(R.id.imageViewConfMain);
-            ImageView feed = findViewById(R.id.imageViewFeeMain);
-            ImageView graf = findViewById(R.id.imageViewGrafMain);
-            ImageView fav = findViewById(R.id.imageViewFavorito);
+            myLayoutBusca.setLayoutParams(params);
 
             inicializarSeekbar();
 
-
-            lupa.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Intent in = new Intent(getApplicationContext(), Activity_busca_avancada.class);
-                    startActivity(in);
-                }
-            });
-
-            conf.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    menuListBase();
-                    finish();
-                    Intent settingsActivity = new Intent(getApplicationContext(), SettingsActivity.class);
-                    startActivity(settingsActivity);
-                }
-            });
-
-            feed.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    MainActivity.openNoticias(getApplicationContext());
-                }
-            });
-
-            graf.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent estatistica = new Intent(getApplicationContext(), GraficoGeral.class);
-                    startActivity(estatistica);
-                }
-            });
-
-            fav.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Intent estatistica = new Intent(getApplicationContext(), Activity_favorito.class);
-                    startActivity(estatistica);
-
-                }
-            });
+            Button buttonNoticia = findViewById(R.id.buttonViewGrafMain);
+            buttonNoticia.setOnClickListener(new ButtonAction());
+            Button buttonViewFeeMain = findViewById(R.id.buttonViewFeeMain);
+            buttonViewFeeMain.setOnClickListener(new ButtonAction());
+            Button buttonViewConfMain = findViewById(R.id.buttonViewConfMain);
+            buttonViewConfMain.setOnClickListener(new ButtonAction());
+            Button buttonViewFavorito = findViewById(R.id.buttonViewFavorito);
+            buttonViewFavorito.setOnClickListener(new ButtonAction());
+            Button buttonViewLupaMain = findViewById(R.id.buttonViewLupaMain);
+            buttonViewLupaMain.setOnClickListener(new ButtonAction());
 
             criarMenuBase = false;
             buttonSetaMenu.setBackgroundResource(R.mipmap.seta_menu_alto);
 
         } else {
 
-            View myView = findViewById(R.id.linearLayoutBaseInto);
-            ViewGroup parent = (ViewGroup) myView.getParent();
-            parent.removeView(myView);
-
-            params.height = 0;
-            myLayoutBase.setLayoutParams(params);
+            if (addView != null) {
+                myLayoutBusca.removeAllViews();
+            }
 
             criarMenuBase = true;
             buttonSetaMenu.setBackgroundResource(R.mipmap.seta_menu_baixo);
@@ -793,6 +740,7 @@ public class Lista_Biblia extends Activity {
 
 
     }
+
 
     private void carregarSpinnerVersiculo(String liv, String cap) {
 
@@ -965,7 +913,7 @@ public class Lista_Biblia extends Activity {
 
             SharedPreferences settings = getSharedPreferences("seekbar", Activity.MODE_PRIVATE);
 
-            alterarBrilhoTela(settings.getInt(SEEK_VALOR, getScreenBrightness(getApplicationContext())));
+            alterarBrilhoTela(settings.getInt(SEEK_VALOR_KEY, BRIGHTNESS_FULL));
 
 
         } else {
@@ -1079,13 +1027,14 @@ public class Lista_Biblia extends Activity {
             super.onBackPressed();
             amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, false);
         getSharedPreferences("sound", Activity.MODE_PRIVATE).edit().putBoolean("sound", false).commit();
-
             return;
 
     }
 
     public void onPause(){
         super.onPause();
+        SharedPreferences settings = getSharedPreferences("seekbar", Activity.MODE_PRIVATE);
+        alterarBrilhoTela(settings.getInt("brilhoAtual", BRIGHTNESS_FULL));
     }
 
     public void onStop() {
@@ -1141,7 +1090,6 @@ public class Lista_Biblia extends Activity {
 
         amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, false);
         getSharedPreferences("sound", Activity.MODE_PRIVATE).edit().putBoolean("sound", false).commit();
-        alterarBrilhoTela(getSharedPreferences("brilhoAtual", Activity.MODE_PRIVATE).getInt("brilhoAtualValor", 255));
 
         if (bibliaHelp != null) {
             bibliaHelp.close();
@@ -1646,9 +1594,9 @@ public class Lista_Biblia extends Activity {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-            if (progress >= 5 && progress <= 95) {
-                valor = (progress * BRIGHTNESS_FULL) / 100;
-                alterarBrilhoTela(valor);
+            if (progress >= 1 && progress <= BRIGHTNESS_FULL) {
+                alterarBrilhoTela(progress);
+
             }
 
         }
@@ -1665,8 +1613,13 @@ public class Lista_Biblia extends Activity {
             SharedPreferences settings = getSharedPreferences("seekbar", Activity.MODE_PRIVATE);
             SharedPreferences.Editor editor = settings.edit();
 
-            editor.putInt(SEEK_VALOR, valor);
-            editor.commit();
+            if (seekBar.getProgress() >= 1 && seekBar.getProgress() <= BRIGHTNESS_FULL) {
+                editor.putInt(SEEK_VALOR_KEY, seekBar.getProgress());
+                editor.commit();
+                Log.e("seekbar", Integer.toString(seekBar.getProgress()));
+
+            }
+
 
         }
 
@@ -1723,6 +1676,42 @@ public class Lista_Biblia extends Activity {
 
             }
         }
+
+    private class ButtonAction implements Button.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+
+            Intent intent;
+
+            switch (v.getId()) {
+
+                case R.id.buttonViewLupaMain:
+                    intent = new Intent(getApplicationContext(), Activity_busca_avancada.class);
+                    startActivity(intent);
+                    break;
+                case R.id.buttonViewConfMain:
+                    finish();
+                    intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.buttonViewFeeMain:
+                    MainActivity.openNoticias(getApplicationContext());
+                    break;
+                case R.id.buttonViewGrafMain:
+                    intent = new Intent(getApplicationContext(), GraficoGeral.class);
+                    startActivity(intent);
+                    break;
+                case R.id.buttonViewFavorito:
+                    intent = new Intent(getApplicationContext(), Activity_favorito.class);
+                    startActivity(intent);
+                    break;
+
+            }
+            menuListBase();
+
+        }
+    }
 
 
 }

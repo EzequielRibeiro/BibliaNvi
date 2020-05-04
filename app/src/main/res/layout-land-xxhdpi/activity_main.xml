@@ -72,14 +72,14 @@
 
                     <Button
                         android:id="@+id/buttonClock"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:background="@mipmap/alarm_clock" />
 
                     <Button
                         android:id="@+id/buttonCompartilharMain"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:background="@mipmap/share"
@@ -134,6 +134,7 @@
                         android:background="@android:color/black"
                         android:gravity="center"
                         android:isScrollContainer="true"
+                        android:minLines="3"
                         android:scrollbars="horizontal|vertical"
                         android:scrollHorizontally="true"
                         android:text="..."

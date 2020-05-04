@@ -33,6 +33,7 @@
              with the content view. -->
 
         <FrameLayout
+            android:id="@+id/frame_layout_man"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -40,229 +41,8 @@
                 android:id="@+id/layout_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center">
 
-
-                <TextView
-                    android:id="@+id/textViewRecados"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:textColor="@color/red"
-                    android:textSize="12sp"
-                    ads:layout_constraintBottom_toTopOf="@+id/linearLayoutBarra"
-                    ads:layout_constraintEnd_toEndOf="parent"
-                    ads:layout_constraintStart_toStartOf="parent"
-                    ads:layout_constraintTop_toBottomOf="@id/layout_qualificar" />
-
-                <LinearLayout
-                    android:id="@+id/linearLayoutBarra"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/barrinha"
-                    android:gravity="right"
-                    android:orientation="horizontal"
-                    ads:layout_constraintEnd_toEndOf="parent"
-                    ads:layout_constraintHorizontal_bias="0.0"
-                    ads:layout_constraintStart_toStartOf="parent"
-                    ads:layout_constraintTop_toBottomOf="@id/textViewRecados">
-
-                    <Button
-                        android:id="@+id/buttonClock"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:background="@mipmap/alarm_clock" />
-
-                    <Button
-                        android:id="@+id/buttonCompartilharMain"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:background="@mipmap/share"
-                        android:onClick="compartilharVers" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/linearlayoutVersiculo"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:background="@color/black"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical"
-                    ads:layout_constraintBottom_toTopOf="@+id/textViewDeveloper"
-                    ads:layout_constraintEnd_toEndOf="parent"
-                    ads:layout_constraintStart_toStartOf="parent"
-                    ads:layout_constraintTop_toBottomOf="@+id/linearLayoutBarra">
-
-                    <TextView
-                        android:id="@+id/textView13"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:gravity="center"
-                        android:text="@string/reflexao"
-                        android:textColor="?android:attr/colorPressedHighlight"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textViewAssuntoVers"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/cyan"
-                        android:gravity="center"
-                        android:maxLines="1"
-                        android:paddingLeft="5dp"
-
-                        android:text="..."
-                        android:textColor="@color/blue"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textViewVersDia"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
-
-                        android:background="@android:color/black"
-                        android:gravity="center"
-                        android:isScrollContainer="true"
-                        android:scrollbars="horizontal|vertical"
-                        android:scrollHorizontally="true"
-                        android:text="..."
-                        android:textAlignment="center"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp" />
-
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/layout_escolha_livro"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    ads:layout_constraintBottom_toTopOf="@+id/adView"
-                    ads:layout_constraintEnd_toEndOf="parent"
-                    ads:layout_constraintHorizontal_bias="0.0"
-                    ads:layout_constraintStart_toStartOf="parent"
-                    ads:layout_constraintTop_toTopOf="parent">
-
-                    <Button
-                        android:id="@+id/buttonSermon"
-
-                        android:layout_width="100dp"
-                        android:layout_height="80dp"
-                        android:width="95dp"
-                        android:background="@drawable/icon_sermon"
-                        android:gravity="bottom|center_horizontal"
-                        android:text="@string/devocional"
-                        android:textColor="@color/blue"
-                        android:textSize="14sp"
-                        android:textStyle="normal|bold" />
-
-                    <Button
-                        android:id="@+id/button_biblia"
-
-                        android:layout_width="100dp"
-                        android:layout_height="80dp"
-                        android:background="@drawable/icon_biblia"
-                        android:gravity="bottom|center_horizontal"
-                        android:text="Bíblia"
-                        android:textColor="@color/blue"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/button_dicionario"
-
-                        android:layout_width="100dp"
-                        android:layout_height="80dp"
-                        android:background="@drawable/icon_dicionario"
-                        android:gravity="bottom|center_horizontal"
-                        android:text="Dicionário"
-                        android:textColor="@color/blue"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/button_pesquisar"
-
-                        android:layout_width="100dp"
-                        android:layout_height="80dp"
-                        android:background="@drawable/icon_search"
-                        android:gravity="bottom|center_horizontal"
-                        android:text="Pesquisar"
-                        android:textColor="@color/blue"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <com.google.android.gms.ads.AdView
-                    android:id="@+id/adView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    ads:adSize="BANNER"
-                    ads:adUnitId="@string/idMob"
-                    ads:layout_constraintBottom_toTopOf="@id/textViewRecados"
-                    ads:layout_constraintEnd_toEndOf="parent"
-                    ads:layout_constraintStart_toEndOf="@id/layout_qualificar"
-                    ads:layout_constraintTop_toBottomOf="@+id/layout_escolha_livro"></com.google.android.gms.ads.AdView>
-
-                <LinearLayout
-                    android:id="@+id/layout_qualificar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:gravity="left|center_vertical"
-                    android:orientation="horizontal"
-                    ads:layout_constraintBottom_toTopOf="@+id/textViewRecados"
-                    ads:layout_constraintEnd_toStartOf="@+id/adView"
-                    ads:layout_constraintStart_toStartOf="parent"
-                    ads:layout_constraintTop_toBottomOf="@+id/layout_escolha_livro">
-
-                    <Button
-                        android:id="@+id/button_qualificar"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="5dp"
-                        android:background="@drawable/start" />
-
-                    <TextView
-                        android:id="@+id/text_qualificar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:fontFamily="sans-serif"
-                        android:gravity="center_vertical"
-                        android:inputType="textMultiLine"
-                        android:text="Gostou do nosso app?\n Por favor, Qualifique -o"
-                        android:textColor="@color/orange"
-                        android:textSize="14sp"
-                        android:textStyle="bold|italic" />
-
-                </LinearLayout>
-
-
-                <!--
-                        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-                            android:id="@+id/adViewMain"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:minHeight="100dp"
-                            android:minWidth="320dp"
-                            ads:adSize="LARGE_BANNER"
-                            ads:adUnitId="@string/idMob"></com.google.android.gms.ads.AdView>
-                            -->
 
                 <TextView
                     android:id="@+id/textViewDeveloper"
@@ -280,8 +60,236 @@
                     ads:layout_constraintStart_toStartOf="parent"
                     ads:layout_constraintTop_toBottomOf="@+id/linearlayoutVersiculo" />
 
+                <LinearLayout
+                    android:id="@+id/linearLayout3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    ads:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toTopOf="parent">
+
+                    <Button
+                        android:id="@+id/button_biblia"
+
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/icon_biblia"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="@string/biblia"
+                        android:textColor="@color/blue"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/button_pesquisar"
+
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:background="@drawable/icon_search"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="@string/pesquisar"
+                        android:textColor="@color/blue"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    ads:layout_constraintBottom_toTopOf="@+id/adView"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+                    <Button
+                        android:id="@+id/button_dicionario"
+
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/icon_dicionario"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="@string/dicionario"
+                        android:textColor="@color/blue"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/buttonSermon"
+
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:background="@drawable/icon_sermon"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="@string/devocional"
+                        android:textColor="@color/blue"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutBarra"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/barrinha"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    ads:layout_constraintBottom_toTopOf="@+id/linearlayoutVersiculo"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintHorizontal_bias="0.0"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/layout_qualificar">
+
+                    <Button
+                        android:id="@+id/buttonClock"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@mipmap/alarm_clock" />
+
+                    <Button
+                        android:id="@+id/buttonCompartilharMain"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@mipmap/share"
+                        android:onClick="compartilharVers" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linearlayoutVersiculo"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    ads:layout_constraintBottom_toTopOf="@+id/textViewDeveloper"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/linearLayoutBarra">
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/reflexao"
+                        android:textColor="?android:attr/colorPressedHighlight"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewAssuntoVers"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/cyan"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="Assunto"
+                        android:textColor="@color/blue"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewVersDia"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+
+                        android:background="@android:color/black"
+                        android:gravity="center"
+                        android:isScrollContainer="true"
+                        android:padding="5dp"
+                        android:scrollbars="horizontal|vertical"
+                        android:scrollHorizontally="true"
+                        android:text="..."
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp" />
+
+
+                </LinearLayout>
+
+
+                <com.google.android.gms.ads.AdView
+                    android:id="@+id/adView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    ads:adSize="BANNER"
+                    ads:adUnitId="@string/idMob"
+                    ads:layout_constraintBottom_toTopOf="@+id/layout_qualificar"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/linearLayout5"></com.google.android.gms.ads.AdView>
+
+                <LinearLayout
+                    android:id="@+id/layout_qualificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="left|center_vertical"
+                    android:orientation="horizontal"
+                    ads:layout_constraintBottom_toTopOf="@+id/linearLayoutBarra"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toBottomOf="@+id/adView">
+
+                    <Button
+                        android:id="@+id/button_qualificar"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/start" />
+
+                    <TextView
+                        android:id="@+id/text_qualificar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:inputType="textMultiLine"
+                        android:text="@string/gostou_do_nosso_app"
+                        android:textColor="@color/orange"
+                        android:textSize="24sp"
+                        android:textStyle="bold|italic" />
+
+                    <TextView
+                        android:id="@+id/textViewRecados"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:textColor="@color/red"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+
+                <!--
+                        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/adViewMain"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:minHeight="100dp"
+                            android:minWidth="320dp"
+                            ads:adSize="LARGE_BANNER"
+                            ads:adUnitId="@string/idMob"></com.google.android.gms.ads.AdView>
+                            -->
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         </FrameLayout>
 

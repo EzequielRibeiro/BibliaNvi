@@ -144,5 +144,7 @@
     </string-array>
     <string name="livro_carta">Read:</string>
     <string name="peace">Peace</string>
+    <string name="book_name">Jonh</string>
+    <string name="sermon">Sermão</string>
 
 </resources>
