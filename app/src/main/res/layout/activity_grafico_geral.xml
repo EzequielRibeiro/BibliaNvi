@@ -11,7 +11,7 @@
     android:layout_height="fill_parent"
     android:background="#d8d8d8"
     android:gravity="center"
-    tools:context=".MainActivity">
+    tools:context=".biblianvi.MainActivity">
 
     >
 

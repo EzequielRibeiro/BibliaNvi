@@ -25,34 +25,25 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1032959248015-3jg7m25ck5r2k85iqai0g3fnkjklg057.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-0822808376839371~5849127597"
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1032959248015:android:c5b9297cefdd7e23",
+        "mobilesdk_app_id": "1:1032959248015:android:c4ea21757a13ccd49f12fa",
         "android_client_info": {
           "package_name": "com.projeto.biblianvi.biblianvi"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "1032959248015-k619t049bkhdge8qoru05td15jcehmia.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.projeto.biblianvi.biblianvi",
-            "certificate_hash": "6b3cd09f52a7af8c115ceeaf7d695d81d6978ea4"
-          }
-        },
         {
           "client_id": "1032959248015-rkm30afl572kro4vih0ku285viibgv6t.apps.googleusercontent.com",
           "client_type": 1,
@@ -72,23 +63,16 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
               "client_id": "1032959248015-3jg7m25ck5r2k85iqai0g3fnkjklg057.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       },
-      "admob_app_id": "ca-app-pub-0822808376839371~4436628883"
+      "admob_app_id": "ca-app-pub-0822808376839371~8487200505"
     }
   ],
   "configuration_version": "1"

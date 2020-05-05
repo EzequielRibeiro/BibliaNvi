@@ -101,7 +101,7 @@
                     ads:layout_constraintTop_toBottomOf="@+id/linearLayoutBarra">
 
                     <TextView
-                        android:id="@+id/textView13"
+                        android:id="@+id/textViewDailyVerse"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/white"
@@ -161,8 +161,8 @@
                     <Button
                         android:id="@+id/buttonSermon"
 
-                        android:layout_width="100dp"
-                        android:layout_height="80dp"
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
                         android:width="95dp"
                         android:background="@drawable/icon_sermon"
                         android:gravity="bottom|center_horizontal"
@@ -174,8 +174,8 @@
                     <Button
                         android:id="@+id/button_biblia"
 
-                        android:layout_width="100dp"
-                        android:layout_height="80dp"
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
                         android:background="@drawable/icon_biblia"
                         android:gravity="bottom|center_horizontal"
                         android:text="Bíblia"
@@ -186,8 +186,8 @@
                     <Button
                         android:id="@+id/button_dicionario"
 
-                        android:layout_width="100dp"
-                        android:layout_height="80dp"
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
                         android:background="@drawable/icon_dicionario"
                         android:gravity="bottom|center_horizontal"
                         android:text="Dicionário"
@@ -198,8 +198,8 @@
                     <Button
                         android:id="@+id/button_pesquisar"
 
-                        android:layout_width="100dp"
-                        android:layout_height="80dp"
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
                         android:background="@drawable/icon_search"
                         android:gravity="bottom|center_horizontal"
                         android:text="Pesquisar"

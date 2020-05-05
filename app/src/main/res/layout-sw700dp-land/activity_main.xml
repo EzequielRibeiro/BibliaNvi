@@ -101,14 +101,14 @@
                     ads:layout_constraintTop_toBottomOf="@+id/linearLayoutBarra">
 
                     <TextView
-                        android:id="@+id/textView13"
+                        android:id="@+id/textViewDailyVerse"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:gravity="center"
                         android:text="@string/reflexao"
                         android:textColor="?android:attr/colorPressedHighlight"
-                        android:textSize="24sp"
+                        android:textSize="30sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -122,7 +122,7 @@
 
                         android:text="..."
                         android:textColor="@color/blue"
-                        android:textSize="24sp"
+                        android:textSize="30sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -140,7 +140,7 @@
                         android:text="..."
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
-                        android:textSize="24sp" />
+                        android:textSize="30sp" />
 
 
                 </LinearLayout>
@@ -161,8 +161,8 @@
                     <Button
                         android:id="@+id/buttonSermon"
 
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
+                        android:layout_width="220dp"
+                        android:layout_height="190dp"
                         android:width="95dp"
                         android:background="@drawable/icon_sermon"
                         android:gravity="bottom|center_horizontal"
@@ -174,8 +174,8 @@
                     <Button
                         android:id="@+id/button_biblia"
 
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
+                        android:layout_width="220dp"
+                        android:layout_height="190dp"
                         android:background="@drawable/icon_biblia"
                         android:gravity="bottom|center_horizontal"
                         android:text="Bíblia"
@@ -186,8 +186,8 @@
                     <Button
                         android:id="@+id/button_dicionario"
 
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
+                        android:layout_width="220dp"
+                        android:layout_height="190dp"
                         android:background="@drawable/icon_dicionario"
                         android:gravity="bottom|center_horizontal"
                         android:text="Dicionário"
@@ -198,8 +198,8 @@
                     <Button
                         android:id="@+id/button_pesquisar"
 
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
+                        android:layout_width="220dp"
+                        android:layout_height="190dp"
                         android:background="@drawable/icon_search"
                         android:gravity="bottom|center_horizontal"
                         android:text="Pesquisar"
@@ -247,7 +247,7 @@
                         android:inputType="textMultiLine"
                         android:text="Gostou do nosso app?\n Por favor, Qualifique -o"
                         android:textColor="@color/orange"
-                        android:textSize="18sp"
+                        android:textSize="24sp"
                         android:textStyle="bold|italic" />
 
                 </LinearLayout>

@@ -64,6 +64,7 @@
                     android:id="@+id/linearLayout3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal"
                     ads:layout_constraintBottom_toTopOf="@+id/linearLayout5"
@@ -74,7 +75,7 @@
                     <Button
                         android:id="@+id/button_biblia"
 
-                        android:layout_width="100dp"
+                        android:layout_width="120dp"
                         android:layout_height="100dp"
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/icon_biblia"
@@ -87,7 +88,7 @@
                     <Button
                         android:id="@+id/button_pesquisar"
 
-                        android:layout_width="100dp"
+                        android:layout_width="120dp"
                         android:layout_height="100dp"
                         android:background="@drawable/icon_search"
                         android:gravity="bottom|center_horizontal"
@@ -111,7 +112,7 @@
                     <Button
                         android:id="@+id/button_dicionario"
 
-                        android:layout_width="100dp"
+                        android:layout_width="120dp"
                         android:layout_height="100dp"
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/icon_dicionario"
@@ -124,7 +125,7 @@
                     <Button
                         android:id="@+id/buttonSermon"
 
-                        android:layout_width="100dp"
+                        android:layout_width="120dp"
                         android:layout_height="100dp"
                         android:background="@drawable/icon_sermon"
                         android:gravity="bottom|center_horizontal"
@@ -179,12 +180,12 @@
                     ads:layout_constraintTop_toBottomOf="@+id/linearLayoutBarra">
 
                     <TextView
-                        android:id="@+id/textView13"
+                        android:id="@+id/textViewDailyVerse"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/reflexao"
                         android:textColor="?android:attr/colorPressedHighlight"
-                        android:textSize="14sp"
+                        android:textSize="24sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -196,7 +197,7 @@
                         android:maxLines="1"
                         android:text="Assunto"
                         android:textColor="@color/blue"
-                        android:textSize="16sp"
+                        android:textSize="24sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -214,7 +215,7 @@
                         android:text="..."
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
-                        android:textSize="16sp" />
+                        android:textSize="24sp" />
 
 
                 </LinearLayout>

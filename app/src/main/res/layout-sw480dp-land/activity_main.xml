@@ -101,14 +101,14 @@
                     ads:layout_constraintTop_toBottomOf="@+id/linearLayoutBarra">
 
                     <TextView
-                        android:id="@+id/textView13"
+                        android:id="@+id/textViewDailyVerse"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:gravity="center"
                         android:text="@string/reflexao"
                         android:textColor="?android:attr/colorPressedHighlight"
-                        android:textSize="18sp"
+                        android:textSize="24sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -122,7 +122,7 @@
 
                         android:text="..."
                         android:textColor="@color/blue"
-                        android:textSize="18sp"
+                        android:textSize="24sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -140,7 +140,7 @@
                         android:text="..."
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
-                        android:textSize="18sp" />
+                        android:textSize="24sp" />
 
 
                 </LinearLayout>
@@ -161,50 +161,50 @@
                     <Button
                         android:id="@+id/buttonSermon"
 
-                        android:layout_width="120dp"
+                        android:layout_width="130dp"
                         android:layout_height="120dp"
                         android:width="95dp"
                         android:background="@drawable/icon_sermon"
                         android:gravity="bottom|center_horizontal"
                         android:text="@string/devocional"
                         android:textColor="@color/blue"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textStyle="normal|bold" />
 
                     <Button
                         android:id="@+id/button_biblia"
 
-                        android:layout_width="120dp"
+                        android:layout_width="130dp"
                         android:layout_height="120dp"
                         android:background="@drawable/icon_biblia"
                         android:gravity="bottom|center_horizontal"
                         android:text="Bíblia"
                         android:textColor="@color/blue"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/button_dicionario"
 
-                        android:layout_width="120dp"
+                        android:layout_width="130dp"
                         android:layout_height="120dp"
                         android:background="@drawable/icon_dicionario"
                         android:gravity="bottom|center_horizontal"
                         android:text="Dicionário"
                         android:textColor="@color/blue"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/button_pesquisar"
 
-                        android:layout_width="120dp"
+                        android:layout_width="130dp"
                         android:layout_height="120dp"
                         android:background="@drawable/icon_search"
                         android:gravity="bottom|center_horizontal"
                         android:text="Pesquisar"
                         android:textColor="@color/blue"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 

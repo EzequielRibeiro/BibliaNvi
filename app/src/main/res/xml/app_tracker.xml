@@ -14,10 +14,11 @@
       to learn more about configuring this file.
     -->
 
-    <screenName name="com.projeto.biblianvi.MainActivity">Home Screen</screenName>
-    <screenName name="com.projeto.biblianvi.Lista_Biblia">List View</screenName>
-    <screenName name="com.projeto.biblianvi.NetworkActivityDevocional">Devocional</screenName>
-    <screenName name="com.projeto.biblianvi.GraficoGeral">Grafico</screenName>
-    <screenName name="com.projeto.biblianvi.Activity_busca_avancada">Pesquisa</screenName>
+    <screenName name="com.projeto.biblianvi.biblianvi.MainActivity">Home Screen</screenName>
+    <screenName name="com.projeto.biblianvi.biblianvi.Lista_Biblia">List View</screenName>
+    <screenName name="com.projeto.biblianvi.biblianvi.NetworkActivityDevocional">Devocional
+    </screenName>
+    <screenName name="com.projeto.biblianvi.biblianvi.GraficoGeral">Grafico</screenName>
+    <screenName name="com.projeto.biblianvi.biblianvi.Activity_busca_avancada">Pesquisa</screenName>
 
 </resources>
