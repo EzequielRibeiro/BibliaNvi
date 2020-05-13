@@ -161,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
         text_qualificar = findViewById(R.id.text_qualificar);
         text_qualificar.setText(getString(R.string.gostou_do_nosso_app));
         textViewDailyVerse = findViewById(R.id.textViewDailyVerse);
+        textViewDailyVerse.setGravity(Gravity.CENTER);
 
 
         button_sermon.setText(getString(R.string.devocional));
@@ -604,8 +605,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    int hora = 22;
-    int min = 30;
 
     private void agendarAlarmeVersiculo() {
 
@@ -613,16 +612,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (!settings.contains("hora") || !settings.contains("minuto")) {
             editor = getSharedPreferences("alarme", Activity.MODE_PRIVATE).edit();
-            editor.putInt("hora", hora);
-            editor.putInt("minuto", min);
+            editor.putString("hora", "08");
+            editor.putString("minuto", "30");
             editor.commit();
-        }
-
-        try {
-            hora = settings.getInt("hora", hora);
-            min = settings.getInt("minuto", min);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
         }
 
         Intent it = new Intent(this, VersiculoDiario.class);
@@ -631,8 +623,8 @@ public class MainActivity extends AppCompatActivity {
 
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(System.currentTimeMillis());
-        c.set(Calendar.HOUR_OF_DAY, hora);
-        c.set(Calendar.MINUTE, min);
+        c.set(Calendar.HOUR_OF_DAY, Integer.parseInt(settings.getString("hora", "08").replaceFirst("^0+(?!$)", "")));
+        c.set(Calendar.MINUTE, Integer.parseInt(settings.getString("minuto", "30").replaceFirst("^0+(?!$)", "")));
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(),
                 AlarmManager.INTERVAL_DAY, p);
@@ -645,8 +637,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences("alarme", Activity.MODE_PRIVATE);
         final SharedPreferences.Editor editor = settings.edit();
 
-        int h = settings.getInt("hora", hora);
-        int m = settings.getInt("minuto", min);
+        String h = settings.getString("hora", "08");
+        String m = settings.getString("minuto", "30");
 
         AlterarAlarm alterarAlarm;
 
@@ -661,7 +653,7 @@ public class MainActivity extends AppCompatActivity {
         final TextView horaText = new TextView(this);
         horaText.setTextColor(getResources().getColor(R.color.blue));
         // horaText.setBackgroundColor(getResources().getColor(R.color.white));
-        horaText.setText(Integer.toString(h));
+        horaText.setText(h);
         horaText.setTextSize(22);
 
         //altura comprimento
@@ -673,7 +665,7 @@ public class MainActivity extends AppCompatActivity {
         final TextView minText = new TextView(this);
         minText.setTextColor(getResources().getColor(R.color.blue));
         // horaText.setBackgroundColor(getResources().getColor(R.color.white));
-        minText.setText(Integer.toString(m));
+        minText.setText(m);
         minText.setTextSize(22);
 
         alterarAlarm = new AlterarAlarm(horaText, minText);
@@ -766,8 +758,8 @@ public class MainActivity extends AppCompatActivity {
         alertDialogBuilder.setPositiveButton(R.string.redefinir, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
-                editor.putInt("hora", Integer.parseInt(horaText.getText().toString()));
-                editor.putInt("minuto", Integer.parseInt(minText.getText().toString()));
+                editor.putString("hora", horaText.getText().toString());
+                editor.putString("minuto", minText.getText().toString());
                 editor.commit();
 
                 if (checarAlarmeExiste()) {
@@ -808,7 +800,7 @@ public class MainActivity extends AppCompatActivity {
                 textViewAssuntoVers.setMinLines(2);
         textViewAssuntoVers.setTextColor(Color.BLACK);
         textViewVersDia.setText(Html.fromHtml(settings.getString("versDia", getString(R.string.versiculo_text))
-                + " (" + settings.getString("livroNome", getString(R.string.book_name)) + " " +
+                + " \n(" + settings.getString("livroNome", getString(R.string.book_name)) + " " +
                 settings.getString("capVersDia", getString(R.string.capitulo_number)) + ":"
                 + settings.getString("verVersDia", getString(R.string.versiculo_number)) + ")"));
 
@@ -839,19 +831,9 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             if (!mFirebaseRemoteConfig.getString(MESSAGE_KEY).equals("not")) {
 
-                                TextView textView = findViewById(R.id.textViewRecados);
-                                textView.setTextSize(14);
+                                textViewDailyVerse.setTextColor(getResources().getColor(R.color.red));
+                                textViewDailyVerse.setText(Html.fromHtml(mFirebaseRemoteConfig.getString(MESSAGE_KEY)));
 
-                                int orientation = getResources().getConfiguration().orientation;
-                                if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                                    ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams)
-                                            textView.getLayoutParams();
-                                    layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-                                    layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT;
-                                    textView.setLayoutParams(layoutParams);
-                                }
-
-                                textView.setText(Html.fromHtml(mFirebaseRemoteConfig.getString(MESSAGE_KEY)));
                             }
                             mFirebaseRemoteConfig.activateFetched();
                             Log.e("RemoteConig: ", "valor: " + mFirebaseRemoteConfig.getString(MESSAGE_KEY));

@@ -36,13 +36,13 @@ public class ReceiverReiniciarAlarm extends BroadcastReceiver {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         SharedPreferences settings = context.getSharedPreferences("alarme", Activity.MODE_PRIVATE);
 
-        String h = settings.getString("hora", "9");
-        String m = settings.getString("minuto", "0");
+        String h = settings.getString("hora", "10");
+        String m = settings.getString("minuto", "30");
 
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(System.currentTimeMillis());
-        c.set(Calendar.HOUR_OF_DAY, Integer.parseInt(h));
-        c.set(Calendar.MINUTE, Integer.parseInt(m));
+        c.set(Calendar.HOUR_OF_DAY, Integer.parseInt(h.replaceFirst("^0+(?!$)", "")));
+        c.set(Calendar.MINUTE, Integer.parseInt(m.replaceFirst("^0+(?!$)", "")));
         c.set(Calendar.SECOND, 0);
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(),
