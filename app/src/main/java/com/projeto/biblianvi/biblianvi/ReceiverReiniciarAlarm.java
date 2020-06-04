@@ -34,7 +34,7 @@ public class ReceiverReiniciarAlarm extends BroadcastReceiver {
     private void agendarAlarmeVersiculo(){
 
         Intent it = new Intent(context, VersiculoDiario.class);
-        PendingIntent p = PendingIntent.getBroadcast(context,121312131,it,0);
+        PendingIntent p = PendingIntent.getBroadcast(context, 121312131, it, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         SharedPreferences settings = context.getSharedPreferences("alarme", Activity.MODE_PRIVATE);
 
@@ -47,7 +47,7 @@ public class ReceiverReiniciarAlarm extends BroadcastReceiver {
         c.set(Calendar.MINUTE, m);
         c.set(Calendar.SECOND, 0);
 
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(),
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(),
                 AlarmManager.INTERVAL_DAY, p);
 
     }

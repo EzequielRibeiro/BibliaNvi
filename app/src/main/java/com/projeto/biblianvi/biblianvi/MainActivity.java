@@ -49,6 +49,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.app.ActivityCompat;
@@ -612,13 +613,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (!settings.contains("hora") || !settings.contains("minuto")) {
             editor = getSharedPreferences("alarme", Activity.MODE_PRIVATE).edit();
-            editor.putString("hora", "08");
+            editor.putString("hora", "10");
             editor.putString("minuto", "30");
             editor.commit();
         }
 
         Intent it = new Intent(this, VersiculoDiario.class);
-        PendingIntent p = PendingIntent.getBroadcast(MainActivity.this, 121312131, it, 0);
+        PendingIntent p = PendingIntent.getBroadcast(MainActivity.this, 121312131, it, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         int h = Integer.parseInt(settings.getString("hora", "10"));
@@ -629,7 +630,7 @@ public class MainActivity extends AppCompatActivity {
         c.set(Calendar.HOUR_OF_DAY, h);
         c.set(Calendar.MINUTE, m);
 
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(),
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(),
                 AlarmManager.INTERVAL_DAY, p);
 
     }
@@ -640,7 +641,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences("alarme", Activity.MODE_PRIVATE);
         final SharedPreferences.Editor editor = settings.edit();
 
-        String h = settings.getString("hora", "08");
+        String h = settings.getString("hora", "10");
         String m = settings.getString("minuto", "30");
 
         AlterarAlarm alterarAlarm;
@@ -739,6 +740,10 @@ public class MainActivity extends AppCompatActivity {
         minLayout.addView(layoutTextMin);
         minLayout.addView(minMenosButton);
 
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(0, 30, 15, 30);
+
         LinearLayout content = new LinearLayout(this);
         content.setOrientation(LinearLayout.HORIZONTAL);
         content.setGravity(Gravity.CENTER);
@@ -746,6 +751,8 @@ public class MainActivity extends AppCompatActivity {
         content.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
 
+        horaLayout.setLayoutParams(layoutParams);
+        minLayout.setLayoutParams(layoutParams);
         content.addView(horaLayout);
         content.addView(minLayout);
 
