@@ -621,10 +621,13 @@ public class MainActivity extends AppCompatActivity {
         PendingIntent p = PendingIntent.getBroadcast(MainActivity.this, 121312131, it, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
+        int h = Integer.parseInt(settings.getString("hora", "10"));
+        int m = Integer.parseInt(settings.getString("minuto", "30"));	
+		
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(System.currentTimeMillis());
-        c.set(Calendar.HOUR_OF_DAY, Integer.parseInt(settings.getString("hora", "08").replaceFirst("^0+(?!$)", "")));
-        c.set(Calendar.MINUTE, Integer.parseInt(settings.getString("minuto", "30").replaceFirst("^0+(?!$)", "")));
+        c.set(Calendar.HOUR_OF_DAY, h);
+        c.set(Calendar.MINUTE, m);
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(),
                 AlarmManager.INTERVAL_DAY, p);

@@ -99,21 +99,16 @@
         <activity
             android:name="com.projeto.biblianvi.biblianvi.ActivityBrowser"
             android:label="@string/title_activity_biblia_aberta" />
-        <!--
+
         <receiver
-            android:name=".ServiceReceiver"
+            android:name=".VersiculoDiario"
             android:enabled="true"
-            android:exported="false"
-            android:permission="android.permission.RECEIVE_BOOT_COMPLETED"
-            >
+            android:exported="true">
             <intent-filter>
-                <action
-                    android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name=".VersiculoDiario"></action>
             </intent-filter>
         </receiver>
-        -->
-        <receiver android:name="com.projeto.biblianvi.biblianvi.VersiculoDiario">
-        </receiver>
+
         <receiver
             android:name="com.projeto.biblianvi.biblianvi.ReceiverReiniciarAlarm"
             android:enabled="true" android:exported="true"
@@ -124,6 +119,7 @@
                 <action android:name="com.htc.intent.action.QUICKBOOT_POWERON"/>
             </intent-filter>
         </receiver>
+
 
         <activity
             android:name="com.projeto.biblianvi.biblianvi.MainActivityFragment"
