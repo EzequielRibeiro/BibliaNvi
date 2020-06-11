@@ -44,6 +44,20 @@
                 android:layout_gravity="center">
 
 
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    android:elevation="4dp"
+                    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                    ads:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toTopOf="parent"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+
                 <TextView
                     android:id="@+id/textViewDeveloper"
                     android:layout_width="match_parent"
@@ -58,19 +72,19 @@
                     ads:layout_constraintBottom_toBottomOf="parent"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintStart_toStartOf="parent"
-                    ads:layout_constraintTop_toBottomOf="@+id/linearlayoutVersiculo" />
+                    ads:layout_constraintTop_toBottomOf="@+id/constantLayoutVersiculo" />
 
                 <LinearLayout
                     android:id="@+id/linearLayout3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal"
                     ads:layout_constraintBottom_toTopOf="@+id/linearLayout5"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintStart_toStartOf="parent"
-                    ads:layout_constraintTop_toTopOf="parent">
+                    ads:layout_constraintTop_toBottomOf="@+id/toolbar">
 
                     <Button
                         android:id="@+id/button_biblia"
@@ -143,7 +157,7 @@
                     android:background="@drawable/barrinha"
                     android:gravity="right"
                     android:orientation="horizontal"
-                    ads:layout_constraintBottom_toTopOf="@+id/linearlayoutVersiculo"
+                    ads:layout_constraintBottom_toTopOf="@+id/constantLayoutVersiculo"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintHorizontal_bias="0.0"
                     ads:layout_constraintStart_toStartOf="parent"
@@ -168,7 +182,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/linearlayoutVersiculo"
+                    android:id="@+id/constantLayoutVersiculo"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:background="@null"

@@ -44,6 +44,20 @@
                 android:layout_gravity="center">
 
 
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="?attr/colorPrimary"
+                    android:elevation="4dp"
+                    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                    ads:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toTopOf="parent"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+
                 <TextView
                     android:id="@+id/textViewDeveloper"
                     android:layout_width="match_parent"
@@ -58,25 +72,24 @@
                     ads:layout_constraintBottom_toBottomOf="parent"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintStart_toStartOf="parent"
-                    ads:layout_constraintTop_toBottomOf="@+id/linearlayoutVersiculo" />
+                    ads:layout_constraintTop_toBottomOf="@+id/constantLayoutVersiculo" />
 
                 <LinearLayout
                     android:id="@+id/linearLayout3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal"
                     ads:layout_constraintBottom_toTopOf="@+id/linearLayout5"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintStart_toStartOf="parent"
-                    ads:layout_constraintTop_toTopOf="parent">
+                    ads:layout_constraintTop_toBottomOf="@+id/toolbar">
 
                     <Button
                         android:id="@+id/button_biblia"
 
                         android:layout_width="90dp"
-                        android:layout_height="80dp"
+                        android:layout_height="65dp"
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/icon_biblia"
                         android:gravity="bottom|center_horizontal"
@@ -89,7 +102,7 @@
                         android:id="@+id/button_pesquisar"
 
                         android:layout_width="90dp"
-                        android:layout_height="80dp"
+                        android:layout_height="65dp"
                         android:background="@drawable/icon_search"
                         android:gravity="bottom|center_horizontal"
                         android:text="@string/pesquisar"
@@ -113,7 +126,7 @@
                         android:id="@+id/button_dicionario"
 
                         android:layout_width="90dp"
-                        android:layout_height="80dp"
+                        android:layout_height="65dp"
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/icon_dicionario"
                         android:gravity="bottom|center_horizontal"
@@ -126,7 +139,7 @@
                         android:id="@+id/buttonSermon"
 
                         android:layout_width="90dp"
-                        android:layout_height="80dp"
+                        android:layout_height="65dp"
                         android:background="@drawable/icon_sermon"
                         android:gravity="bottom|center_horizontal"
                         android:text="@string/devocional"
@@ -143,7 +156,7 @@
                     android:background="@drawable/barrinha"
                     android:gravity="right"
                     android:orientation="horizontal"
-                    ads:layout_constraintBottom_toTopOf="@+id/linearlayoutVersiculo"
+                    ads:layout_constraintBottom_toTopOf="@+id/constantLayoutVersiculo"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintHorizontal_bias="0.0"
                     ads:layout_constraintStart_toStartOf="parent"
@@ -168,7 +181,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/linearlayoutVersiculo"
+                    android:id="@+id/constantLayoutVersiculo"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:background="@null"

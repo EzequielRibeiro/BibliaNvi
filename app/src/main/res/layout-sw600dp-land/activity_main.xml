@@ -43,19 +43,18 @@
                 android:layout_gravity="center_horizontal">
 
 
-                <TextView
-                    android:id="@+id/textViewRecados"
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:textColor="@color/red"
-                    android:textSize="12sp"
-                    ads:layout_constraintBottom_toTopOf="@+id/linearLayoutBarra"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    android:elevation="4dp"
+                    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintStart_toStartOf="parent"
-                    ads:layout_constraintTop_toBottomOf="@id/layout_qualificar" />
+                    ads:layout_constraintTop_toTopOf="parent"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
 
                 <LinearLayout
                     android:id="@+id/linearLayoutBarra"
@@ -68,18 +67,18 @@
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintHorizontal_bias="0.0"
                     ads:layout_constraintStart_toStartOf="parent"
-                    ads:layout_constraintTop_toBottomOf="@id/textViewRecados">
+                    ads:layout_constraintTop_toBottomOf="@id/layout_qualificar">
 
                     <Button
                         android:id="@+id/buttonClock"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:background="@mipmap/alarm_clock" />
 
                     <Button
                         android:id="@+id/buttonCompartilharMain"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:background="@mipmap/share"
@@ -88,13 +87,12 @@
                 </LinearLayout>
 
 
-                <LinearLayout
-                    android:id="@+id/linearlayoutVersiculo"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constantLayoutVersiculo"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:background="@color/black"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical"
+                    android:gravity="center_horizontal|top"
                     ads:layout_constraintBottom_toTopOf="@+id/textViewDeveloper"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintStart_toStartOf="parent"
@@ -102,48 +100,54 @@
 
                     <TextView
                         android:id="@+id/textViewDailyVerse"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:gravity="center"
                         android:text="@string/reflexao"
                         android:textColor="?android:attr/colorPressedHighlight"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        ads:layout_constraintEnd_toEndOf="parent"
+                        ads:layout_constraintStart_toStartOf="parent"
+                        ads:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/textViewAssuntoVers"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@color/cyan"
                         android:gravity="center"
                         android:maxLines="1"
-                        android:paddingLeft="5dp"
 
                         android:text="..."
                         android:textColor="@color/blue"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        ads:layout_constraintEnd_toEndOf="parent"
+                        ads:layout_constraintStart_toStartOf="parent"
+                        ads:layout_constraintTop_toBottomOf="@+id/textViewDailyVerse" />
 
                     <TextView
                         android:id="@+id/textViewVersDia"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_height="0dp"
 
                         android:background="@android:color/black"
                         android:gravity="center"
                         android:isScrollContainer="true"
-                        android:minLines="3"
                         android:scrollbars="horizontal|vertical"
                         android:scrollHorizontally="true"
-                        android:text="..."
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
-                        android:textSize="24sp" />
+                        android:textSize="24sp"
+                        ads:layout_constraintBottom_toBottomOf="parent"
+                        ads:layout_constraintEnd_toEndOf="parent"
+                        ads:layout_constraintStart_toStartOf="@+id/textViewAssuntoVers"
+                        ads:layout_constraintTop_toBottomOf="@+id/textViewAssuntoVers" />
 
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                 <LinearLayout
@@ -152,17 +156,16 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    ads:layout_constraintBottom_toTopOf="@+id/adView"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintHorizontal_bias="0.0"
                     ads:layout_constraintStart_toStartOf="parent"
-                    ads:layout_constraintTop_toTopOf="parent">
+                    ads:layout_constraintTop_toBottomOf="@+id/toolbar">
 
                     <Button
                         android:id="@+id/button_biblia"
 
                         android:layout_width="130dp"
-                        android:layout_height="130dp"
+                        android:layout_height="120dp"
                         android:background="@drawable/icon_biblia"
                         android:gravity="bottom|center_horizontal"
                         android:text="Bíblia"
@@ -174,7 +177,7 @@
                         android:id="@+id/buttonSermon"
 
                         android:layout_width="130dp"
-                        android:layout_height="130dp"
+                        android:layout_height="120dp"
                         android:width="95dp"
                         android:background="@drawable/icon_sermon"
                         android:gravity="bottom|center_horizontal"
@@ -183,12 +186,11 @@
                         android:textSize="18sp"
                         android:textStyle="normal|bold" />
 
-
                     <Button
                         android:id="@+id/button_dicionario"
 
                         android:layout_width="130dp"
-                        android:layout_height="130dp"
+                        android:layout_height="120dp"
                         android:background="@drawable/icon_dicionario"
                         android:gravity="bottom|center_horizontal"
                         android:text="Dicionário"
@@ -200,7 +202,7 @@
                         android:id="@+id/button_pesquisar"
 
                         android:layout_width="130dp"
-                        android:layout_height="130dp"
+                        android:layout_height="120dp"
                         android:background="@drawable/icon_search"
                         android:gravity="bottom|center_horizontal"
                         android:text="Pesquisar"
@@ -209,33 +211,21 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <com.google.android.gms.ads.AdView
-                    android:id="@+id/adView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    ads:adSize="BANNER"
-                    ads:adUnitId="@string/idMob"
-                    ads:layout_constraintBottom_toTopOf="@id/textViewRecados"
-                    ads:layout_constraintEnd_toEndOf="parent"
-                    ads:layout_constraintStart_toEndOf="@id/layout_qualificar"
-                    ads:layout_constraintTop_toBottomOf="@+id/layout_escolha_livro"></com.google.android.gms.ads.AdView>
-
                 <LinearLayout
                     android:id="@+id/layout_qualificar"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:gravity="left|center_vertical"
+                    android:gravity="center|center_vertical"
                     android:orientation="horizontal"
-                    ads:layout_constraintBottom_toTopOf="@+id/textViewRecados"
-                    ads:layout_constraintEnd_toStartOf="@+id/adView"
+                    ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintStart_toStartOf="parent"
                     ads:layout_constraintTop_toBottomOf="@+id/layout_escolha_livro">
 
                     <Button
                         android:id="@+id/button_qualificar"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_marginLeft="5dp"
                         android:background="@drawable/start" />
 
@@ -248,8 +238,16 @@
                         android:inputType="textMultiLine"
                         android:text="Gostou do nosso app?\n Por favor, Qualifique -o"
                         android:textColor="@color/orange"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold|italic" />
+
+                    <com.google.android.gms.ads.AdView
+                        android:id="@+id/adView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        ads:adSize="BANNER"
+                        ads:adUnitId="@string/idMob"></com.google.android.gms.ads.AdView>
 
                 </LinearLayout>
 
@@ -276,11 +274,11 @@
                     android:gravity="center"
                     android:text="000000000"
                     android:textColor="#c33f3e41"
-                    android:textSize="14sp"
+                    android:textSize="18sp"
                     ads:layout_constraintBottom_toBottomOf="parent"
                     ads:layout_constraintEnd_toEndOf="parent"
                     ads:layout_constraintStart_toStartOf="parent"
-                    ads:layout_constraintTop_toBottomOf="@+id/linearlayoutVersiculo" />
+                    ads:layout_constraintTop_toBottomOf="@+id/constantLayoutVersiculo" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

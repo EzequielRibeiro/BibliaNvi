@@ -49,6 +49,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.app.ActivityCompat;
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
     static private SharedPreferences.Editor editor;
     static public String DATABASENAME;
     private FirebaseRemoteConfig mFirebaseRemoteConfig;
+    private Toolbar toolbar;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -129,10 +131,13 @@ public class MainActivity extends AppCompatActivity {
                 R.layout.drawer_list_item, menuTitulos));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
-                null,  /* nav drawer image to replace 'Up' caret */
+                toolbar,  /* nav drawer image to replace 'Up' caret */
                 R.string.drawer_open,  /* "open drawer" description for accessibility */
                 R.string.drawer_close  /* "close drawer" description for accessibility */
         ) {
