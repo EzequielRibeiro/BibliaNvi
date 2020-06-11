@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:background="#ffffff"
     android:gravity="center"
-    tools:context="com.projeto.biblianvi.biblianvi.Grafico_Dois">
+    tools:context="com.projeto.biblianvi.Grafico_Dois">
 
     <ListView
         android:id="@+id/list_grafico_dois"

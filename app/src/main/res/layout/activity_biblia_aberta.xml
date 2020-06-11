@@ -3,7 +3,7 @@
     android:id="@+id/relativeLayoutAberta"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.projeto.biblianvi.biblianvi.BibliaAberta">
+    tools:context="com.projeto.biblianvi.BibliaAberta">
 
     <LinearLayout
         android:id="@+id/linearLayoutBase"

@@ -158,9 +158,19 @@
                     ads:layout_constraintStart_toStartOf="parent"
                     ads:layout_constraintTop_toTopOf="parent">
 
+
+                    <Button
+                        android:id="@+id/button_biblia"
+                        android:layout_width="120dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/icon_biblia"
+                        android:gravity="bottom|center_horizontal"
+                        android:text="Bíblia"
+                        android:textColor="@color/blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
                     <Button
                         android:id="@+id/buttonSermon"
-
                         android:layout_width="120dp"
                         android:layout_height="80dp"
                         android:width="95dp"
@@ -170,18 +180,6 @@
                         android:textColor="@color/blue"
                         android:textSize="14sp"
                         android:textStyle="normal|bold" />
-
-                    <Button
-                        android:id="@+id/button_biblia"
-
-                        android:layout_width="120dp"
-                        android:layout_height="80dp"
-                        android:background="@drawable/icon_biblia"
-                        android:gravity="bottom|center_horizontal"
-                        android:text="Bíblia"
-                        android:textColor="@color/blue"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/button_dicionario"

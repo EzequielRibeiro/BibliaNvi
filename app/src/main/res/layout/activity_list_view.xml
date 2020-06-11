@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#e1e0e0"
-    tools:context=".biblianvi.Lista_Biblia"
+    tools:context=".Lista_Biblia"
 
     >
 

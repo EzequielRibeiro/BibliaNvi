@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:orientation="horizontal"
-    tools:context="com.projeto.biblianvi.biblianvi.Activity_busca_avancada">
+    tools:context="com.projeto.biblianvi.Activity_busca_avancada">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

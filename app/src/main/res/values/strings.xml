@@ -20,10 +20,9 @@
     <string name="fechar_app">Close</string>
     <string name="graph_app">" Statistic"</string>
     <string name="nviText">New International Version</string>
-    <string name="idMob" translatable="false">ca-app-pub-0822808376839371/3569436819</string>
-    <string name="interstitial_ad_unit_id" translatable="false">ca-app-pub-0822808376839371/2224016819</string>
+    <string name="idMob" translatable="false">ca-app-pub-0822808376839371/9732532286</string>
+    <string name="interstitial_ad_unit_id" translatable="false">ca-app-pub-0822808376839371/4651240777</string>
     <string name="url_noticias" translatable="false">"http://biblianvi.byethost17.com/aviso.html"</string>
-    <string name="ADMOB_APP_ID" translatable="false">ca-app-pub-0822808376839371~5849127597</string>
     <string name="desenvolvedor" translatable="false">Ezequiel A. Ribeiro</string>
     <string name="bibliaLivEp">Holy Bible</string>
     <string name="fontePadrao" translatable="false">Arial</string>

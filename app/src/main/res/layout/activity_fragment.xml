@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/titles"
-        class="com.projeto.biblianvi.biblianvi.TitlesFragment"
+        class="com.projeto.biblianvi.TitlesFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/drawer_list_item" />

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1032959248015-h6shnf1r0ib7dhq7jt3he118opvfeqf6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.projeto.biblianvi",
+            "certificate_hash": "9cffd1154c19f9f47e6d6871c4ece20fe60042ec"
+          }
+        },
+        {
           "client_id": "1032959248015-3jg7m25ck5r2k85iqai0g3fnkjklg057.apps.googleusercontent.com",
           "client_type": 3
         }

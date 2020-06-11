@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BibliaNvi - Copy.iml" filepath="$PROJECT_DIR$/BibliaNvi - Copy.iml" group="BibliaNvi - Copy" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="BibliaNvi - Copy/app" />
+      <module fileurl="file://$PROJECT_DIR$/BibliaNvi.iml" filepath="$PROJECT_DIR$/BibliaNvi.iml" group="BibliaNvi" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="BibliaNvi/app" />
     </modules>
   </component>
 </project>
