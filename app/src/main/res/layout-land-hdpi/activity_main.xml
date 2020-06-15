@@ -116,7 +116,7 @@
                     <TextView
                         android:id="@+id/textViewAssuntoVers"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="25dp"
                         android:background="@color/cyan"
                         android:gravity="center"
                         android:maxLines="1"
@@ -141,7 +141,7 @@
                         android:scrollHorizontally="true"
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
                         ads:layout_constraintBottom_toBottomOf="parent"
                         ads:layout_constraintEnd_toEndOf="parent"
                         ads:layout_constraintStart_toStartOf="@+id/textViewAssuntoVers"

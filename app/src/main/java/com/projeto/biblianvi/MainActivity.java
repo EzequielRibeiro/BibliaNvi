@@ -44,7 +44,6 @@ import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -57,7 +56,6 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.core.widget.TextViewCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -69,6 +67,7 @@ import java.io.File;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Locale;
+
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
@@ -957,13 +956,10 @@ public class MainActivity extends AppCompatActivity {
                 // intent.putExtra(SearchManager.QUERY, getActionBar().getTitle());
                 // catch event that there's no activity to handle intent
 
-                Intent intent1 = new Intent();
-                intent1.setClass(getApplication(), Activity_busca_avancada.class);
-
-                if (intent1.resolveActivity(getPackageManager()) != null) {
+                if (isDataBaseDownload(getApplicationContext())) {
+                    Intent intent1 = new Intent();
+                    intent1.setClass(getApplication(), Activity_busca_avancada.class);
                     startActivity(intent1);
-                } else {
-                    Toast.makeText(this, R.string.app_not_available, Toast.LENGTH_LONG).show();
                 }
                 return true;
             default:
@@ -1075,7 +1071,16 @@ public class MainActivity extends AppCompatActivity {
         String t;
         TextView msg = new TextView(this);
         msg.setTextColor(getResources().getColor(R.color.white));
-        t = getString(R.string.aviso).replace("@app_version@", BuildConfig.VERSION_NAME);
+
+        String version = "1.0";
+        try {
+            version = getPackageManager()
+                    .getPackageInfo(getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        t = getString(R.string.aviso).replace("@app_version@", version);
         t = t.replace("@bible_version@", db.getBibleVersion());
         msg.setText(t);
         msg.setPadding(10, 10, 10, 10);

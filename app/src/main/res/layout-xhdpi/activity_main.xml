@@ -89,26 +89,26 @@
                     <Button
                         android:id="@+id/button_biblia"
 
-                        android:layout_width="90dp"
-                        android:layout_height="80dp"
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/icon_biblia"
                         android:gravity="bottom|center_horizontal"
                         android:text="@string/biblia"
                         android:textColor="@color/blue"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/button_pesquisar"
 
-                        android:layout_width="90dp"
-                        android:layout_height="80dp"
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
                         android:background="@drawable/icon_search"
                         android:gravity="bottom|center_horizontal"
                         android:text="@string/pesquisar"
                         android:textColor="@color/blue"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -126,26 +126,26 @@
                     <Button
                         android:id="@+id/button_dicionario"
 
-                        android:layout_width="90dp"
-                        android:layout_height="80dp"
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/icon_dicionario"
                         android:gravity="bottom|center_horizontal"
                         android:text="@string/dicionario"
                         android:textColor="@color/blue"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/buttonSermon"
 
-                        android:layout_width="90dp"
-                        android:layout_height="80dp"
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
                         android:background="@drawable/icon_sermon"
                         android:gravity="bottom|center_horizontal"
                         android:text="@string/devocional"
                         android:textColor="@color/blue"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -205,7 +205,7 @@
                     <TextView
                         android:id="@+id/textViewAssuntoVers"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="25dp"
                         android:background="@color/cyan"
                         android:gravity="center"
                         android:maxLines="1"

@@ -78,12 +78,12 @@ public class NotaAdaptador extends ArrayAdapter<Anotacao> {
                         Anotacao nota = getItem(position);
 
                         Toast.makeText(context, "Removido", Toast.LENGTH_SHORT).show();
-                        ActivityAnotacao.LISTA.remove(position);
-                        ActivityAnotacao.NOTAADAPTADOR.notifyDataSetChanged();
-
-                        new BibliaBancoDadosHelper(getContext()).deleteNota(nota.getId());
-
-
+                        ActivityAnotacao.notas.remove(position);
+                        ActivityAnotacao.notaAdaptador.notifyDataSetChanged();
+                        DBAdapterFavoritoNota dbAdapterFavoritoNota = new DBAdapterFavoritoNota(getContext());
+                        dbAdapterFavoritoNota.open();
+                        dbAdapterFavoritoNota.deleteNota(Long.valueOf(nota.getId()));
+                        dbAdapterFavoritoNota.close();
                     }
                 });
 

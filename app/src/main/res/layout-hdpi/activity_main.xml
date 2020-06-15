@@ -101,7 +101,6 @@
 
                     <Button
                         android:id="@+id/button_pesquisar"
-
                         android:layout_width="80dp"
                         android:layout_height="70dp"
                         android:background="@drawable/icon_search"
@@ -205,7 +204,7 @@
                     <TextView
                         android:id="@+id/textViewAssuntoVers"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="25dp"
                         android:background="@color/cyan"
                         android:gravity="center"
                         android:maxLines="1"
@@ -229,7 +228,7 @@
                         android:text="..."
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
 
                 </LinearLayout>

@@ -34,12 +34,22 @@ public class Biblia {
         this.idBook = idBook;
     }
 
-    private String testamentName,
-                   booksName = "João",
-                   versesChapter = "3",
-                   versesNum = "16",
-                   versesText = "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, " +
-                           "para que todo aquele que nele crê não pereça, mas tenha a vida eterna";
+
+    public String getBookVersion() {
+        return bookVersion;
+    }
+
+    public void setBookVersion(String bookVersion) {
+        this.bookVersion = bookVersion;
+    }
+
+    private String testamentName;
+    private String bookVersion;
+    private String booksName = "João";
+    private String versesChapter = "3";
+    private String versesNum = "16";
+    private String text = "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, " +
+            "para que todo aquele que nele crê não pereça, mas tenha a vida eterna";
 
     private int lido;
 
@@ -94,7 +104,7 @@ public class Biblia {
 
     public void setText(String t){
 
-        versesText = t.replace(";","");
+        text = t.replace(";", "");
 
     }
 
@@ -160,23 +170,23 @@ public class Biblia {
 
         if (getTitleCapitulo() != null)
             return "<font color='red'>" + getTitleCapitulo() + "</font><br>" +
-                    "<b>" + versesNum + "</b>" + " " + versesText;
+                    "<b>" + versesNum + "</b>" + " " + text;
         else
-            return "<b>" + versesNum + "</b>" + " " + versesText;
+            return "<b>" + versesNum + "</b>" + " " + text;
     }
 
-    public String getVersesText(){
+    public String getText() {
 
-        if(versesText != null)
-          return versesText;
+        if (text != null)
+            return text;
         else
-          return "0";
+            return "0";
     }
 
     public String toPesquisarString() {
 
 
-        String texto = versesText.replace(termoBusca,"<font color=\"red\">"+termoBusca+"</font>");
+        String texto = text.replace(termoBusca, "<font color=\"red\">" + termoBusca + "</font>");
 
         return "<p>"+booksName+" "+versesChapter+":"+versesNum+"</p>"+
               "<p>"+texto+"</p>";

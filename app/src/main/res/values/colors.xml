@@ -24,7 +24,7 @@
     <color name="darkorange">#ff8800</color>
     <color name="green">#99cc00</color>
     <color name="purple">#aa66cc</color>
-    <color name="dark">#303030</color>
+    <color name="dark">@color/barrasuperiorescuro</color>
     <color name="darkblue">#0099cc</color>
     <color name="black">#000000</color>
 

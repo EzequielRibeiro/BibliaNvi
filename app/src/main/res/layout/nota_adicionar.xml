@@ -3,67 +3,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.projeto.biblianvi.NotaAdicionar"
-    android:background="#8b8b8b"
-    android:padding="10dp">
+    android:background="@color/barrasuperiorescuro"
+    android:gravity="center"
+    android:padding="10dp"
+    tools:context=".NotaAdicionar">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/scrollView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/linearLayout4">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/linearLayout4"
-            android:layout_alignParentTop="true">
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/t_tulo"
-                android:id="@+id/textView10"
+                android:textColor="@color/blue"
                 android:textSize="22dp"
                 android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/editTextTittuloNota"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editTextTittuloNota"
+                android:background="@color/white"
+                android:maxLength="30"
                 android:singleLine="true"
-                android:maxLength="30" />
+                android:textColor="@color/black" />
 
             <TextView
+                android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/anota_o"
-                android:id="@+id/textView12"
+                android:textColor="@color/blue"
                 android:textSize="22dp"
                 android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/editTextNotaTexto"
                 android:layout_width="match_parent"
                 android:layout_height="437dp"
-                android:inputType="textMultiLine"
+                android:background="@color/white"
                 android:ems="10"
-                android:id="@+id/editTextNotaTexto"
-                android:gravity="top" />
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:textColor="@color/black" />
 
         </LinearLayout>
     </ScrollView>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
         android:gravity="right"
-        android:layout_marginTop="10dp">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/buttonNotaSalvar"

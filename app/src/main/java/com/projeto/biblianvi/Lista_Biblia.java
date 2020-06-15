@@ -2,12 +2,10 @@ package com.projeto.biblianvi;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,7 +16,6 @@ import android.graphics.Color;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -58,9 +55,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
+
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
@@ -70,7 +65,7 @@ import java.util.Objects;
 
 public class Lista_Biblia extends Activity {
 
-    private InterstitialAd  interstitialAd;
+
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -78,6 +73,7 @@ public class Lista_Biblia extends Activity {
     private CharSequence mTitle;
     private String[] menuTitulos;
     private BibliaBancoDadosHelper bibliaHelp;
+    private DBAdapterFavoritoNota dbAdapterFavoritoNota;
     private List<Biblia> lista = null;
     private TextView textViewCap;
     private TextView textViewLivro;
@@ -89,7 +85,6 @@ public class Lista_Biblia extends Activity {
     private Button buttonMenuOpcao;
     private ListaAdaptador listaAdaptador;
     private View buttonCompartilhar;
-    private PesquisarBanco pesquisarBanco;
     private boolean recarregarLista = false;
     private boolean criarMenuSuspenso = true, criarMenuBase = true;
     private Spinner spinnerLivro;
@@ -113,10 +108,10 @@ public class Lista_Biblia extends Activity {
     private AudioManager amanager;
     private boolean keepScreenOn = false;
     final static private String SEEK_VALOR_KEY = "seekValor";
-    private PopupWindow  pw;
-    private FirebaseAnalytics  mFirebaseAnalytics;
+    private PopupWindow pw;
+    private FirebaseAnalytics mFirebaseAnalytics;
     private int REQUEST_STORAGE;
-    private ProgressBar progressBar;
+    private ProgressBar progressBar, progressBarSearch;
 
 
     @Override
@@ -136,12 +131,14 @@ public class Lista_Biblia extends Activity {
 
         setContentView(R.layout.activity_list_view);
         bibliaHelp = new BibliaBancoDadosHelper(getApplicationContext());
+        dbAdapterFavoritoNota = new DBAdapterFavoritoNota(getApplicationContext());
 
         textViewComp = findViewById(R.id.textViewComp);
         textViewCap = findViewById(R.id.textViewCapit);
         textViewLivro = findViewById(R.id.textViewLivro);
         buttonMenuOpcao = findViewById(R.id.buttonMenuOpcao);
         listView = findViewById(R.id.listView);
+        listView.setFastScrollEnabled(true);
         buttonCompartilhar = findViewById(R.id.buttonMenuShare);
 
         buttonSetaMenu = findViewById(R.id.buttonSetaMenu);
@@ -174,26 +171,8 @@ public class Lista_Biblia extends Activity {
             newString[5] = extras.getString("buscarTestamento");
             buscar = Boolean.parseBoolean(newString[3]);
             buscarTestamento = newString[5];
+            carregarLista();
 
-            if (buscar) {
-                LinearLayout lin = findViewById(R.id.linearLayoutLivCap);
-                lin.setVisibility(View.GONE);
-                try {
-                    Class.forName("android.os.AsyncTask");
-                    pesquisarBanco = new PesquisarBanco(getParent());
-                    pesquisarBanco.execute("");
-                } catch (Throwable ignore) {
-
-                    Log.e("error: ",ignore.getCause().toString());
-
-                }
-
-
-            } else {
-
-                carregarLista();
-
-            }
         } else {
 
             finish();
@@ -401,34 +380,7 @@ public class Lista_Biblia extends Activity {
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
-        //  mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-
-        // Create the InterstitialAd and set the adUnitId.
-        interstitialAd = new InterstitialAd(this);
-        // Defined in res/values/strings.xml
-        interstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
-
-        interstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-
-                Log.i("Intertitial",String.valueOf(errorCode));
-
-                Bundle bundle = new Bundle();
-                bundle.putString("ERROR",String.valueOf(errorCode));
-                bundle.putString("COUNTRY",getResources().getConfiguration().locale.getDisplayCountry());
-                mFirebaseAnalytics.logEvent("Intertitial",bundle);
-
-
-            }
-
-        });
 
 
         modoNoturno();
@@ -479,22 +431,9 @@ public class Lista_Biblia extends Activity {
         favo.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
-
-           BibliaBancoDadosHelper h = new BibliaBancoDadosHelper(Lista_Biblia.this);
-
-           if(h.tabelaExiste(Activity_favorito.TABELANAME) != 0){
-
-
-               h.setFavorito(bi.getIdVerse());
-
-
-           } else{
-
-               h.criarTabela(Activity_favorito.TABELANAME,Activity_favorito.CAMPOS);
-
-               h.setFavorito(bi.getIdVerse());
-
-           }
+             dbAdapterFavoritoNota.open();
+             dbAdapterFavoritoNota.insertFavorite(bi.getChapter(), bi.getVersesNum(), bi.getText(), bi.getBookVersion(), bi.getBooksName());
+             dbAdapterFavoritoNota.close();
 
              pw.dismiss();
 
@@ -938,28 +877,6 @@ public class Lista_Biblia extends Activity {
     protected void onStart() {
         super.onStart();
 
-        startIntertitialAd();
-
-
-
-    }
-
-    private void showInterstitial() {
-        // Show the ad if it's ready. Otherwise toast and restart the game.
-        if (interstitialAd != null && interstitialAd.isLoaded()) {
-            interstitialAd.show();
-        } else {
-            Log.i("Intertitial","Ad did not load");
-            startIntertitialAd();
-        }
-    }
-
-    private void startIntertitialAd() {
-        // Request a new ad if one isn't already loaded, hide the button, and kick off the timer.
-        if (!interstitialAd.isLoading() && !interstitialAd.isLoaded()) {
-            AdRequest adRequest = new AdRequest.Builder().build();
-            interstitialAd.loadAd(adRequest);
-        }
 
     }
 
@@ -1041,7 +958,7 @@ public class Lista_Biblia extends Activity {
         amanager.setStreamMute(AudioManager.STREAM_NOTIFICATION, false);
         getSharedPreferences("sound", Activity.MODE_PRIVATE).edit().putBoolean("sound", false).commit();
         buttonSound.setBackgroundResource(R.mipmap.sound_on);
-        showInterstitial();
+
     }
 
     protected void onResume() {
@@ -1474,115 +1391,6 @@ public class Lista_Biblia extends Activity {
         }
     }
 
-
-     /* tipoDeBusca
-     0 = Tota biblia,  1 = NT,   2 = VT,  3 = Livro */
-
-    private class PesquisarBanco extends AsyncTask<String, Integer, String> {
-
-
-        private ProgressDialog progressDialog;
-        private Activity act;
-
-
-        public PesquisarBanco(Activity ac) {
-
-            act = ac;
-        }
-
-
-        protected String doInBackground(String... params) {
-
-
-            if (buscarTestamento.equals("0")) {
-
-                lista = bibliaHelp.pesquisarBiblia(newString[4]);
-
-            } else if (buscarTestamento.equals("1") || buscarTestamento.equals("2")) {
-
-                lista = bibliaHelp.pesquisarBibliaTestamento(newString[4], buscarTestamento);
-
-            } else if (buscarTestamento.equals("3")) {
-
-                lista = bibliaHelp.pesquisarBibliaLivro(newString[0], newString[4]);
-
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-
-
-            if (!lista.isEmpty()) {
-
-                int i = lista.size();
-
-                listaAdaptador = new ListaAdaptador(getBaseContext(), lista, true);
-
-                listView.setAdapter(listaAdaptador);
-
-                onListPosicao(listView);
-
-                Toast.makeText(getBaseContext(), i + getString(R.string.foram_encontrados), Toast.LENGTH_LONG).show();
-
-            } else {
-
-                Toast.makeText(getBaseContext(), R.string.nada_encontrado, Toast.LENGTH_LONG).show();
-                finish();
-            }
-
-            if (recarregarLista) {
-
-                listaAdaptador.notifyDataSetChanged();
-
-            }
-
-            progressDialog.dismiss();
-
-
-        }
-
-        @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-        @Override
-        protected void onPreExecute() {
-
-            progressDialog = new ProgressDialog(Lista_Biblia.this);
-            progressDialog.setTitle(getString(R.string.pesquisando));
-            progressDialog.setMessage(getString(R.string.aguarde_pesquisando));
-            progressDialog.setCancelable(true);
-            // progressDialog.setMax(100);
-            // progressDialog.setIndeterminate(true);
-
-            progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                @Override
-                public void onCancel(DialogInterface dialogInterface) {
-
-                    Toast.makeText(Lista_Biblia.this, R.string.pesquisa_cancelada, Toast.LENGTH_LONG).show();
-                    finish();
-                    cancel(true);
-
-
-                }
-            });
-
-
-            progressDialog.show();
-
-
-        }
-
-        protected void onProgressUpdate(Integer... values) {
-
-
-        }
-
-
-
-
-
-    }
 
     final static int BRIGHTNESS_FULL = 255;
     private class OnSeekBar implements SeekBar.OnSeekBarChangeListener {

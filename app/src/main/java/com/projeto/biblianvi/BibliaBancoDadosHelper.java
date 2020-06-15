@@ -418,8 +418,8 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
     public void setVersCompartilhar(Biblia bi){
 
-        String versiculo = bi.getVersesText() + " (" + bi.getBooksName() + " " + bi.getChapter() + ":" + bi.getVersesNum() + ") ";
-        String query = "insert into compartilhar (msg) values ('"+versiculo+"')";
+        String versiculo = bi.getText() + " (" + bi.getBooksName() + " " + bi.getChapter() + ":" + bi.getVersesNum() + ") ";
+        String query = "insert into compartilhar (msg) values ('" + versiculo + "')";
         SQLiteDatabase db = SQLiteDatabase.openDatabase(DB_PATH, null, SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
 
             try {
@@ -778,9 +778,9 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
             SharedPreferences settings = myContext.getSharedPreferences("versDiaPreference", Activity.MODE_PRIVATE);
             SharedPreferences.Editor editor = settings.edit();
-            editor.putString("assunto", v.getAssunto());
-            editor.putString("versDia", v.getVersesText());
-            editor.putString("livroNome",v.getBooksName());
+        editor.putString("assunto", v.getAssunto());
+        editor.putString("versDia", v.getText());
+        editor.putString("livroNome", v.getBooksName());
         editor.putString("capVersDia", v.getChapter());
             editor.putString("verVersDia",v.getVersesNum());
 
@@ -1125,7 +1125,7 @@ public class BibliaBancoDadosHelper extends SQLiteOpenHelper {
 
         @Override
         public String toString() {
-            return getVersesText() + " (" + getBooksName() + " " + getChapter() + ":" + getVersesNum() + ")";
+            return getText() + " (" + getBooksName() + " " + getChapter() + ":" + getVersesNum() + ")";
         }
     }
 

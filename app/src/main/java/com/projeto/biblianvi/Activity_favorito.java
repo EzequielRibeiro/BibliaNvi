@@ -3,9 +3,9 @@ package com.projeto.biblianvi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.app.Activity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Activity_favorito extends Activity {
@@ -22,7 +23,7 @@ public class Activity_favorito extends Activity {
 
     private ListView listaFavorito;
     private List<Biblia> listBiblia;
-    private BibliaBancoDadosHelper bancoDadosHelper;
+    private DBAdapterFavoritoNota dbAdapterFavoritoNota;
     public static final String TABELANAME = "favorito";
     public static final String CAMPOS = "(id integer primary key,idVerso TINYINT(3) not null)";
     public FavoritoAdapter favoritoAdapter;
@@ -34,40 +35,54 @@ public class Activity_favorito extends Activity {
 
         listaFavorito = findViewById(R.id.listViewFavorito);
 
-        bancoDadosHelper = new BibliaBancoDadosHelper(this);
+        dbAdapterFavoritoNota = new DBAdapterFavoritoNota(this);
+        dbAdapterFavoritoNota.open();
+
+        Cursor cursor = dbAdapterFavoritoNota.getAllValuesFavorite();
 
 
-        if(bancoDadosHelper.tabelaExiste(TABELANAME) == 1){
+        listBiblia = new LinkedList<Biblia>();
 
-            listBiblia = bancoDadosHelper.getFavorito();
+        Biblia biblia;
 
-            favoritoAdapter = new FavoritoAdapter(Activity_favorito.this,listBiblia);
+        if (cursor != null && cursor.getCount() > 0)
+            if (cursor.moveToFirst()) {
+                do {
+                    biblia = new Biblia();
+                    biblia.setIdVerse(cursor.getString(0));
+                    biblia.setChapter(cursor.getString(1));
+                    biblia.setVerseNum(cursor.getString(2));
+                    biblia.setText(cursor.getString(3));
+                    biblia.setBookVersion(cursor.getString(4));
+                    biblia.setBooksName(cursor.getString(5));
 
-            listaFavorito.setAdapter(favoritoAdapter);
+                    listBiblia.add(biblia);
+
+                } while (cursor.moveToNext());
+            }
+
+        dbAdapterFavoritoNota.close();
+        favoritoAdapter = new FavoritoAdapter(Activity_favorito.this, listBiblia);
+
+        listaFavorito.setAdapter(favoritoAdapter);
 
 
-            listaFavorito.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                @Override
-                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        listaFavorito.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    Biblia b = (Biblia) parent.getItemAtPosition(position);
+                Biblia b = (Biblia) parent.getItemAtPosition(position);
 
-                    confirmarDelete(b.getIdVerse(),position);
+                confirmarDelete(b.getIdVerse(), position);
 
-                    return false;
-                }
-            });
+                return false;
+            }
+        });
 
-
-        }else{
-
-            bancoDadosHelper.criarTabela(TABELANAME,CAMPOS);
-
-        }
 
     }
 
-    private void confirmarDelete(String idVer,int position){
+    private void confirmarDelete(String idVer, int position) {
 
 
         TextView textView = new TextView(this);
@@ -83,11 +98,10 @@ public class Activity_favorito extends Activity {
         // alertDialogBuilder.setCustomTitle(textViewTitle);
 
 
-        alertDialogBuilder.setPositiveButton("Confimar",new dialogo(idVer,position));
+        alertDialogBuilder.setPositiveButton("Confimar", new dialogo(idVer, position));
 
 
-
-        alertDialogBuilder.setNegativeButton("Cancelar",new DialogInterface.OnClickListener(){
+        alertDialogBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -103,11 +117,11 @@ public class Activity_favorito extends Activity {
 
     }
 
-    private class FavoritoAdapter extends  ArrayAdapter<Biblia>{
+    private class FavoritoAdapter extends ArrayAdapter<Biblia> {
 
 
         public FavoritoAdapter(Context context, List<Biblia> biblias) {
-            super(context,0,biblias);
+            super(context, 0, biblias);
 
         }
 
@@ -122,10 +136,11 @@ public class Activity_favorito extends Activity {
             // Lookup view for data population
             TextView textViewLivro = convertView.findViewById(R.id.textViewFavorLivro);
             TextView textViewVerCap = convertView.findViewById(R.id.textViewFavorText);
+            TextView textViewFavorVersion = convertView.findViewById(R.id.textViewFavorVersion);
 
             textViewLivro.setText(objBiblia.getBooksName() + " " + objBiblia.getChapter() + ':' + objBiblia.getVersesNum());
-            textViewVerCap.setText(objBiblia.getVersesText());
-
+            textViewVerCap.setText(objBiblia.getText());
+            textViewFavorVersion.setText(objBiblia.getBookVersion());
 
             return convertView;
         }
@@ -133,12 +148,12 @@ public class Activity_favorito extends Activity {
 
     }
 
-    private class dialogo implements  DialogInterface.OnClickListener{
+    private class dialogo implements DialogInterface.OnClickListener {
 
         private String idVerso;
         private int posicao;
 
-        public dialogo(String idVerso , int posicao){
+        public dialogo(String idVerso, int posicao) {
 
             this.idVerso = idVerso;
             this.posicao = posicao;
@@ -147,20 +162,12 @@ public class Activity_favorito extends Activity {
 
         @Override
         public void onClick(DialogInterface dialog, int which) {
-
-            bancoDadosHelper.deleteFavorito(idVerso);
-
-            Log.e("Deletar Favorito",idVerso);
-
+            dbAdapterFavoritoNota.open();
+            dbAdapterFavoritoNota.deleteFavorite(Long.valueOf(idVerso));
+            dbAdapterFavoritoNota.close();
             listBiblia.remove(posicao);
             favoritoAdapter.notifyDataSetChanged();
-
-
         }
-    }{
-
-
-
     }
 
 }
