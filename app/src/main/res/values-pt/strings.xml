@@ -13,7 +13,7 @@
     <string name="xml_error">Error parsing XML.</string>
 
     <string name="title_activity_mensagem">Online</string>
-    <string name="app_name">Bíblia Adonai </string>
+    <string name="app_name">Bíblia Adonai</string>
     <string name="action_devocional">Sermões</string>
 
     <string name="title_activity_biblia_aberta">Bíblia Sagrada Adonai</string>
@@ -129,8 +129,8 @@
     <string name="pesquisando">Pesquisando ...</string>
     <string name="aguarde_pesquisando">Aguarde um momento ...</string>
     <string name="pesquisa_cancelada">Pesquisa cancelada</string>
-    <string name="salvar_nos_favorito">Salvar como favorito</string>
-    <string name="salvar_para_compartilhar">Salvar para compartilhar</string>
+    <string name="salvar_nos_favorito">Favorito</string>
+    <string name="salvar_para_compartilhar">Compartilhar</string>
     <string name="versiculo_do_dia">\"Versículo do dia: \"</string>
     <string name="livro_evangelho_epistola">Livros - Evangelho - Epistolas</string>
     <string name="bibliaLivEp">Bíblia</string>
@@ -140,6 +140,7 @@
     <string name="peace">Paz</string>
     <string name="book_name">João</string>
     <string name="sermon">Sermão</string>
+    <string name="opcao">Opções</string>
 
 
 </resources>

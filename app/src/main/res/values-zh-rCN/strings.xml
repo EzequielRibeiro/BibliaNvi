@@ -225,6 +225,7 @@
     <string name="compartilharWhat" translatable="false">" WhatsApp "</string>
     <string name="peace">和平</string>
     <string name="book_name">乔恩</string>
-    <string name="sermon">Sermão</string>
+    <string name="sermon">講道</string>
+    <string name="opcao">選項</string>
 
 </resources>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">"Holy Bible Adonai "</string>
+    <string name="idMob" translatable="false">ca-app-pub-0822808376839371/9732532286</string>
+    <string name="interstitial_ad_unit_id" translatable="false">ca-app-pub-0822808376839371/4651240777</string>
+    <string name="app_name">Holy Bible</string>
     <string name="settings">Settings</string>
     <string name="refresh">Refresh</string>
     <string name="page_title">Sermons</string>
@@ -20,8 +22,6 @@
     <string name="fechar_app">Close</string>
     <string name="graph_app">" Statistic"</string>
     <string name="nviText">New International Version</string>
-    <string name="idMob" translatable="false">ca-app-pub-0822808376839371/9732532286</string>
-    <string name="interstitial_ad_unit_id" translatable="false">ca-app-pub-0822808376839371/4651240777</string>
     <string name="url_noticias" translatable="false">"http://biblianvi.byethost17.com/aviso.html"</string>
     <string name="desenvolvedor" translatable="false">Ezequiel A. Ribeiro</string>
     <string name="bibliaLivEp">Holy Bible</string>
@@ -129,6 +129,8 @@
     <string name="capitulo_number" translatable="false">16</string>
     <string name="versiculo_number" translatable="false">33</string>
     <string name="compartilharWhat">WhatsApp</string>
+    <string name="aviso_escolha_book" translatable="false">O aplicativo permite escolher entre 13 traduções da Bíblia.\nSerá preciso estar conectado com a internet para fazer o download da versão escolhida.
+    Após o download o aplicativo não mais necessita de conexão para ser utilizado.\nQualquer problema encontrado entre em contado com o desenvolvedor pelo e-mail indicado no MENU->SOBRE.\nObrigado.</string>
 
 
     <string-array name="menu_array">
@@ -145,5 +147,6 @@
     <string name="peace">Peace</string>
     <string name="book_name">Jonh</string>
     <string name="sermon">Sermão</string>
+    <string name="opcao">Options</string>
 
 </resources>

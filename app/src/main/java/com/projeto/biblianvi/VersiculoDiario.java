@@ -64,7 +64,7 @@ public class VersiculoDiario extends BroadcastReceiver{
                 new NotificationCompat.Builder(context)
                         .setAutoCancel(true)
                         .setSound(alarmSound)
-                        .setSmallIcon(R.mipmap.biblia_icon_notification)
+                        .setSmallIcon(R.drawable.ic_stat_name)
                         .setContentTitle(context.getResources().getString(R.string.app_name))
                         .setContentText(context.getString(R.string.versiculo_do_dia) + assunto + " (" + livro + " " + cap + ":" + vers + ")");
 
